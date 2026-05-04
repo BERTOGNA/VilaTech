@@ -3,57 +3,73 @@ import { gsap } from 'gsap';
 
 const Preloader = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const loader1Ref = useRef<HTMLDivElement>(null);
-  const loader2Ref = useRef<HTMLDivElement>(null);
-  const loader3Ref = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const duration = 0.5;
-    const delay = 0.5;
-    const tl = gsap.timeline({ repeat: -1 });
+    // Animation Logic
+    const tl = gsap.timeline({ repeat: -1 }).timeScale(1.42);
+    
+    // Set initial visibility
+    gsap.set(svgRef.current, { visibility: 'visible' });
 
-    if (loader1Ref.current && loader2Ref.current && loader3Ref.current) {
-      tl.to(loader1Ref.current, { width: 90, duration })
-        .set(loader1Ref.current, { transformOrigin: "right center", rotate: 90 })
-        .to(loader1Ref.current, { width: 35, duration })
-        .set(loader3Ref.current, { transformOrigin: "45px 45px", rotate: 90 })
-        .to(loader3Ref.current, { width: 35, marginTop: 0, duration })
-        .set(loader3Ref.current, { transformOrigin: "left center", rotate: 180 })
-        .to(loader3Ref.current, { width: 90, duration })
-        .set(loader3Ref.current, { transformOrigin: "left center", rotate: 270 })
-        .to(loader3Ref.current, { width: 35, duration })
-        .set(loader2Ref.current, { transformOrigin: "-10px 45px", rotate: 90 })
-        .to(loader2Ref.current, { marginLeft: 0, duration })
-        .set(loader2Ref.current, { transformOrigin: "center bottom", rotate: 180 })
-        .to(loader2Ref.current, { height: 90, duration })
-        .set(loader2Ref.current, { transformOrigin: "center bottom", rotate: 270 })
-        .to(loader2Ref.current, { height: 35, duration })
-        .set(loader1Ref.current, { transformOrigin: "45px -10px", rotate: 180 })
-        .to(loader1Ref.current, { marginTop: 55, duration })
-        .set(loader1Ref.current, { transformOrigin: "left center", rotate: 270 })
-        .to(loader1Ref.current, { width: 90, duration })
-        .set(loader1Ref.current, { transformOrigin: "left center", rotate: 360 })
-        .to(loader1Ref.current, { width: 35, duration })
-        .set(loader3Ref.current, { transformOrigin: "45px -10px", rotate: 360 })
-        .to(loader3Ref.current, { marginTop: 55, duration })
-        .set(loader3Ref.current, { transformOrigin: "right center", rotate: 450 })
-        .to(loader3Ref.current, { width: 90, duration })
-        .set(loader2Ref.current, { marginLeft: 55, duration })
-        .delay(delay);
-    }
+    // Main dots animation
+    tl.to('.mainDot', {
+      duration: 1,
+      x: 240,
+      ease: "sine.inOut"
+    })
+    .to('.otherDots circle', {
+      duration: 0.3,
+      y: -40,
+      ease: "sine.out",
+      stagger: 0.09
+    }, 0.06)
+    .to('.otherDots circle', {
+      duration: 0.7,
+      y: 0,
+      ease: "bounce.out",
+      stagger: 0.09
+    }, 0.48)
+    .to('.otherDots circle', {
+      duration: 0.7,
+      scaleY: 0.6,
+      scaleX: 1.3,
+      ease: "power2.inOut",
+      transformOrigin: "bottom",
+      stagger: 0.09
+    }, 0.48)
+    .to('.otherDots circle', {
+      duration: 0.2,
+      scaleY: 1,
+      scaleX: 1,
+      stagger: 0.09
+    }, 1.1)
+    .to('.otherDots circle', {
+      duration: 1,
+      x: -40,
+      ease: "expo.out",
+      stagger: 0.09
+    }, 0.68)
+    .to('.mainDot', {
+      duration: 1.8,
+      x: 0,
+      ease: "elastic.out(1, 0.75)"
+    }, 1);
 
-    // Hide preloader after everything is loaded or timeout
+    // Hide preloader logic
     const handleLoad = () => {
-      gsap.to(containerRef.current, {
-        opacity: 0,
-        duration: 1,
-        delay: 0.5,
-        onComplete: () => {
-          setIsVisible(false);
-          document.body.style.overflow = '';
-        }
-      });
+      if (containerRef.current) {
+        gsap.to(containerRef.current, {
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.5,
+          onComplete: () => {
+            setIsVisible(false);
+            document.body.style.overflow = '';
+          }
+        });
+      }
     };
 
     if (document.readyState === 'complete') {
@@ -62,9 +78,7 @@ const Preloader = () => {
       window.addEventListener('load', handleLoad);
     }
 
-    // Safety timeout
     const timeout = setTimeout(handleLoad, 4000);
-
     document.body.style.overflow = 'hidden';
 
     return () => {
@@ -81,17 +95,32 @@ const Preloader = () => {
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#f59d22]"
     >
-      <div className="relative w-[90px] h-[90px] mb-8">
-        <div ref={loader1Ref} className="absolute w-[35px] h-[35px] border-[10px] border-[#1d1d1b] rounded-[40px]"></div>
-        <div ref={loader2Ref} className="absolute w-[35px] h-[35px] border-[10px] border-[#1d1d1b] rounded-[40px] ml-[55px]"></div>
-        <div ref={loader3Ref} className="absolute w-[90px] h-[35px] border-[10px] border-[#1d1d1b] rounded-[40px] mt-[55px]"></div>
+      <div className="w-full max-w-[400px] h-auto flex items-center justify-center">
+        <svg 
+          ref={svgRef}
+          viewBox="0 0 800 600" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full invisible"
+        >
+          <g className="dots">
+            <circle className="mainDot" cx="300" cy="300" r="12.5" fill="#1d1d1b"/>
+            <g className="otherDots" fill="#1d1d1b">
+              <circle cx="340" cy="300" r="12.5" />
+              <circle cx="380" cy="300" r="12.5" />
+              <circle cx="420" cy="300" r="12.5" />
+              <circle cx="460" cy="300" r="12.5" />
+              <circle cx="500" cy="300" r="12.5" />
+            </g>
+          </g>
+        </svg>
       </div>
       
-      <div className="text-[#1d1d1b] font-display text-xl uppercase tracking-[0.3em] animate-pulse">
-        Carregando Inovação
+      <div className="text-[#1d1d1b] font-display text-xl uppercase tracking-[0.3em] mt-[-120px] animate-pulse">
+        Vila Tech Hub
       </div>
     </div>
   );
 };
 
 export default Preloader;
+
