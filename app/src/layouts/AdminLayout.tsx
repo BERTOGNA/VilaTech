@@ -33,56 +33,57 @@ const AdminLayout = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col md:flex-row font-sans">
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col md:flex-row font-sans text-neutral-200">
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-white border-r border-neutral-200 flex flex-col shadow-sm">
-        <div className="p-4 pt-8">
-          <div className="flex items-center mb-6">
+      <aside className="w-full md:w-72 bg-[#111111] border-r border-neutral-800 flex flex-col shadow-2xl z-20">
+        <div className="p-8 pt-10">
+          <div className="flex items-center mb-8">
             <img 
               src={siteConfig.logo} 
               alt="Vila Tech Hub Logo" 
-              className="h-auto w-full max-w-[200px] object-contain invert"
+              className="h-auto w-full max-w-[200px] object-contain brightness-110"
             />
           </div>
-          <p className="text-[10px] text-neutral-400 mt-2 uppercase tracking-[0.2em] font-bold px-2">CRM Central</p>
+          <p className="text-[10px] text-neutral-600 mt-2 uppercase tracking-[0.3em] font-black px-1">Sistema de Gestão</p>
         </div>
         
-        <nav className="flex-1 px-4 space-y-1.5 overflow-y-auto">
+        <nav className="flex-1 px-6 space-y-2 overflow-y-auto mt-4">
           {navItems.map((item) => (
             <NavLink 
               key={item.path}
               to={item.path}
-              className={({isActive}) => `flex items-center px-4 py-3.5 text-sm font-semibold rounded-2xl transition-all duration-200 ${isActive ? 'bg-neutral-900 text-white shadow-lg shadow-neutral-200' : 'text-neutral-500 hover:bg-neutral-50 hover:text-neutral-900'}`}
+              className={({isActive}) => `flex items-center px-5 py-4 text-xs font-bold uppercase tracking-widest rounded-2xl transition-all duration-300 ${isActive ? 'bg-white text-black shadow-2xl shadow-white/10' : 'text-neutral-500 hover:bg-white/[0.03] hover:text-white'}`}
             >
-              <item.icon className="w-5 h-5 mr-3.5" />
+              <item.icon className="w-5 h-5 mr-4" />
               {item.name}
             </NavLink>
           ))}
         </nav>
 
-        <div className="p-4 border-t border-neutral-100 mt-auto bg-neutral-50/50">
-          <div className="flex items-center gap-3 px-4 py-3 mb-4 bg-white rounded-2xl border border-neutral-100 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+        <div className="p-6 border-t border-neutral-800 mt-auto bg-black/20">
+          <div className="flex items-center gap-4 px-5 py-4 mb-4 bg-neutral-900 border border-neutral-800 rounded-2xl shadow-inner">
+            <div className="w-10 h-10 rounded-xl bg-neutral-800 flex items-center justify-center text-white border border-white/5">
               <UserIcon className="w-5 h-5" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-bold text-neutral-900 truncate">{user?.email?.split('@')[0]}</p>
-              <p className="text-[10px] text-neutral-400 truncate">{user?.email}</p>
+              <p className="text-xs font-black text-white truncate uppercase tracking-widest">{user?.email?.split('@')[0]}</p>
+              <p className="text-[9px] text-neutral-600 truncate font-medium mt-0.5">{user?.email}</p>
             </div>
           </div>
           <button 
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-3.5 text-sm font-bold text-red-500 rounded-2xl hover:bg-red-50 transition-all active:scale-[0.98]"
+            className="flex items-center justify-center w-full px-5 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-rose-500 rounded-2xl hover:bg-rose-500/10 hover:text-rose-400 transition-all active:scale-[0.98] border border-transparent hover:border-rose-500/10"
           >
-            <LogOut className="w-5 h-5 mr-3.5" />
-            Encerrar Sessão
+            <LogOut className="w-4 h-4 mr-3" />
+            Encerrar
           </button>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto bg-neutral-50">
-        <div className="max-w-7xl mx-auto py-10 px-6 lg:px-10">
+      <main className="flex-1 overflow-y-auto bg-[#0a0a0a] relative">
+        <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+        <div className="max-w-[1400px] mx-auto py-12 px-8 lg:px-12 relative">
           <Outlet />
         </div>
       </main>

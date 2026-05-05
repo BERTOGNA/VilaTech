@@ -39,10 +39,10 @@ const ReportsPage = () => {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-8 animate-in fade-in duration-500 text-white">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Relatórios e Insights</h1>
-        <p className="text-gray-500">Acompanhe o desempenho do seu funil e produtividade do time.</p>
+        <h1 className="text-2xl font-bold text-white">Relatórios e Insights</h1>
+        <p className="text-neutral-500">Acompanhe o desempenho do seu funil e produtividade do time.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -52,45 +52,45 @@ const ReportsPage = () => {
           { label: 'Taxa de Conversão', value: `${stats.conversionRate}%`, icon: Percent, color: 'purple', trend: '+2%' },
           { label: 'Tarefas Pendentes', value: stats.activeTasks, icon: Target, color: 'orange', trend: '-3%' },
         ].map((item, i) => (
-          <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start mb-4">
-              <div className={`p-3 rounded-xl bg-${item.color}-50 text-${item.color}-600`}>
+          <div key={i} className="bg-[#111111] p-6 rounded-3xl border border-neutral-800 shadow-xl hover:border-neutral-700 transition-all">
+            <div className="flex justify-between items-start mb-6">
+              <div className="p-3 rounded-2xl bg-neutral-800 text-white">
                 <item.icon className="w-6 h-6" />
               </div>
-              <span className={`text-xs font-bold px-2 py-1 rounded-full ${
-                item.trend.startsWith('+') ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'
+              <span className={`text-[10px] font-bold px-2 py-1 rounded-lg uppercase tracking-wider ${
+                item.trend.startsWith('+') ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'
               }`}>
                 {item.trend}
               </span>
             </div>
-            <p className="text-sm text-gray-500 font-medium">{item.label}</p>
-            <h3 className="text-3xl font-bold text-gray-900 mt-1">{item.value}</h3>
+            <p className="text-xs text-neutral-500 font-bold uppercase tracking-widest">{item.label}</p>
+            <h3 className="text-3xl font-black text-white mt-1">{item.value}</h3>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-          <div className="flex justify-between items-center mb-8">
-            <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-gray-400" />
+        <div className="bg-[#111111] p-8 rounded-[2.5rem] border border-neutral-800 shadow-2xl">
+          <div className="flex justify-between items-center mb-10">
+            <h3 className="text-lg font-bold text-white flex items-center gap-3">
+              <BarChart3 className="w-5 h-5 text-neutral-600" />
               Leads por Origem
             </h3>
-            <button className="text-sm text-blue-600 font-medium hover:underline">Ver detalhes</button>
+            <button className="text-xs text-neutral-400 font-bold uppercase tracking-widest hover:text-white transition-colors">Detalhes</button>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-8">
             {[
-              { label: 'Formulário Site', value: 65, color: 'bg-blue-500' },
-              { label: 'Indicação', value: 20, color: 'bg-purple-500' },
-              { label: 'Eventos', value: 10, color: 'bg-green-500' },
-              { label: 'Outros', value: 5, color: 'bg-gray-300' },
+              { label: 'Formulário Site', value: 65, color: 'bg-white' },
+              { label: 'Indicação', value: 20, color: 'bg-neutral-600' },
+              { label: 'Eventos', value: 10, color: 'bg-neutral-800' },
+              { label: 'Outros', value: 5, color: 'bg-neutral-900' },
             ].map((source, i) => (
-              <div key={i} className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600 font-medium">{source.label}</span>
-                  <span className="text-gray-900 font-bold">{source.value}%</span>
+              <div key={i} className="space-y-3">
+                <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
+                  <span className="text-neutral-500">{source.label}</span>
+                  <span className="text-white">{source.value}%</span>
                 </div>
-                <div className="w-full h-2 bg-gray-50 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-neutral-900 rounded-full overflow-hidden">
                   <div className={`h-full ${source.color} rounded-full transition-all duration-1000`} style={{ width: `${source.value}%` }} />
                 </div>
               </div>
@@ -98,13 +98,13 @@ const ReportsPage = () => {
           </div>
         </div>
 
-        <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4">
+        <div className="bg-[#111111] p-8 rounded-[2.5rem] border border-neutral-800 shadow-2xl flex flex-col items-center justify-center text-center">
+          <div className="w-20 h-20 bg-neutral-800 text-white rounded-3xl flex items-center justify-center mb-6 shadow-xl border border-white/5">
             <MousePointer2 className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-2">Geração de Relatórios PDF</h3>
-          <p className="text-gray-500 max-w-sm mb-6">Exporte seus dados em formato profissional para apresentações ou arquivamento.</p>
-          <button className="bg-gray-900 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200">
+          <h3 className="text-xl font-bold text-white mb-2">Relatórios PDF</h3>
+          <p className="text-neutral-500 max-w-xs mb-8 text-sm">Exporte seus dados em formato profissional para apresentações ou arquivamento.</p>
+          <button className="bg-white text-black px-8 py-3.5 rounded-2xl font-bold hover:bg-neutral-200 transition-all shadow-xl active:scale-95">
             Exportar agora
           </button>
         </div>

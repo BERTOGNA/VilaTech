@@ -43,51 +43,51 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 font-sans">
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 font-sans text-white">
       <div className="max-w-md w-full animate-in fade-in zoom-in duration-500">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl shadow-lg shadow-blue-200 mb-4 bg-gradient-to-br from-blue-600 to-blue-700">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-neutral-900 rounded-3xl shadow-2xl border border-white/5 mb-6">
             <LogIn className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Vila Tech Hub</h1>
-          <p className="text-gray-500 mt-2 font-medium">Painel Administrativo CRM</p>
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">Vila Tech Hub</h1>
+          <p className="text-neutral-500 mt-2 font-medium">Painel Administrativo CRM</p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 p-8 md:p-10">
+        <div className="bg-[#111111] rounded-[2.5rem] shadow-2xl border border-white/5 p-10">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600 text-sm animate-in slide-in-from-top-2">
+            <div className="mb-8 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400 text-sm animate-in slide-in-from-top-2">
               <AlertCircle className="w-5 h-5 flex-shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">E-mail</label>
+              <label className="block text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3 ml-1">E-mail</label>
               <div className="relative group">
-                <Mail className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                <Mail className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 group-focus-within:text-white transition-colors" />
                 <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:bg-white focus:border-blue-500 transition-all text-gray-900 font-medium"
-                  placeholder="seu@email.com"
+                   type="email"
+                   required
+                   value={email}
+                   onChange={(e) => setEmail(e.target.value)}
+                   className="w-full pl-12 pr-4 py-4 bg-black/40 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all text-white font-medium placeholder:text-neutral-700"
+                   placeholder="seu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2 ml-1">Senha</label>
+              <label className="block text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3 ml-1">Senha</label>
               <div className="relative group">
-                <Lock className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                <Lock className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 group-focus-within:text-white transition-colors" />
                 <input
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:bg-white focus:border-blue-500 transition-all text-gray-900 font-medium"
-                  placeholder="••••••••"
+                   type="password"
+                   required
+                   value={password}
+                   onChange={(e) => setPassword(e.target.value)}
+                   className="w-full pl-12 pr-4 py-4 bg-black/40 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all text-white font-medium placeholder:text-neutral-700"
+                   placeholder="••••••••"
                 />
               </div>
             </div>
@@ -95,37 +95,37 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 active:scale-[0.98] transition-all shadow-lg shadow-blue-200 disabled:opacity-70 flex items-center justify-center gap-2"
+              className="w-full py-5 bg-white text-black rounded-2xl font-bold hover:bg-neutral-200 active:scale-[0.98] transition-all shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 mt-4"
             >
               {loading ? (
-                <div className="w-6 h-6 border-3 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-6 h-6 border-3 border-black/20 border-t-black rounded-full animate-spin" />
               ) : (
                 'Entrar no Painel'
               )}
             </button>
           </form>
 
-          <div className="relative my-8">
+          <div className="relative my-10">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-100"></div>
+              <div className="w-full border-t border-neutral-800"></div>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-400 font-medium italic">ou continuar com</span>
+            <div className="relative flex justify-center text-xs">
+              <span className="px-4 bg-[#111111] text-neutral-600 font-bold uppercase tracking-widest">ou</span>
             </div>
           </div>
 
           <button
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="w-full py-4 bg-white border border-gray-200 text-gray-700 rounded-2xl font-bold hover:bg-gray-50 active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+            className="w-full py-4 bg-neutral-900 border border-neutral-800 text-white rounded-2xl font-bold hover:bg-neutral-800 active:scale-[0.98] transition-all flex items-center justify-center gap-3"
           >
             <Chrome className="w-5 h-5" />
-            Sign in with Google
+            Acessar com Google
           </button>
         </div>
         
-        <p className="text-center mt-8 text-sm text-gray-400 font-medium">
-          Dificuldade para acessar? <a href="#" className="text-blue-600 hover:underline">Solicite suporte</a>
+        <p className="text-center mt-10 text-sm text-neutral-600 font-medium">
+          Dificuldade para acessar? <a href="mailto:contato@vilatechub.com.br" className="text-white hover:underline">Solicite suporte</a>
         </p>
       </div>
     </div>

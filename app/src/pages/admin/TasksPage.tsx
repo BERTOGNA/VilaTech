@@ -48,9 +48,9 @@ const CATEGORIES = [
 ];
 
 const PRIORITIES = [
-    { id: 'high', label: 'Alta', color: 'text-red-500', bg: 'bg-red-50', border: 'border-red-100', icon: ArrowUp },
-    { id: 'medium', label: 'Média', color: 'text-amber-500', bg: 'bg-amber-50', border: 'border-amber-100', icon: Minus },
-    { id: 'low', label: 'Baixa', color: 'text-blue-500', bg: 'bg-blue-50', border: 'border-blue-100', icon: ArrowDown },
+    { id: 'high', label: 'Alta', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', icon: ArrowUp },
+    { id: 'medium', label: 'Média', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', icon: Minus },
+    { id: 'low', label: 'Baixa', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', icon: ArrowDown },
 ];
 
 const TasksPage = () => {
@@ -207,29 +207,29 @@ const TasksPage = () => {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-black text-neutral-900 tracking-tight">Minhas Tarefas</h1>
+          <h1 className="text-3xl font-black text-white tracking-tight">Minhas Tarefas</h1>
           <p className="text-neutral-500 mt-2 font-medium">Gerencie seus compromissos e lembretes de leads.</p>
         </div>
         <button 
             onClick={() => { resetForm(); setIsModalOpen(true); }}
-            className="flex items-center gap-2 bg-neutral-900 text-white px-6 py-4 rounded-2xl font-bold hover:bg-neutral-800 transition-all active:scale-[0.98] shadow-xl shadow-neutral-200"
+            className="flex items-center gap-2 bg-white text-black px-6 py-4 rounded-2xl font-bold hover:bg-neutral-200 transition-all active:scale-[0.98] shadow-2xl"
         >
           <Plus className="w-5 h-5" />
           Nova Tarefa
         </button>
       </div>
 
-      <div className="bg-white rounded-3xl shadow-sm border border-neutral-200 overflow-hidden">
-        <div className="p-6 border-b border-neutral-100 bg-neutral-50/50 flex flex-wrap gap-4 items-center justify-between">
-          <div className="flex bg-neutral-100 p-1 rounded-xl">
+      <div className="bg-[#111111] rounded-3xl shadow-2xl border border-neutral-800 overflow-hidden">
+        <div className="p-6 border-b border-neutral-800 bg-neutral-900/30 flex flex-wrap gap-4 items-center justify-between">
+          <div className="flex bg-black/40 p-1.5 rounded-2xl border border-neutral-800">
             {(['all', 'pending', 'completed'] as const).map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+                className={`px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
                   filter === f 
-                    ? 'bg-white text-neutral-900 shadow-sm' 
-                    : 'text-neutral-500 hover:text-neutral-900'
+                    ? 'bg-white text-black shadow-xl' 
+                    : 'text-neutral-500 hover:text-white'
                 }`}
               >
                 {f === 'all' ? 'Todas' : f === 'pending' ? 'Pendentes' : 'Concluídas'}
@@ -237,40 +237,40 @@ const TasksPage = () => {
             ))}
           </div>
           <div className="relative group">
-            <Search className="w-4 h-4 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 group-focus-within:text-neutral-900 transition-colors" />
+            <Search className="w-4 h-4 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 group-focus-within:text-white transition-colors" />
             <input
               type="text"
               placeholder="Buscar tarefas..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-11 pr-4 py-3 bg-white border border-neutral-200 rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-neutral-900/5 focus:border-neutral-900 w-full md:w-80 transition-all font-medium"
+              className="pl-11 pr-4 py-3 bg-black/20 border border-neutral-800 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 w-full md:w-80 transition-all font-medium text-white placeholder:text-neutral-700"
             />
           </div>
         </div>
 
-        <div className="divide-y divide-neutral-100">
+        <div className="divide-y divide-neutral-800">
           {loading ? (
             <div className="p-20 text-center">
-                <div className="w-10 h-10 border-4 border-neutral-900/10 border-t-neutral-900 rounded-full animate-spin mx-auto mb-4"></div>
+                <div className="w-10 h-10 border-4 border-white/10 border-t-white rounded-full animate-spin mx-auto mb-4"></div>
                 <p className="text-neutral-500 font-medium">Carregando tarefas...</p>
             </div>
           ) : filteredTasks.length === 0 ? (
             <div className="p-20 text-center">
-                <div className="w-16 h-16 bg-neutral-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-neutral-300">
+                <div className="w-16 h-16 bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-neutral-600">
                     <CheckSquare className="w-8 h-8" />
                 </div>
-                <p className="text-neutral-500 font-bold text-lg">Nenhuma tarefa encontrada.</p>
-                <p className="text-neutral-400 text-sm mt-1">Que tal criar uma nova agora?</p>
+                <p className="text-white font-bold text-lg">Nenhuma tarefa encontrada.</p>
+                <p className="text-neutral-500 text-sm mt-1">Que tal criar uma nova agora?</p>
             </div>
           ) : (
             filteredTasks.map((task) => {
               const priority = getPriorityInfo(task.priority);
               const category = getCategoryInfo(task.category);
               return (
-                <div key={task.id} className="p-6 hover:bg-neutral-50/50 transition-all flex items-start gap-6 group relative">
+                <div key={task.id} className="p-6 hover:bg-white/5 transition-all flex items-start gap-6 group relative">
                   <button 
                     onClick={() => toggleTaskStatus(task)}
-                    className={`mt-1 transition-all transform active:scale-90 ${task.status === 'completed' ? 'text-green-500' : 'text-neutral-200 hover:text-neutral-900'}`}
+                    className={`mt-1 transition-all transform active:scale-90 ${task.status === 'completed' ? 'text-green-500' : 'text-neutral-700 hover:text-white'}`}
                   >
                     {task.status === 'completed' ? (
                       <CheckCircle2 className="w-8 h-8" />
@@ -280,36 +280,36 @@ const TasksPage = () => {
                   </button>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <div className={`p-2 rounded-xl bg-white border border-neutral-100 shadow-sm text-neutral-500`}>
+                        <div className={`p-2 rounded-xl bg-neutral-800 border border-white/5 text-white shadow-xl`}>
                             <category.icon className="w-4 h-4" />
                         </div>
-                      <h3 className={`font-bold text-lg text-neutral-900 truncate tracking-tight ${task.status === 'completed' ? 'line-through text-neutral-400 opacity-60' : ''}`}>
+                      <h3 className={`font-bold text-lg text-white truncate tracking-tight ${task.status === 'completed' ? 'line-through text-neutral-600' : ''}`}>
                         {task.title}
                       </h3>
                       <div className="flex gap-2">
                         {task.leadName && (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-neutral-100 text-neutral-600 border border-neutral-200">
+                          <span className="inline-flex items-center px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-neutral-900 text-neutral-400 border border-neutral-800">
                             {task.leadName}
                           </span>
                         )}
-                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${priority.bg} ${priority.color} ${priority.border}`}>
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider border ${priority.bg} ${priority.color} ${priority.border}`}>
                           <priority.icon className="w-2.5 h-2.5" />
                           {priority.label}
                         </span>
                       </div>
                     </div>
                     {task.description && (
-                      <p className={`text-sm text-neutral-500 mb-4 line-clamp-2 leading-relaxed ${task.status === 'completed' ? 'opacity-50' : ''}`}>{task.description}</p>
+                      <p className={`text-sm text-neutral-500 mb-4 line-clamp-2 leading-relaxed ${task.status === 'completed' ? 'opacity-30' : ''}`}>{task.description}</p>
                     )}
                     <div className="flex items-center gap-4 text-xs font-bold">
-                      <div className="flex items-center gap-2 text-neutral-400">
+                      <div className="flex items-center gap-2 text-neutral-600">
                         <Calendar className="w-4 h-4" />
                         <span>{format(new Date(task.dueDate), "dd 'de' MMMM", { locale: ptBR })}</span>
                       </div>
                       <div className={`flex items-center gap-2 ${
                         new Date(task.dueDate) < new Date() && task.status === 'pending' 
                           ? 'text-red-500' 
-                          : 'text-neutral-400'
+                          : 'text-neutral-600'
                       }`}>
                         <Clock className="w-4 h-4" />
                         <span>{format(new Date(task.dueDate), "HH:mm")}</span>
@@ -321,14 +321,14 @@ const TasksPage = () => {
                   <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button 
                         onClick={() => handleEdit(task)}
-                        className="p-3 rounded-xl bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-900 hover:border-neutral-900 transition-all active:scale-90"
+                        className="p-3 rounded-xl bg-neutral-800 border border-neutral-700 text-neutral-400 hover:text-white hover:border-white transition-all active:scale-90 shadow-xl"
                         title="Editar"
                       >
                           <Edit2 className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={() => handleDelete(task.id)}
-                        className="p-3 rounded-xl bg-white border border-neutral-200 text-neutral-400 hover:text-red-500 hover:border-red-500 transition-all active:scale-90"
+                        className="p-3 rounded-xl bg-neutral-800 border border-neutral-700 text-neutral-600 hover:text-red-500 hover:border-red-500 transition-all active:scale-90 shadow-xl"
                         title="Excluir"
                       >
                           <Trash2 className="w-4 h-4" />
@@ -343,16 +343,16 @@ const TasksPage = () => {
 
       {/* New/Edit Task Modal */}
       {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-sm animate-in fade-in duration-300">
-              <div className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-300 border border-white/20">
-                  <div className="p-8 border-b border-neutral-100 flex items-center justify-between bg-gradient-to-r from-neutral-50 to-white">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in duration-300">
+              <div className="bg-[#111111] rounded-[2.5rem] shadow-2xl w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-300 border border-white/10">
+                  <div className="p-8 border-b border-neutral-800 flex items-center justify-between bg-neutral-900/30">
                       <div>
-                          <h2 className="text-2xl font-black text-neutral-900 tracking-tight">{editingTaskId ? 'Editar Tarefa' : 'Nova Tarefa'}</h2>
+                          <h2 className="text-2xl font-black text-white tracking-tight">{editingTaskId ? 'Editar Tarefa' : 'Nova Tarefa'}</h2>
                           <p className="text-neutral-500 text-sm font-medium mt-1">Configure os detalhes do seu compromisso.</p>
                       </div>
                       <button 
                         onClick={() => { setIsModalOpen(false); resetForm(); }}
-                        className="w-12 h-12 rounded-2xl bg-neutral-50 flex items-center justify-center text-neutral-400 hover:bg-neutral-100 hover:text-neutral-900 transition-all active:scale-95"
+                        className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-neutral-500 hover:text-white transition-all active:scale-95"
                       >
                           <X className="w-6 h-6" />
                       </button>
@@ -360,7 +360,7 @@ const TasksPage = () => {
 
                   <form onSubmit={handleSubmit} className="p-8 space-y-6">
                       {error && (
-                          <div className="p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600 text-sm font-bold">
+                          <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400 text-sm font-bold">
                               <AlertCircle className="w-5 h-5 flex-shrink-0" />
                               <span>{error}</span>
                           </div>
@@ -368,11 +368,11 @@ const TasksPage = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="space-y-2 md:col-span-2">
-                              <label className="text-sm font-black text-neutral-700 ml-1">Assunto da Tarefa</label>
+                              <label className="text-xs font-black text-neutral-600 uppercase tracking-widest ml-1">Assunto da Tarefa</label>
                               <input 
                                 required
                                 type="text" 
-                                className="w-full px-5 py-4 bg-neutral-50 border border-neutral-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-neutral-900/5 focus:bg-white focus:border-neutral-900 transition-all font-medium"
+                                className="w-full px-5 py-4 bg-black/40 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all font-medium text-white placeholder:text-neutral-700"
                                 placeholder="Ex: Ligar para retorno de contrato"
                                 value={taskForm.title}
                                 onChange={e => setTaskForm({...taskForm, title: e.target.value})}
@@ -380,7 +380,7 @@ const TasksPage = () => {
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-black text-neutral-700 ml-1">Prioridade</label>
+                            <label className="text-xs font-black text-neutral-600 uppercase tracking-widest ml-1">Prioridade</label>
                             <div className="flex gap-2">
                                 {PRIORITIES.map(p => (
                                     <button
@@ -389,8 +389,8 @@ const TasksPage = () => {
                                         onClick={() => setTaskForm({...taskForm, priority: p.id as any})}
                                         className={`flex-1 flex flex-col items-center justify-center p-3 rounded-2xl border transition-all ${
                                             taskForm.priority === p.id 
-                                            ? `${p.bg} ${p.color} ${p.border} scale-105 shadow-sm` 
-                                            : 'bg-neutral-50 border-neutral-100 text-neutral-400 opacity-60 hover:opacity-100'
+                                            ? `${p.bg} ${p.color} ${p.border} scale-105 shadow-xl` 
+                                            : 'bg-black/20 border-neutral-800 text-neutral-600 opacity-60 hover:opacity-100'
                                         }`}
                                     >
                                         <p.icon className="w-5 h-5 mb-1" />
@@ -401,7 +401,7 @@ const TasksPage = () => {
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-black text-neutral-700 ml-1">Categoria</label>
+                            <label className="text-xs font-black text-neutral-600 uppercase tracking-widest ml-1">Categoria</label>
                             <div className="grid grid-cols-2 gap-2">
                                 {CATEGORIES.map(c => (
                                     <button
@@ -410,8 +410,8 @@ const TasksPage = () => {
                                         onClick={() => setTaskForm({...taskForm, category: c.id as any})}
                                         className={`flex items-center gap-3 p-3 rounded-2xl border transition-all ${
                                             taskForm.category === c.id 
-                                            ? 'bg-neutral-900 text-white border-neutral-900 shadow-lg' 
-                                            : 'bg-neutral-50 border-neutral-100 text-neutral-400 hover:text-neutral-900 border-neutral-200'
+                                            ? 'bg-white text-black border-white shadow-xl' 
+                                            : 'bg-black/20 border-neutral-800 text-neutral-600 hover:text-white'
                                         }`}
                                     >
                                         <c.icon className="w-4 h-4" />
@@ -422,23 +422,23 @@ const TasksPage = () => {
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-black text-neutral-700 ml-1">Data e Hora</label>
+                            <label className="text-xs font-black text-neutral-600 uppercase tracking-widest ml-1">Data e Hora</label>
                             <input 
                                 required
                                 type="datetime-local" 
-                                className="w-full px-5 py-4 bg-neutral-50 border border-neutral-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-neutral-900/5 focus:bg-white focus:border-neutral-900 transition-all font-medium"
+                                className="w-full px-5 py-4 bg-black/40 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all font-medium text-white"
                                 value={taskForm.dueDate}
                                 onChange={e => setTaskForm({...taskForm, dueDate: e.target.value})}
                             />
                           </div>
                           
                           <div className="space-y-2 relative">
-                            <label className="text-sm font-black text-neutral-700 ml-1">Lead Relacionado</label>
+                            <label className="text-xs font-black text-neutral-600 uppercase tracking-widest ml-1">Lead Relacionado</label>
                             <div className="relative">
-                                <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400" />
+                                <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600" />
                                 <input 
                                     type="text"
-                                    className="w-full pl-11 pr-4 py-4 bg-neutral-50 border border-neutral-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-neutral-900/5 focus:bg-white focus:border-neutral-900 transition-all font-medium"
+                                    className="w-full pl-11 pr-4 py-4 bg-black/40 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all font-medium text-white placeholder:text-neutral-700"
                                     placeholder="Buscar lead por nome..."
                                     value={leadSearch}
                                     onChange={e => {
@@ -447,7 +447,7 @@ const TasksPage = () => {
                                     }}
                                 />
                                 {filteredLeads.length > 0 && (
-                                    <div className="absolute z-10 w-full mt-2 bg-white border border-neutral-100 rounded-2xl shadow-xl overflow-hidden animate-in slide-in-from-top-2">
+                                    <div className="absolute z-10 w-full mt-2 bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-top-2">
                                         {filteredLeads.map(lead => (
                                             <button
                                                 key={lead.id}
@@ -456,10 +456,10 @@ const TasksPage = () => {
                                                     setTaskForm({...taskForm, leadId: lead.id});
                                                     setLeadSearch(lead.name);
                                                 }}
-                                                className="w-full flex flex-col items-start px-5 py-3 hover:bg-neutral-50 transition-colors text-left"
+                                                className="w-full flex flex-col items-start px-5 py-3 hover:bg-neutral-800 transition-colors text-left"
                                             >
-                                                <span className="font-bold text-neutral-900 text-sm">{lead.name}</span>
-                                                {lead.email && <span className="text-xs text-neutral-400">{lead.email}</span>}
+                                                <span className="font-bold text-white text-sm">{lead.name}</span>
+                                                {lead.email && <span className="text-xs text-neutral-500">{lead.email}</span>}
                                             </button>
                                         ))}
                                     </div>
@@ -469,9 +469,9 @@ const TasksPage = () => {
                       </div>
 
                       <div className="space-y-2">
-                          <label className="text-sm font-black text-neutral-700 ml-1">Notas Adicionais</label>
+                          <label className="text-xs font-black text-neutral-600 uppercase tracking-widest ml-1">Notas Adicionais</label>
                           <textarea 
-                            className="w-full px-5 py-4 bg-neutral-50 border border-neutral-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-neutral-900/5 focus:bg-white focus:border-neutral-900 transition-all font-medium min-h-[100px] resize-none"
+                            className="w-full px-5 py-4 bg-black/40 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all font-medium min-h-[100px] resize-none text-white placeholder:text-neutral-700"
                             placeholder="Descreva detalhes importantes aqui..."
                             value={taskForm.description}
                             onChange={e => setTaskForm({...taskForm, description: e.target.value})}
@@ -482,14 +482,14 @@ const TasksPage = () => {
                           <button 
                             type="button"
                             onClick={() => { setIsModalOpen(false); resetForm(); }}
-                            className="flex-1 py-4 bg-neutral-100 text-neutral-500 rounded-2xl font-bold hover:bg-neutral-200 transition-all active:scale-[0.98]"
+                            className="flex-1 py-4 bg-neutral-800 text-neutral-400 rounded-2xl font-bold hover:bg-neutral-700 transition-all active:scale-[0.98]"
                           >
                             Cancelar
                           </button>
                           <button 
                             type="submit"
                             disabled={isSubmitting}
-                            className="flex-1 py-4 bg-neutral-900 text-white rounded-2xl font-bold hover:bg-neutral-800 transition-all active:scale-[0.98] shadow-lg shadow-neutral-200 disabled:opacity-70"
+                            className="flex-1 py-4 bg-white text-black rounded-2xl font-bold hover:bg-neutral-200 transition-all active:scale-[0.98] shadow-2xl disabled:opacity-50"
                           >
                             {isSubmitting ? 'Salvando...' : editingTaskId ? 'Salvar Alterações' : 'Criar Tarefa'}
                           </button>

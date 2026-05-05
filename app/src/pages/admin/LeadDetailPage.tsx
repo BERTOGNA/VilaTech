@@ -80,16 +80,16 @@ const LeadDetailPage = () => {
 
   const getStatusColor = (status: string) => {
     switch(status?.toLowerCase()) {
-      case 'novo': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'em contato': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'convertido': return 'bg-green-100 text-green-800 border-green-200';
-      case 'perdido': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'novo': return 'bg-blue-500/10 text-blue-400';
+      case 'em contato': return 'bg-amber-500/10 text-amber-400';
+      case 'convertido': return 'bg-emerald-500/10 text-emerald-400';
+      case 'perdido': return 'bg-rose-500/10 text-rose-400';
+      default: return 'bg-neutral-800 text-neutral-400';
     }
   };
 
   if (loading) {
-    return <div className="py-20 text-center text-gray-500">Carregando detalhes...</div>;
+    return <div className="py-32 text-center text-neutral-500 font-bold uppercase tracking-widest text-xs">Sincronizando detalhes do lead...</div>;
   }
 
   if (!lead) {
@@ -102,87 +102,96 @@ const LeadDetailPage = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10 animate-in fade-in duration-500">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link to="/admin/leads" className="p-2 -ml-2 text-gray-400 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex items-center gap-6">
+          <Link to="/admin/leads" className="w-12 h-12 flex items-center justify-center text-neutral-500 hover:text-white transition-all rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 active:scale-95">
             <ArrowLeft className="w-5 h-5" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">{lead.name}</h1>
-          <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize border ${getStatusColor(lead.status)}`}>
-            {lead.status}
-          </span>
+          <div>
+            <div className="flex items-center gap-3">
+                <h1 className="text-3xl font-black text-white tracking-tight">{lead.name}</h1>
+                <span className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-[0.15em] border border-white/5 ${getStatusColor(lead.status)} shadow-lg`}>
+                    {lead.status}
+                </span>
+            </div>
+            <p className="text-neutral-500 text-sm font-medium mt-1">Lead ID: {lead.id}</p>
+          </div>
         </div>
-        <div className="flex gap-3">
-          <select 
-            value={lead.status} 
-            onChange={handleStatusChange}
-            disabled={statusUpdating}
-            className="border border-gray-300 text-sm rounded-lg px-3 py-2 text-gray-700 focus:ring-black focus:border-black disabled:opacity-50"
-          >
-            <option value="novo">Novo</option>
-            <option value="em contato">Em Contato</option>
-            <option value="convertido">Convertido</option>
-            <option value="perdido">Perdido</option>
-          </select>
+        <div className="flex gap-4">
+          <div className="relative group">
+            <select 
+                value={lead.status} 
+                onChange={handleStatusChange}
+                disabled={statusUpdating}
+                className="bg-neutral-900 border border-neutral-800 text-[10px] font-black uppercase tracking-widest rounded-2xl pl-6 pr-12 py-4 text-white focus:ring-2 focus:ring-white/10 focus:border-white/20 disabled:opacity-50 transition-all appearance-none cursor-pointer hover:bg-neutral-800"
+            >
+                <option value="novo">Novo</option>
+                <option value="em contato">Em Contato</option>
+                <option value="convertido">Convertido</option>
+                <option value="perdido">Perdido</option>
+            </select>
+            <Activity className="absolute right-6 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-600 pointer-events-none group-hover:text-white transition-colors" />
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column - Details */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <User className="w-5 h-5 text-gray-400" />
+        <div className="lg:col-span-2 space-y-8">
+          <div className="bg-[#111111] border border-neutral-800 rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.02] rounded-bl-[5rem]" />
+            <h2 className="text-xl font-black text-white mb-10 flex items-center gap-3">
+              <User className="w-6 h-6 text-neutral-500" />
               Informações do Contato
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
               <div>
-                <dt className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-1">
-                  <Mail className="w-4 h-4" /> Email
+                <dt className="text-[10px] font-black text-neutral-600 uppercase tracking-[0.2em] flex items-center gap-2 mb-3">
+                  <Mail className="w-3.5 h-3.5" /> Email
                 </dt>
-                <dd className="text-sm text-gray-900">{lead.email}</dd>
+                <dd className="text-base text-white font-bold tracking-tight">{lead.email}</dd>
               </div>
               <div>
-                <dt className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-1">
-                  <Phone className="w-4 h-4" /> Telefone
+                <dt className="text-[10px] font-black text-neutral-600 uppercase tracking-[0.2em] flex items-center gap-2 mb-3">
+                  <Phone className="w-3.5 h-3.5" /> Telefone
                 </dt>
-                <dd className="text-sm text-gray-900">{lead.phone || '—'}</dd>
+                <dd className="text-base text-white font-bold tracking-tight">{lead.phone || '—'}</dd>
               </div>
               <div>
-                <dt className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-1">
-                  <MapPin className="w-4 h-4" /> Localização
+                <dt className="text-[10px] font-black text-neutral-600 uppercase tracking-[0.2em] flex items-center gap-2 mb-3">
+                  <MapPin className="w-3.5 h-3.5" /> Localização
                 </dt>
-                <dd className="text-sm text-gray-900">
-                  {lead.city || lead.state ? `${lead.city || ''} - ${lead.state || ''}` : '—'}
+                <dd className="text-base text-white font-bold tracking-tight">
+                  {lead.city || lead.state ? `${lead.city || ''}, ${lead.state || ''}` : '—'}
                 </dd>
               </div>
               <div>
-                <dt className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-1">
-                  <Tag className="w-4 h-4" /> Tags de Origem
+                <dt className="text-[10px] font-black text-neutral-600 uppercase tracking-[0.2em] flex items-center gap-2 mb-3">
+                  <Tag className="w-3.5 h-3.5" /> Tags de Origem
                 </dt>
-                <dd className="text-sm text-gray-900 flex flex-wrap gap-1 mt-1">
+                <dd className="flex flex-wrap gap-2 mt-1">
                   {lead.tags?.length > 0 ? lead.tags.map(t => (
-                    <span key={t} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                    <span key={t} className="inline-flex items-center px-3 py-1 rounded-lg text-[9px] font-black bg-neutral-800 text-neutral-500 uppercase tracking-widest border border-white/5">
                       {t.replace('form_', '')}
                     </span>
-                  )) : '—'}
+                  )) : <span className="text-sm text-neutral-700 font-bold uppercase tracking-widest">—</span>}
                 </dd>
               </div>
             </div>
             
             {(lead.types?.length > 0 || lead.subtypes?.length > 0) && (
-              <div className="mt-6 pt-6 border-t border-gray-100">
-                <h3 className="text-sm font-medium text-gray-900 mb-3">Áreas de Interesse</h3>
-                <div className="flex flex-wrap gap-2">
+              <div className="mt-10 pt-10 border-t border-neutral-800/50">
+                <h3 className="text-[10px] font-black text-neutral-600 uppercase tracking-[0.2em] mb-6">Áreas de Interesse</h3>
+                <div className="flex flex-wrap gap-3">
                   {lead.types?.map(t => (
-                    <span key={t} className="inline-flex items-center px-2.5 py-1 rounded-md text-sm font-medium bg-blue-50 text-blue-700 capitalize border border-blue-200">
+                    <span key={t} className="inline-flex items-center px-4 py-2 rounded-xl text-[10px] font-black bg-white/[0.03] text-white uppercase tracking-widest border border-white/10 hover:bg-white/10 transition-colors cursor-default">
                       {t}
                     </span>
                   ))}
                   {lead.subtypes?.map(st => (
-                    <span key={st} className="inline-flex items-center px-2.5 py-1 rounded-md text-sm font-medium bg-indigo-50 text-indigo-700 capitalize border border-indigo-200">
+                    <span key={st} className="inline-flex items-center px-4 py-2 rounded-xl text-[10px] font-black bg-white/[0.03] text-white uppercase tracking-widest border border-white/10 hover:bg-white/10 transition-colors cursor-default">
                       {st}
                     </span>
                   ))}
@@ -193,42 +202,42 @@ const LeadDetailPage = () => {
         </div>
 
         {/* Right Column - Timeline */}
-        <div className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-            <Activity className="w-5 h-5 text-gray-400" />
-            Histórico e Interações
+        <div className="bg-[#111111] border border-neutral-800 rounded-[2.5rem] p-10 shadow-2xl">
+          <h2 className="text-xl font-black text-white mb-10 flex items-center gap-3">
+            <Activity className="w-6 h-6 text-neutral-500" />
+            Histórico
           </h2>
           
           <div className="flow-root">
-            <ul role="list" className="-mb-8">
+            <ul role="list" className="-mb-10">
               {lead.history?.map((event, eventIdx) => (
                 <li key={eventIdx}>
-                  <div className="relative pb-8">
+                  <div className="relative pb-10">
                     {eventIdx !== (lead.history.length - 1) ? (
-                      <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+                      <span className="absolute left-5 top-5 -ml-px h-full w-[1px] bg-neutral-800/50" aria-hidden="true" />
                     ) : null}
-                    <div className="relative flex space-x-3">
+                    <div className="relative flex space-x-5">
                       <div>
-                        <span className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center ring-8 ring-white">
-                          <Activity className="h-4 w-4 text-blue-600" aria-hidden="true" />
+                        <span className="h-10 w-10 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center ring-8 ring-[#111111]">
+                          <Activity className="h-4 w-4 text-neutral-500" aria-hidden="true" />
                         </span>
                       </div>
-                      <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                      <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-2">
                         <div>
-                          <p className="text-sm text-gray-500">
-                            {event.type === 'form_submission' ? 'Preencheu o formulário ' : 'Interação '}
-                            <span className="font-medium text-gray-900">
+                          <p className="text-sm text-neutral-300 font-medium">
+                            {event.type === 'form_submission' ? 'Preencheu formulário ' : 'Interação '}
+                            <span className="font-black text-white">
                               {event.form_id || 'Desconhecido'}
                             </span>
                           </p>
                           {event.metadata && (
-                            <div className="mt-2 text-xs text-gray-500 bg-gray-50 p-2 rounded border border-gray-100">
-                              <pre className="whitespace-pre-wrap font-sans">{JSON.stringify(event.metadata, null, 2)}</pre>
+                            <div className="mt-4 text-[10px] text-neutral-500 bg-black/40 p-4 rounded-2xl border border-neutral-800/50 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral-800">
+                              <pre className="whitespace-pre-wrap font-mono leading-relaxed">{JSON.stringify(event.metadata, null, 2)}</pre>
                             </div>
                           )}
                         </div>
-                        <div className="whitespace-nowrap text-right text-xs text-gray-500">
-                          {format(new Date(event.created_at), "d 'de' MMM, HH:mm", { locale: ptBR })}
+                        <div className="whitespace-nowrap text-right text-[9px] font-black text-neutral-600 uppercase tracking-widest pt-1">
+                          {format(new Date(event.created_at), "d 'de' MMM", { locale: ptBR })}
                         </div>
                       </div>
                     </div>
