@@ -123,7 +123,7 @@ const Education = ({ zIndex = 40 }: EducationProps) => {
         {/* Section Header */}
         <div className="grid lg:grid-cols-2 gap-12 items-start mb-4">
           {/* Content */}
-          <div ref={contentRef} className="order-1 pb-8">
+          <div ref={contentRef} className="order-1 pb-8 flex flex-col items-start text-left lg:items-end lg:text-right">
             <h2 className="font-display font-bold text-4xl md:text-5xl text-void-black leading-tight mb-6 whitespace-pre-line">
               {educationConfig.sectionTitle}
             </h2>
@@ -146,7 +146,7 @@ const Education = ({ zIndex = 40 }: EducationProps) => {
                 alt={educationConfig.archetypeName}
                 className="w-full max-w-sm xl:max-w-md h-auto object-contain"
               />
-              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-void-black/80 backdrop-blur-md border border-white/10 rounded-full shadow-lg pointer-events-none transition-all duration-300 opacity-80 group-hover:opacity-100 group-hover:scale-110">
+              <div className="absolute top-[75%] left-0 -translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-void-black/80 backdrop-blur-md border border-white/10 rounded-full shadow-lg pointer-events-none transition-all duration-300 opacity-80 group-hover:opacity-100 group-hover:scale-110">
                 <span className="font-sans text-xs font-medium text-white tracking-wide whitespace-nowrap">
                   Ada, a mãe dos algoritmos
                 </span>

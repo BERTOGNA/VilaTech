@@ -7,13 +7,14 @@ const Preloader = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Animation Logic
+    // Animation Logic - Cloning the provided reference
+    // We use standard bounce as a fallback for CustomBounce
     const tl = gsap.timeline({ repeat: -1 }).timeScale(1.42);
     
     // Set initial visibility
     gsap.set(svgRef.current, { visibility: 'visible' });
 
-    // Main dots animation
+    // Main animation sequence
     tl.to('.mainDot', {
       duration: 1,
       x: 240,
@@ -28,14 +29,14 @@ const Preloader = () => {
     .to('.otherDots circle', {
       duration: 0.7,
       y: 0,
-      ease: "bounce.out",
+      ease: "bounce.out", // Fallback for 'myBounce'
       stagger: 0.09
     }, 0.48)
     .to('.otherDots circle', {
       duration: 0.7,
       scaleY: 0.6,
       scaleX: 1.3,
-      ease: "power2.inOut",
+      ease: "power2.inOut", // Fallback for 'myBounce-squash'
       transformOrigin: "bottom",
       stagger: 0.09
     }, 0.48)
@@ -63,7 +64,8 @@ const Preloader = () => {
         gsap.to(containerRef.current, {
           opacity: 0,
           duration: 0.8,
-          delay: 0.5,
+          delay: 0.8,
+          ease: "power2.inOut",
           onComplete: () => {
             setIsVisible(false);
             document.body.style.overflow = '';
@@ -73,19 +75,16 @@ const Preloader = () => {
     };
 
     if (document.readyState === 'complete') {
-      handleLoad();
+      const timeout = setTimeout(handleLoad, 1000);
+      return () => clearTimeout(timeout);
     } else {
       window.addEventListener('load', handleLoad);
+      const timeout = setTimeout(handleLoad, 4000);
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(timeout);
+      };
     }
-
-    const timeout = setTimeout(handleLoad, 4000);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      window.removeEventListener('load', handleLoad);
-      clearTimeout(timeout);
-      tl.kill();
-    };
   }, []);
 
   if (!isVisible) return null;
