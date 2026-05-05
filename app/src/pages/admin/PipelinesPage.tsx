@@ -317,7 +317,7 @@ const PipelinesPage = () => {
                   }[stage.color] || 'border-blue-500/20';
 
                   return (
-                    <div key={stage.id} className={`w-80 flex flex-col bg-[#111111] rounded-[2rem] border border-neutral-800 shadow-2xl overflow-hidden`}>
+                    <div key={stage.id} className={`w-80 flex flex-col bg-[#111111] rounded-[2rem] border ${columnBorder} shadow-2xl overflow-hidden`}>
                       <div className="p-5 flex justify-between items-center group/stage border-b border-neutral-800/50 bg-white/[0.02]">
                         <div className="flex items-center gap-3">
                           <div className={`w-2.5 h-2.5 rounded-full ${columnColor} shadow-[0_0_10px_rgba(255,255,255,0.1)]`} />
