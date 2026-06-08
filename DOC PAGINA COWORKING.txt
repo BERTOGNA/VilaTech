@@ -1,0 +1,387 @@
+# PRD — Landing Page Vila Tech Hub
+
+**Produto:** Landing Page institucional do Vila Tech Hub  
+**Tecnologia:** Vite + React  
+**Versão do documento:** 1.0  
+**Data:** 2026-05-05  
+
+---
+
+## 1. Visão Geral do Projeto
+
+### 1.1 Objetivo
+Criar uma landing page moderna, responsiva e de alta conversão para o **Vila Tech Hub — Instituto de Inovação & Coworking**, apresentando todos os produtos, planos e diferenciais descritos no catálogo de 2026. A página servirá como principal ponto de contato digital para captação de leads, reservas e informações sobre o espaço físico localizado em Itu/SP.
+
+### 1.2 Público-Alvo
+- Freelancers, profissionais autônomos, solopreneurs
+- Micro e pequenas equipes criativas
+- Startups de tecnologia em estágio inicial
+- Criadores de conteúdo (podcast, vídeo)
+- Nômades digitais
+- Empresas que buscam endereço fiscal ou sala privativa na região
+
+### 1.3 Escopo
+A landing page deve refletir **todo o conteúdo do catálogo de produtos e módulos**, exceto as páginas internas de projeção financeira (página 11). Deve ser uma página única (*single page application*) com âncoras para cada seção, garantindo navegação fluida.
+
+---
+
+## 2. Stack Tecnológica
+
+| Camada         | Tecnologia                          |
+|----------------|-------------------------------------|
+| Build Tool     | Vite                                |
+| Biblioteca     | React 18+                           |
+| Roteamento     | React Router (hash router ou scroll) ou scroll suave com `react-scroll` |
+| Estilização    | Tailwind CSS (recomendado) ou CSS Modules |
+| Gerenciamento de estado | Context API + hooks (mínimo) |
+| Dados          | Arquivos JSON estáticos para preços e catálogo |
+| Deploy         | Vercel / Netlify (a definir)        |
+
+---
+
+## 3. Estrutura da Página (*Sitemap*)
+
+A landing page será composta por uma **única URL (`/`)** com as seguintes seções em ordem vertical:
+
+1. **Header / Navegação fixa**
+2. **Hero Section** (chamada principal)
+3. **Postos de Trabalho**
+4. **Espaços On-Demand**
+5. **Endereço Fiscal & Escritório Virtual**
+6. **Combos Clube** (Startup Solo, Time Criativo, Empresa Residente, Creator Pass, Nômade Digital, Departamento Tech)
+7. **Programas de Inovação** (Seed, Tech Residency, Dev Day Pass, Hackathon Ready, Alumni)
+8. **Clube Vila Tech** (Prata, Ouro, Diamante, Fundadores)
+9. **Café & Convivência** (Clube do Vinil)
+10. **Tabela Consolidada de Preços** (resumo de todos os planos)
+11. **Seção de Prova Social / Diferenciais** (depoimentos placeholder, diferenciais)
+12. **Footer** (contato, endereço, CTA final)
+
+O header conterá links que rolam suavemente até cada seção. O botão de CTA principal (“Agende uma visita” ou “Quero me associar”) estará fixo no hero e repetido estrategicamente.
+
+---
+
+## 4. Requisitos Funcionais Detalhados
+
+### 4.1 Header
+- Logo do Vila Tech Hub à esquerda
+- Menu hambúrguer em mobile, horizontal em desktop
+- Itens do menu: Postos, Espaços, Endereço Virtual, Combos, Inovação, Clube, Preços, Contato
+- Botão “Agende sua visita” (link para WhatsApp/Calendly ou formulário modal)
+- Deve ficar fixo no topo com leve sombra ao scrollar
+
+### 4.2 Hero Section
+- Título: **“Vila Tech Hub — Instituto de Inovação & Coworking”**
+- Subtítulo: “Do posto individual ao ecossistema completo de inovação”
+- Imagem de fundo ou ilustração representando o espaço
+- Botão CTA: “Ver planos” (âncora para Combos) e “Fale conosco”
+- Indicador visual (seta) para rolar para baixo
+
+### 4.3 Seção: Postos de Trabalho
+Base: PDF páginas 3
+
+- Cards/Tabela com as **4 modalidades**:
+  - Individual
+  - Duplo
+  - Equipe (4 pessoas)
+  - Sala Privativa 4p
+- Para cada modalidade, exibir:
+  - Preços para: Hora avulsa, Mensal, Semestral, Anual (com destaque para economia anual)
+  - Benefícios inclusos (ex: 8h sala reunião na Equipe, café/água)
+- Interface com **tabs** ou **acordeão** para alternar entre os planos e evitar poluição visual.
+- Destaque: “Economia de R$ 2.400/ano no plano Individual Anual”
+- Preço hora avulsa exibido separadamente (R$30/h)
+
+### 4.4 Seção: Espaços On-Demand
+Base: PDF página 4
+
+- Cards para cada espaço:
+  - Sala de Reunião 4 pessoas (R$70/h)
+  - Sala de Reunião 8 pessoas (R$110/h)
+  - Auditório (R$1.400 meia diária / R$2.300 diária)
+- Cada card deve mostrar:
+  - Capacidade, preço
+  - Equipamentos (TV, projetor, som)
+  - Diferenciais (café/água, suporte técnico incluso, reserva pelo app)
+- Possibilidade de simular reserva ou redirecionar para app/contato
+- Não é necessário sistema de booking real; pode ser um botão “Reservar” que abre WhatsApp ou link externo.
+
+### 4.5 Seção: Endereço Fiscal & Escritório Virtual
+Base: PDF página 5
+
+- Três modalidades em cards lado a lado:
+  - **Endereço Básico** (R$180/mês) — apenas fiscal
+  - **Escritório Virtual** (R$390/mês) — fiscal + comercial
+  - **Virtual Premium** (R$580/mês) — todos os serviços + atendimento telefônico (assumir conteúdo do catálogo)
+- Incluir lista de benefícios de cada plano (baseada no texto do catálogo, mesmo que sucinto; sugere-se elaborar ícones)
+- Destaque visual para o plano mais popular.
+
+### 4.6 Seção: Combos Clube
+Base: PDF páginas 6-7
+
+- **Combos tradicionais**:
+  - Startup Solo (R$950/mês) — recomendado
+  - Time Criativo (R$1.650/mês)
+  - Empresa Residente (R$3.200/mês)
+- **Combos inovadores**:
+  - Creator Pass (R$690/mês)
+  - Nômade Digital (R$490/mês)
+  - Departamento Tech (R$5.900/mês para 10 pessoas)
+- Para cada combo, exibir:
+  - O que está incluso (postos, horas de sala de reunião, horas de estúdio, endereço fiscal)
+  - Comparativo com preço avulso (ex: “vs. R$1.000 posto mensal avulso”)
+- Layout: Grid de cards, com badge “RECOMENDADO” no Startup Solo.
+- Opção de expandir detalhes ou tooltip com a lista completa.
+
+### 4.7 Seção: Programas de Inovação
+Base: PDF página 8
+
+- Cards para cada programa:
+  - Startup Seed (3 meses, R$400/mês)
+  - Tech Residency (6 meses, R$990/mês)
+  - Dev Day Pass (R$120/semana)
+  - Hackathon Ready (R$3.500/dia)
+  - Alumni Network (R$370/mês)
+- Descrição sucinta e ícone para cada.
+- CTA “Inscreva-se” → link para formulário (Google Forms ou similar) ou apenas “Saiba mais” que abre e-mail.
+
+### 4.8 Seção: Clube Vila Tech
+Base: PDF página 9
+
+- Níveis de fidelidade:
+  - Prata (10% desconto)
+  - Ouro (20% desconto)
+  - Diamante (30% desconto)
+  - Fundadores (benefício vitalício, descrito como diferencial)
+- Exibir os níveis como cartões ou barra de progresso (gamificação simples)
+- Texto explicando como subir de nível (por tempo de associação, indicação, consumo de serviços — conforme regras do clube; pode-se usar um texto genérico: “Acumule pontos a cada mês e suba de nível”)
+- Mostrar que os descontos se aplicam a todos os planos.
+
+### 4.9 Seção: Café & Convivência
+Base: PDF página 7 (parceria estratégica)
+
+- Destaque para o **Clube do Vinil Wine & Coffee**
+- Pequena descrição: “Espaço de convivência com café especial e vinis, parceria estratégica para momentos de descompressão”
+- Imagem ilustrativa (mockup ou foto do espaço). Não há preços, pois é um diferencial.
+
+### 4.10 Tabela Consolidada de Preços
+Base: PDF página 10
+
+- **Tabela única** (responsiva) com todas as modalidades e preços:
+  - Postos de Trabalho
+  - Endereço & Virtual
+  - Combos Clube
+  - Espaços On-Demand
+  - Inovação Startups
+- Colunas: Produto | Valor (sem desconto) | Observações
+- A tabela deve ser apresentada de forma limpa, com opção de alternar entre “Valor base” e “Valor com desconto Clube” via toggle.
+- Dados vêm de um arquivo JSON para fácil manutenção.
+
+### 4.11 Diferenciais e Chamada Final
+Base: PDF página 12
+
+- Cards animados com os 4 pilares:
+  - Precisação Inteligente (descontos progressivos)
+  - Viabilidade Comprovada (métrica de 50% ocupação → R$27k)
+  - Mix de Receita (fixo + variável)
+  - Diferenciação Clara (foco em criadores e startups)
+- Texto final: “Um modelo pronto para escalar” com CTA “Agende uma visita ao Vila Tech Hub”.
+
+### 4.12 Footer
+- Endereço completo: Itu, São Paulo
+- Link para site: vilatechhub.com.br
+- Redes sociais (ícones placeholder)
+- Link para “Política de Privacidade” e “Termos de Uso”
+- Copyright: Vila Tech Hub © 2026
+
+---
+
+## 5. Requisitos de Componentes React
+
+### 5.1 Estrutura de Componentes (Sugestão)
+```
+src/
+├── components/
+│   ├── Header.jsx
+│   ├── Hero.jsx
+│   ├── PostosTrabalho.jsx
+│   ├── EspacosOnDemand.jsx
+│   ├── EnderecoVirtual.jsx
+│   ├── CombosClube.jsx
+│   ├── ProgramasInovacao.jsx
+│   ├── ClubeVilaTech.jsx
+│   ├── CafeConvivencia.jsx
+│   ├── TabelaPrecos.jsx
+│   ├── Diferenciais.jsx
+│   ├── Footer.jsx
+│   └── CTAButton.jsx
+├── data/
+│   └── precos.json
+├── App.jsx
+└── main.jsx
+```
+
+### 5.2 Funcionalidades dos Componentes
+
+- **Header:** renderiza links com `scrollTo` suave, usa estado para menu mobile.
+- **PostosTrabalho:** renderiza tabs (Individual, Duplo, Equipe, Sala) via estado, puxando dados de `precos.json`.
+- **CombosClube:** mapeia array de combos, exibe badge “recomendado” condicional.
+- **TabelaPrecos:** renderiza tabela com filtro (toggle “com/sem desconto Clube”). Dados totalmente extraídos de JSON.
+- **ClubeVilaTech:** exibe níveis como “badges”, podendo ter um pequeno medidor (ex: barras de progresso só estéticas).
+- Programas de Inovação: cards com ícones (usar biblioteca `react-icons` ou SVGs internos).
+- CTAButton: componente reutilizável para botões de ação.
+
+### 5.3 Gerenciamento de Estado
+- Utilizar React `useState` e Context apenas se necessário para compartilhar o toggle de desconto entre a tabela e os cards? Melhor manter local.
+- Não há necessidade de roteamento complexo; a SPA usa âncoras. Pode-se adicionar React Router apenas se no futuro houver páginas secundárias (ex: blog). Para MVP, usar `react-scroll` para links suaves.
+
+---
+
+## 6. Modelagem dos Dados (JSON)
+
+### 6.1 Exemplo de estrutura de `precos.json`
+
+```json
+{
+  "postos": [
+    {
+      "id": "individual",
+      "nome": "Individual",
+      "hora": 30,
+      "mensal": 1000,
+      "semestral": 900,
+      "anual": 800,
+      "destaque": "Economia de R$ 2.400/ano",
+      "incluso": ["Posto fixo", "Wi-Fi", "Café/Água"],
+      "descricao": "1 pessoa — posto fixo"
+    },
+    ...
+  ],
+  "combos": [
+    {
+      "id": "startup-solo",
+      "nome": "Startup Solo",
+      "preco": 950,
+      "recomendado": true,
+      "incluso": ["1 posto anual", "4h/mês sala reunião", "2h/mês estúdio", "Endereço fiscal"],
+      "comparativo": "vs. R$ 1.000 posto mensal avulso"
+    },
+    ...
+  ],
+  "espacos_on_demand": [...],
+  "endereco_virtual": [...],
+  "inovacao": [...],
+  "clube": [
+    { "nivel": "Prata", "desconto": 10 },
+    { "nivel": "Ouro", "desconto": 20 },
+    { "nivel": "Diamante", "desconto": 30 }
+  ]
+}
+```
+
+### 6.2 Atualização de Preços
+A manutenção dos preços será feita editando-se o arquivo JSON, sem necessidade de alterar código React. Isso permite que a equipe de marketing atualize valores sem desenvolvedor.
+
+---
+
+## 7. Requisitos de UX/UI
+
+### 7.1 Design System
+- **Cores:** Paleta baseada na identidade do Vila Tech Hub (supor tons de azul escuro, laranja/acendido para CTAs). Pode-se criar variações a partir do logotipo (a verificar).
+- **Tipografia:** Família sans-serif moderna (Inter, Roboto ou similar), com hierarquia clara.
+- **Ícones:** Utilizar `react-icons` (conjunto Feather ou Material) ou SVGs customizados.
+- **Espaçamento e grids:** Layout responsivo usando Tailwind (grid-cols-1 md:grid-cols-2 lg:grid-cols-3...)
+
+### 7.2 Responsividade
+- Design *mobile-first*. Cards devem empilhar verticalmente em telas pequenas.
+- Tabela de preços deve ser transformada em cards ou uma lista expansível em mobile (tabela tradicional não cabe bem).
+- O menu mobile deve abrir em tela cheia ou drawer.
+
+### 7.3 Microinterações
+- Hover nos cards com leve elevação (shadow lg).
+- Scroll suave ao clicar nos links do menu.
+- Animação de fade-in nas seções conforme o usuário rola (use `Intersection Observer` ou uma lib leve como `framer-motion`).
+- Tooltips ao passar o mouse sobre “Economia” ou badges.
+
+### 7.4 Acessibilidade
+- Semântica HTML correta (uso de `section`, `h1`-`h6`, `nav`, `main`).
+- Atributos `aria-label` em ícones e links.
+- Contraste adequado para todos os textos sobre fundo.
+- Possibilidade de navegação por teclado.
+
+---
+
+## 8. Requisitos Não-Funcionais
+
+| Requisito            | Descrição                                                                  |
+|----------------------|----------------------------------------------------------------------------|
+| Performance          | Carregamento inicial < 2s em 4G. Lighthouse score ≥ 80 (performance).    |
+| SEO                  | SSR não obrigatório (pode ser SPA), mas utilizar tags `title` e meta desc.|
+| Analytics            | Integrar Google Analytics ou Plausible via script no `index.html`.        |
+| Hospedagem           | Arquivos estáticos servidos via CDN (Vercel/Netlify) com domínio próprio. |
+| Manutenibilidade     | Código componentizado, dados centralizados em JSON, fácil troca de preços.|
+| Compatibilidade      | Navegadores modernos (Chrome, Firefox, Safari, Edge) — últimos 2 versões. |
+| Formulário de Contato| Botão CTA pode abrir WhatsApp (api.whatsapp.com) com mensagem predefinida ou link para Calendly. Não implementar formulário próprio no MVP. |
+
+---
+
+## 9. Fluxo do Usuário
+
+1. Usuário acessa a landing page (tráfego orgânico ou campanha).
+2. Visualiza Hero → rola para seções de interesse (ex: “Combos”).
+3. Explora cards, alterna tabs/toggle de preços, lê diferenciais.
+4. Clica em “Agendar visita” ou “Quero me associar” → redirecionado para conversa no WhatsApp com mensagem template:
+   > “Olá! Vim pelo site e quero saber mais sobre o [produto selecionado].”
+5. Ou, no caso de espaços on-demand e Estúdio, pode ser redirecionado ao app de reservas (link externo).
+6. Usuário pode compartilhar a página ou voltar depois.
+
+---
+
+## 10. Critérios de Aceite
+
+- [x] 1. A página carrega sem erros no console.
+- [x] 2. Todos os links do header fazem scroll suave até a seção correta.
+- [x] 3. Menu mobile funciona corretamente (abre/fecha).
+- [x] 4. Seção Postos de Trabalho exibe preços de todas as 4 modalidades com seleção por tabs.
+- [x] 5. Seção Combos mostra 6 combos corretamente, com badge no combo recomendado.
+- [x] 6. Tabela de preços consolida todos os produtos e alterna entre preço base e preço com desconto do clube.
+- [x] 7. Layout é totalmente responsivo (testar em iPhone SE, tablet, desktop 1920px).
+- [x] 8. O JSON de dados é a única fonte de verdade para preços; alterar um valor no JSON reflete na página sem mexer no código.
+- [x] 9. Links de WhatsApp abrem com o número correto (placeholder a definir).
+- [x] 10. O score de acessibilidade no Lighthouse não é inferior a 80.
+
+---
+
+## 11. Entregáveis
+
+- Código-fonte em repositório Git (GitHub).
+- Instruções de setup (`npm install && npm run dev`).
+- Build de produção configurado (`npm run build`).
+- Documentação do modelo de dados JSON.
+- URL de staging para validação.
+
+---
+
+## 12. Cronograma (Macro)
+
+| Etapa      | Descrição                           | Prazo sugerido |
+|------------|-------------------------------------|----------------|
+| Setup      | Vite + React + Tailwind, estrutura  | 1 dia          |
+| Componentes| Header, Hero, seções estáticas      | 3 dias         |
+| Dados      | JSON de preços, integração nos cards| 1 dia          |
+| Estilização| Responsividade final, microinterações| 2 dias         |
+| Testes     | Navegação, responsivo, performance  | 1 dia          |
+| Deploy     | Publicação e DNS                    | 1 dia          |
+
+---
+
+## 13. Observações
+
+- O catálogo original contém informações de projeção de receita (página 11) que **não devem** aparecer na landing page, por serem dados internos.
+- A página “Café & Convivência” é mencionada como parceria; recomenda-se incluir uma foto real do espaço caso disponível.
+- A seção de Clube Vila Tech pode ser simplificada inicialmente, mostrando os níveis e descontos, sem um sistema de pontos real (isso seria uma feature futura).
+
+---
+
+**Aprovação:**  
+___________________________  
+Data: ___/___/______

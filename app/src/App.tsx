@@ -1,11 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './index.css';
+import WhatsAppButton from './components/WhatsAppButton';
+import EventPopup from './components/EventPopup';
 
 // Pages
 import LandingPage from './pages/LandingPage';
 import InstitutePage from './pages/InstitutePage';
 import InstituteOldPage from './pages/InstituteOldPage';
+import CoworkingPage from './pages/CoworkingPage';
+import AgendaPage from './pages/AgendaPage';
 import AdminLayout from './layouts/AdminLayout';
 import LeadsListPage from './pages/admin/LeadsListPage';
 import LeadDetailPage from './pages/admin/LeadDetailPage';
@@ -27,7 +31,9 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/instituto" element={<InstitutePage />} />
           <Route path="/instituto-old" element={<InstituteOldPage />} />
-          
+          <Route path="/coworking" element={<CoworkingPage />} />
+          <Route path="/agenda" element={<AgendaPage />} />
+
           {/* Admin Login */}
           <Route path="/admin/login" element={<LoginPage />} />
 
@@ -46,6 +52,9 @@ function App() {
             <Route path="settings" element={<SettingsPage />} />
           </Route>
         </Routes>
+
+        <WhatsAppButton />
+        <EventPopup />
         <SpeedInsights />
       </Router>
     </AuthProvider>

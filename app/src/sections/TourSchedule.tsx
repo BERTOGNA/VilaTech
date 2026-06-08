@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Clock, Ticket, ExternalLink } from 'lucide-react';
 import { tourScheduleConfig } from '../config';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -195,11 +196,14 @@ const TourSchedule = () => {
           <p className="font-sans text-sm text-[#1F1F1F]/40 mb-6 uppercase tracking-widest">
             {tourScheduleConfig.bottomNote}
           </p>
-          <button className="px-10 py-5 bg-[#1F1F1F] text-white font-sans text-sm uppercase tracking-[0.2em] rounded-full hover:bg-[#1F1F1F]/90 transition-all hover:shadow-2xl active:scale-95 group">
+          <Link 
+            to="/agenda" 
+            className="inline-block px-10 py-5 bg-[#1F1F1F] text-white font-sans text-sm uppercase tracking-[0.2em] rounded-full hover:bg-[#1F1F1F]/90 transition-all hover:shadow-2xl active:scale-95 group"
+          >
             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 inline-block">
               {tourScheduleConfig.bottomCtaText}
             </span>
-          </button>
+          </Link>
         </div>
       </div>
 

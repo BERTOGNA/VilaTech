@@ -7,7 +7,11 @@ import api from '../services/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ContactForm = () => {
+interface ContactFormProps {
+  zIndex?: number;
+}
+
+const ContactForm = ({ zIndex }: ContactFormProps = {}) => {
   if (!contactFormConfig.sectionTitle) {
     return null;
   }
@@ -96,6 +100,7 @@ const ContactForm = () => {
       id="contact"
       ref={sectionRef}
       className="relative w-full py-12 bg-void-black"
+      style={{ zIndex }}
     >
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
         {/* Section Header */}

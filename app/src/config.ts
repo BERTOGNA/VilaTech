@@ -18,7 +18,7 @@ export const siteConfig: SiteConfig = {
   description: "Vila Tech Hub é um ecossistema de inovação que conecta tecnologia, educação e criatividade através de três pilares: Educação, Coworking e Clube.",
   language: "pt-BR",
   logo: "/images/logo-vila-tech.svg",
-  whatsappLink: "https://wa.link/2wbzbb",
+  whatsappLink: "https://wa.me/5511993710652",
 };
 
 
@@ -27,7 +27,7 @@ export interface HeroNavItem {
   label: string;
   sectionId?: string;
   path?: string;
-  icon: "disc" | "play" | "calendar" | "music" | "book" | "building" | "users" | "rocket" | "mail" | "globe" | "eye" | "target" | "shield";
+  icon: "disc" | "play" | "calendar" | "music" | "book" | "building" | "users" | "rocket" | "mail" | "globe" | "eye" | "target" | "shield" | "map-pin" | "lightbulb";
 }
 
 export interface HeroConfig {
@@ -57,12 +57,13 @@ export const heroConfig: HeroConfig = {
   ctaPrimary: "fale com o time",
   ctaPrimaryTarget: "contact",
   ctaSecondary: "Conheça nosso espaço",
-  ctaSecondaryTarget: "parallax-gallery",
+  ctaSecondaryTarget: "/coworking",
   cornerLabel: "Scroll",
   cornerDetail: "Down",
   youtubeId: "lGHrDIdafdI",
   navItems: [
     { label: "Coworking", sectionId: "coworking", icon: "building" },
+    { label: "Agenda", path: "/agenda", icon: "calendar" },
     { label: "Educação", sectionId: "education", icon: "book" },
     { label: "Clube", sectionId: "club", icon: "users" },
     { label: "Instituto", path: "/instituto", icon: "globe" },
@@ -324,7 +325,7 @@ export const footerConfig: FooterConfig = {
   emailLabel: "Email",
   email: "contato@vilatehhub.com.br",
   phoneLabel: "Telefone",
-  phone: "+55 11 99266-6654",
+  phone: "+55 11 99371-0652",
   addressLabel: "Endereço",
   address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro",
   newsletterTitle: "Receba novidades",
@@ -726,4 +727,162 @@ export const instituteTeaserConfig: InstituteTeaserConfig = {
   ctaPath: "/instituto",
   backgroundImage: "/images/hero-bg.jpg",
   backgroundVideo: "/images/institute-bg.mp4", // Coloque seu vídeo MP4 escuro nesta pasta
+};
+
+// -- Coworking Internal Page Configuration ------------------------------------
+export interface CoworkingPricingPlan {
+  name: string;
+  price: string;
+  description: string;
+  benefits: string[];
+  cta: string;
+  highlighted?: boolean;
+}
+
+export interface CoworkingPricingCategory {
+  title: string;
+  description?: string;
+  plans: CoworkingPricingPlan[];
+}
+
+export interface CoworkingPageConfig {
+  hero: {
+    title: string;
+    subtitle: string;
+    backgroundImage: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
+  features: {
+    title: string;
+    items: { icon: "map-pin" | "users" | "wifi" | "star" | string; title: string; description: string }[];
+  };
+  pricing: {
+    title: string;
+    categories: CoworkingPricingCategory[];
+  };
+  faq: {
+    title: string;
+    questions: { q: string; a: string }[];
+  };
+}
+
+export const coworkingPageNavItems: HeroNavItem[] = [
+  { label: "Postos", sectionId: "postos", icon: "building" },
+  { label: "Espaços", sectionId: "espacos", icon: "users" },
+  { label: "Endereço Virtual", sectionId: "virtual", icon: "map-pin" },
+  { label: "Combos", sectionId: "combos", icon: "rocket" },
+  { label: "Inovação", sectionId: "inovacao", icon: "lightbulb" },
+  { label: "Clube", sectionId: "clube", icon: "users" },
+  { label: "Preços", sectionId: "precos", icon: "target" },
+  { label: "Contato", sectionId: "contact", icon: "mail" },
+];
+
+export const coworkingPageConfig: CoworkingPageConfig = {
+  hero: {
+    title: "COWORKING",
+    subtitle: "Ambientes projetados para inspirar, conectar e escalar o seu negócio.",
+    backgroundImage: "/images/hero-bg.jpg",
+    ctaPrimary: "Agende uma visita",
+    ctaSecondary: "Ver planos",
+  },
+  features: {
+    title: "Por que escolher o Vila Tech Hub?",
+    items: [
+      { icon: "map-pin", title: "Localização Premium", description: "No coração do Itu Novo Centro, com fácil acesso e estacionamento." },
+      { icon: "users", title: "Networking e Comunidade", description: "Conecte-se com startups, empresas e profissionais inovadores." },
+      { icon: "wifi", title: "Estrutura Completa", description: "Internet de alta velocidade, café, copa e áreas de descompressão." },
+      { icon: "star", title: "Acesso ao Clube", description: "Benefícios exclusivos, eventos e descontos para membros." },
+    ]
+  },
+  pricing: {
+    title: "Nossos Espaços e Planos",
+    categories: [
+      {
+        title: "Postos de Trabalho",
+        description: "Estações de trabalho flexíveis ou fixas em ambiente compartilhado.",
+        plans: [
+          {
+            name: "Hot Desk Diária",
+            price: "R$ 60/dia",
+            description: "Ideal para profissionais nômades.",
+            benefits: ["Acesso em horário comercial", "Internet de alta velocidade", "Café e água à vontade"],
+            cta: "Contratar",
+          },
+          {
+            name: "Hot Desk Mensal",
+            price: "R$ 450/mês",
+            description: "Flexibilidade para trabalhar quando quiser.",
+            benefits: ["Acesso em horário comercial", "Internet de alta velocidade", "Endereço comercial", "Descontos em salas de reunião"],
+            cta: "Assinar",
+            highlighted: true,
+          },
+          {
+            name: "Fixed Desk",
+            price: "R$ 650/mês",
+            description: "Sua mesa fixa exclusiva.",
+            benefits: ["Acesso 24/7", "Gaveteiro com chave", "Endereço fiscal e comercial", "Créditos para salas de reunião"],
+            cta: "Assinar",
+          }
+        ]
+      },
+      {
+        title: "Espaços On-Demand",
+        description: "Estrutura completa sob demanda para reuniões e eventos.",
+        plans: [
+          {
+            name: "Sala de Reunião",
+            price: "R$ 80/hora",
+            description: "Salas equipadas para até 8 pessoas.",
+            benefits: ["TV e Quadro Branco", "Internet de alta velocidade", "Ar condicionado", "Recepção para convidados"],
+            cta: "Reservar",
+          },
+          {
+            name: "Estúdio Podcast",
+            price: "R$ 150/hora",
+            description: "Estúdio com isolamento acústico.",
+            benefits: ["Equipamentos de áudio profissionais", "Câmeras opcionais", "Iluminação ajustável", "Suporte técnico básico"],
+            cta: "Reservar",
+          },
+          {
+            name: "Auditório",
+            price: "Sob Consulta",
+            description: "Espaço para eventos corporativos e palestras.",
+            benefits: ["Capacidade para 50 pessoas", "Projetor e sistema de som", "Layout flexível", "Área para coffee break"],
+            cta: "Falar com Consultor",
+          }
+        ]
+      },
+      {
+        title: "Endereço Fiscal e Virtual Office",
+        description: "Profissionalize sua empresa com nosso endereço.",
+        plans: [
+          {
+            name: "Endereço Comercial",
+            price: "R$ 120/mês",
+            description: "Use nosso endereço nos seus materiais.",
+            benefits: ["Recebimento de correspondências", "Aviso de recebimento", "Endereço de prestígio em Itu"],
+            cta: "Assinar",
+          },
+          {
+            name: "Endereço Fiscal + Comercial",
+            price: "R$ 200/mês",
+            description: "Para abertura ou alteração de empresas.",
+            benefits: ["Regularização de CNPJ", "Recebimento de correspondências", "Aviso de recebimento", "Endereço de prestígio"],
+            cta: "Assinar",
+            highlighted: true,
+          }
+        ]
+      }
+    ]
+  },
+  faq: {
+    title: "Dúvidas Frequentes",
+    questions: [
+      { q: "Quais são os horários de funcionamento?", a: "O coworking funciona de segunda a sexta, das 8h às 20h para planos Hot Desk. Para membros Fixed Desk e Salas Privativas, o acesso é 24/7." },
+      { q: "Posso receber clientes no espaço?", a: "Sim! Seus clientes serão recebidos pela nossa recepção. Recomendamos a reserva de uma sala de reunião para atendimentos." },
+      { q: "O que está incluso na diária?", a: "A diária inclui um posto de trabalho flexível (Hot Desk), internet de alta velocidade, café, água e acesso às áreas de descompressão." },
+      { q: "Como funciona o Endereço Fiscal?", a: "Ao contratar o plano de Endereço Fiscal, você poderá registrar o CNPJ da sua empresa (prestação de serviços) no endereço do Vila Tech Hub." }
+    ]
+  }
 };

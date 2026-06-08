@@ -173,7 +173,13 @@ const Hero = () => {
             {heroConfig.ctaPrimary}
           </button>
           <button
-            onClick={() => scrollToSection(heroConfig.ctaSecondaryTarget)}
+            onClick={() => {
+              if (heroConfig.ctaSecondaryTarget.startsWith('/')) {
+                window.location.href = heroConfig.ctaSecondaryTarget;
+              } else {
+                scrollToSection(heroConfig.ctaSecondaryTarget);
+              }
+            }}
             className="px-8 py-3 border border-white/30 text-white font-display text-sm uppercase tracking-wider rounded-full hover:border-brand-teal hover:text-brand-teal transition-colors duration-300"
           >
             {heroConfig.ctaSecondary}

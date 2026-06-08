@@ -1,0 +1,253 @@
+{
+  "postos": [
+    {
+      "id": "individual",
+      "nome": "Individual",
+      "hora": 30,
+      "mensal": 1000,
+      "semestral": 900,
+      "anual": 800,
+      "destaque": "Economia de R$ 2.400/ano",
+      "incluso": ["Posto fixo", "Wi-Fi alta velocidade", "Café/Água à vontade"],
+      "descricao": "1 pessoa — posto fixo"
+    },
+    {
+      "id": "duplo",
+      "nome": "Duplo",
+      "hora": 55,
+      "mensal": 1900,
+      "semestral": 1720,
+      "anual": 1520,
+      "destaque": "R$ 760/pessoa no plano anual",
+      "incluso": ["2 postos fixos juntos", "Wi-Fi alta velocidade", "Café/Água à vontade"],
+      "descricao": "2 pessoas"
+    },
+    {
+      "id": "equipe",
+      "nome": "Equipe",
+      "hora": 220,
+      "mensal": 3200,
+      "semestral": null,
+      "anual": 2800,
+      "destaque": "",
+      "incluso": ["4 postos fixos agrupados", "8h sala de reunião/mês", "Wi-Fi alta velocidade", "Café/Água à vontade"],
+      "descricao": "Até 4 pessoas"
+    },
+    {
+      "id": "sala-privativa",
+      "nome": "Sala Privativa 4p",
+      "hora": null,
+      "mensal": 3750,
+      "semestral": 3375,
+      "anual": 3000,
+      "destaque": "Pacote Premium",
+      "incluso": ["Sala fechada e mobiliada", "12h sala de reunião/mês", "Wi-Fi dedicado", "Café/Água à vontade"],
+      "descricao": "Privacidade total para 4 pessoas"
+    }
+  ],
+  "espacos_on_demand": [
+    {
+      "id": "sala-4p",
+      "shortName": "SR4",
+      "nome": "Sala de Reunião 4 Pessoas",
+      "preco": "R$ 70/hora",
+      "valor": 70,
+      "capacidade": "4 pessoas",
+      "descricao": "Reuniões estratégicas e apresentações para clientes",
+      "equipamentos": ["TV Full HD", "Ar-condicionado", "Café/Água"],
+      "diferenciais": ["Reserva pelo app"],
+      "color": "#C47B47"
+    },
+    {
+      "id": "sala-8p",
+      "shortName": "SR8",
+      "nome": "Sala de Reunião 8 Pessoas",
+      "preco": "R$ 110/hora",
+      "valor": 110,
+      "capacidade": "8 pessoas",
+      "descricao": "Workshops, treinamentos e reuniões de board",
+      "equipamentos": ["TV 55\"", "Ar-condicionado", "Café/Água"],
+      "diferenciais": ["Reserva prioritária"],
+      "color": "#C47B47"
+    },
+    {
+      "id": "auditorio",
+      "shortName": "AUD",
+      "nome": "Auditório",
+      "preco": "R$ 1.400 / 4h",
+      "precoAlternativo": "R$ 2.300 / 8h",
+      "valor": 1400,
+      "valor_alternativo": 2300,
+      "capacidade": "Até 50 pessoas",
+      "descricao": "Palestras, eventos, lançamentos e cursos",
+      "equipamentos": ["Projetor + telão", "Sistema de som profissional", "Suporte técnico incluso"],
+      "diferenciais": ["Capacidade 40+ pessoas"],
+      "color": "#10A37F"
+    },
+    {
+      "id": "estudio",
+      "nome": "ESTÚDIO DE PODCAST",
+      "preco": "Hora Avulsa: R$ 170",
+      "pacote": "Pacote 2h: R$ 320",
+      "valor": 170,
+      "valor_pacote": 320,
+      "capacidade": "Até 4 pessoas",
+      "equipamentos": ["Microfones Profissionais", "Interface de áudio", "Iluminação"],
+      "diferenciais": ["Tratamento acústico", "Suporte técnico"],
+      "color": "#10A37F"
+    }
+  ],
+  "endereco_virtual": [
+    {
+      "id": "basico",
+      "nome": "Endereço Básico",
+      "preco": 180,
+      "tipo": "Mensal",
+      "beneficios": ["Endereço Fiscal", "Recebimento de correspondências (até 5 volumes)"],
+      "popular": false
+    },
+    {
+      "id": "virtual",
+      "nome": "Escritório Virtual",
+      "preco": 390,
+      "tipo": "Mensal",
+      "beneficios": ["Endereço Fiscal", "Endereço Comercial", "Recebimento de correspondências ilimitado", "Notificação via app"],
+      "popular": true
+    },
+    {
+      "id": "premium",
+      "nome": "Virtual Premium",
+      "preco": 580,
+      "tipo": "Mensal",
+      "beneficios": ["Endereço Fiscal e Comercial", "Recebimento de correspondências ilimitado", "Atendimento telefônico personalizado (bilingue)", "Acesso de 1 dia/mês no coworking"],
+      "popular": false
+    }
+  ],
+  "combos": [
+    {
+      "id": "startup-solo",
+      "nome": "Startup Solo",
+      "preco": 950,
+      "recomendado": true,
+      "incluso": ["1 posto anual", "4h/mês sala de reunião", "2h/mês estúdio", "Endereço fiscal básico"],
+      "comparativo": "vs. R$ 1.000 posto mensal avulso",
+      "categoria": "tradicional",
+      "descricao": "Ideal para founders e solopreneurs."
+    },
+    {
+      "id": "time-criativo",
+      "nome": "Time Criativo",
+      "preco": 1650,
+      "recomendado": false,
+      "incluso": ["2 postos anuais", "8h/mês sala de reunião", "4h/mês estúdio", "Endereço fiscal"],
+      "comparativo": "",
+      "categoria": "tradicional",
+      "descricao": "Para equipes enxutas de criação e dev."
+    },
+    {
+      "id": "empresa-residente",
+      "nome": "Empresa Residente",
+      "preco": 3200,
+      "recomendado": false,
+      "incluso": ["4 postos anuais", "12h/mês sala de reunião", "Locker exclusivo", "Endereço fiscal e comercial"],
+      "comparativo": "",
+      "categoria": "tradicional",
+      "descricao": "Empresas com necessidade de espaço constante."
+    },
+    {
+      "id": "creator-pass",
+      "nome": "Creator Pass",
+      "preco": 690,
+      "recomendado": false,
+      "incluso": ["Acesso flexível 10 dias/mês", "8h/mês estúdio de gravação", "Wi-Fi alta velocidade dedicado"],
+      "comparativo": "",
+      "categoria": "inovador",
+      "descricao": "Perfeito para criadores de conteúdo e podcasters."
+    },
+    {
+      "id": "nomade-digital",
+      "nome": "Nômade Digital",
+      "preco": 490,
+      "recomendado": false,
+      "incluso": ["Acesso flexível 5 dias/mês", "Endereço fiscal básico", "Acesso à comunidade"],
+      "comparativo": "",
+      "categoria": "inovador",
+      "descricao": "Para quem viaja muito mas precisa de uma base."
+    },
+    {
+      "id": "departamento-tech",
+      "nome": "Departamento Tech",
+      "preco": 5900,
+      "recomendado": false,
+      "incluso": ["Sala privativa para até 10 pessoas", "Carga horária ilimitada de reunião", "Link de internet dedicado 1Gbps"],
+      "comparativo": "",
+      "categoria": "inovador",
+      "descricao": "Times inteiros de tecnologia em expansão."
+    }
+  ],
+  "inovacao": [
+    {
+      "id": "startup-seed",
+      "nome": "Startup Seed",
+      "duracao": "3 meses",
+      "preco": 400,
+      "tipo": "Mensal",
+      "icone": "seed",
+      "descricao": "Aceleração inicial e mentoria para startups early-stage."
+    },
+    {
+      "id": "tech-residency",
+      "nome": "Tech Residency",
+      "duracao": "6 meses",
+      "preco": 990,
+      "tipo": "Mensal",
+      "icone": "residency",
+      "descricao": "Residência técnica imersiva no ecossistema com foco em growth."
+    },
+    {
+      "id": "dev-day-pass",
+      "nome": "Dev Day Pass",
+      "duracao": "1 semana",
+      "preco": 120,
+      "tipo": "Semanal",
+      "icone": "dev",
+      "descricao": "Acesso focado para sprints de desenvolvimento intensos."
+    },
+    {
+      "id": "hackathon-ready",
+      "nome": "Hackathon Ready",
+      "duracao": "1 dia",
+      "preco": 3500,
+      "tipo": "Diária",
+      "icone": "hackathon",
+      "descricao": "Espaço, infraestrutura e mentores para realização do seu próprio hackathon."
+    },
+    {
+      "id": "alumni-network",
+      "nome": "Alumni Network",
+      "duracao": "Contínuo",
+      "preco": 370,
+      "tipo": "Mensal",
+      "icone": "alumni",
+      "descricao": "Acesso contínuo à rede e aos eventos para ex-residentes."
+    }
+  ],
+  "clube": {
+    "anual": {
+      "preco": 390,
+      "descricao": "Acesso a eventos, networking e benefícios exclusivos do ecossistema.",
+      "beneficios": [
+        "Acesso prioritário a eventos",
+        "Rede de parceiros com descontos",
+        "Uso da marca 'Membro Vila Tech'",
+        "Participação no grupo de fundadores"
+      ]
+    },
+    "niveis": [
+      { "nivel": "Prata", "desconto": 10, "descricao": "Ao se tornar assinante mensal." },
+      { "nivel": "Ouro", "desconto": 20, "descricao": "Assinantes de planos semestrais." },
+      { "nivel": "Diamante", "desconto": 30, "descricao": "Assinantes de planos anuais e parceiros estratégicos." },
+      { "nivel": "Fundadores", "desconto": "Especial", "descricao": "Membros fundadores com benefícios e cadeira cativa vitalícia." }
+    ]
+  }
+}

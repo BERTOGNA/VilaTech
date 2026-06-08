@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Users, DoorOpen, Presentation, Mic, Coffee, MapPin, Building, ShoppingCart, Sofa, Car } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { coworkingConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,6 +33,7 @@ const Coworking = ({ zIndex = 40 }: CoworkingProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -108,7 +110,11 @@ const Coworking = ({ zIndex = 40 }: CoworkingProps) => {
     return () => ctx.revert();
   }, []);
 
-  const scrollToContact = () => {
+  const handleCtaClick = () => {
+    navigate('/coworking');
+  };
+
+  const handleContactClick = () => {
     const element = document.getElementById('contact');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -150,12 +156,26 @@ const Coworking = ({ zIndex = 40 }: CoworkingProps) => {
             <div className="font-medium text-white/70 text-lg leading-relaxed mb-8 whitespace-pre-line">
               {coworkingConfig.description}
             </div>
-            <button
-              onClick={scrollToContact}
-              className="px-8 py-3 bg-brand-cyan text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-cyan/80 transition-colors duration-300"
-            >
-              {coworkingConfig.ctaText}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => navigate('/agenda')}
+                className="px-8 py-3 bg-brand-cyan text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-cyan/80 transition-colors duration-300"
+              >
+                Agenda
+              </button>
+              <button
+                onClick={handleCtaClick}
+                className="px-8 py-3 bg-brand-cyan text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-cyan/80 transition-colors duration-300"
+              >
+                Saiba mais
+              </button>
+              <button
+                onClick={handleContactClick}
+                className="px-8 py-3 bg-brand-cyan text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-cyan/80 transition-colors duration-300"
+              >
+                Fale com o time
+              </button>
+            </div>
           </div>
         </div>
 

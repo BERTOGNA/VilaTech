@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vila Tech Hub — Calendário de Palestras, Cursos e Eventos. Inovação e tecnologia em Itu, SP.">
+<meta property="og:title" content="Vila Tech Hub — Agenda 2026">
+<meta property="og:description" content="Palestras, Cursos e Eventos do Instituto Cultural e Educacional Vila Tech.">
+<meta property="og:url" content="https://agenda.vilatechub.com.br">
+<title>Vila Tech Hub — Agenda de Atividades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-box">VILA<br>TECH</div>
+      <div>
+        <div>HUB</div>
+        <div class="logo-sub">Instituto Cultural e Educacional</div>
+      </div>
+    </div>
+    <div class="header-tag">Agenda 2026</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Calendário de Atividades</div>
+    <h1 class="hero-title">Palestras, Cursos<br>e <span>Eventos</span></h1>
+    <p class="hero-sub">Inovação, tecnologia e criatividade em Itu — SP. Conecte-se ao ecossistema Vila Tech Hub.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Atividades</div></div>
+      <div class="stat"><div class="stat-num" id="stat-palestras">—</div><div class="stat-label">Palestras</div></div>
+      <div class="stat"><div class="stat-num" id="stat-cursos">—</div><div class="stat-label">Cursos</div></div>
+      <div class="stat"><div class="stat-num" id="stat-eventos">—</div><div class="stat-label">Eventos</div></div>
+    </div>
+  </div>
+</section>
+
+<nav class="filters-wrap">
+  <div class="filters-inner">
+    <button class="filter-btn active" data-filter="todos" onclick="filtrar('todos',this)">Todos</button>
+    <button class="filter-btn" data-filter="Palestra" onclick="filtrar('Palestra',this)">Palestras</button>
+    <button class="filter-btn" data-filter="Curso" onclick="filtrar('Curso',this)">Cursos</button>
+    <button class="filter-btn" data-filter="Evento" onclick="filtrar('Evento',this)">Eventos</button>
+    <div class="filter-sep"></div>
+    <span class="filter-label">Mês:</span>
+    <button class="filter-btn" data-filter="junho" onclick="filtrar('junho',this)">Junho</button>
+    <button class="filter-btn" data-filter="julho" onclick="filtrar('julho',this)">Julho</button>
+    <button class="filter-btn" data-filter="agosto" onclick="filtrar('agosto',this)">Agosto</button>
+  </div>
+</nav>
+
+<div class="loading-bar" id="loading-bar"></div>
+
+<main class="content" id="main-content">
+  <div id="months-container"></div>
+  <div class="empty-global hidden" id="empty-global">
+    <div class="empty-icon">◎</div>
+    <div class="empty-msg">Nenhuma atividade encontrada para este filtro.</div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Vila Tech Hub</div>
+    <div class="footer-sub">Instituto Cultural e Educacional Vila Tech · Itu, SP · <a href="https://vilatechub.com.br" target="_blank">vilatechub.com.br</a></div>
+    <div class="footer-update" id="footer-update"></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
