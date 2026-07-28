@@ -8,7 +8,8 @@ import {
   BarChart3, 
   Settings, 
   LogOut,
-  User as UserIcon
+  User as UserIcon,
+  Calendar
 } from 'lucide-react';
 
 const AdminLayout = () => {
@@ -27,6 +28,7 @@ const AdminLayout = () => {
   const navItems = [
     { name: 'Leads', path: '/admin/leads', icon: Users },
     { name: 'Funis de Vendas', path: '/admin/pipelines', icon: LayoutDashboard },
+    { name: 'Reservas', path: '/admin/bookings', icon: Calendar },
     { name: 'Minhas Tarefas', path: '/admin/tasks', icon: CheckSquare },
     { name: 'Relatórios', path: '/admin/reports', icon: BarChart3 },
     { name: 'Configurações', path: '/admin/settings', icon: Settings },

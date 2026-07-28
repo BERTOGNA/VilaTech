@@ -142,7 +142,7 @@ const SettingsPage = () => {
                   type="email" 
                   value={unitEmail}
                   onChange={(e) => setUnitEmail(e.target.value)}
-                  placeholder="comercial@vilatech.com.br" 
+                  placeholder="atendimento@vilatechub.com.br" 
                   className="w-full px-4 py-3 bg-black/20 border border-neutral-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition-all font-medium text-white placeholder:text-neutral-700" 
                 />
               </div>

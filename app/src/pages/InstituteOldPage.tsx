@@ -6,6 +6,7 @@ import { ArrowRight, Target, Eye, Rocket, Book, Heart, Users, ShieldCheck, Spark
 import { instituteConfig, siteConfig } from '../config';
 import ContactForm from '../sections/ContactForm';
 import Footer from '../sections/Footer';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,6 +74,10 @@ export default function InstitutePage() {
 
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-900 font-sans selection:bg-brand-teal selection:text-white">
+      <SEO 
+        title="Instituto Vila Tech | Inovação & Transformação Social em Itu"
+        description="Conectando jovens e comunidades ao futuro da tecnologia e arte. Conheça a missão, visão e valores do Instituto Vila Tech em Itu, SP."
+      />
       {/* 1. Navegação Encapsulada (Pill) idêntica à Home + Logo */}
       <div className="fixed top-6 left-4 md:top-8 md:left-8 z-[60] pointer-events-auto">
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
@@ -241,17 +246,17 @@ export default function InstitutePage() {
         <div className="container mx-auto max-w-6xl">
            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
              <div className="fade-up">
-               <h3 className="font-display text-3xl font-bold text-zinc-900 mb-4 tracking-tight">São Paulo</h3>
+               <h2 className="font-display text-3xl font-bold text-zinc-900 mb-4 tracking-tight">São Paulo</h2>
                <p className="text-zinc-500 font-medium mb-1">Vila Tech Hub HQ</p>
                <p className="text-zinc-400 font-light text-sm">Av. Paulista, 1000<br/>SP, Brasil</p>
              </div>
              <div className="fade-up">
-               <h3 className="font-display text-3xl font-bold text-zinc-900 mb-4 tracking-tight">Campinas</h3>
+               <h2 className="font-display text-3xl font-bold text-zinc-900 mb-4 tracking-tight">Campinas</h2>
                <p className="text-zinc-500 font-medium mb-1">Polo de Inovação</p>
                <p className="text-zinc-400 font-light text-sm">Pq. Tecnológico, 404<br/>SP, Brasil</p>
              </div>
              <div className="fade-up">
-               <h3 className="font-display text-3xl font-bold text-zinc-900 mb-4 tracking-tight">Remoto</h3>
+               <h2 className="font-display text-3xl font-bold text-zinc-900 mb-4 tracking-tight">Remoto</h2>
                <p className="text-zinc-500 font-medium mb-1">Presença Nacional</p>
                <p className="text-zinc-400 font-light text-sm">Especialistas conectados<br/>em mais de 15 estados.</p>
              </div>

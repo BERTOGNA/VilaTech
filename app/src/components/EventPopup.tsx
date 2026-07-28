@@ -3,12 +3,14 @@ import { X, Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 
 const EVENT_CTA_URL = 'https://bit.ly/4dKP2e3';
 const SESSION_KEY = 'vth_event_popup_closed';
+const SHOW_POPUP = false; // Set to true to enable for future events
 
 const EventPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
+    if (!SHOW_POPUP) return;
     // Show popup after a small delay, only once per session
     const alreadyClosed = sessionStorage.getItem(SESSION_KEY);
     if (!alreadyClosed) {

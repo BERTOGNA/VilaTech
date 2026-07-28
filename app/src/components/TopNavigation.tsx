@@ -1,26 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { Play, Music, Disc, Calendar, BookOpen, Building2, Users, Rocket, Mail, Globe, Eye, Target, ShieldCheck, MapPin, Lightbulb, Menu, X } from 'lucide-react';
-import { heroConfig, siteConfig, instituteNavItems, coworkingPageNavItems } from '../config';
+import { Menu, X } from 'lucide-react';
+import { siteConfig, heroConfig, globalNavItems } from '../config';
 import { Link, useLocation } from 'react-router-dom';
 
-const ICON_MAP = {
-  disc: Disc,
-  play: Play,
-  calendar: Calendar,
-  music: Music,
-  book: BookOpen,
-  building: Building2,
-  users: Users,
-  rocket: Rocket,
-  mail: Mail,
-  globe: Globe,
-  eye: Eye,
-  target: Target,
-  shield: ShieldCheck,
-  'map-pin': MapPin,
-  lightbulb: Lightbulb,
-};
+
 
 interface TopNavigationProps {
   variant?: 'home' | 'institute' | 'coworking';
@@ -32,12 +16,7 @@ const TopNavigation = ({ variant = 'home' }: TopNavigationProps) => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Extend coworking menu items or keep current
-  const navItems = variant === 'home' 
-    ? heroConfig.navItems 
-    : variant === 'institute' 
-      ? instituteNavItems 
-      : coworkingPageNavItems;
+  const navItems = globalNavItems;
 
   useEffect(() => {
     // Animate strictly on mount/remount
@@ -67,19 +46,14 @@ const TopNavigation = ({ variant = 'home' }: TopNavigationProps) => {
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
-    const targetPath = variant === 'home' ? '/' : variant === 'institute' ? '/instituto' : '/coworking';
-    
-    // If not on the correct page, redirect to that page with hash
-    if (location.pathname !== targetPath) {
-      window.location.href = `${targetPath}#${id}`;
-      return;
-    }
-    
+
     const element = document.getElementById(id);
     if (element) {
       setTimeout(() => {
         element.scrollIntoView({ behavior: 'smooth' });
       }, 100);
+    } else {
+      window.location.href = `/#${id}`;
     }
   };
 
@@ -112,12 +86,8 @@ const TopNavigation = ({ variant = 'home' }: TopNavigationProps) => {
           >
             <div className="flex items-center gap-0.5 md:gap-1">
               {navItems.map((item) => {
-                const IconComponent = ICON_MAP[item.icon as keyof typeof ICON_MAP];
                 const content = (
-                  <>
-                    <IconComponent className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span className="whitespace-nowrap">{item.label}</span>
-                  </>
+                  <span className="whitespace-nowrap">{item.label}</span>
                 );
 
                 const itemClasses = "flex items-center gap-1.5 md:gap-2 px-3 py-2 text-xs font-sans uppercase tracking-wider text-white hover:bg-white/20 transition-colors rounded-full whitespace-nowrap";
@@ -169,7 +139,6 @@ const TopNavigation = ({ variant = 'home' }: TopNavigationProps) => {
             Navegação — {variant === 'home' ? 'Site' : variant === 'institute' ? 'Instituto' : 'Coworking'}
           </p>
           {navItems.map((item, idx) => {
-            const IconComponent = ICON_MAP[item.icon as keyof typeof ICON_MAP];
             const itemClasses = `flex items-center gap-4 text-lg font-syne uppercase tracking-wider text-white hover:text-[#9B35AE] transition-colors py-3 border-b border-white/5 last:border-0 transform transition-transform duration-500 delay-[${idx * 50}ms] ${
               mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`;
@@ -182,7 +151,6 @@ const TopNavigation = ({ variant = 'home' }: TopNavigationProps) => {
                   className={itemClasses}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <IconComponent className="w-5 h-5 text-[#9B35AE]" />
                   <span>{item.label}</span>
                 </Link>
               );
@@ -194,7 +162,6 @@ const TopNavigation = ({ variant = 'home' }: TopNavigationProps) => {
                 onClick={() => item.sectionId && scrollToSection(item.sectionId)}
                 className={itemClasses}
               >
-                <IconComponent className="w-5 h-5 text-[#9B35AE]" />
                 <span className="text-left">{item.label}</span>
               </button>
             );

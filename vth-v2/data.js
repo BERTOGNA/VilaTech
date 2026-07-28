@@ -32,13 +32,6 @@ const EVENTOS = [
     speakers:[], local:"Vila Tech Hub", valor:"Gratuito / Membros", linkInscricao:""
   },
   {
-    mes:"junho", dia:23, semana:"Ter", inicio:"18:30", fim:"21:30",
-    tipo:"Curso",
-    titulo:"Curso: IA no Direito",
-    sub:"Aplicação prática de IA no exercício da advocacia",
-    speakers:["Felipe Scalet"], local:"Vila Tech Hub", valor:"A confirmar", linkInscricao:""
-  },
-  {
     mes:"junho", dia:25, semana:"Qui", inicio:"18:00", fim:"21:00",
     tipo:"Palestra",
     titulo:"Palestras: IA para Criatividade",
@@ -84,6 +77,13 @@ const EVENTOS = [
     sub:"Game design, intercâmbio educacional e criação com Unreal Engine",
     speakers:["Tomoto","Danilo Fiocco","Dino Paiva"],
     local:"Auditório VTH", valor:"Gratuito", linkInscricao:""
+  },
+  {
+    mes:"julho", dia:7, semana:"Ter", inicio:"18:30", fim:"21:30",
+    tipo:"Curso",
+    titulo:"Curso: IA no Direito",
+    sub:"Aplicação prática de IA no exercício da advocacia",
+    speakers:["Felipe Scalet"], local:"Vila Tech Hub", valor:"A confirmar", linkInscricao:""
   },
   {
     mes:"julho", dia:8, semana:"Qua", inicio:"18:30", fim:"21:30",

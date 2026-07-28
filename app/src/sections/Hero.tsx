@@ -6,7 +6,7 @@ import { heroConfig } from '../config';
 gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   // Null check: if config is empty, do not render
-  if (!heroConfig.decodeText && !heroConfig.brandName && heroConfig.navItems.length === 0) {
+  if (!heroConfig.decodeText && !heroConfig.brandName) {
     return null;
   }
 

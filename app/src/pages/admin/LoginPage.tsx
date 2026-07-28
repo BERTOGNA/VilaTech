@@ -125,7 +125,7 @@ const LoginPage = () => {
         </div>
         
         <p className="text-center mt-10 text-sm text-neutral-600 font-medium">
-          Dificuldade para acessar? <a href="mailto:contato@vilatechub.com.br" className="text-white hover:underline">Solicite suporte</a>
+          Dificuldade para acessar? <a href="mailto:atendimento@vilatechub.com.br" className="text-white hover:underline">Solicite suporte</a>
         </p>
       </div>
     </div>

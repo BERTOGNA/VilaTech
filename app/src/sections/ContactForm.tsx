@@ -86,9 +86,14 @@ const ContactForm = ({ zIndex }: ContactFormProps = {}) => {
       await api.post('/leads', payload);
 
       setIsSubmitted(true);
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'generate_lead', {
+          'event_category': 'Leads',
+          'event_label': 'Formulário de Contato - Vila Tech Hub'
+        });
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Aqui idealmente teríamos um toast de erro, mas para v1 vamos logar
       alert('Houve um erro ao enviar sua mensagem. Tente novamente.');
     } finally {
       setIsSubmitting(false);
@@ -120,6 +125,7 @@ const ContactForm = ({ zIndex }: ContactFormProps = {}) => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
+          data-track="form-lead-contact"
           className="max-w-4xl mx-auto p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10"
         >
           {isSubmitted ? (

@@ -1,0 +1,191 @@
+[
+  {
+    "id": "mesa-01",
+    "name": "Mesa de Coworking 01",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 1
+  },
+  {
+    "id": "mesa-02",
+    "name": "Mesa de Coworking 02",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 2
+  },
+  {
+    "id": "mesa-03",
+    "name": "Mesa de Coworking 03",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 3
+  },
+  {
+    "id": "mesa-04",
+    "name": "Mesa de Coworking 04",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 4
+  },
+  {
+    "id": "mesa-05",
+    "name": "Mesa de Coworking 05",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 5
+  },
+  {
+    "id": "mesa-06",
+    "name": "Mesa de Coworking 06",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 6
+  },
+  {
+    "id": "mesa-07",
+    "name": "Mesa de Coworking 07",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 7
+  },
+  {
+    "id": "mesa-08",
+    "name": "Mesa de Coworking 08",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 8
+  },
+  {
+    "id": "mesa-09",
+    "name": "Mesa de Coworking 09",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 9
+  },
+  {
+    "id": "mesa-10",
+    "name": "Mesa de Coworking 10",
+    "type": "posicao",
+    "capacity": 1,
+    "amenities": [
+      "Tomada Individual",
+      "Cadeira Ergonômica",
+      "Wi-Fi de Alta Velocidade"
+    ],
+    "pricePerHour": 10,
+    "isActive": true,
+    "order": 10
+  },
+  {
+    "id": "sala-alpha",
+    "name": "Sala de Reunião Alpha",
+    "type": "sala",
+    "capacity": 6,
+    "amenities": [
+      "Mesa de Reunião",
+      "TV 55\"",
+      "Quadro Branco de Vidro",
+      "Climatizada",
+      "Café & Água"
+    ],
+    "pricePerHour": 50,
+    "isActive": true,
+    "order": 11
+  },
+  {
+    "id": "sala-beta",
+    "name": "Sala de Reunião Beta",
+    "type": "sala",
+    "capacity": 10,
+    "amenities": [
+      "Mesa de Reunião Ampla",
+      "TV 75\" com Videochamada",
+      "Quadro Branco de Vidro",
+      "Climatizada",
+      "Café & Água premium"
+    ],
+    "pricePerHour": 80,
+    "isActive": true,
+    "order": 12
+  },
+  {
+    "id": "auditorio-principal",
+    "name": "Auditório Principal",
+    "type": "auditorio",
+    "capacity": 50,
+    "amenities": [
+      "Projetor Laser 4K",
+      "Sistema de Som Estéreo",
+      "Microfones Sem Fio",
+      "Palco com Púlpito",
+      "Climatização Inteligente",
+      "Área de Credenciamento"
+    ],
+    "pricePerHour": 200,
+    "isActive": true,
+    "order": 13
+  }
+]

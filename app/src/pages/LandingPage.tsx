@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import useLenis from '../hooks/useLenis';
-import { siteConfig } from '../config';
 import TopNavigation from '../components/TopNavigation';
 import Hero from '../sections/Hero';
 import AlbumCube from '../sections/AlbumCube';
@@ -17,17 +16,14 @@ import Footer from '../sections/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Preloader from '../components/Preloader';
 
+import SEO from '../components/SEO';
+
 const LandingPage = () => {
 
   // Initialize Lenis smooth scrolling
   useLenis();
 
   useEffect(() => {
-    // Set page title from config
-    if (siteConfig.title) {
-      document.title = siteConfig.title;
-    }
-
     // Add viewport meta for better mobile experience
     const metaViewport = document.querySelector('meta[name="viewport"]');
     if (metaViewport) {
@@ -37,6 +33,10 @@ const LandingPage = () => {
 
   return (
     <main className="relative w-full min-h-screen bg-void-black">
+      <SEO 
+        title="Vila Tech Hub | Ecossistema de Inovação, Coworking & Cursos em Itu"
+        description="Conectamos tecnologia, educação e negócios em Itu, SP. Explore nosso coworking de alto padrão, cursos práticos de Inteligência Artificial e clube de benefícios exclusivos."
+      />
       <Preloader />
       <TopNavigation />
       

@@ -331,7 +331,7 @@ export const footerConfig: FooterConfig = {
   quickLinks: ["Educação", "Coworking", "Clube", "Startups", "Investidores", "Localização", "Contato"],
   contactTitle: "Contato",
   emailLabel: "Email",
-  email: "contato@vilatehhub.com.br",
+  email: "atendimento@vilatechub.com.br",
   phoneLabel: "Telefone",
   phone: "(11) 0000-0000",
   addressLabel: "Endereço",

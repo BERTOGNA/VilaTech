@@ -183,17 +183,17 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-display font-bold text-sm uppercase tracking-wider text-white mb-6">
+              <h3 className="font-display font-bold text-sm uppercase tracking-wider text-white mb-6">
                 {footerConfig.quickLinksTitle}
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 {footerConfig.quickLinks.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm text-white/50 hover:text-brand-teal transition-colors flex items-center gap-2 group"
                     >
-                      <span>{link}</span>
+                      <span>{link.label}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   </li>
@@ -203,9 +203,9 @@ const Footer = () => {
 
             {/* Contact */}
             <div>
-              <h4 className="font-display font-bold text-sm uppercase tracking-wider text-white mb-6">
+              <h3 className="font-display font-bold text-sm uppercase tracking-wider text-white mb-6">
                 {footerConfig.contactTitle}
-              </h4>
+              </h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <Mail className="w-4 h-4 text-brand-teal/60 mt-0.5" />
@@ -235,9 +235,9 @@ const Footer = () => {
 
             {/* Newsletter */}
             <div>
-              <h4 className="font-display font-bold text-sm uppercase tracking-wider text-white mb-6">
+              <h3 className="font-display font-bold text-sm uppercase tracking-wider text-white mb-6">
                 {footerConfig.newsletterTitle}
-              </h4>
+              </h3>
               <p className="text-sm text-white/50 mb-4">
                 {footerConfig.newsletterDescription}
               </p>
@@ -266,8 +266,8 @@ const Footer = () => {
             </p>
             <div className="flex gap-6">
               {footerConfig.bottomLinks.map((link) => (
-                <a key={link} href="#" className="text-xs text-white/30 hover:text-white/60 transition-colors">
-                  {link}
+                <a key={link.label} href={link.href} className="text-xs text-white/30 hover:text-white/60 transition-colors">
+                  {link.label}
                 </a>
               ))}
             </div>

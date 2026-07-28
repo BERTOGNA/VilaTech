@@ -39,19 +39,6 @@ const EVENTOS = [
     local: "Vila Tech Hub",
     valor: "Gratuito / Membros",
     linkInscricao: ""
-  },
-  {
-    mes: "junho", dia: 23, semana: "Ter",
-    inicio: "18:30", fim: "21:30",
-    tipo: "Curso",
-    titulo: "IA no Direito",
-    sub: "Aplicação prática de IA no exercício da advocacia",
-    descritivo: "Curso completo sobre como a IA está transformando a prática jurídica: triagem de processos, análise de contratos, pesquisa de jurisprudência e automação de peças.",
-    speakers: ["Felipe Scalet"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
-  },
   {
     mes: "junho", dia: 25, semana: "Qui",
     inicio: "18:00", fim: "21:00",
@@ -125,6 +112,18 @@ const EVENTOS = [
     speakers: ["Tomoto", "Danilo Fiocco", "Dino Paiva"],
     local: "Auditório VTH",
     valor: "Gratuito",
+    linkInscricao: ""
+  },
+  {
+    mes: "julho", dia: 7, semana: "Ter",
+    inicio: "18:30", fim: "21:30",
+    tipo: "Curso",
+    titulo: "IA no Direito",
+    sub: "Aplicação prática de IA no exercício da advocacia",
+    descritivo: "Curso completo sobre como a IA está transformando a prática jurídica: triagem de processos, análise de contratos, pesquisa de jurisprudência e automação de peças.",
+    speakers: ["Felipe Scalet"],
+    local: "Vila Tech Hub",
+    valor: "A confirmar",
     linkInscricao: ""
   },
   {

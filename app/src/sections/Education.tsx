@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Building, Lightbulb, Gamepad2, Brain, Code, Rocket, Video } from 'lucide-react';
 import { educationConfig } from '../config';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -105,13 +106,6 @@ const Education = ({ zIndex = 40 }: EducationProps) => {
     return () => ctx.revert();
   }, []);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
       id="education"
@@ -130,12 +124,20 @@ const Education = ({ zIndex = 40 }: EducationProps) => {
             <div className="font-medium text-void-black/70 text-lg leading-relaxed mb-8 whitespace-pre-line">
               {educationConfig.description}
             </div>
-            <button
-              onClick={scrollToContact}
-              className="px-8 py-3 bg-brand-pink text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-pink/80 transition-colors duration-300"
-            >
-              {educationConfig.ctaText}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+              <Link
+                to="/cursos"
+                className="px-8 py-3 bg-brand-pink text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-pink/85 transition-all duration-300 text-center font-bold"
+              >
+                Conheça os cursos
+              </Link>
+              <Link
+                to="/agenda"
+                className="px-8 py-3 border border-void-black/20 text-void-black hover:border-brand-pink hover:text-[#e83a79] font-display text-sm uppercase tracking-wider rounded-full transition-all duration-300 text-center font-bold"
+              >
+                Agenda de palestras
+              </Link>
+            </div>
           </div>
 
           <div className="relative order-2 flex lg:justify-start justify-center items-start group">

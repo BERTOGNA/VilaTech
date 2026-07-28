@@ -3,12 +3,17 @@ import { EVENTOS, MESES_ORDEM, MESES_LABEL, type AgendaEvent } from '../data/age
 import TopNavigation from '../components/TopNavigation';
 import Footer from '../sections/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { ExternalLink, SlidersHorizontal } from 'lucide-react';
+import { ExternalLink, SlidersHorizontal, Calendar } from 'lucide-react';
 import useLenis from '../hooks/useLenis';
+import api from '../services/api';
+import SEO from '../components/SEO';
 
 export default function AgendaPage() {
   // Smooth scroll
   useLenis();
+
+  // State for events loaded dynamically from backend
+  const [eventos, setEventos] = useState<AgendaEvent[]>(EVENTOS);
 
   // State for filters
   const [activeCategory, setActiveCategory] = useState<'todos' | 'Palestra' | 'Curso' | 'Evento'>('todos');
@@ -22,18 +27,32 @@ export default function AgendaPage() {
     eventos: 0,
   });
 
-  // Target values for animation
-  const targetStats = {
-    total: EVENTOS.length,
-    palestras: EVENTOS.filter(e => e.tipo === 'Palestra').length,
-    cursos: EVENTOS.filter(e => e.tipo === 'Curso').length,
-    eventos: EVENTOS.filter(e => e.tipo === 'Evento').length,
-  };
+  // Fetch events from backend API on mount
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const response = await api.get('/events');
+        if (Array.isArray(response.data) && response.data.length > 0) {
+          setEventos(response.data);
+        }
+      } catch (error) {
+        console.error("Erro ao carregar eventos do backend, utilizando dados locais:", error);
+      }
+    }
+    fetchEvents();
+  }, []);
 
-  // Animate stats on load
+  // Animate stats on load/loaded events
   useEffect(() => {
     document.title = "Vila Tech Hub — Agenda de Atividades";
     window.scrollTo({ top: 0, behavior: 'instant' });
+
+    const targetStats = {
+      total: eventos.length,
+      palestras: eventos.filter(e => e.tipo === 'Palestra').length,
+      cursos: eventos.filter(e => e.tipo === 'Curso').length,
+      eventos: eventos.filter(e => e.tipo === 'Evento').length,
+    };
 
     const duration = 800;
     const startTime = performance.now();
@@ -56,10 +75,80 @@ export default function AgendaPage() {
     }
 
     requestAnimationFrame(tick);
-  }, []);
+  }, [eventos]);
+
+  // Calendar Helper: Google Calendar Link
+  const getGoogleCalendarUrl = (ev: AgendaEvent): string => {
+    try {
+      if (!ev.data) return '#';
+      const parts = ev.data.split('/');
+      if (parts.length !== 3) return '#';
+      const cleanDate = `${parts[2]}${parts[1].padStart(2, '0')}${parts[0].padStart(2, '0')}`;
+      const startStr = (ev.inicio || '00:00').replace(':', '');
+      const endStr = (ev.fim || '23:59').replace(':', '');
+      const dates = `${cleanDate}T${startStr}00/${cleanDate}T${endStr}00`;
+      
+      const text = encodeURIComponent(ev.titulo);
+      const details = encodeURIComponent(
+        `${ev.sub || ''}\n\n${ev.descritivo || ''}\n\nPalestrantes: ${ev.speakers ? ev.speakers.join(', ') : ''}\n\nModalidade: ${ev.modalidade || 'Presencial'}\n\nValor: ${ev.valor || 'Gratuito'}`
+      );
+      const location = encodeURIComponent(ev.local || 'Vila Tech Hub');
+      
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&details=${details}&location=${location}&ctz=America/Sao_Paulo`;
+    } catch (e) {
+      console.error(e);
+      return '#';
+    }
+  };
+
+  // Calendar Helper: Download .ics (iCal)
+  const downloadIcsFile = (ev: AgendaEvent) => {
+    try {
+      if (!ev.data) return;
+      const parts = ev.data.split('/');
+      if (parts.length !== 3) return;
+      const cleanDate = `${parts[2]}${parts[1].padStart(2, '0')}${parts[0].padStart(2, '0')}`;
+      const startStr = (ev.inicio || '00:00').replace(':', '') + '00';
+      const endStr = (ev.fim || '23:59').replace(':', '') + '00';
+
+      const tStart = `${cleanDate}T${startStr}`;
+      const tEnd = `${cleanDate}T${endStr}`;
+
+      const summary = ev.titulo;
+      const description = `${ev.sub || ''}\\n\\n${ev.descritivo || ''}\\n\\nPalestrantes: ${ev.speakers ? ev.speakers.join(', ') : ''}\\n\\nModalidade: ${ev.modalidade || 'Presencial'}`.replace(/\n/g, '\\n');
+      const location = ev.local || 'Vila Tech Hub';
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Vila Tech Hub//Agenda//PT',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `UID:${ev.googleCalendarId || `evt-${Date.now()}`}@vilatechhub.com`,
+        `DTSTART;TZID=America/Sao_Paulo:${tStart}`,
+        `DTEND;TZID=America/Sao_Paulo:${tEnd}`,
+        `SUMMARY:${summary}`,
+        `DESCRIPTION:${description}`,
+        `LOCATION:${location}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `${ev.titulo.toLowerCase().replace(/[^a-z0-9]/g, '_')}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // Filter logic
-  const filteredEventos = EVENTOS.filter(ev => {
+  const filteredEventos = eventos.filter(ev => {
     const matchesCategory = activeCategory === 'todos' || ev.tipo === activeCategory;
     const matchesMonth = !activeMonth || ev.mes === activeMonth;
     return matchesCategory && matchesMonth;
@@ -80,14 +169,18 @@ export default function AgendaPage() {
   });
 
   // Distinct months present in data
-  const monthsInData = Array.from(new Set(EVENTOS.map(e => e.mes))).sort((a, b) => {
+  const monthsInData = Array.from(new Set(eventos.map(e => e.mes))).sort((a, b) => {
     return MESES_ORDEM.indexOf(a) - MESES_ORDEM.indexOf(b);
   });
 
   return (
     <div className="bg-[#0a0a0a] min-h-screen text-[#F5F0FA] font-sans selection:bg-[#9B35AE] selection:text-white">
+      <SEO 
+        title="Agenda Vila Tech Hub | Eventos, Cursos de IA & Tecnologia em Itu"
+        description="Acompanhe o calendário de atividades do Vila Tech Hub em Itu, SP. Palestras, cursos de Inteligência Artificial, workshops de tecnologia e eventos corporativos gratuitos e pagos."
+      />
       {/* Navigation */}
-      <TopNavigation variant="coworking" />
+      <TopNavigation variant="home" />
 
       {/* Hero Section */}
       <section className="relative pt-[120px] pb-16 px-6 md:px-12 overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#160820] to-[#0a0a0a]">
@@ -296,8 +389,33 @@ export default function AgendaPage() {
                           </div>
                         )}
 
+                        {/* Adicionar à Agenda Section */}
+                        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5 text-[11px] text-gray-400">
+                          <span className="flex items-center gap-1.5 font-medium">
+                            <Calendar className="w-3.5 h-3.5 text-[#9B35AE] shrink-0" />
+                            Salvar:
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <a
+                              href={getGoogleCalendarUrl(ev)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[#9B35AE] hover:text-white transition-colors hover:underline"
+                            >
+                              Google Agenda
+                            </a>
+                            <span className="text-white/10">|</span>
+                            <button
+                              onClick={() => downloadIcsFile(ev)}
+                              className="text-[#9B35AE] hover:text-white transition-colors hover:underline flex items-center gap-0.5"
+                            >
+                              Outlook / iCal
+                            </button>
+                          </div>
+                        </div>
+
                         {/* Footer card */}
-                        <div className="flex items-center justify-between pt-4 border-t border-white/5 gap-2">
+                        <div className="flex items-center justify-between pt-4 border-t border-white/5 gap-2 mt-4">
                           <div className="flex items-center gap-2 text-xs text-gray-400 max-w-[60%]">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#9B35AE] shrink-0" />
                             <span className="truncate">{ev.local || 'Vila Tech Hub'}</span>

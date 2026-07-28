@@ -51,7 +51,7 @@
     var evs = eventos.slice().sort(function(a,b){ return a.dia-b.dia; });
     sec.innerHTML =
       '<div class="month-header">' +
-        '<div class="month-name">'+(MESES_LABEL[mes]||mes)+'</div>' +
+        '<h2 class="month-name">'+(MESES_LABEL[mes]||mes)+'</h2>' +
         '<div class="month-year">2026</div>' +
         '<div class="month-count" id="count-'+mes+'">'+evs.length+' atividade'+(evs.length!==1?'s':'')+'</div>' +
       '</div>' +
@@ -69,7 +69,7 @@
       ? '<div class="card-speakers">'+ev.speakers.map(function(s){ return '<span class="speaker-pill">'+h(s)+'</span>'; }).join('')+'</div>' : '';
     var cta = ev.linkInscricao
       ? '<a class="card-cta" href="'+h(ev.linkInscricao)+'" target="_blank" rel="noopener">Inscrever-se →</a>'
-      : '<a class="card-cta" href="https://vilatechub.com.br" target="_blank" rel="noopener">Saiba mais →</a>';
+      : '<a class="card-cta" href="https://vilatechub.com.br" target="_blank" rel="noopener">Conhecer o Vila Tech Hub →</a>';
     card.innerHTML =
       '<span class="card-type '+tc+'">'+h(ev.tipo)+'</span>'+
       '<div class="card-date">'+

@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Lightbulb, RefreshCw, Users, ShieldCheck, Laptop, Leaf, Star, Send, Check, User, Mail, Phone, MessageSquare } from 'lucide-react';
+import { MapPin, Target, Zap, Lightbulb, Users, ShieldCheck, Send, Check, User, Mail, Phone, MessageSquare, X, BookOpen, Palette, Globe, Award } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
@@ -10,6 +10,7 @@ import Footer from '../sections/Footer';
 gsap.registerPlugin(ScrollTrigger);
 
 import TopNavigation from '../components/TopNavigation';
+import SEO from '../components/SEO';
 
 export default function InstitutePage() {
 
@@ -33,6 +34,7 @@ export default function InstitutePage() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -192,13 +194,13 @@ export default function InstitutePage() {
   }, []);
 
   const values = [
-    { title: "INOVAÇÃO COM PROPÓSITO", icon: Lightbulb },
-    { title: "TRANSFORMAÇÃO SOCIAL", icon: RefreshCw },
-    { title: "COLABORAÇÃO RADICAL", icon: Users },
-    { title: "ÉTICA E INTEGRIDADE", icon: ShieldCheck },
-    { title: "INCLUSÃO DIGITAL", icon: Laptop },
-    { title: "SUSTENTABILIDADE", icon: Leaf },
-    { title: "EXCELÊNCIA CONTÍNUA", icon: Star },
+    { title: "Inovação com propósito", description: "Aplicar a tecnologia para melhorar vidas e promover impacto positivo.", icon: Lightbulb },
+    { title: "Educação que transforma", description: "Estimular o pensamento crítico, a criatividade e o aprendizado colaborativo.", icon: BookOpen },
+    { title: "Inclusão e sustentabilidade", description: "Garantir acesso igualitário às oportunidades de formação e desenvolvimento.", icon: Globe },
+    { title: "Cultura e diversidade", description: "Valorizar as expressões artísticas e as múltiplas identidades como motor de evolução.", icon: Palette },
+    { title: "Ética e transparência", description: "Agir com responsabilidade social, integridade e respeito nas relações institucionais.", icon: ShieldCheck },
+    { title: "Colaboração", description: "Fomentar redes de conhecimento e empreendedorismo entre empresas, startups e indivíduos.", icon: Users },
+    { title: "Excelência e protagonismo", description: "Formar agentes de mudança preparados para liderar a inovação no país.", icon: Award },
   ];
 
   const councilMembers = [
@@ -224,6 +226,10 @@ export default function InstitutePage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 font-sans selection:bg-brand-teal selection:text-white overflow-hidden">
+      <SEO 
+        title="Instituto Vila Tech | Inovação, Tecnologia & Educação em Itu, SP"
+        description="O Instituto Cultural e Educacional Vila Tech une inovação tecnológica, arte e desenvolvimento social em Itu, SP. Conheça nossos projetos sociais e de profissionalização."
+      />
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0%); }
@@ -273,9 +279,12 @@ export default function InstitutePage() {
               <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
                 Ser Parceiro
               </a>
-              <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors">
+              <button 
+                onClick={() => setIsDonationModalOpen(true)} 
+                className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors"
+              >
                 Doar Agora
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -293,8 +302,8 @@ export default function InstitutePage() {
               <div className="w-12 h-1 bg-brand-teal mt-6"></div>
             </div>
             <div className="md:w-2/3 border-l border-brand-teal/30 pl-8 md:pl-16 py-4">
-              <p className="text-2xl md:text-4xl text-zinc-300 font-light leading-snug">
-                {renderStaggeredText("O Instituto Cultural e Educacional Vila Tech tem como objetivo promover a transformação social e profissionalização de programas inovadores que unem arte, tecnologia e desenvolvimento humano sustentável para as próximas gerações.")}
+              <p className="text-2xl md:text-3xl text-zinc-300 font-light leading-snug">
+                {renderStaggeredText("O Instituto Cultural e Educacional Vila Tech tem como objetivo promover a transformação social e profissional por meio da educação, tecnologia, arte e cultura, criando pontes entre o conhecimento técnico, a inovação criativa e o desenvolvimento humano e a democratização do acesso às novas tecnologias através de metodologias de aprendizado inovadoras, estimulando o protagonismo e a inclusão digital de jovens e comunidades.")}
               </p>
             </div>
           </div>
@@ -312,8 +321,8 @@ export default function InstitutePage() {
               </h2>
             </div>
             <div className="md:w-3/4">
-              <p className="text-3xl md:text-5xl lg:text-3xl xl:text-5xl text-white font-bold leading-tight tracking-tight mb-8">
-                {renderStaggeredText("Ser referência nacional em educação tecnológica e criativa, capacitando talentos para liderar a economia digital com ética e impacto social positivo.")}
+              <p className="text-2xl md:text-4xl text-white font-bold leading-tight tracking-tight mb-8">
+                {renderStaggeredText("Ser referência nacional em educação tecnológica e criativa, reconhecida por formar profissionais preparados para os desafios do futuro e por inspirar um ecossistema sustentável de inovação, empreendedorismo e impacto social. Tornar-se um dos principais polos de cultura, educação e tecnologia do interior paulista, através do Projeto Vila Tech Hub como plataforma de aprendizado contínuo e colaboração entre pessoas, empresas e instituições.")}
               </p>
               <div className="flex justify-end gap-6 text-brand-teal fade-up">
                 <Zap className="w-8 h-8" />
@@ -326,27 +335,91 @@ export default function InstitutePage() {
 
       {/* Valores */}
       <section id="valores" className="py-24 px-6 border-t border-zinc-800/50">
-        <div className="container mx-auto max-w-7xl overflow-hidden">
-          <div className="flex items-center gap-4 mb-8 fade-up text-center justify-center">
-            <div className="w-12 h-1 bg-brand-orange"></div>
-            <h2 className="font-display text-2xl md:text-3xl font-black uppercase tracking-wider text-white">Nossos Valores</h2>
-            <div className="w-12 h-1 bg-brand-orange"></div>
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col items-center gap-4 mb-16 fade-up text-center">
+            <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-wider text-white">Nossos Valores</h2>
+            <div className="w-24 h-1 bg-brand-orange"></div>
           </div>
 
-          <div className="relative w-full py-10">
-            {/* Gradient Mask for fading edges */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
-
-            <div className="animate-marquee gap-8">
-              {[...values, ...values, ...values, ...values].map((val, i) => (
-                <div key={i} className="valor-card flex flex-col items-center text-center group cursor-pointer w-48 shrink-0 hover:scale-[1.15] transition-transform duration-300 z-20 hover:z-30 relative">
-                  <div className="w-24 h-24 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6 group-hover:border-brand-teal group-hover:bg-brand-teal/10 group-hover:shadow-[0_0_40px_rgba(20,184,166,0.3)] transition-all duration-300">
-                    <val.icon className="w-10 h-10 text-brand-orange group-hover:text-brand-teal transition-colors" />
-                  </div>
-                  <h4 className="text-sm font-bold tracking-widest uppercase text-zinc-400 group-hover:text-white transition-colors leading-tight px-2">{val.title}</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {values.map((val, i) => (
+              <div key={i} className="valor-card flex flex-col items-start p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-brand-teal hover:bg-brand-teal/5 transition-all duration-300 group">
+                <div className="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center mb-6 group-hover:border-brand-teal transition-colors">
+                  <val.icon className="w-6 h-6 text-brand-orange group-hover:text-brand-teal transition-colors" />
                 </div>
-              ))}
+                <h3 className="text-xl font-bold text-white mb-3 leading-tight">{val.title}</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">{val.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Transparência e Natureza Jurídica */}
+      <section className="py-12 px-6 bg-black/40 border-t border-b border-zinc-800/50">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800">
+            <div>
+              <h3 className="text-lg font-bold text-white uppercase tracking-wider mb-2">Instituto Cultural e Educacional Vila Tech</h3>
+              <p className="text-zinc-400 text-sm max-w-2xl leading-relaxed">
+                Fundado sob a forma de associação sem fins lucrativos, o Instituto atua de forma inteiramente não-comercial em Itu/SP. Dedicado à promoção de direitos sociais, inclusão digital, educação tecnológica gratuita e preservação cultural.
+              </p>
+            </div>
+            <div className="text-right flex-shrink-0">
+              <p className="text-brand-teal text-xs uppercase tracking-widest font-bold mb-1">CNPJ Ativo</p>
+              <p className="text-xl font-mono font-bold text-white select-all">58.473.428/0001-31</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Atuação */}
+      <section id="atuacao" className="py-24 px-6 border-t border-zinc-800/50 bg-black/40">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 fade-up">
+            <div>
+              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">Nosso Impacto</p>
+              <h2 className="font-display text-5xl md:text-6xl font-black uppercase tracking-tighter text-white">
+                Áreas de Atuação
+              </h2>
+            </div>
+          </div>
+
+          <div className="space-y-24">
+            {/* Projetos de Arte e Cultura */}
+            <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
+              <div className="md:w-1/2">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
+                  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Projetos de Arte e Cultura" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
+                </div>
+              </div>
+              <div className="md:w-1/2">
+                <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Projetos de Arte e Cultura</h3>
+                <p className="text-xl text-zinc-300 font-light leading-relaxed mb-6">
+                  O Instituto Cultural Vila Tech promove o acesso à arte para populações vulneráveis, levando arte e cultura para as periferias da cidade através do Projeto <strong className="text-white">"Arte em Movimento"</strong>.
+                </p>
+              </div>
+            </div>
+
+            {/* Projetos Educacionais */}
+            <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
+              <div className="md:w-1/2">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
+                  <img src="/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Projetos Educacionais" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
+                </div>
+              </div>
+              <div className="md:w-1/2">
+                <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Projetos Educacionais</h3>
+                <h4 className="text-xl font-bold text-white mb-4">Projeto Vila Tech Hub - Cursos de Formação em Tecnologia</h4>
+                <p className="text-lg text-zinc-300 font-light leading-relaxed mb-4">
+                  O Instituto Cultural Vila Tech através de seu projeto Vila Tech Hub oferece uma agenda de cursos de formação em novas tecnologias, principalmente voltados para o uso de IA na educação e negócios.
+                </p>
+                <p className="text-lg text-zinc-300 font-light leading-relaxed">
+                  São cursos de tecnologia e principalmente IA aplicada de forma prática às realidades e necessidades de estudantes e profissionais, incluindo o ensino de criação e produção de games voltados para estudantes do ensino médio de escolas públicas e privadas, onde os alunos de escolas públicas têm acesso a formação gratuita subvencionada pelo Instituto.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -364,9 +437,9 @@ export default function InstitutePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap justify-center gap-12">
             {councilMembers.map((person, i) => (
-              <div key={i} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0">
+              <div key={i} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
                 <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-6 overflow-hidden relative border border-zinc-800 group-hover:border-brand-teal/50 transition-colors drop-shadow-2xl">
                   <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
@@ -524,7 +597,10 @@ export default function InstitutePage() {
                 <p className="text-[#023B33]/90 font-medium mb-10 max-w-sm text-lg leading-snug">
                   Sua doação impulsiona bolsas de estudo, equipamentos e infraestrutura para talentos em vulnerabilidade social.
                 </p>
-                <button className="inline-flex items-center justify-center px-10 py-4 bg-[#023B33] text-white font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors rounded-sm">
+                <button 
+                  onClick={() => setIsDonationModalOpen(true)} 
+                  className="inline-flex items-center justify-center px-10 py-4 bg-[#023B33] text-white font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors rounded-sm"
+                >
                   Fazer Doação
                 </button>
               </div>
@@ -580,6 +656,54 @@ export default function InstitutePage() {
 
       {/* Footer using existing component, but might need forced dark theme styling if it's currently light. Let's assume standard footer handles dark backgrounds fine or is enclosed in its own bg wrapper. */}
       <Footer />
+
+      {/* Donation Modal */}
+      {isDonationModalOpen && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-zinc-900 border border-brand-teal text-white shadow-2xl">
+            <button 
+              onClick={() => setIsDonationModalOpen(false)}
+              className="absolute top-4 right-4 text-white/60 hover:text-white"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <h3 className="font-display text-2xl font-bold uppercase text-brand-teal mb-4">Apoie o Instituto</h3>
+            <p className="text-zinc-300 text-sm mb-6 leading-relaxed">
+              O Instituto Cultural e Educacional Vila Tech é uma associação sem fins lucrativos. Sua doação apoia bolsas de estudos, infraestrutura e inclusão digital de jovens em Itu, SP.
+            </p>
+            <div className="p-4 rounded-xl bg-white/5 border border-white/10 mb-6">
+              <p className="text-xs uppercase tracking-wider text-brand-orange font-bold mb-2">Chave Pix (CNPJ)</p>
+              <p className="text-lg font-mono font-bold select-all bg-black/40 p-2.5 rounded border border-white/5 text-center">
+                58.473.428/0001-31
+              </p>
+              <p className="text-xs text-white/50 mt-2 text-center">
+                Razão Social: Instituto Cultural e Educacional Vila Tech
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <button 
+                onClick={() => {
+                  navigator.clipboard.writeText("58.473.428/0001-31");
+                  alert("Chave Pix CNPJ copiada com sucesso!");
+                }}
+                className="flex-1 py-3 rounded-xl bg-brand-teal text-black font-bold uppercase tracking-wider text-xs hover:bg-white transition-colors"
+              >
+                Copiar Chave Pix
+              </button>
+              <a 
+                href="#contato"
+                onClick={() => {
+                  setIsDonationModalOpen(false);
+                  setFormData(prev => ({ ...prev, interests: ['Investidor/Parceiro'] }));
+                }}
+                className="flex-grow flex items-center justify-center py-3 rounded-xl border border-zinc-700 text-center text-white font-bold uppercase tracking-wider text-xs hover:bg-zinc-800 transition-colors"
+              >
+                Outros Apoios
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Coffee, MessagesSquare, Smile } from 'lucide-react';
+import { Coffee, MessagesSquare, Smile, ShoppingCart, Disc } from 'lucide-react';
 
 const CafeAndCommunity = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -53,7 +53,7 @@ const CafeAndCommunity = () => {
                   <Coffee className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-display font-bold text-white mb-1">Copa Completa</h4>
+                  <h3 className="text-xl font-display font-bold text-white mb-1">Copa Completa</h3>
                   <p className="text-white/60 text-sm">Café fresco sempre disponível, microondas, geladeira e mesas para refeições ou bate-papos informais.</p>
                 </div>
               </div>
@@ -63,7 +63,7 @@ const CafeAndCommunity = () => {
                   <MessagesSquare className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-display font-bold text-white mb-1">Áreas de Descompressão</h4>
+                  <h3 className="text-xl font-display font-bold text-white mb-1">Áreas de Descompressão</h3>
                   <p className="text-white/60 text-sm">Sofás e pufes confortáveis espalhados estrategicamente para pausas produtivas.</p>
                 </div>
               </div>
@@ -73,15 +73,33 @@ const CafeAndCommunity = () => {
                   <Smile className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-display font-bold text-white mb-1">Recepção Acolhedora</h4>
+                  <h3 className="text-xl font-display font-bold text-white mb-1">Recepção Acolhedora</h3>
                   <p className="text-white/60 text-sm">Um ambiente profissional para receber seus clientes e convidados desde o primeiro minuto.</p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/20">
-                <p className="text-brand-cyan font-bold text-sm uppercase tracking-widest mb-1">Parceria Estratégica</p>
-                <h4 className="text-white font-display font-bold text-lg mb-2">Clube do Vinil Wine & Coffee</h4>
-                <p className="text-white/60 text-xs leading-relaxed">Experiência gastronômica e sensorial integrada ao ecossistema de inovação.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-brand-cyan/10 to-transparent border border-brand-cyan/20 hover:border-brand-cyan/40 transition-colors">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-cyan/20 flex items-center justify-center shrink-0">
+                      <Disc className="w-5 h-5 text-brand-cyan" />
+                    </div>
+                    <p className="text-brand-cyan font-bold text-[10px] uppercase tracking-widest">Parceria Premium</p>
+                  </div>
+                  <h3 className="text-white font-display font-bold text-xl mb-2">Clube do Vinil <br/>Wine & Coffee</h3>
+                  <p className="text-white/70 text-sm leading-relaxed">Experiência gastronômica e sensorial integrada ao ecossistema de inovação, unindo a paixão por discos de vinil, vinhos selecionados e cafés especiais.</p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-orange-500/10 to-transparent border border-orange-500/20 hover:border-orange-500/40 transition-colors">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center shrink-0">
+                      <ShoppingCart className="w-5 h-5 text-orange-500" />
+                    </div>
+                    <p className="text-orange-500 font-bold text-[10px] uppercase tracking-widest">Conveniência 24/7</p>
+                  </div>
+                  <h3 className="text-white font-display font-bold text-xl mb-2">PL Honest<br/>Market</h3>
+                  <p className="text-white/70 text-sm leading-relaxed">Facilidade e conveniência 24/7 com um mercado autônomo dentro do hub. Compre lanches, bebidas e snacks no sistema de autoatendimento ("pegue e pague") com total praticidade e confiança.</p>
+                </div>
               </div>
             </div>
           </div>

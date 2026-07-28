@@ -84,7 +84,7 @@ const InnovationPrograms = () => {
                   </div>
                 </div>
                 <button className="w-full py-2.5 bg-white/5 text-white/80 text-sm font-medium rounded-lg group-hover:bg-brand-cyan group-hover:text-void-black transition-colors duration-300 flex items-center justify-center gap-2">
-                  <span>Saber Mais</span>
+                  <span>Conhecer {programa.nome}</span>
                   <ArrowRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                 </button>
               </div>

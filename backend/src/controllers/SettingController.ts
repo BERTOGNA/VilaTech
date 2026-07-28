@@ -10,7 +10,7 @@ export class SettingController {
         // Return default settings if none exist
         return res.json({
           unitName: 'Vila Tech Hub Central',
-          unitEmail: 'comercial@vilatech.com.br'
+          unitEmail: 'atendimento@vilatechub.com.br'
         });
       }
       

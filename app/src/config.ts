@@ -27,7 +27,7 @@ export interface HeroNavItem {
   label: string;
   sectionId?: string;
   path?: string;
-  icon: "disc" | "play" | "calendar" | "music" | "book" | "building" | "users" | "rocket" | "mail" | "globe" | "eye" | "target" | "shield" | "map-pin" | "lightbulb";
+  icon?: string;
 }
 
 export interface HeroConfig {
@@ -35,7 +35,7 @@ export interface HeroConfig {
   brandName: string;
   decodeText: string;
   decodeChars: string;
-  subtitle: string; // We'll keep it as string in the interface but will use it differently in the config or update the interface if needed. Wait, let's update the interface to string[] to be more explicit for the animation.
+  subtitle: string;
   subtitlePhrases: string[];
   ctaPrimary: string;
   ctaPrimaryTarget: string;
@@ -44,7 +44,6 @@ export interface HeroConfig {
   cornerLabel: string;
   cornerDetail: string;
   youtubeId: string;
-  navItems: HeroNavItem[];
 }
 
 export const heroConfig: HeroConfig = {
@@ -61,14 +60,6 @@ export const heroConfig: HeroConfig = {
   cornerLabel: "Scroll",
   cornerDetail: "Down",
   youtubeId: "lGHrDIdafdI",
-  navItems: [
-    { label: "Coworking", sectionId: "coworking", icon: "building" },
-    { label: "Agenda", path: "/agenda", icon: "calendar" },
-    { label: "Educação", sectionId: "education", icon: "book" },
-    { label: "Clube", sectionId: "club", icon: "users" },
-    { label: "Instituto", path: "/instituto", icon: "globe" },
-    { label: "Contato", sectionId: "contact", icon: "mail" },
-  ],
 };
 
 // -- Album Cube Section (Three Pillars) ---------------------------------------
@@ -292,7 +283,7 @@ export interface FooterConfig {
   brandName: string;
   brandDescription: string;
   quickLinksTitle: string;
-  quickLinks: string[];
+  quickLinks: { label: string; href: string }[];
   contactTitle: string;
   emailLabel: string;
   email: string;
@@ -305,7 +296,7 @@ export interface FooterConfig {
   newsletterButtonText: string;
   subscribeAlertMessage: string;
   copyrightText: string;
-  bottomLinks: string[];
+  bottomLinks: { label: string; href: string }[];
   socialLinks: SocialLink[];
 }
 
@@ -320,20 +311,30 @@ export const footerConfig: FooterConfig = {
   brandName: "Vila Tech Hub",
   brandDescription: "Hub de inovação que conecta tecnologia, educação e criatividade em Itu, SP. Nosso ecossistema impulsiona projetos, alimenta mentes e cria conexões transformadoras.",
   quickLinksTitle: "Links Rápidos",
-  quickLinks: ["Coworking", "Educação", "Clube", "Parceiros", "Localização", "Contato"],
+  quickLinks: [
+    { label: "Home", href: "/" },
+    { label: "Coworking", href: "/coworking" },
+    { label: "Instituto", href: "/instituto" },
+    { label: "Cursos", href: "/cursos" },
+    { label: "Agenda", href: "/agenda" },
+    { label: "Reservas", href: "/reservas" },
+  ],
   contactTitle: "Contato",
   emailLabel: "Email",
-  email: "contato@vilatehhub.com.br",
+  email: "atendimento@vilatechub.com.br",
   phoneLabel: "Telefone",
   phone: "+55 11 99371-0652",
   addressLabel: "Endereço",
-  address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro",
+  address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro, Itu - SP, CEP 13312-050",
   newsletterTitle: "Receba novidades",
   newsletterDescription: "Inscreva-se para receber atualizações sobre cursos, eventos e novidades do Vila Tech Hub.",
   newsletterButtonText: "Inscrever",
   subscribeAlertMessage: "Obrigado por se inscrever! Em breve você receberá nossas novidades.",
-  copyrightText: "© 2025 Vila Tech Hub. Todos os direitos reservados.",
-  bottomLinks: ["Termos de Uso", "Política de Privacidade"],
+  copyrightText: "© 2025-2026 Instituto Cultural e Educacional Vila Tech. CNPJ: 58.473.428/0001-31. Associação Sem Fins Lucrativos. Todos os direitos reservados.",
+  bottomLinks: [
+    { label: "Termos de Uso", href: "/termos-de-uso" },
+    { label: "Política de Privacidade", href: "/politica-de-privacidade" }
+  ],
   socialLinks: [
     { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/vilatechub/" },
     { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/vila-tech-hub/" },
@@ -628,12 +629,14 @@ export interface InstituteConfig {
   };
 }
 
-export const instituteNavItems: HeroNavItem[] = [
-  { label: "Visão", sectionId: "visao", icon: "eye" },
-  { label: "Missão", sectionId: "missao", icon: "target" },
-  { label: "Valores", sectionId: "valores", icon: "shield" },
-  { label: "Conselho", sectionId: "conselho", icon: "users" },
-  { label: "Doar", sectionId: "contato", icon: "mail" },
+export const globalNavItems: HeroNavItem[] = [
+  { label: "Home", path: "/" },
+  { label: "Coworking", path: "/coworking" },
+  { label: "Reservas", path: "/reservas" },
+  { label: "Instituto", path: "/instituto" },
+  { label: "Cursos", path: "/cursos" },
+  { label: "Agenda", path: "/agenda" },
+  { label: "Contato", sectionId: "contact" },
 ];
 
 export const instituteConfig: InstituteConfig = {
@@ -767,16 +770,7 @@ export interface CoworkingPageConfig {
   };
 }
 
-export const coworkingPageNavItems: HeroNavItem[] = [
-  { label: "Postos", sectionId: "postos", icon: "building" },
-  { label: "Espaços", sectionId: "espacos", icon: "users" },
-  { label: "Endereço Virtual", sectionId: "virtual", icon: "map-pin" },
-  { label: "Combos", sectionId: "combos", icon: "rocket" },
-  { label: "Inovação", sectionId: "inovacao", icon: "lightbulb" },
-  { label: "Clube", sectionId: "clube", icon: "users" },
-  { label: "Preços", sectionId: "precos", icon: "target" },
-  { label: "Contato", sectionId: "contact", icon: "mail" },
-];
+
 
 export const coworkingPageConfig: CoworkingPageConfig = {
   hero: {
@@ -879,10 +873,12 @@ export const coworkingPageConfig: CoworkingPageConfig = {
   faq: {
     title: "Dúvidas Frequentes",
     questions: [
-      { q: "Quais são os horários de funcionamento?", a: "O coworking funciona de segunda a sexta, das 8h às 20h para planos Hot Desk. Para membros Fixed Desk e Salas Privativas, o acesso é 24/7." },
-      { q: "Posso receber clientes no espaço?", a: "Sim! Seus clientes serão recebidos pela nossa recepção. Recomendamos a reserva de uma sala de reunião para atendimentos." },
-      { q: "O que está incluso na diária?", a: "A diária inclui um posto de trabalho flexível (Hot Desk), internet de alta velocidade, café, água e acesso às áreas de descompressão." },
-      { q: "Como funciona o Endereço Fiscal?", a: "Ao contratar o plano de Endereço Fiscal, você poderá registrar o CNPJ da sua empresa (prestação de serviços) no endereço do Vila Tech Hub." }
+      { q: "Onde fica localizado o Vila Tech Hub?", a: "O Vila Tech Hub está localizado na Rua Convenção, 440, no bairro Itu Novo Centro, em Itu - SP, CEP 13300-113." },
+      { q: "Quais são os horários de funcionamento do coworking?", a: "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 8h às 20h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)." },
+      { q: "Quanto custa a diária de coworking (Hot Desk) no Vila Tech Hub?", a: "A diária de Hot Desk (posto flexível) custa R$ 60 e inclui internet de alta velocidade, café, água e acesso às áreas comuns." },
+      { q: "Quais são os planos mensais de coworking disponíveis?", a: "O plano Hot Desk Mensal (posto flexível) custa R$ 450/mês. O plano Fixed Desk (mesa fixa exclusiva com gaveteiro e acesso 24/7) custa R$ 650/mês." },
+      { q: "Como funciona o serviço de Endereço Fiscal e Escritório Virtual?", a: "O Vila Tech Hub oferece duas opções: o Endereço Comercial por R$ 120/mês (para divulgação) e o plano Endereço Fiscal + Comercial por R$ 200/mês (para registro de CNPJ de prestadores de serviços e recebimento de correspondências)." },
+      { q: "Posso alugar salas de reunião ou estúdio sob demanda?", a: "Sim. Oferecemos salas de reunião equipadas para até 8 pessoas por R$ 80/hora e um Estúdio de Podcast profissional por R$ 150/hora." }
     ]
   }
 };

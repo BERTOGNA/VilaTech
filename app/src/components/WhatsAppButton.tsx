@@ -86,6 +86,7 @@ const WhatsAppButton = () => {
       href={siteConfig.whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
+      data-track="cta-whatsapp-floating"
       className="fixed bottom-8 right-8 z-[9999] flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:bg-[#20ba5a] hover:scale-110 transition-all duration-300 group"
       aria-label="Contact us on WhatsApp"
     >

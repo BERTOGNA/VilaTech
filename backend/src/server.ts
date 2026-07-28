@@ -5,6 +5,9 @@ import leadRoutes from './routes/leadRoutes';
 import pipelineRoutes from './routes/pipelineRoutes';
 import taskRoutes from './routes/taskRoutes';
 import settingRoutes from './routes/settingRoutes';
+import eventRoutes from './routes/eventRoutes';
+import resourceRoutes from './routes/resourceRoutes';
+import bookingRoutes from './routes/bookingRoutes';
 
 dotenv.config();
 
@@ -25,6 +28,9 @@ app.use('/api/leads', leadRoutes);
 app.use('/api/pipelines', pipelineRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/settings', settingRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api/resources', resourceRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {

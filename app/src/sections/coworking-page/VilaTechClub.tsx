@@ -82,7 +82,7 @@ const VilaTechClub = () => {
             </div>
 
             <div className="bg-void-black/20 backdrop-blur-md rounded-3xl p-8 border border-white/10">
-              <h4 className="text-2xl font-display font-bold text-white mb-8 text-center uppercase tracking-wider">Níveis de Fidelidade</h4>
+              <h3 className="text-2xl font-display font-bold text-white mb-8 text-center uppercase tracking-wider">Níveis de Fidelidade</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 {precos.clube.niveis.map((nivel, idx) => (
                   <div key={idx} className="bg-void-black/60 rounded-2xl p-6 border border-white/5 hover:border-brand-cyan/50 transition-all duration-300 flex flex-col justify-between">

@@ -114,12 +114,6 @@ const Coworking = ({ zIndex = 40 }: CoworkingProps) => {
     navigate('/coworking');
   };
 
-  const handleContactClick = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section
@@ -167,13 +161,7 @@ const Coworking = ({ zIndex = 40 }: CoworkingProps) => {
                 onClick={handleCtaClick}
                 className="px-8 py-3 bg-brand-cyan text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-cyan/80 transition-colors duration-300"
               >
-                Saiba mais
-              </button>
-              <button
-                onClick={handleContactClick}
-                className="px-8 py-3 bg-brand-cyan text-void-black font-display text-sm uppercase tracking-wider rounded-full hover:bg-brand-cyan/80 transition-colors duration-300"
-              >
-                Fale com o time
+                Preços e planos
               </button>
             </div>
           </div>

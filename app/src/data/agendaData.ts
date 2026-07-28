@@ -11,10 +11,16 @@ export interface AgendaEvent {
   local?: string;
   valor?: string;
   linkInscricao?: string;
+  descritivo?: string;
+  data?: string;
+  dataISO?: string;
+  googleCalendarId?: string;
+  modalidade?: string;
 }
 
+
+
 export const EVENTOS: AgendaEvent[] = [
-  // ── JUNHO 2026 ──────────────────────────────────────────────
   {
     mes: "junho",
     dia: 11,
@@ -22,54 +28,28 @@ export const EVENTOS: AgendaEvent[] = [
     inicio: "18:30",
     fim: "21:30",
     tipo: "Palestra",
-    titulo: "A Inovação da IA nos Negócios",
-    sub: "Bloco com 4 perspectivas: Direito, Tributário, Estratégia e Negócios",
+    titulo: "Palestras Inovação nos Negócios VTH",
+    sub: "A inovação da IA nos negócios — bloco de 4 palestras",
     speakers: ["Felipe Scalet", "Carla Bertoncelo", "Gilberto Moura", "Carlos Tabosa"],
-    local: "Auditório VTH",
+    local: "Vila Tech Hub – Auditório (até 70 pessoas)",
     valor: "Gratuito",
-    linkInscricao: ""
+    modalidade: "Presencial",
+    googleCalendarId: "h1mi39tpuv3i6vug8a44indu28@google.com"
   },
   {
     mes: "junho",
     dia: 13,
     semana: "Sáb",
-    inicio: "19:00",
+    inicio: "15:00",
     fim: "22:00",
     tipo: "Evento",
-    titulo: "HH da Copa",
-    sub: "Happy Hour temático da Copa do Mundo",
+    titulo: "Happy Copa",
+    sub: "Happy Hour Copa do Mundo",
     speakers: [],
     local: "Vila Tech Hub",
     valor: "Gratuito / Membros",
-    linkInscricao: ""
-  },
-  {
-    mes: "junho",
-    dia: 23,
-    semana: "Ter",
-    inicio: "18:30",
-    fim: "21:30",
-    tipo: "Curso",
-    titulo: "Curso: IA no Direito",
-    sub: "Aplicação prática de IA no exercício da advocacia",
-    speakers: ["Felipe Scalet"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
-  },
-  {
-    mes: "junho",
-    dia: 25,
-    semana: "Qui",
-    inicio: "18:00",
-    fim: "21:00",
-    tipo: "Palestra",
-    titulo: "Palestras: IA para Criatividade",
-    sub: "Processos criativos, audiovisual, games e universos narrativos com IA",
-    speakers: ["Achilles Milan Neto", "Bruno Bertogna", "Dino Paiva", "Danilo Fiocco"],
-    local: "Auditório VTH",
-    valor: "Gratuito",
-    linkInscricao: ""
+    modalidade: "Presencial",
+    googleCalendarId: "0aq0h01ee1ivd46fcm3aril2oc@google.com"
   },
   {
     mes: "junho",
@@ -78,167 +58,118 @@ export const EVENTOS: AgendaEvent[] = [
     inicio: "18:30",
     fim: "21:30",
     tipo: "Curso",
-    titulo: "Curso: A Nova Legislação Tributária",
-    sub: "Impactos da Reforma Tributária para empresas e profissionais",
-    speakers: ["Carla Bertoncelo"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
-  },
-  {
-    mes: "junho",
-    dia: 26,
-    semana: "Sex",
-    inicio: "18:30",
-    fim: "21:30",
-    tipo: "Curso",
-    titulo: "Curso: Planejamento Estratégico",
-    sub: "Ferramentas e metodologias para crescimento sustentável",
+    titulo: "Curso: Planejamento Estratégico Parte 1",
+    sub: "Crescimento sustentável com planejamento e gestão estratégica",
     speakers: ["Gilberto Moura"],
     local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
+    valor: "Curso Pago",
+    modalidade: "Presencial",
+    googleCalendarId: "e3lnsdi8qmtc52ddoa15uls7b4@google.com"
   },
   {
     mes: "junho",
     dia: 27,
     semana: "Sáb",
     inicio: "09:00",
-    fim: "16:00",
+    fim: "13:00",
     tipo: "Curso",
-    titulo: "Curso: IA para Negócios — Contabilidade e Finanças",
-    sub: "Imersão de 7h: automação, análise preditiva e IA financeira",
+    titulo: "Curso: IA para Negócios - Curso 1",
+    sub: "Curso 1: Contabilidade e Finanças",
     speakers: ["Carlos Tabosa"],
     local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
+    valor: "Curso Pago",
+    modalidade: "Presencial",
+    googleCalendarId: "8oelfk04e480lgu2e19a5h69no@google.com"
   },
   {
-    mes: "junho",
-    dia: 30,
-    semana: "Ter",
+    mes: "julho",
+    dia: 2,
+    semana: "Qui",
     inicio: "18:30",
-    fim: "21:30",
+    fim: "22:00",
     tipo: "Curso",
-    titulo: "Curso: IA no Audiovisual",
-    sub: "Do roteiro ao produto final com ferramentas de IA",
-    speakers: ["Bruno Bertogna"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
-  },
-  // ── JULHO 2026 ──────────────────────────────────────────────
-  {
-    mes: "julho",
-    dia: 4,
-    semana: "Sáb",
-    inicio: "09:00",
-    fim: "13:00",
-    tipo: "Palestra",
-    titulo: "Palestras: Games e Criação",
-    sub: "Game design, intercâmbio educacional e criação com Unreal Engine",
-    speakers: ["Tomoto", "Danilo Fiocco", "Dino Paiva"],
-    local: "Auditório VTH",
-    valor: "Gratuito",
-    linkInscricao: ""
-  },
-  {
-    mes: "julho",
-    dia: 8,
-    semana: "Qua",
-    inicio: "18:30",
-    fim: "21:30",
-    tipo: "Palestra",
-    titulo: "Drone Creator + Roteiro de Animação + Criatividade X IA",
-    sub: "Captação aérea, animação e o debate humano vs. IA",
-    speakers: ["Ale Sirega", "Motim Criativo", "Achilles Milan Neto"],
-    local: "Vila Tech Hub",
-    valor: "Gratuito",
-    linkInscricao: ""
-  },
-  {
-    mes: "julho",
-    dia: 10,
-    semana: "Sex",
-    inicio: "18:30",
-    fim: "21:30",
-    tipo: "Evento",
-    titulo: "Vinho Tech — Clube dos CEOs",
-    sub: "Degustação comentada, networking e troca entre fundadores",
-    speakers: [],
-    local: "Vila Tech Hub",
-    valor: "Membros / A confirmar",
-    linkInscricao: ""
+    titulo: "Curso: Planejamento Estratégico Parte 2",
+    sub: "Crescimento sustentável com planejamento e gestão estratégica",
+    speakers: ["Gilberto Moura"],
+    local: "Vila Tech Hub – Auditório",
+    valor: "Curso pago",
+    modalidade: "Presencial",
+    googleCalendarId: "a9qtgm6cqamlmcubhkgakfaf78@google.com"
   },
   {
     mes: "julho",
     dia: 11,
     semana: "Sáb",
-    inicio: "09:00",
-    fim: "12:00",
-    tipo: "Curso",
-    titulo: "Curso: IA no Marketing",
-    sub: "Automação de campanhas, análise de dados e crescimento com IA",
-    speakers: ["Carlos Tabosa", "OPAH"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
+    inicio: "18:30",
+    fim: "21:30",
+    tipo: "Palestra",
+    titulo: "IA e os impactos na produção Audiovisual",
+    sub: "Criatividade com IA na produção Audiovisual e Games",
+    speakers: ["Bruno Bertogna", "Dino Paiva", "Marcelo Zampini", "Achilles Milan Neto", "Tiago Castro/Adobe", "Gui Oller"],
+    local: "Vila Tech Hub – Auditório",
+    valor: "Gratuito",
+    modalidade: "Presencial",
+    googleCalendarId: "oitpuqa0qopdrg2b321ocd5o54@google.com"
   },
   {
     mes: "julho",
     dia: 16,
     semana: "Qui",
-    inicio: "09:00",
-    fim: "12:00",
-    tipo: "Evento",
-    titulo: "Negócios CIESP",
-    sub: "Rodada de negócios com o Centro das Indústrias do Estado de São Paulo",
-    speakers: [],
+    inicio: "18:30",
+    fim: "21:30",
+    tipo: "Curso",
+    titulo: "Curso: A Nova Legislação Tributária",
+    sub: "Dominando e aplicando o novo regime tributário brasileiro",
+    speakers: ["Carla Bertoncelo"],
     local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
+    valor: "Curso Pago",
+    modalidade: "Presencial",
+    googleCalendarId: "5iupvj0kt07hnrhuoll6ivmna4@google.com"
   },
   {
     mes: "julho",
     dia: 18,
     semana: "Sáb",
     inicio: "09:00",
-    fim: "12:00",
+    fim: "13:00",
     tipo: "Curso",
-    titulo: "Curso: Produção Criativa com Unreal Engine",
-    sub: "Cenários, personagens e animações com Unreal Engine",
-    speakers: ["Dino Paiva"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
-  },
-  {
-    mes: "julho",
-    dia: 21,
-    semana: "Ter",
-    inicio: "18:30",
-    fim: "21:30",
-    tipo: "Curso",
-    titulo: "Curso: Produção Audiovisual com IA",
-    sub: "Da ideia ao vídeo: roteiro, edição inteligente e distribuição",
-    speakers: ["Bruno Bertogna"],
-    local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
+    titulo: "Curso: IA para Negócios - Curso 2",
+    sub: "Curso 2: Aplicações de IA para Marketing e vendas",
+    speakers: ["Carlos Tabosa"],
+    local: "Vila Tech Hub – Auditório",
+    valor: "Curso pago",
+    modalidade: "Presencial",
+    googleCalendarId: "rtuq2lh2bladmddit7ic5gihic@google.com"
   },
   {
     mes: "julho",
     dia: 25,
     semana: "Sáb",
     inicio: "09:00",
-    fim: "13:00",
-    tipo: "Curso",
-    titulo: "Curso: Roteiro de Animação",
-    sub: "Universo narrativo, personagens e storyboard com Motim Criativo",
-    speakers: ["Motim Criativo"],
+    fim: "12:00",
+    tipo: "Palestra",
+    titulo: "Palestra: Você faz parte do game?",
+    sub: "Muito além do E-Sport. Um universo de alternativas para o seu futuro",
+    speakers: ["Dino Paiva", "Danilo Fiocco", "Jonathan Gamers Club", "Henrique Andrade- Unreal", "Sergio Silva - Epic"],
     local: "Vila Tech Hub",
-    valor: "A confirmar",
-    linkInscricao: ""
+    valor: "Gratuito",
+    modalidade: "Presencial",
+    googleCalendarId: "rttdvcq7bv828l3420c8chjhmk@google.com"
+  },
+  {
+    mes: "julho",
+    dia: 30,
+    semana: "Qui",
+    inicio: "18:30",
+    fim: "21:30",
+    tipo: "Curso",
+    titulo: "Curso: IA na advocacia",
+    sub: "Aplicação prática de IA no exercício da advocacia",
+    speakers: ["Felipe Scalet"],
+    local: "Vila Tech Hub",
+    valor: "Curso Pago",
+    modalidade: "Presencial",
+    googleCalendarId: "d9vpn8m4sjba7vf336gm4ola28@google.com"
   },
   {
     mes: "julho",
@@ -248,11 +179,12 @@ export const EVENTOS: AgendaEvent[] = [
     fim: "21:30",
     tipo: "Evento",
     titulo: "HH do Cinema",
-    sub: "Sessão, debate e networking para a comunidade criativa",
+    sub: "Happy Hour temático com exibição e debate sobre cinema",
     speakers: [],
     local: "Vila Tech Hub",
     valor: "Gratuito / Membros",
-    linkInscricao: ""
+    modalidade: "Presencial",
+    googleCalendarId: "b9gkiu7hfb697nbunjq2pm8o4c@google.com"
   }
 ];
 
