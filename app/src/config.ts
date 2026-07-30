@@ -621,6 +621,7 @@ export interface InstituteConfig {
     title: string;
     description: string;
   }[];
+  valuesText: string;
   pillars: InstitutePillar[];
   cta: {
     title: string;
@@ -684,6 +685,7 @@ export const instituteConfig: InstituteConfig = {
       description: "formar agentes de mudança preparados para liderar a inovação no país.",
     },
   ],
+  valuesText: "Nos orientamos pela inovação com propósito, aplicando a tecnologia para melhorar vidas e promover impacto positivo; por uma educação que transforma, estimulando o pensamento crítico, a criatividade e o aprendizado colaborativo; e pela inclusão e sustentabilidade, garantindo acesso igualitário às oportunidades de formação. Valorizamos a cultura e a diversidade como motores de evolução, agimos com ética e transparência em todas as nossas relações, fomentamos a colaboração entre pessoas, empresas e startups e buscamos, acima de tudo, a excelência e o protagonismo, formando agentes de mudança preparados para liderar a inovação no país.",
   pillars: [
     {
       id: 1,

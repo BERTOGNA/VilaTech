@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 import TopNavigation from '../components/TopNavigation';
 import SEO from '../components/SEO';
+import { instituteConfig } from '../config';
 
 export default function InstitutePage() {
 
@@ -177,31 +178,23 @@ export default function InstitutePage() {
       }
     });
 
-    gsap.fromTo('.valor-card',
-      { scale: 0.5, opacity: 0 },
+    gsap.fromTo('.valor-item',
+      { y: 40, opacity: 0 },
       {
-        scale: 1,
+        y: 0,
         opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'back.out(1.5)',
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: '#valores',
-          start: 'top 80%',
+          start: 'top 75%',
         }
       }
     );
   }, []);
 
-  const values = [
-    { title: "Inovação com propósito", description: "Aplicar a tecnologia para melhorar vidas e promover impacto positivo.", icon: Lightbulb },
-    { title: "Educação que transforma", description: "Estimular o pensamento crítico, a criatividade e o aprendizado colaborativo.", icon: BookOpen },
-    { title: "Inclusão e sustentabilidade", description: "Garantir acesso igualitário às oportunidades de formação e desenvolvimento.", icon: Globe },
-    { title: "Cultura e diversidade", description: "Valorizar as expressões artísticas e as múltiplas identidades como motor de evolução.", icon: Palette },
-    { title: "Ética e transparência", description: "Agir com responsabilidade social, integridade e respeito nas relações institucionais.", icon: ShieldCheck },
-    { title: "Colaboração", description: "Fomentar redes de conhecimento e empreendedorismo entre empresas, startups e indivíduos.", icon: Users },
-    { title: "Excelência e protagonismo", description: "Formar agentes de mudança preparados para liderar a inovação no país.", icon: Award },
-  ];
+  // Values are sourced from instituteConfig.values (defined in config.ts)
 
   const councilMembers = [
     { name: "ACHILLES MILAN", role: "DIRETOR", img: "/images/conselho/conselho_1.png" },
@@ -226,7 +219,7 @@ export default function InstitutePage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 font-sans selection:bg-brand-teal selection:text-white overflow-hidden">
-      <SEO 
+      <SEO
         title="Instituto Vila Tech | Inovação, Tecnologia & Educação em Itu, SP"
         description="O Instituto Cultural e Educacional Vila Tech une inovação tecnológica, arte e desenvolvimento social em Itu, SP. Conheça nossos projetos sociais e de profissionalização."
       />
@@ -254,7 +247,7 @@ export default function InstitutePage() {
         {/* Background graphics */}
         <div
           ref={heroBgRef}
-          className="absolute inset-0 z-0 opacity-40 bg-[url('/images/Arvore1.png')] bg-cover bg-top mix-blend-screen origin-top"
+          className="absolute inset-0 z-0 opacity-40 bg-[url('/images/Arvore1.png')] bg-cover bg-top origin-top"
         />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/60 to-[#0A0A0A]" />
 
@@ -279,8 +272,8 @@ export default function InstitutePage() {
               <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
                 Ser Parceiro
               </a>
-              <button 
-                onClick={() => setIsDonationModalOpen(true)} 
+              <button
+                onClick={() => setIsDonationModalOpen(true)}
                 className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors"
               >
                 Doar Agora
@@ -334,23 +327,26 @@ export default function InstitutePage() {
       </section>
 
       {/* Valores */}
-      <section id="valores" className="py-24 px-6 border-t border-zinc-800/50">
+      <section id="valores" className="py-24 md:py-32 px-6 bg-zinc-900/40">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col items-center gap-4 mb-16 fade-up text-center">
-            <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-wider text-white">Nossos Valores</h2>
-            <div className="w-24 h-1 bg-brand-orange"></div>
-          </div>
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {values.map((val, i) => (
-              <div key={i} className="valor-card flex flex-col items-start p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-brand-teal hover:bg-brand-teal/5 transition-all duration-300 group">
-                <div className="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center mb-6 group-hover:border-brand-teal transition-colors">
-                  <val.icon className="w-6 h-6 text-brand-orange group-hover:text-brand-teal transition-colors" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3 leading-tight">{val.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{val.description}</p>
-              </div>
-            ))}
+            {/* Left: title block */}
+            <div className="md:w-1/3 fade-up flex flex-col items-start text-left">
+              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">A Essência</p>
+              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">
+                Nossos<br />Valores
+              </h2>
+              <div className="w-12 h-1 bg-brand-teal mt-6"></div>
+            </div>
+
+            {/* Right: prose text */}
+            <div className="md:w-2/3 border-l border-brand-teal/30 pl-8 md:pl-16 py-4">
+              <p className="text-2xl md:text-3xl text-zinc-300 font-light leading-snug">
+                {renderStaggeredText(instituteConfig.valuesText)}
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -387,10 +383,17 @@ export default function InstitutePage() {
 
           <div className="space-y-24">
             {/* Projetos de Arte e Cultura */}
+            {/* Projetos de Arte e Cultura */}
             <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
               <div className="md:w-1/2">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
-                  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Projetos de Arte e Cultura" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="flex h-full w-full overflow-x-auto snap-x snap-mandatory">
+                    <img src="/images/arte/Expo3.png" alt="Expo3" className="flex-none w-full h-full object-cover snap-start" />
+                    <img src="/images/arte/IMG_5108.jpg" alt="IMG 5108" className="flex-none w-full h-full object-cover snap-start" />
+                    <img src="/images/arte/IMG_5126.jpg" alt="IMG 5126" className="flex-none w-full h-full object-cover snap-start" />
+                    <img src="/images/arte/IMG_5144.jpg" alt="IMG 5144" className="flex-none w-full h-full object-cover snap-start" />
+                    <img src="/images/arte/IMG_5159.jpg" alt="IMG 5159" className="flex-none w-full h-full object-cover snap-start" />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
                 </div>
               </div>
@@ -406,7 +409,11 @@ export default function InstitutePage() {
             <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
               <div className="md:w-1/2">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
-                  <img src="/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Projetos Educacionais" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="flex h-full w-full overflow-x-auto snap-x snap-mandatory">
+                    <img src="/images/educacao/espaco2.png" alt='espaco2' className="flex-none w-full h-full object-cover snap-start" />
+                    <img src="/images/educacao/espaco1.png" alt='espaco1' className="flex-none w-full h-full object-cover snap-start" />
+                    <img src="/images/educacao/auditorio1.png" alt='auditorio1' className="flex-none w-full h-full object-cover snap-start" />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
                 </div>
               </div>
@@ -535,8 +542,8 @@ export default function InstitutePage() {
                             type="button"
                             onClick={() => handleInterestChange(interest)}
                             className={`px-3 py-1.5 rounded-full text-[10px] uppercase font-bold tracking-wider transition-all duration-300 ${formData.interests.includes(interest)
-                                ? 'bg-brand-teal text-black'
-                                : 'bg-white/5 text-white/40 border border-white/10 hover:border-brand-teal/50'
+                              ? 'bg-brand-teal text-black'
+                              : 'bg-white/5 text-white/40 border border-white/10 hover:border-brand-teal/50'
                               }`}
                           >
                             {interest}
@@ -597,8 +604,8 @@ export default function InstitutePage() {
                 <p className="text-[#023B33]/90 font-medium mb-10 max-w-sm text-lg leading-snug">
                   Sua doação impulsiona bolsas de estudo, equipamentos e infraestrutura para talentos em vulnerabilidade social.
                 </p>
-                <button 
-                  onClick={() => setIsDonationModalOpen(true)} 
+                <button
+                  onClick={() => setIsDonationModalOpen(true)}
                   className="inline-flex items-center justify-center px-10 py-4 bg-[#023B33] text-white font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors rounded-sm"
                 >
                   Fazer Doação
@@ -661,7 +668,7 @@ export default function InstitutePage() {
       {isDonationModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
           <div className="relative w-full max-w-md p-6 rounded-2xl bg-zinc-900 border border-brand-teal text-white shadow-2xl">
-            <button 
+            <button
               onClick={() => setIsDonationModalOpen(false)}
               className="absolute top-4 right-4 text-white/60 hover:text-white"
             >
@@ -681,7 +688,7 @@ export default function InstitutePage() {
               </p>
             </div>
             <div className="flex gap-4">
-              <button 
+              <button
                 onClick={() => {
                   navigator.clipboard.writeText("58.473.428/0001-31");
                   alert("Chave Pix CNPJ copiada com sucesso!");
@@ -690,7 +697,7 @@ export default function InstitutePage() {
               >
                 Copiar Chave Pix
               </button>
-              <a 
+              <a
                 href="#contato"
                 onClick={() => {
                   setIsDonationModalOpen(false);
