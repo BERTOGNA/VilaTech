@@ -18,7 +18,7 @@ const Hero = () => {
     "VENHA TRABALHAR E ESTUDAR\nNO ESPAÇO MAIS DESCOLADO\nE CHARMOSO DA REGIÃO",
     "COWORKING\nEDUCAÇÃO\nINOVAÇÃO"
   ];
-  
+
   const [displayText, setDisplayText] = useState('');
   const [isDecoding, setIsDecoding] = useState(true);
 
@@ -127,18 +127,17 @@ const Hero = () => {
         <div className="min-h-[45vh] md:min-h-[35vh] lg:min-h-[30vh] w-full flex items-center justify-center mb-12 md:mb-16">
           <h1
             ref={titleRef}
-            className={`font-display font-bold text-white leading-[1.1] tracking-tighter text-center transition-all duration-500 ${
-              titleIndex === 0 
-                ? 'text-[4vw] sm:text-[4.5vw] md:text-[5vw] lg:text-[4.5vw]' 
+            className={`font-display font-bold text-white leading-[1.1] tracking-tighter text-center transition-all duration-500 ${titleIndex === 0
+                ? 'text-[4vw] sm:text-[4.5vw] md:text-[5vw] lg:text-[4.5vw]'
                 : 'text-[10vw] sm:text-[9vw] md:text-[8.5vw] lg:text-[7vw]'
-            }`}
+              }`}
           >
             {titlePhrases[titleIndex].split('\n').map((line, idx, allLines) => {
               // Calculate how much of this specific line has been "decoded"
               const previousLinesLength = allLines.slice(0, idx).join('\n').length + (idx > 0 ? 1 : 0);
               const lineText = displayText.slice(previousLinesLength, previousLinesLength + line.length);
               const isCurrentLine = idx === (displayText.match(/\n/g) || []).length;
-              
+
               return (
                 <span key={idx} className="block min-h-[1.1em] whitespace-nowrap">
                   <span className={`${isDecoding ? 'text-glow-teal' : ''} transition-all duration-300`}>

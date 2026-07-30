@@ -59,7 +59,7 @@ cd SITE_VILA_TECH_HUB_2026
 
 ### 2.1 Requisitos do Sistema
 - **Node.js**: Versão `20.x` LTS (ou no mínimo `18.x`).
-- **NPM**: Versão `9.x` ou `10.x` (já vem junto com o Node.js).
+- **NPM**: Versão `9.x` ou `10.x` (já vem junto com o Node.js).  
 - **VS Code**: Editor recomendado.
 
 Para verificar se você possui as versões corretas instaladas, rode:

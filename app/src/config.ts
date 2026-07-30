@@ -325,7 +325,7 @@ export const footerConfig: FooterConfig = {
   phoneLabel: "Telefone",
   phone: "+55 11 99371-0652",
   addressLabel: "Endereço",
-  address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro, Itu - SP, CEP 13312-050",
+  address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro, Itu - SP, CEP 13303-536",
   newsletterTitle: "Receba novidades",
   newsletterDescription: "Inscreva-se para receber atualizações sobre cursos, eventos e novidades do Vila Tech Hub.",
   newsletterButtonText: "Inscrever",
@@ -875,8 +875,8 @@ export const coworkingPageConfig: CoworkingPageConfig = {
   faq: {
     title: "Dúvidas Frequentes",
     questions: [
-      { q: "Onde fica localizado o Vila Tech Hub?", a: "O Vila Tech Hub está localizado na Rua Convenção, 440, no bairro Itu Novo Centro, em Itu - SP, CEP 13300-113." },
-      { q: "Quais são os horários de funcionamento do coworking?", a: "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 8h às 20h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)." },
+      { q: "Onde fica localizado o Vila Tech Hub?", a: "O Vila Tech Hub está localizado na Rua Francisco José Ferreira Sampaio, 90, no bairro Itu Novo Centro, em Itu - SP, CEP 13303-536." },
+      { q: "Quais são os horários de funcionamento do coworking?", a: "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 9h às 18h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)." },
       { q: "Quanto custa a diária de coworking (Hot Desk) no Vila Tech Hub?", a: "A diária de Hot Desk (posto flexível) custa R$ 60 e inclui internet de alta velocidade, café, água e acesso às áreas comuns." },
       { q: "Quais são os planos mensais de coworking disponíveis?", a: "O plano Hot Desk Mensal (posto flexível) custa R$ 450/mês. O plano Fixed Desk (mesa fixa exclusiva com gaveteiro e acesso 24/7) custa R$ 650/mês." },
       { q: "Como funciona o serviço de Endereço Fiscal e Escritório Virtual?", a: "O Vila Tech Hub oferece duas opções: o Endereço Comercial por R$ 120/mês (para divulgação) e o plano Endereço Fiscal + Comercial por R$ 200/mês (para registro de CNPJ de prestadores de serviços e recebimento de correspondências)." },
