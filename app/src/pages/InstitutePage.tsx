@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Lightbulb, Users, ShieldCheck, Send, Check, User, Mail, Phone, MessageSquare, X, BookOpen, Palette, Globe, Award } from 'lucide-react';
+import { MapPin, Target, Zap, Lightbulb, Users, ShieldCheck, Send, Check, User, Mail, Phone, MessageSquare, X, BookOpen, Palette, Globe, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
@@ -36,6 +37,56 @@ export default function InstitutePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+
+  // Arte carousel (Embla)
+  const [arteEmblaRef, arteEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
+  const [arteCanScrollPrev, setArteCanScrollPrev] = useState(false);
+  const [arteCanScrollNext, setArteCanScrollNext] = useState(true);
+  const [arteIsHovered, setArteIsHovered] = useState(false);
+
+  const onArteSelect = useCallback((api: any) => {
+    setArteCanScrollPrev(api.canScrollPrev());
+    setArteCanScrollNext(api.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!arteEmblaApi) return;
+    onArteSelect(arteEmblaApi);
+    arteEmblaApi.on('select', onArteSelect);
+    arteEmblaApi.on('reInit', onArteSelect);
+    return () => {
+      arteEmblaApi.off('select', onArteSelect);
+      arteEmblaApi.off('reInit', onArteSelect);
+    };
+  }, [arteEmblaApi, onArteSelect]);
+
+  const arteScrollPrev = useCallback(() => arteEmblaApi && arteEmblaApi.scrollPrev(), [arteEmblaApi]);
+  const arteScrollNext = useCallback(() => arteEmblaApi && arteEmblaApi.scrollNext(), [arteEmblaApi]);
+
+  // Educação carousel (Embla)
+  const [eduEmblaRef, eduEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
+  const [eduCanScrollPrev, setEduCanScrollPrev] = useState(false);
+  const [eduCanScrollNext, setEduCanScrollNext] = useState(true);
+  const [eduIsHovered, setEduIsHovered] = useState(false);
+
+  const onEduSelect = useCallback((api: any) => {
+    setEduCanScrollPrev(api.canScrollPrev());
+    setEduCanScrollNext(api.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!eduEmblaApi) return;
+    onEduSelect(eduEmblaApi);
+    eduEmblaApi.on('select', onEduSelect);
+    eduEmblaApi.on('reInit', onEduSelect);
+    return () => {
+      eduEmblaApi.off('select', onEduSelect);
+      eduEmblaApi.off('reInit', onEduSelect);
+    };
+  }, [eduEmblaApi, onEduSelect]);
+
+  const eduScrollPrev = useCallback(() => eduEmblaApi && eduEmblaApi.scrollPrev(), [eduEmblaApi]);
+  const eduScrollNext = useCallback(() => eduEmblaApi && eduEmblaApi.scrollNext(), [eduEmblaApi]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -383,18 +434,62 @@ export default function InstitutePage() {
 
           <div className="space-y-24">
             {/* Projetos de Arte e Cultura */}
-            {/* Projetos de Arte e Cultura */}
             <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
               <div className="md:w-1/2">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
-                  <div className="flex h-full w-full overflow-x-auto snap-x snap-mandatory">
-                    <img src="/images/arte/Expo3.png" alt="Expo3" className="flex-none w-full h-full object-cover snap-start" />
-                    <img src="/images/arte/IMG_5108.jpg" alt="IMG 5108" className="flex-none w-full h-full object-cover snap-start" />
-                    <img src="/images/arte/IMG_5126.jpg" alt="IMG 5126" className="flex-none w-full h-full object-cover snap-start" />
-                    <img src="/images/arte/IMG_5144.jpg" alt="IMG 5144" className="flex-none w-full h-full object-cover snap-start" />
-                    <img src="/images/arte/IMG_5159.jpg" alt="IMG 5159" className="flex-none w-full h-full object-cover snap-start" />
+                {/* Embla carousel with navigation arrows */}
+                <div
+                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
+                  onMouseEnter={() => setArteIsHovered(true)}
+                  onMouseLeave={() => setArteIsHovered(false)}
+                >
+                  {/* Embla viewport */}
+                  <div className="embla h-full" ref={arteEmblaRef}>
+                    <div className="embla__container flex h-full">
+                      {[
+                        { src: '/images/arte/Expo3.png', alt: 'Arte em Movimento' },
+                        { src: '/images/arte/IMG_5108.jpg', alt: 'Exposição de Arte' },
+                        { src: '/images/arte/IMG_5126.jpg', alt: 'Projeto Cultural' },
+                        { src: '/images/arte/IMG_5144.jpg', alt: 'Arte e Comunidade' },
+                        { src: '/images/arte/IMG_5159.jpg', alt: 'Instituto Vila Tech Arte' },
+                      ].map((img, idx) => (
+                        <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Hover overlay with label */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5 pointer-events-none">
+                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                              {img.alt}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
+
+                  {/* Navigation arrows — visible on hover */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${arteIsHovered ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    <button
+                      onClick={arteScrollPrev}
+                      disabled={!arteCanScrollPrev}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Imagem anterior"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={arteScrollNext}
+                      disabled={!arteCanScrollNext}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Próxima imagem"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="md:w-1/2">
@@ -408,23 +503,72 @@ export default function InstitutePage() {
             {/* Projetos Educacionais */}
             <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
               <div className="md:w-1/2">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
-                  <div className="flex h-full w-full overflow-x-auto snap-x snap-mandatory">
-                    <img src="/images/educacao/espaco2.png" alt='espaco2' className="flex-none w-full h-full object-cover snap-start" />
-                    <img src="/images/educacao/espaco1.png" alt='espaco1' className="flex-none w-full h-full object-cover snap-start" />
-                    <img src="/images/educacao/auditorio1.png" alt='auditorio1' className="flex-none w-full h-full object-cover snap-start" />
+                {/* Embla carousel with navigation arrows */}
+                <div
+                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
+                  onMouseEnter={() => setEduIsHovered(true)}
+                  onMouseLeave={() => setEduIsHovered(false)}
+                >
+                  {/* Embla viewport */}
+                  <div className="embla h-full" ref={eduEmblaRef}>
+                    <div className="embla__container flex h-full">
+                      {[
+                        { src: '/images/educacao/educacao1.png', alt: 'Vila Tech Hub - Espaço Educacional' },
+                        { src: '/images/educacao/educacao2.jpg', alt: 'Cursos de Formação em Tecnologia' },
+                        { src: '/images/educacao/educacao3.jpg', alt: 'Projeto Vila Tech Hub' },
+                        { src: '/images/educacao/educacao4.jpg', alt: 'Capacitação e Inovação' },
+                      ].map((img, idx) => (
+                        <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Hover overlay with label */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
+                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                              {img.alt}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
+
+                  {/* Navigation arrows — visible on hover */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${eduIsHovered ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    <button
+                      onClick={eduScrollPrev}
+                      disabled={!eduCanScrollPrev}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Imagem anterior"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={eduScrollNext}
+                      disabled={!eduCanScrollNext}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Próxima imagem"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="md:w-1/2">
                 <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Projetos Educacionais</h3>
                 <h4 className="text-xl font-bold text-white mb-4">Projeto Vila Tech Hub - Cursos de Formação em Tecnologia</h4>
                 <p className="text-lg text-zinc-300 font-light leading-relaxed mb-4">
-                  O Instituto Cultural Vila Tech através de seu projeto Vila Tech Hub oferece uma agenda de cursos de formação em novas tecnologias, principalmente voltados para o uso de IA na educação e negócios.
+                  O Instituto Cultural Vila Tech através de seu projeto Vila Tech Hub oferece uma agenda de cursos de formação em novas tecnologias,
+                  principalmente voltados para o uso de IA na educação e negócios.
                 </p>
                 <p className="text-lg text-zinc-300 font-light leading-relaxed">
-                  São cursos de tecnologia e principalmente IA aplicada de forma prática às realidades e necessidades de estudantes e profissionais, incluindo o ensino de criação e produção de games voltados para estudantes do ensino médio de escolas públicas e privadas, onde os alunos de escolas públicas têm acesso a formação gratuita subvencionada pelo Instituto.
+                  São cursos de tecnologia e principalmente IA aplicada de forma prática às realidades e necessidades de estudantes
+                  e profissionais, incluindo o ensino de criação e produção de games voltados para estudantes do ensino médio de escolas
+                  públicas e privadas, onde os alunos de escolas públicas têm acesso a formação gratuita subvencionada pelo Instituto.
                 </p>
               </div>
             </div>
