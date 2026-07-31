@@ -33,7 +33,7 @@ const CoworkingPage = () => {
       // Otherwise scroll to top on mount
       window.scrollTo(0, 0);
     }
-  }, [location.pathname]); // Re-run if path changes (not hash)
+  }, [location.hash, location.pathname]); // Re-run if path changes (not hash)
 
   const coworkingJsonLd = {
     "@context": "https://schema.org",
@@ -84,7 +84,7 @@ const CoworkingPage = () => {
         "name": "Onde fica localizado o Vila Tech Hub?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O Vila Tech Hub está localizado na Rua Convenção, 440, no bairro Itu Novo Centro, em Itu - SP, CEP 13300-113."
+          "text": "O Vila Tech Hub está localizado na Rua Francisco José Ferreira Sampaio, 90, CEP: 13303-536 no bairro Itu Novo Centro, em Itu - SP."
         }
       },
       {
@@ -92,7 +92,7 @@ const CoworkingPage = () => {
         "name": "Quais são os horários de funcionamento do coworking?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 8h às 20h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)."
+          "text": "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 9h às 18h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)."
         }
       },
       {
@@ -132,7 +132,7 @@ const CoworkingPage = () => {
 
   return (
     <div className="bg-void-black min-h-screen">
-      <SEO 
+      <SEO
         title="Coworking em Itu | Salas Privativas, Comercial & Endereço Fiscal"
         description="Espaço de coworking de alto padrão em Itu, SP. Aluguel de salas de reunião, postos individuais de trabalho, escritório virtual e endereço fiscal. Agende sua visita!"
       />
@@ -143,22 +143,22 @@ const CoworkingPage = () => {
         {JSON.stringify(coworkingFaqJsonLd)}
       </script>
       <TopNavigation variant="coworking" />
-      
+
       <main>
         <CoworkingHero />
-        
+
         <Diferentials />
         <Workspaces />
         <OnDemandSpaces />
         <VirtualOffice />
         <CafeAndCommunity />
-        
+
         <div id="gallery">
           <ParallaxGallery />
         </div>
-        
+
         <CoworkingFAQ />
-        
+
         <div id="contact">
           <ContactForm zIndex={40} />
         </div>

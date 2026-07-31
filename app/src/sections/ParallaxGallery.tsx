@@ -34,8 +34,8 @@ const ParallaxGallery = () => {
 
   // Embla Carousel Setup with AutoScroll
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: false, 
+    {
+      loop: false,
       align: 'start',
       dragFree: false,
       watchDrag: false
@@ -64,14 +64,14 @@ const ParallaxGallery = () => {
     const ctx = gsap.context(() => {
       const slides = sectionRef.current?.querySelectorAll('.embla__slide');
       if (slides) {
-        gsap.fromTo(slides, 
+        gsap.fromTo(slides,
           { scale: 0.5, opacity: 0, y: 30 },
-          { 
-            scale: 1, 
-            opacity: 1, 
+          {
+            scale: 1,
+            opacity: 1,
             y: 0,
-            duration: 1, 
-            stagger: 0.2, 
+            duration: 1,
+            stagger: 0.2,
             ease: 'back.out(1.5)',
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -100,7 +100,7 @@ const ParallaxGallery = () => {
 
   const navigate = useCallback((newDirection: number) => {
     if (currentIndex === null) return;
-    
+
     if (modalImageRef.current) {
       gsap.to(modalImageRef.current, {
         x: -newDirection * 50,
@@ -114,7 +114,7 @@ const ParallaxGallery = () => {
             if (next >= allImages.length) return 0;
             return next;
           });
-          gsap.fromTo(modalImageRef.current, 
+          gsap.fromTo(modalImageRef.current,
             { x: newDirection * 50, opacity: 0 },
             { x: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }
           );
@@ -165,11 +165,11 @@ const ParallaxGallery = () => {
         <div className="embla overflow-hidden" ref={emblaRef}>
           <div className="embla__container flex">
             {allImages.map((image, idx) => (
-              <div 
-                key={`${image.id}-${idx}`} 
+              <div
+                key={`${image.id}-${idx}`}
                 className="embla__slide flex-[0_0_85%] md:flex-[0_0_45%] lg:flex-[0_0_35%] px-2 md:px-4"
               >
-                <div 
+                <div
                   onClick={() => openLightbox(image.id)}
                   className="relative aspect-[16/10] overflow-hidden rounded-2xl cursor-pointer group shadow-2xl border border-white/5 transition-all duration-500 hover:shadow-brand-cyan/20 hover:scale-[1.02]"
                 >
@@ -191,7 +191,7 @@ const ParallaxGallery = () => {
 
         {/* Navigation Controls - Visible on Hover */}
         <div className={`absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-          <button 
+          <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
             className={`w-14 h-14 rounded-full bg-void-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-cyan hover:text-void-black transition-all duration-300 pointer-events-auto shadow-2xl transform hover:scale-110 disabled:opacity-0 disabled:pointer-events-none`}
@@ -199,7 +199,7 @@ const ParallaxGallery = () => {
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
-          <button 
+          <button
             onClick={scrollNext}
             disabled={!canScrollNext}
             className={`w-14 h-14 rounded-full bg-void-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-cyan hover:text-void-black transition-all duration-300 pointer-events-auto shadow-2xl transform hover:scale-110 disabled:opacity-0 disabled:pointer-events-none`}
@@ -233,7 +233,7 @@ const ParallaxGallery = () => {
       {currentIndex !== null && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl transition-all duration-300">
           {/* Close button */}
-          <button 
+          <button
             onClick={closeLightbox}
             className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110] bg-white/5 p-2 rounded-full backdrop-blur-md"
           >
@@ -241,14 +241,14 @@ const ParallaxGallery = () => {
           </button>
 
           {/* Navigation */}
-          <button 
+          <button
             onClick={() => navigate(-1)}
             className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-[110] bg-white/5 p-4 rounded-full backdrop-blur-md hover:bg-brand-cyan hover:text-void-black"
           >
             <ChevronLeft className="w-10 h-10" />
           </button>
-          
-          <button 
+
+          <button
             onClick={() => navigate(1)}
             className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-[110] bg-white/5 p-4 rounded-full backdrop-blur-md hover:bg-brand-cyan hover:text-void-black"
           >
@@ -258,7 +258,7 @@ const ParallaxGallery = () => {
           {/* Image Container */}
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12 overflow-hidden" onClick={closeLightbox}>
             <div className="relative max-w-5xl max-h-[80vh]" onClick={(e) => e.stopPropagation()}>
-              <img 
+              <img
                 ref={modalImageRef}
                 src={allImages[currentIndex].src}
                 alt={allImages[currentIndex].alt}

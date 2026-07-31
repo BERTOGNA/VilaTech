@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Lightbulb, Users, ShieldCheck, Send, Check, User, Mail, Phone, MessageSquare, X, BookOpen, Palette, Globe, Award } from 'lucide-react';
+import { MapPin, Target, Zap, Lightbulb, Users, ShieldCheck, Send, Check, User, Mail, Phone, MessageSquare, X, BookOpen, Palette, Globe, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
@@ -11,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 import TopNavigation from '../components/TopNavigation';
 import SEO from '../components/SEO';
+import { instituteConfig } from '../config';
 
 export default function InstitutePage() {
 
@@ -35,6 +37,56 @@ export default function InstitutePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+
+  // Arte carousel (Embla)
+  const [arteEmblaRef, arteEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
+  const [arteCanScrollPrev, setArteCanScrollPrev] = useState(false);
+  const [arteCanScrollNext, setArteCanScrollNext] = useState(true);
+  const [arteIsHovered, setArteIsHovered] = useState(false);
+
+  const onArteSelect = useCallback((api: any) => {
+    setArteCanScrollPrev(api.canScrollPrev());
+    setArteCanScrollNext(api.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!arteEmblaApi) return;
+    onArteSelect(arteEmblaApi);
+    arteEmblaApi.on('select', onArteSelect);
+    arteEmblaApi.on('reInit', onArteSelect);
+    return () => {
+      arteEmblaApi.off('select', onArteSelect);
+      arteEmblaApi.off('reInit', onArteSelect);
+    };
+  }, [arteEmblaApi, onArteSelect]);
+
+  const arteScrollPrev = useCallback(() => arteEmblaApi && arteEmblaApi.scrollPrev(), [arteEmblaApi]);
+  const arteScrollNext = useCallback(() => arteEmblaApi && arteEmblaApi.scrollNext(), [arteEmblaApi]);
+
+  // Educação carousel (Embla)
+  const [eduEmblaRef, eduEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
+  const [eduCanScrollPrev, setEduCanScrollPrev] = useState(false);
+  const [eduCanScrollNext, setEduCanScrollNext] = useState(true);
+  const [eduIsHovered, setEduIsHovered] = useState(false);
+
+  const onEduSelect = useCallback((api: any) => {
+    setEduCanScrollPrev(api.canScrollPrev());
+    setEduCanScrollNext(api.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!eduEmblaApi) return;
+    onEduSelect(eduEmblaApi);
+    eduEmblaApi.on('select', onEduSelect);
+    eduEmblaApi.on('reInit', onEduSelect);
+    return () => {
+      eduEmblaApi.off('select', onEduSelect);
+      eduEmblaApi.off('reInit', onEduSelect);
+    };
+  }, [eduEmblaApi, onEduSelect]);
+
+  const eduScrollPrev = useCallback(() => eduEmblaApi && eduEmblaApi.scrollPrev(), [eduEmblaApi]);
+  const eduScrollNext = useCallback(() => eduEmblaApi && eduEmblaApi.scrollNext(), [eduEmblaApi]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -177,31 +229,23 @@ export default function InstitutePage() {
       }
     });
 
-    gsap.fromTo('.valor-card',
-      { scale: 0.5, opacity: 0 },
+    gsap.fromTo('.valor-item',
+      { y: 40, opacity: 0 },
       {
-        scale: 1,
+        y: 0,
         opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'back.out(1.5)',
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: '#valores',
-          start: 'top 80%',
+          start: 'top 75%',
         }
       }
     );
   }, []);
 
-  const values = [
-    { title: "Inovação com propósito", description: "Aplicar a tecnologia para melhorar vidas e promover impacto positivo.", icon: Lightbulb },
-    { title: "Educação que transforma", description: "Estimular o pensamento crítico, a criatividade e o aprendizado colaborativo.", icon: BookOpen },
-    { title: "Inclusão e sustentabilidade", description: "Garantir acesso igualitário às oportunidades de formação e desenvolvimento.", icon: Globe },
-    { title: "Cultura e diversidade", description: "Valorizar as expressões artísticas e as múltiplas identidades como motor de evolução.", icon: Palette },
-    { title: "Ética e transparência", description: "Agir com responsabilidade social, integridade e respeito nas relações institucionais.", icon: ShieldCheck },
-    { title: "Colaboração", description: "Fomentar redes de conhecimento e empreendedorismo entre empresas, startups e indivíduos.", icon: Users },
-    { title: "Excelência e protagonismo", description: "Formar agentes de mudança preparados para liderar a inovação no país.", icon: Award },
-  ];
+  // Values are sourced from instituteConfig.values (defined in config.ts)
 
   const councilMembers = [
     { name: "ACHILLES MILAN", role: "DIRETOR", img: "/images/conselho/conselho_1.png" },
@@ -226,7 +270,7 @@ export default function InstitutePage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 font-sans selection:bg-brand-teal selection:text-white overflow-hidden">
-      <SEO 
+      <SEO
         title="Instituto Vila Tech | Inovação, Tecnologia & Educação em Itu, SP"
         description="O Instituto Cultural e Educacional Vila Tech une inovação tecnológica, arte e desenvolvimento social em Itu, SP. Conheça nossos projetos sociais e de profissionalização."
       />
@@ -254,7 +298,7 @@ export default function InstitutePage() {
         {/* Background graphics */}
         <div
           ref={heroBgRef}
-          className="absolute inset-0 z-0 opacity-40 bg-[url('/images/Arvore1.png')] bg-cover bg-top mix-blend-screen origin-top"
+          className="absolute inset-0 z-0 opacity-40 bg-[url('/images/Arvore1.png')] bg-cover bg-top origin-top"
         />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/60 to-[#0A0A0A]" />
 
@@ -279,8 +323,8 @@ export default function InstitutePage() {
               <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
                 Ser Parceiro
               </a>
-              <button 
-                onClick={() => setIsDonationModalOpen(true)} 
+              <button
+                onClick={() => setIsDonationModalOpen(true)}
                 className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors"
               >
                 Doar Agora
@@ -334,23 +378,26 @@ export default function InstitutePage() {
       </section>
 
       {/* Valores */}
-      <section id="valores" className="py-24 px-6 border-t border-zinc-800/50">
+      <section id="valores" className="py-24 md:py-32 px-6 bg-zinc-900/40">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col items-center gap-4 mb-16 fade-up text-center">
-            <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-wider text-white">Nossos Valores</h2>
-            <div className="w-24 h-1 bg-brand-orange"></div>
-          </div>
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {values.map((val, i) => (
-              <div key={i} className="valor-card flex flex-col items-start p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-brand-teal hover:bg-brand-teal/5 transition-all duration-300 group">
-                <div className="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center mb-6 group-hover:border-brand-teal transition-colors">
-                  <val.icon className="w-6 h-6 text-brand-orange group-hover:text-brand-teal transition-colors" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3 leading-tight">{val.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{val.description}</p>
-              </div>
-            ))}
+            {/* Left: title block */}
+            <div className="md:w-1/3 fade-up flex flex-col items-start text-left">
+              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">A Essência</p>
+              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">
+                Nossos<br />Valores
+              </h2>
+              <div className="w-12 h-1 bg-brand-teal mt-6"></div>
+            </div>
+
+            {/* Right: prose text */}
+            <div className="md:w-2/3 border-l border-brand-teal/30 pl-8 md:pl-16 py-4">
+              <p className="text-2xl md:text-3xl text-zinc-300 font-light leading-snug">
+                {renderStaggeredText(instituteConfig.valuesText)}
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -389,9 +436,60 @@ export default function InstitutePage() {
             {/* Projetos de Arte e Cultura */}
             <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
               <div className="md:w-1/2">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
-                  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Projetos de Arte e Cultura" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
+                {/* Embla carousel with navigation arrows */}
+                <div
+                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
+                  onMouseEnter={() => setArteIsHovered(true)}
+                  onMouseLeave={() => setArteIsHovered(false)}
+                >
+                  {/* Embla viewport */}
+                  <div className="embla h-full" ref={arteEmblaRef}>
+                    <div className="embla__container flex h-full">
+                      {[
+                        { src: '/images/arte/Expo3.png', alt: 'Arte em Movimento' },
+                        { src: '/images/arte/IMG_5108.jpg', alt: 'Exposição de Arte' },
+                        { src: '/images/arte/IMG_5126.jpg', alt: 'Projeto Cultural' },
+                        { src: '/images/arte/IMG_5144.jpg', alt: 'Arte e Comunidade' },
+                        { src: '/images/arte/IMG_5159.jpg', alt: 'Instituto Vila Tech Arte' },
+                      ].map((img, idx) => (
+                        <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Hover overlay with label */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5 pointer-events-none">
+                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                              {img.alt}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation arrows — visible on hover */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${arteIsHovered ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    <button
+                      onClick={arteScrollPrev}
+                      disabled={!arteCanScrollPrev}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Imagem anterior"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={arteScrollNext}
+                      disabled={!arteCanScrollNext}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Próxima imagem"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="md:w-1/2">
@@ -405,19 +503,72 @@ export default function InstitutePage() {
             {/* Projetos Educacionais */}
             <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
               <div className="md:w-1/2">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative group">
-                  <img src="/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Projetos Educacionais" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply pointer-events-none" />
+                {/* Embla carousel with navigation arrows */}
+                <div
+                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
+                  onMouseEnter={() => setEduIsHovered(true)}
+                  onMouseLeave={() => setEduIsHovered(false)}
+                >
+                  {/* Embla viewport */}
+                  <div className="embla h-full" ref={eduEmblaRef}>
+                    <div className="embla__container flex h-full">
+                      {[
+                        { src: '/images/educacao/educacao1.png', alt: 'Vila Tech Hub - Espaço Educacional' },
+                        { src: '/images/educacao/educacao2.jpg', alt: 'Cursos de Formação em Tecnologia' },
+                        { src: '/images/educacao/educacao3.jpg', alt: 'Projeto Vila Tech Hub' },
+                        { src: '/images/educacao/educacao4.jpg', alt: 'Capacitação e Inovação' },
+                      ].map((img, idx) => (
+                        <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Hover overlay with label */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
+                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                              {img.alt}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation arrows — visible on hover */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${eduIsHovered ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    <button
+                      onClick={eduScrollPrev}
+                      disabled={!eduCanScrollPrev}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Imagem anterior"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={eduScrollNext}
+                      disabled={!eduCanScrollNext}
+                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                      aria-label="Próxima imagem"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="md:w-1/2">
                 <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Projetos Educacionais</h3>
                 <h4 className="text-xl font-bold text-white mb-4">Projeto Vila Tech Hub - Cursos de Formação em Tecnologia</h4>
                 <p className="text-lg text-zinc-300 font-light leading-relaxed mb-4">
-                  O Instituto Cultural Vila Tech através de seu projeto Vila Tech Hub oferece uma agenda de cursos de formação em novas tecnologias, principalmente voltados para o uso de IA na educação e negócios.
+                  O Instituto Cultural Vila Tech através de seu projeto Vila Tech Hub oferece uma agenda de cursos de formação em novas tecnologias,
+                  principalmente voltados para o uso de IA na educação e negócios.
                 </p>
                 <p className="text-lg text-zinc-300 font-light leading-relaxed">
-                  São cursos de tecnologia e principalmente IA aplicada de forma prática às realidades e necessidades de estudantes e profissionais, incluindo o ensino de criação e produção de games voltados para estudantes do ensino médio de escolas públicas e privadas, onde os alunos de escolas públicas têm acesso a formação gratuita subvencionada pelo Instituto.
+                  São cursos de tecnologia e principalmente IA aplicada de forma prática às realidades e necessidades de estudantes
+                  e profissionais, incluindo o ensino de criação e produção de games voltados para estudantes do ensino médio de escolas
+                  públicas e privadas, onde os alunos de escolas públicas têm acesso a formação gratuita subvencionada pelo Instituto.
                 </p>
               </div>
             </div>
@@ -535,8 +686,8 @@ export default function InstitutePage() {
                             type="button"
                             onClick={() => handleInterestChange(interest)}
                             className={`px-3 py-1.5 rounded-full text-[10px] uppercase font-bold tracking-wider transition-all duration-300 ${formData.interests.includes(interest)
-                                ? 'bg-brand-teal text-black'
-                                : 'bg-white/5 text-white/40 border border-white/10 hover:border-brand-teal/50'
+                              ? 'bg-brand-teal text-black'
+                              : 'bg-white/5 text-white/40 border border-white/10 hover:border-brand-teal/50'
                               }`}
                           >
                             {interest}
@@ -597,8 +748,8 @@ export default function InstitutePage() {
                 <p className="text-[#023B33]/90 font-medium mb-10 max-w-sm text-lg leading-snug">
                   Sua doação impulsiona bolsas de estudo, equipamentos e infraestrutura para talentos em vulnerabilidade social.
                 </p>
-                <button 
-                  onClick={() => setIsDonationModalOpen(true)} 
+                <button
+                  onClick={() => setIsDonationModalOpen(true)}
                   className="inline-flex items-center justify-center px-10 py-4 bg-[#023B33] text-white font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors rounded-sm"
                 >
                   Fazer Doação
@@ -623,7 +774,7 @@ export default function InstitutePage() {
                 </p>
                 <p className="text-zinc-300 text-xl font-light leading-relaxed">
                   R. Francisco José Ferreira Sampaio, 90<br />
-                  Itu, SP - 13312-050
+                  Itu, SP - 13303-536
                 </p>
               </div>
 
@@ -639,7 +790,7 @@ export default function InstitutePage() {
             <div className="fade-up rounded-3xl overflow-hidden grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-700 border border-zinc-800 shadow-2xl">
               {/* Map integration */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.639727409419!2d-47.30058912384918!3d-23.32882205310384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf50a0f3eb3463%3A0xc6cb5a329dbe06af!2sR.%20Francisco%20Jos%C3%A9%20Ferreira%20Sampaio%2C%2090%20-%20Itu%20Novo%20Centro%2C%20Itu%20-%20SP%2C%2013312-050!5e0!3m2!1spt-BR!2sbr!4v1709848247900!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.639727409419!2d-47.30058912384918!3d-23.32882205310384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf50a0f3eb3463%3A0xc6cb5a329dbe06af!2sR.%20Francisco%20Jos%C3%A9%20Ferreira%20Sampaio%2C%2090%20-%20Itu%20Novo%20Centro%2C%20Itu%20-%20SP%2C%2013303-536!5e0!3m2!1spt-BR!2sbr!4v1709848247900!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
@@ -661,7 +812,7 @@ export default function InstitutePage() {
       {isDonationModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
           <div className="relative w-full max-w-md p-6 rounded-2xl bg-zinc-900 border border-brand-teal text-white shadow-2xl">
-            <button 
+            <button
               onClick={() => setIsDonationModalOpen(false)}
               className="absolute top-4 right-4 text-white/60 hover:text-white"
             >
@@ -681,7 +832,7 @@ export default function InstitutePage() {
               </p>
             </div>
             <div className="flex gap-4">
-              <button 
+              <button
                 onClick={() => {
                   navigator.clipboard.writeText("58.473.428/0001-31");
                   alert("Chave Pix CNPJ copiada com sucesso!");
@@ -690,7 +841,7 @@ export default function InstitutePage() {
               >
                 Copiar Chave Pix
               </button>
-              <a 
+              <a
                 href="#contato"
                 onClick={() => {
                   setIsDonationModalOpen(false);

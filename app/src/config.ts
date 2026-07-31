@@ -147,13 +147,15 @@ export const parallaxGalleryConfig: ParallaxGalleryConfig = {
   endCtaText: "Agende uma visita",
   parallaxImagesTop: [
     { id: 1, src: "/images/imgs_coworking/Recepção Vila Tech Hub.png", alt: "Recepção Vila Tech Hub" },
-    { id: 2, src: "/images/imgs_coworking/Copa e Café.png", alt: "Copa e Café" },
-    { id: 3, src: "/images/imgs_coworking/Estações de trabalho.png", alt: "Estações de trabalho" },
-    { id: 4, src: "/images/imgs_coworking/Estações de trabalho 1.png", alt: "Estações de trabalho 1" },
-    { id: 5, src: "/images/imgs_coworking/Estações de trabalho 2.png", alt: "Estações de trabalho 2" },
-    { id: 6, src: "/images/imgs_coworking/Auditório com cadeiras.png", alt: "Auditório com cadeiras" },
-    { id: 7, src: "/images/imgs_coworking/Auditório com mesas.png", alt: "Auditório com mesas" },
-    { id: 8, src: "/images/imgs_coworking/Auditório com telão.png", alt: "Auditório com telão" },
+    { id: 2, src: "/images/imgs_coworking/Estações de trabalho.png", alt: "Estações de trabalho" },
+    { id: 3, src: "/images/imgs_coworking/Estações de trabalho 1.png", alt: "Estações de trabalho 1" },
+    { id: 4, src: "/images/imgs_coworking/Estações de trabalho 2.png", alt: "Estações de trabalho 2" },
+    { id: 5, src: "/images/imgs_coworking/Auditório com cadeiras.png", alt: "Auditório com cadeiras" },
+    { id: 6, src: "/images/imgs_coworking/Auditório com mesas.png", alt: "Auditório com mesas" },
+    { id: 7, src: "/images/imgs_coworking/Balcao.jpg", alt: "Clube do Vinil Café" },
+    { id: 8, src: "/images/imgs_coworking/Honest Mkt.jpg", alt: "Honest Market" },
+    { id: 9, src: "/images/imgs_coworking/mesa.jpg", alt: "Clube do Vinil Café" },
+    { id: 10, src: "/images/imgs_coworking/xicaras.jpg", alt: "Clube do Vinil Café" },
   ],
   parallaxImagesBottom: [],
 };
@@ -314,7 +316,7 @@ export const footerConfig: FooterConfig = {
   quickLinks: [
     { label: "Home", href: "/" },
     { label: "Coworking", href: "/coworking" },
-    { label: "Instituto", href: "/instituto" },
+    { label: "Instituto", href: "/" },
     { label: "Cursos", href: "/cursos" },
     { label: "Agenda", href: "/agenda" },
     { label: "Reservas", href: "/reservas" },
@@ -325,7 +327,7 @@ export const footerConfig: FooterConfig = {
   phoneLabel: "Telefone",
   phone: "+55 11 99371-0652",
   addressLabel: "Endereço",
-  address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro, Itu - SP, CEP 13312-050",
+  address: "Rua Francisco José Ferreira Sampaio, 90 - Itu Novo Centro, Itu - SP, CEP 13303-536",
   newsletterTitle: "Receba novidades",
   newsletterDescription: "Inscreva-se para receber atualizações sobre cursos, eventos e novidades do Vila Tech Hub.",
   newsletterButtonText: "Inscrever",
@@ -621,6 +623,7 @@ export interface InstituteConfig {
     title: string;
     description: string;
   }[];
+  valuesText: string;
   pillars: InstitutePillar[];
   cta: {
     title: string;
@@ -633,7 +636,7 @@ export const globalNavItems: HeroNavItem[] = [
   { label: "Home", path: "/" },
   { label: "Coworking", path: "/coworking" },
   { label: "Reservas", path: "/reservas" },
-  { label: "Instituto", path: "/instituto" },
+  { label: "Vila Tech Hub", path: "/vila-tech-hub" },
   { label: "Cursos", path: "/cursos" },
   { label: "Agenda", path: "/agenda" },
   { label: "Contato", sectionId: "contact" },
@@ -684,6 +687,7 @@ export const instituteConfig: InstituteConfig = {
       description: "formar agentes de mudança preparados para liderar a inovação no país.",
     },
   ],
+  valuesText: "Nos orientamos pela inovação com propósito, aplicando a tecnologia para melhorar vidas e promover impacto positivo; por uma educação que transforma, estimulando o pensamento crítico, a criatividade e o aprendizado colaborativo; e pela inclusão e sustentabilidade, garantindo acesso igualitário às oportunidades de formação. Valorizamos a cultura e a diversidade como motores de evolução, agimos com ética e transparência em todas as nossas relações, fomentamos a colaboração entre pessoas, empresas e startups e buscamos, acima de tudo, a excelência e o protagonismo, formando agentes de mudança preparados para liderar a inovação no país.",
   pillars: [
     {
       id: 1,
@@ -727,7 +731,7 @@ export const instituteTeaserConfig: InstituteTeaserConfig = {
   sectionTitle: "Inovação com Propósito",
   description: "Promovemos a transformação por meio da educação, tecnologia e cultura, democratizando o acesso e impulsionando o protagonismo de jovens e comunidades.",
   ctaText: "Conheça o Instituto",
-  ctaPath: "/instituto",
+  ctaPath: "/",
   backgroundImage: "/images/hero-bg.jpg",
   backgroundVideo: "/images/institute-bg.mp4", // Coloque seu vídeo MP4 escuro nesta pasta
 };
@@ -873,8 +877,8 @@ export const coworkingPageConfig: CoworkingPageConfig = {
   faq: {
     title: "Dúvidas Frequentes",
     questions: [
-      { q: "Onde fica localizado o Vila Tech Hub?", a: "O Vila Tech Hub está localizado na Rua Convenção, 440, no bairro Itu Novo Centro, em Itu - SP, CEP 13300-113." },
-      { q: "Quais são os horários de funcionamento do coworking?", a: "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 8h às 20h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)." },
+      { q: "Onde fica localizado o Vila Tech Hub?", a: "O Vila Tech Hub está localizado na Rua Francisco José Ferreira Sampaio, 90, no bairro Itu Novo Centro, em Itu - SP, CEP 13303-536." },
+      { q: "Quais são os horários de funcionamento do coworking?", a: "Para planos Hot Desk, o funcionamento é de segunda a sexta, das 9h às 18h. Membros com planos Fixed Desk e Salas Privativas possuem acesso 24 horas por dia, 7 dias por semana (24/7)." },
       { q: "Quanto custa a diária de coworking (Hot Desk) no Vila Tech Hub?", a: "A diária de Hot Desk (posto flexível) custa R$ 60 e inclui internet de alta velocidade, café, água e acesso às áreas comuns." },
       { q: "Quais são os planos mensais de coworking disponíveis?", a: "O plano Hot Desk Mensal (posto flexível) custa R$ 450/mês. O plano Fixed Desk (mesa fixa exclusiva com gaveteiro e acesso 24/7) custa R$ 650/mês." },
       { q: "Como funciona o serviço de Endereço Fiscal e Escritório Virtual?", a: "O Vila Tech Hub oferece duas opções: o Endereço Comercial por R$ 120/mês (para divulgação) e o plano Endereço Fiscal + Comercial por R$ 200/mês (para registro de CNPJ de prestadores de serviços e recebimento de correspondências)." },

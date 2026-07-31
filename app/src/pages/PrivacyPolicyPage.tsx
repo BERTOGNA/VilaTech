@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 font-sans selection:bg-brand-teal selection:text-white">
-      <SEO 
+      <SEO
         title="Política de Privacidade | Instituto Cultural e Educacional Vila Tech"
         description="Esta política de privacidade descreve como o Instituto Cultural e Educacional Vila Tech coleta, usa e protege suas informações."
       />
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
           <p className="text-zinc-400 text-sm"> Última atualização: 7 de julho de 2026 </p>
 
           <p>
-            O <strong>Instituto Cultural e Educacional Vila Tech</strong>, inscrito no CNPJ sob o nº <strong>58.473.428/0001-31</strong>, com sede na Rua Francisco José Ferreira Sampaio, 90, Itu - SP, CEP 13312-050, valoriza a privacidade dos seus usuários e está comprometido com a proteção dos dados pessoais nos termos da Lei Geral de Proteção de Dados (LGPD) - Lei nº 13.709/2018.
+            O <strong>Instituto Cultural e Educacional Vila Tech</strong>, inscrito no CNPJ sob o nº <strong>58.473.428/0001-31</strong>, com sede na Rua Francisco José Ferreira Sampaio, 90, Itu - SP, CEP 13303-536, valoriza a privacidade dos seus usuários e está comprometido com a proteção dos dados pessoais nos termos da Lei Geral de Proteção de Dados (LGPD) - Lei nº 13.709/2018.
           </p>
 
           <h2 className="text-xl font-bold text-white uppercase tracking-wider mt-8">1. Coleta de Informações</h2>

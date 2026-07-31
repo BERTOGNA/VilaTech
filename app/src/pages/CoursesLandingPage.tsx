@@ -106,7 +106,7 @@ const CoursesLandingPage = () => {
         "name": "Onde ocorrem os cursos e qual o formato?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Todos os cursos são realizados presencialmente na sede do Vila Tech Hub em Itu, SP (Rua Convenção, 440), mesclando teoria com aplicação prática imediata e oportunidades de networking."
+          "text": "Todos os cursos são realizados presencialmente na sede do Vila Tech Hub em Itu, SP (Rua Francisco José Ferreira Sampaio, 90), mesclando teoria com aplicação prática imediata e oportunidades de networking."
         }
       },
       {
@@ -130,7 +130,7 @@ const CoursesLandingPage = () => {
 
   return (
     <div className="bg-[#1d1d1b] text-white min-h-screen font-sans selection:bg-[#e83a79] selection:text-white">
-      <SEO 
+      <SEO
         title="Cursos de IA & Tecnologia em Itu | Vila Tech Educação"
         description="Acelere sua carreira com nossos cursos e workshops de Inteligência Artificial aplicada, Gestão de Negócios e Planejamento Estratégico. Aulas presenciais em Itu, SP."
       />
@@ -182,7 +182,7 @@ const CoursesLandingPage = () => {
               <p className="text-[#e83a79] font-display uppercase tracking-widest text-sm mb-2">Trilhas de Aprendizado</p>
               <h2 className="text-3xl md:text-4xl font-display uppercase text-white">IA &amp; Gestão de Negócios</h2>
             </div>
-            
+
             {/* Future Trails Indicator Tabs */}
             <div className="flex flex-wrap gap-2">
               <span className="px-4 py-2 bg-[#e83a79] text-white text-xs uppercase font-display tracking-widest rounded-full">
@@ -346,7 +346,7 @@ const CoursesLandingPage = () => {
                 </span>
               </summary>
               <div className="p-6 pt-0 text-white/70 font-sans leading-relaxed border-t border-white/5">
-                Todos os cursos são realizados presencialmente na sede do Vila Tech Hub em Itu, SP (Rua Convenção, 440), mesclando teoria com aplicação prática imediata e oportunidades de networking.
+                Todos os cursos são realizados presencialmente na sede do Vila Tech Hub em Itu, SP (Rua Francisco José Ferreira Sampaio, 90), mesclando teoria com aplicação prática imediata e oportunidades de networking.
               </div>
             </details>
 

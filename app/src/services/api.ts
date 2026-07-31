@@ -16,12 +16,12 @@ api.interceptors.request.use(
         console.error('Error getting ID token:', error);
       }
     } else {
-        // Fallback to static token for leads from public site if needed, 
-        // though usually admin actions require the Firebase token.
-        const staticToken = import.meta.env.VITE_API_TOKEN;
-        if (staticToken) {
-            config.headers.Authorization = `Bearer ${staticToken}`;
-        }
+      // Fallback to static token for leads from public site if needed, 
+      // though usually admin actions require the Firebase token.
+      const staticToken = import.meta.env.VITE_API_TOKEN;
+      if (staticToken) {
+        config.headers.Authorization = `Bearer ${staticToken}`;
+      }
     }
     return config;
   },

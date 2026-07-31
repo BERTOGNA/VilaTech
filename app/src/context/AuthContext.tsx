@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { User } from 'firebase/auth';
-import { 
-  onAuthStateChanged, 
+import {
+  onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
@@ -37,13 +37,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = (email: string, pass: string) => {
     if (!auth) return Promise.reject(new Error('Auth not initialized'));
-    return signInWithEmailAndPassword(auth, email, pass).then(() => {});
+    return signInWithEmailAndPassword(auth, email, pass).then(() => { });
   };
 
   const loginWithGoogle = () => {
     if (!auth) return Promise.reject(new Error('Auth not initialized'));
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider).then(() => {});
+    return signInWithPopup(auth, provider).then(() => { });
   };
 
   const logout = () => {
