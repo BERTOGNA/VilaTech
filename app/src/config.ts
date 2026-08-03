@@ -316,7 +316,7 @@ export const footerConfig: FooterConfig = {
   quickLinks: [
     { label: "Home", href: "/" },
     { label: "Coworking", href: "/coworking" },
-    { label: "Instituto", href: "/" },
+    { label: "Vila Tech Hub", href: "/vila-tech-hub" },
     { label: "Cursos", href: "/cursos" },
     { label: "Agenda", href: "/agenda" },
     { label: "Reservas", href: "/reservas" },
