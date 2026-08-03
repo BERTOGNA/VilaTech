@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Lightbulb, Users, ShieldCheck, Send, Check, User, Mail, Phone, MessageSquare, X, BookOpen, Palette, Globe, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
