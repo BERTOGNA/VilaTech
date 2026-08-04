@@ -509,6 +509,7 @@ export const partnersConfig: PartnersConfig = {
     { src: "/images/logos_institucionais/PARCEIROS/motim.jpg", alt: "Motim Criativo" },
     { src: "/images/logos_institucionais/PARCEIROS/seven7.jpg", alt: "Seven Sete" },
     { src: "/images/logos_institucionais/PARCEIROS/torricelli.jpg", alt: "Torricelli" },
+    { src: "/images/logos_institucionais/PARCEIROS/gmg.jpeg", alt: "GMG" },
   ],
   categories: [],
 };
