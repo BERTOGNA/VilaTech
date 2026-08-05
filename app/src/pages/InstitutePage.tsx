@@ -314,13 +314,13 @@ export default function InstitutePage() {
                 {typingStep === 1 && <span className="inline-block w-[0.1em] h-[0.7em] bg-brand-teal animate-pulse ml-2 align-middle" />}
               </span>
             </h1>
-            <div className="hero-slide-up opacity-0">
+            <div className="hero-slide-up opacity-0" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 80px' }}>
               <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mb-12 leading-relaxed">
                 O Instituto Vila Tech está redefinindo a interseção do patrimônio cultural e da evolução tecnológica. Construímos as pontes para a próxima era da criatividade humana.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
-              <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
+              <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
                 Ser Parceiro
               </a>
               <button

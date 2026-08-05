@@ -261,12 +261,12 @@ const Footer = () => {
 
           {/* Bottom bar */}
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/30 font-sans">
+            <p className="text-xs text-white/60 font-sans">
               {footerConfig.copyrightText}
             </p>
             <div className="flex gap-6">
               {footerConfig.bottomLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-xs text-white/30 hover:text-white/60 transition-colors">
+                <a key={link.label} href={link.href} className="text-xs text-white/60 hover:text-white/90 transition-colors">
                   {link.label}
                 </a>
               ))}
