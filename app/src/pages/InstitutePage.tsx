@@ -448,9 +448,9 @@ export default function InstitutePage() {
                       {[
                         { src: '/images/arte/Expo3.png', alt: 'Arte em Movimento' },
                         { src: '/images/arte/IMG_5108.jpg', alt: 'Exposição de Arte' },
-                        { src: '/images/arte/IMG_5126.jpg', alt: 'Projeto Cultural' },
-                        { src: '/images/arte/IMG_5144.jpg', alt: 'Arte e Comunidade' },
-                        { src: '/images/arte/IMG_5159.jpg', alt: 'Instituto Vila Tech Arte' },
+                        { src: '/images/arte/IMG_5126.webp', alt: 'Projeto Cultural' },
+                        { src: '/images/arte/IMG_5144.webp', alt: 'Arte e Comunidade' },
+                        { src: '/images/arte/IMG_5159.webp', alt: 'Instituto Vila Tech Arte' },
                       ].map((img, idx) => (
                         <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
                           <img
@@ -513,8 +513,8 @@ export default function InstitutePage() {
                   <div className="embla h-full" ref={eduEmblaRef}>
                     <div className="embla__container flex h-full">
                       {[
-                        { src: '/images/educacao/educacao1.png', alt: 'Vila Tech Hub - Espaço Educacional' },
-                        { src: '/images/educacao/educacao2.jpg', alt: 'Cursos de Formação em Tecnologia' },
+                        { src: '/images/educacao/educacao1.webp', alt: 'Vila Tech Hub - Espaço Educacional' },
+                        { src: '/images/educacao/educacao2.webp', alt: 'Cursos de Formação em Tecnologia' },
                         { src: '/images/educacao/educacao3.jpg', alt: 'Projeto Vila Tech Hub' },
                         { src: '/images/educacao/educacao4.jpg', alt: 'Capacitação e Inovação' },
                       ].map((img, idx) => (
