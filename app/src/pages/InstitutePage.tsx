@@ -16,9 +16,9 @@ import { instituteConfig } from '../config';
 
 export default function InstitutePage() {
 
-  const [line1, setLine1] = useState('');
-  const [line2, setLine2] = useState('');
-  const [typingStep, setTypingStep] = useState(0);
+  const [line1, setLine1] = useState('VANGUARDA');
+  const [line2, setLine2] = useState('DO FUTURO');
+  const [typingStep, setTypingStep] = useState(2);
   const heroBgRef = useRef<HTMLDivElement>(null);
 
   // Force scroll to top on mount
@@ -155,14 +155,7 @@ export default function InstitutePage() {
           setTimeout(() => setTypingStep(2), 200);
         }
       }, 70);
-    } else if (typingStep === 2) {
-      gsap.fromTo('.hero-slide-up',
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
-      );
     }
-
-    return () => clearInterval(interval);
   }, [typingStep]);
 
   useEffect(() => {
@@ -248,10 +241,10 @@ export default function InstitutePage() {
   // Values are sourced from instituteConfig.values (defined in config.ts)
 
   const councilMembers = [
-    { name: "ACHILLES MILAN", role: "DIRETOR", img: "/images/conselho/conselho_1.png" },
-    { name: "PAULO SESSO", role: "DIRETOR", img: "/images/conselho/conselho_2.png" },
-    { name: "PINA", role: "DIRETOR", img: "/images/conselho/conselho_3.png" },
-    { name: "LUCILLA ALMEIDA", role: "DIRETORA", img: "/images/conselho/conselho_4.png" }
+    { name: "ACHILLES MILAN", role: "DIRETOR", img: "/images/conselho/conselho_1.webp" },
+    { name: "PAULO SESSO", role: "DIRETOR", img: "/images/conselho/conselho_2.webp" },
+    { name: "PINA", role: "DIRETOR", img: "/images/conselho/conselho_3.webp" },
+    { name: "LUCILLA ALMEIDA", role: "DIRETORA", img: "/images/conselho/conselho_4.webp" }
   ];
 
   const renderStaggeredText = (text: string, className: string = "") => {
@@ -314,18 +307,18 @@ export default function InstitutePage() {
                 {typingStep === 1 && <span className="inline-block w-[0.1em] h-[0.7em] bg-brand-teal animate-pulse ml-2 align-middle" />}
               </span>
             </h1>
-            <div className="hero-slide-up opacity-0" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 80px' }}>
+            <div className="hero-slide-up" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 80px' }}>
               <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mb-12 leading-relaxed">
                 O Instituto Vila Tech está redefinindo a interseção do patrimônio cultural e da evolução tecnológica. Construímos as pontes para a próxima era da criatividade humana.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
-              <a href="#contato" className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
+              <a href="#contato" className="hero-slide-up inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
                 Ser Parceiro
               </a>
               <button
                 onClick={() => setIsDonationModalOpen(true)}
-                className="hero-slide-up opacity-0 inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors"
+                className="hero-slide-up inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors"
               >
                 Doar Agora
               </button>
@@ -446,8 +439,8 @@ export default function InstitutePage() {
                   <div className="embla h-full" ref={arteEmblaRef}>
                     <div className="embla__container flex h-full">
                       {[
-                        { src: '/images/arte/Expo3.png', alt: 'Arte em Movimento' },
-                        { src: '/images/arte/IMG_5108.jpg', alt: 'Exposição de Arte' },
+                        { src: '/images/arte/Expo3.webp', alt: 'Arte em Movimento' },
+                        { src: '/images/arte/IMG_5108.webp', alt: 'Exposição de Arte' },
                         { src: '/images/arte/IMG_5126.webp', alt: 'Projeto Cultural' },
                         { src: '/images/arte/IMG_5144.webp', alt: 'Arte e Comunidade' },
                         { src: '/images/arte/IMG_5159.webp', alt: 'Instituto Vila Tech Arte' },
