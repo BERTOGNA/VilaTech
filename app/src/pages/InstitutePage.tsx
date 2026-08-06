@@ -449,6 +449,7 @@ export default function InstitutePage() {
                           <img
                             src={img.src}
                             alt={img.alt}
+                            loading={idx === 0 ? "eager" : "lazy"}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                           {/* Hover overlay with label */}
@@ -508,13 +509,14 @@ export default function InstitutePage() {
                       {[
                         { src: '/images/educacao/educacao1.webp', alt: 'Vila Tech Hub - Espaço Educacional' },
                         { src: '/images/educacao/educacao2.webp', alt: 'Cursos de Formação em Tecnologia' },
-                        { src: '/images/educacao/educacao3.jpg', alt: 'Projeto Vila Tech Hub' },
-                        { src: '/images/educacao/educacao4.jpg', alt: 'Capacitação e Inovação' },
+                        { src: '/images/educacao/educacao3.webp', alt: 'Projeto Vila Tech Hub' },
+                        { src: '/images/educacao/educacao4.webp', alt: 'Capacitação e Inovação' },
                       ].map((img, idx) => (
                         <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
                           <img
                             src={img.src}
                             alt={img.alt}
+                            loading={idx === 0 ? "eager" : "lazy"}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                           {/* Hover overlay with label */}
