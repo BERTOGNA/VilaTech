@@ -12,4 +12,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: 'es2022', // modern browsers only, drop legacy polyfills
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          embla: ['embla-carousel-react'],
+          gsap: ['gsap', 'gsap/ScrollTrigger'],
+        },
+      },
+    },
+  },
 });
