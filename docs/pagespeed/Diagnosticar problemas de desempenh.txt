@@ -1,0 +1,378 @@
+Diagnosticar problemas de desempenho
+43
+Desempenho
+100
+Acessibilidade
+81
+Práticas recomendadas
+100
+SEO
+2/3
+Navegação agêntica
+43
+FCP
++5
+LCP
++4
+TBT
++3
+CLS
++25
+SI
++5
+Desempenho
+Os valores são estimados e podem variar. O índice de desempenho é calculado diretamente por essas métricas.Ver calculadora.
+0–49
+50–89
+90–100
+Final Screenshot
+
+Métricas
+Abrir visualização
+First Contentful Paint
+2,9 s
+Largest Contentful Paint
+5,7 s
+Total Blocking Time
+1.650 ms
+Cumulative Layout Shift
+0.037
+Speed Index
+5,9 s
+Captured at 6 de ago. de 2026, 11:00 BRT
+Moto G Power emulado with Lighthouse 13.4.1
+Sessão de uma única página
+Carregamento inicial da página
+Limitação lenta de 4G
+Using HeadlessChromium 150.0.7871.186 with lr
+Ver Treemap
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Mostrar auditorias relevantes para:
+
+All
+
+FCP
+
+LCP
+
+TBT
+
+CLS
+Insights
+Solicitações que bloquearam a renderização Economia estimada de 750 ms
+As solicitações estão bloqueando a renderização inicial da página, o que pode atrasar a LCP. Essas solicitações de rede podem ser deferidas ou colocadas inline para que fiquem fora do caminho crítico.LCPFCPFora da pontuação
+URL
+Tamanho da transferência
+Duração
+vilatechub.com.br Própria
+24,6 KiB	380 ms
+/assets/index-BJMwA21G.css(www.vilatechub.com.br)
+24,6 KiB
+380 ms
+Google Fonts cdn 
+1,5 KiB	750 ms
+/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap(fonts.googleapis.com)
+1,5 KiB
+750 ms
+Detalhamento da LCP
+Cada subparte tem estratégias de melhoria específicas. O ideal é que a maior parte do tempo de LCP seja gasto no carregamento dos recursos, não em atrasos.LCPFora da pontuação
+Subparte
+Duração
+Time to First Byte
+0 ms
+Atraso na renderização do elemento
+3.290 ms
+O Instituto Vila Tech está redefinindo a interseção do patrimônio cultural e da…
+<p code-path="src/pages/InstitutePage.tsx:311:15" class="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mb-12 leading-relax…">
+Reflow forçado
+Um reflow forçado ocorre quando o JavaScript consulta propriedades geométricas (como offsetWidth) depois que os estilos são invalidados por uma mudança no estado do DOM. Isso pode resultar em desempenho ruim. Saiba mais sobre reflows forçados e possíveis reduções de risco.Fora da pontuação
+Chamada de função principal
+Tempo total de reflow
+/assets/index-B2OuNHBM.js:3:10594(www.vilatechub.com.br)
+769 ms
+Fonte
+Tempo total de reflow
+/assets/index-B2OuNHBM.js:12:79639(www.vilatechub.com.br)
+585 ms
+/assets/index-B2OuNHBM.js:12:84861(www.vilatechub.com.br)
+120 ms
+/assets/index-B2OuNHBM.js:12:84945(www.vilatechub.com.br)
+2 ms
+/assets/index-B2OuNHBM.js:12:97387(www.vilatechub.com.br)
+61 ms
+/assets/embla-car….esm-Cpslde9M.js:1:5869(www.vilatechub.com.br)
+4 ms
+[sem atribuição]
+19 ms
+Árvore de dependência da rede
+Evite encadear solicitações críticas reduzindo o tamanho das cadeias, o tamanho do download de recursos ou adiando o download de recursos desnecessários para melhorar o carregamento da página.LCPFora da pontuação
+Latência máxima do caminho crítico: 3.001 ms
+Navegação inicial
+https://www.vilatechub.com.br - 203 ms, 2,08 KiB
+/assets/index-B2OuNHBM.js(www.vilatechub.com.br) - 493 ms, 166,85 KiB
+/assets/Institute….js(www.vilatechub.com.br) - 1.087 ms, 9,43 KiB
+/assets/embla-car….esm-Cpslde9M.js(www.vilatechub.com.br) - 1.112 ms, 8,82 KiB
+/assets/api-bbRKtDXQ.js(www.vilatechub.com.br) - 1.109 ms, 0,96 KiB
+/assets/index-42ANG6Sg.js(www.vilatechub.com.br) - 1.079 ms, 15,72 KiB
+/assets/SEO-BkZK8Bm5.js(www.vilatechub.com.br) - 1.090 ms, 3,87 KiB
+/assets/mail-C2bE0jLf.js(www.vilatechub.com.br) - 1.110 ms, 0,72 KiB
+/assets/phone-B6ShtIoF.js(www.vilatechub.com.br) - 1.091 ms, 0,83 KiB
+/assets/TopNaviga….js(www.vilatechub.com.br) - 1.088 ms, 2,17 KiB
+/assets/zap-Bp09L6X2.js(www.vilatechub.com.br) - 1.192 ms, 0,76 KiB
+/assets/target-DtjCRN3m.js(www.vilatechub.com.br) - 1.089 ms, 0,73 KiB
+/assets/chevron-r….js(www.vilatechub.com.br) - 1.109 ms, 0,65 KiB
+/assets/check-DwvVYJMb.js(www.vilatechub.com.br) - 1.085 ms, 0,63 KiB
+/assets/user-o_e_TVXO.js(www.vilatechub.com.br) - 1.091 ms, 0,70 KiB
+/assets/send-B6Htl-u6.js(www.vilatechub.com.br) - 1.189 ms, 0,97 KiB
+/assets/index-BJMwA21G.css(www.vilatechub.com.br) - 393 ms, 24,59 KiB
+/fonts/Gotham-Bold.woff2(www.vilatechub.com.br) - 2.998 ms, 16,16 KiB
+/fonts/Avenir-Light.ttf(www.vilatechub.com.br) - 3.000 ms, 72,68 KiB
+/fonts/Avenir-Regular.ttf(www.vilatechub.com.br) - 1.192 ms, 45,90 KiB
+/fonts/Avenir-Medium.ttf(www.vilatechub.com.br) - 3.001 ms, 61,84 KiB
+/fonts/Avenir-Bold.ttf(www.vilatechub.com.br) - 2.999 ms, 43,52 KiB
+/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap(fonts.googleapis.com) - 395 ms, 1,48 KiB
+…v24/tDbv2o-fl….woff2(fonts.gstatic.com) - 2.995 ms, 31,40 KiB
+Origens pré-conectadas
+As dicas de pré-conexão ajudam o navegador a estabelecer uma conexão mais cedo durante o carregamento da página, poupando tempo quando a primeira solicitação para essa origem é feita. A página fez a pré-conexão com as seguintes origens:
+nenhuma origem foi pré-conectada
+Candidatos à pré-conexão
+Adicione dicas de pré-conexão às suas origens mais importantes, mas tente não usar mais que 4.
+Nenhuma outra origem é uma boa candidata para a pré-conexão
+Use ciclos de vida eficientes de cache Economia estimada de 113 KiB
+Um cache com ciclo de vida longo pode acelerar visitas repetidas à sua página. Saiba mais sobre o armazenamento em cache.LCPFCPFora da pontuação
+Solicitação
+Cache TTL
+Tamanho da transferência
+Facebook social 
+109 KiB
+/en_US/fbevents.js(connect.facebook.net)
+20 min
+109 KiB
+LinkedIn Ads ad
+40 KiB
+/li.lms-analytics/insight.min.js(snap.licdn.com)
+1 dia
+21 KiB
+/li.lms-analytics/insight.old.min.js(snap.licdn.com)
+1 dia
+19 KiB
+/collect?v=…(px.ads.linkedin.com)
+None
+1 KiB
+Melhorar a entrega de imagens Economia estimada de 118 KiB
+Reduzir o tempo de download das imagens pode melhorar o tempo de carregamento percebido da página e a LCP. Saiba mais sobre como otimizar o tamanho da imagemLCPFCPFora da pontuação
+URL
+Tamanho do recurso
+Economia estimada
+vilatechub.com.br Própria
+196,6 KiB	118,2 KiB
+Vila Tech Hub - Espaço Educacional
+<img code-path="src/pages/InstitutePage.tsx:516:27" alt="Vila Tech Hub - Espaço Educacional" loading="eager" class="w-full h-full object-cover transition-transform duration-700 group-hover:s…" src="/images/educacao/educacao1.webp">
+…educacao/educacao1.webp(www.vilatechub.com.br)
+137,4 KiB
+99,1 KiB
+Este arquivo de imagem é maior do que precisa ser (1200x900) para as dimensões exibidas (634x475). Use imagens responsivas para reduzir o tamanho do download da imagem.
+99,1 KiB
+Arte em Movimento
+<img code-path="src/pages/InstitutePage.tsx:449:27" alt="Arte em Movimento" loading="eager" class="w-full h-full object-cover transition-transform duration-700 group-hover:s…" src="/images/arte/Expo3.webp">
+…arte/Expo3.webp(www.vilatechub.com.br)
+59,2 KiB
+19,1 KiB
+Este arquivo de imagem é maior do que precisa ser (778x584) para as dimensões exibidas (650x474). Use imagens responsivas para reduzir o tamanho do download da imagem.
+19,1 KiB
+JavaScript legado Economia estimada de 13 KiB
+Polyfills e transformações permitem que navegadores mais antigos usem novos recursos do JavaScript. No entanto, muitos não são necessários para navegadores mais recentes. Considere mudar seu processo de criação do JavaScript para não transpilar os recursos do Baseline, a menos que você precise da compatibilidade com navegadores mais antigos. Entenda por que a maioria dos sites pode implantar código ES6+ sem transpilaçãoLCPFCPFora da pontuação
+URL
+Bytes desperdiçados
+Facebook social 
+12,6 KiB
+/en_US/fbevents.js(connect.facebook.net)
+12,6 KiB
+/en_US/fbevents.js:24:6382(connect.facebook.net)
+@babel/plugin-transform-classes
+/en_US/fbevents.js:24:2819(connect.facebook.net)
+@babel/plugin-transform-regenerator
+/en_US/fbevents.js:24:5990(connect.facebook.net)
+@babel/plugin-transform-spread
+/en_US/fbevents.js:304:15837(connect.facebook.net)
+Array.from
+/en_US/fbevents.js:304:2722(connect.facebook.net)
+Array.prototype.filter
+/en_US/fbevents.js:304:21490(connect.facebook.net)
+Array.prototype.find
+/en_US/fbevents.js:304:19706(connect.facebook.net)
+Array.prototype.includes
+/en_US/fbevents.js:304:2905(connect.facebook.net)
+Array.prototype.map
+/en_US/fbevents.js:304:6104(connect.facebook.net)
+String.prototype.startsWith
+Causas da troca de layout
+Otimizar o tamanho do DOM
+Terceiros
+Esses insights também estão disponíveis no painel de desempenho do Chrome DevTools. Grave um rastro para ver informações mais detalhadas.
+Diagnóstico
+Minimize o trabalho da thread principal 4,5 s
+Considere diminuir o tempo gasto na análise, compilação e execução de JS. Você vai perceber que a entrega de payloads JS menores ajuda a fazer isso. Aprenda a minimizar o trabalho da linha de execução principal.TBTFora da pontuação
+Categoria
+Tempo gasto
+Script Evaluation
+2.335 ms
+Style & Layout
+1.019 ms
+Other
+588 ms
+Script Parsing & Compilation
+386 ms
+Rendering
+125 ms
+Parse HTML & CSS
+44 ms
+Garbage Collection
+43 ms
+Reduza o tempo de execução de JavaScript 2,6 s
+Diminua o tempo gasto com análise, compilação e execução de JS. Você vai perceber que a entrega de payloads JS menores ajuda a fazer isso. Aprenda a reduzir o tempo de execução do JavaScript.TBTFora da pontuação
+URL
+Tempo total de CPU
+Avaliação de script
+Análise de script
+vilatechub.com.br Própria
+3.310 ms	1.767 ms	114 ms
+/assets/index-B2OuNHBM.js(www.vilatechub.com.br)
+3.040 ms
+1.659 ms
+112 ms
+https://www.vilatechub.com.br
+162 ms
+5 ms
+1 ms
+…speed-insights/script.js(www.vilatechub.com.br)
+108 ms
+103 ms
+1 ms
+Google Tag Manager tag-manager 
+476 ms	325 ms	135 ms
+/gtag/js?id=G-0EJEFT2244(www.googletagmanager.com)
+476 ms
+325 ms
+135 ms
+Facebook social 
+308 ms	182 ms	98 ms
+/en_US/fbevents.js(connect.facebook.net)
+308 ms
+182 ms
+98 ms
+Não atribuível
+288 ms	7 ms	0 ms
+Unattributable
+288 ms
+7 ms
+0 ms
+Reduza o JavaScript não usado Economia estimada de 211 KiB
+Para diminuir o consumo de bytes da atividade da rede, reduza o JavaScript não usado e adie o carregamento de scripts até que eles sejam necessários. Aprenda a reduzir o JavaScript não usado.LCPFCPFora da pontuação
+URL
+Tamanho da transferência
+Economia estimada
+vilatechub.com.br Própria
+166,2 KiB	72,9 KiB
+/assets/index-B2OuNHBM.js(www.vilatechub.com.br)
+166,2 KiB
+72,9 KiB
+Google Tag Manager tag-manager 
+161,4 KiB	68,7 KiB
+/gtag/js?id=G-0EJEFT2244(www.googletagmanager.com)
+161,4 KiB
+68,7 KiB
+Facebook social 
+103,6 KiB	47,9 KiB
+/en_US/fbevents.js(connect.facebook.net)
+103,6 KiB
+47,9 KiB
+Other Google APIs/SDKs utility 
+33,9 KiB	21,4 KiB
+…rs=AHpOoo97a…/cb=gapi.loaded_0?le=scs(apis.google.com)
+33,9 KiB
+21,4 KiB
+Reduza o CSS não usado Economia estimada de 20 KiB
+Para diminuir o consumo de bytes da atividade da rede, reduza as regras não usadas nas folhas de estilo e adie o CSS não usado para conteúdo acima da dobra. Aprenda a reduzir o CSS não usado.LCPFCPFora da pontuação
+URL
+Tamanho da transferência
+Economia estimada
+vilatechub.com.br Própria
+24,0 KiB	20,5 KiB
+/assets/index-BJMwA21G.css(www.vilatechub.com.br)
+24,0 KiB
+20,5 KiB
+Os elementos de imagem não têm width e height explícitas
+Evite payloads de rede muito grandes O tamanho total foi de 3.783 KiB
+Evitar tarefas longas da linha de execução principal 12 tarefas longas encontradas
+Evitar animações não compostas 2 elementos animados encontrados
+Mais informações sobre o desempenho do seu aplicativo. Esses números não afetam diretamente o índice de desempenho.
+Auditorias aprovadas (9)
+Mostrar
+100
+Acessibilidade
+Essas verificações destacam oportunidades para melhorar a acessibilidade do seu app da Web. A detecção automática só detecta um subconjunto de problemas e não garante a acessibilidade do seu app da Web. Portanto, também recomendamos o teste manual.
+Áudio e vídeo
+Os elementos <video> contêm um elemento <track> com [kind="captions"]
+Veja aqui oportunidades de oferecer conteúdo alternativo para áudio e vídeo. Isso pode melhorar a experiência de usuários com deficiências auditivas e visuais.
+Práticas recomendadas
+Links idênticos têm a mesma finalidade.
+Esses itens destacam as práticas recomendadas comuns para acessibilidade.
+Outros itens para verificação manual (10)
+Mostrar
+Esses itens se referem a áreas que uma ferramenta de teste automatizada não pode cobrir. Saiba mais no nosso guia sobre como realizar uma avaliação de acessibilidade.
+Auditorias aprovadas (22)
+Mostrar
+Não aplicável (39)
+Mostrar
+81
+Práticas recomendadas
+Geral
+Utiliza APIs obsoletas 1 aviso encontrado
+As APIs obsoletas acabarão sendo removidas do navegador. Saiba mais sobre APIs descontinuadas.
+Suspensão de uso/aviso
+Fonte
+LinkedIn Ads ad
+Os Relatórios de Atribuição foram descontinuados e serão removidos. Saiba mais em https://goo.gle/ps-status.
+/li.lms-analytics/insight.old.min.js:1:17775(snap.licdn.com)
+Bibliotecas JavaScript detectadas
+Garantia e segurança
+Conferir se a CSP é eficaz contra ataques de XSS
+Usar uma política HSTS forte
+Garantir o isolamento adequado da origem com COOP
+Mitigar clickjacking com XFO ou CSP
+Mitigar XSS baseado em DOM com Tipos Confiáveis
+Compatibilidade de navegadores
+Recursos de referência
+Auditorias aprovadas (12)
+Mostrar
+Não aplicável (1)
+Mostrar
+100
+SEO
+Essas verificações garantem que sua página siga orientações básicas para otimização de mecanismos de pesquisa. Há muitos outros fatores não avaliados pelo Lighthouse que ainda podem afetar sua classificação na pesquisa, como a performance nas Core Web Vitals. Saiba mais sobre os Fundamentos da Pesquisa Google.
+Outros itens para verificação manual (1)
+Ocultar
+Os dados estruturados são válidos
+Execute estes validadores adicionais no seu site para verificar mais práticas recomendadas de SEO.
+Auditorias aprovadas (9)
+Mostrar
+Não aplicável (1)
+Mostrar
+2/3
+Navegação agêntica
+Essas verificações garantem sites navegáveis e de alta qualidade para agentes de IA, além de validarem a exatidão das integrações do WebMCP. Esta categoria ainda está em desenvolvimento e sujeita a mudanças.
+Acessibilidade do agente
+O arquivo llms.txt não segue as recomendações
+Se o arquivo llms.txt não seguir as recomendações, talvez os modelos de linguagem grandes não entendam como você quer que seu site seja rastreado ou usado para treinamento. O llms.txt precisa ser um arquivo Markdown que contenha pelo menos um cabeçalho H1.
+Error
+O arquivo não tem um cabeçalho H1 obrigatório (por exemplo, "# Título").
+O arquivo não parece conter links.
+Essas auditorias destacam as práticas recomendadas para melhorar a acessibilidade do site para agentes de IA.
