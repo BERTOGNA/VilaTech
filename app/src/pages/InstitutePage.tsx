@@ -16,9 +16,6 @@ import { instituteConfig } from '../config';
 
 export default function InstitutePage() {
 
-  const [line1, setLine1] = useState('VANGUARDA');
-  const [line2, setLine2] = useState('DO FUTURO');
-  const [typingStep, setTypingStep] = useState(2);
   const heroBgRef = useRef<HTMLDivElement>(null);
 
   // Force scroll to top on mount
@@ -130,33 +127,7 @@ export default function InstitutePage() {
     }
   };
 
-  const textLine1 = "VANGUARDA";
-  const textLine2 = "DO FUTURO";
 
-  useEffect(() => {
-    let index = 0;
-    let interval: ReturnType<typeof setInterval>;
-
-    if (typingStep === 0) {
-      interval = setInterval(() => {
-        index += 1;
-        setLine1(textLine1.substring(0, index));
-        if (index >= textLine1.length) {
-          clearInterval(interval);
-          setTimeout(() => setTypingStep(1), 200);
-        }
-      }, 70);
-    } else if (typingStep === 1) {
-      interval = setInterval(() => {
-        index += 1;
-        setLine2(textLine2.substring(0, index));
-        if (index >= textLine2.length) {
-          clearInterval(interval);
-          setTimeout(() => setTypingStep(2), 200);
-        }
-      }, 70);
-    }
-  }, [typingStep]);
 
   useEffect(() => {
     const fadeElements = document.querySelectorAll('.fade-up');
@@ -193,34 +164,36 @@ export default function InstitutePage() {
           }
         }
       );
-      gsap.fromTo('.conselho-card',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '#conselho',
-            start: 'top 75%',
-          }
-        }
-      );
-      // Hero Parallax
-      if (heroBgRef.current) {
-        gsap.to(heroBgRef.current, {
-          y: 200,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroBgRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
-      }
     });
+
+    gsap.fromTo('.conselho-card',
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#conselho',
+          start: 'top 75%',
+        }
+      }
+    );
+
+    // Hero Parallax
+    if (heroBgRef.current) {
+      gsap.to(heroBgRef.current, {
+        y: 200,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroBgRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
 
     gsap.fromTo('.valor-item',
       { y: 40, opacity: 0 },
@@ -240,11 +213,28 @@ export default function InstitutePage() {
 
   // Values are sourced from instituteConfig.values (defined in config.ts)
 
-  const councilMembers = [
-    { name: "ACHILLES MILAN", role: "DIRETOR", img: "/images/conselho/conselho_1.webp" },
-    { name: "PAULO SESSO", role: "DIRETOR", img: "/images/conselho/conselho_2.webp" },
-    { name: "PINA", role: "DIRETOR", img: "/images/conselho/conselho_3.webp" },
-    { name: "LUCILLA ALMEIDA", role: "DIRETORA", img: "/images/conselho/conselho_4.webp" }
+  const diretoriaMembers = [
+    { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/Achilles_2_PB.png" },
+    { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/Lucilla_PB.png" },
+    { name: "PAULO SESSO", role: "TESOUREIRO", img: "/images/diretoria/Paulo1_PB.jpg" },
+    { name: "PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/Pina_trat.jpg" }
+  ];
+
+  const consultivoMembers = [
+    { name: "BRUNO BERTOGNA", role: "Diretor de Animação e Tecnologia Criativa | Cofundador da Maranha Filmes", img: "/images/conselho/Conselho Consultivo/Bruno_Bertogna.jpeg" },
+    { name: "GABRIEL SANTANA", role: "Gerente de Operações e Contas | Conselheiro", img: "/images/conselho/Conselho Consultivo/Gabriel_Santana.jpeg" },
+    { name: "GUILHERME OLLER", role: "Head de Produção Produtor Executivo Criativo", img: "/images/conselho/Conselho Consultivo/Gui Oller.jpeg" },
+    { name: "MARCELO ZAMPINI", role: "Chief Creative Officer @ MADCC.CO Cannes Lions Winner", img: "/images/conselho/Conselho Consultivo/Marcelo_zampini.jpeg" },
+    { name: "WALMIR SCARAVELLI", role: "Empreendedor | Fala de Inovação | Tecnologia | Statup | EduTech", img: "/images/conselho/Conselho Consultivo/Walmir_scaravelli.jpeg" },
+    { name: "CARLOS TABOSA", role: "Inteligência Artificial |Transformação Digital | Blockchain | Opah IT", img: "/images/conselho/Conselho Consultivo/carlos_tabosa.jpeg" }
+  ];
+
+  const educacionalMembers = [
+    { name: "ALÊ SIREGA", role: "Especialista em Drones DJI desde 2011 | Diretor da Bee Drones ", img: "/images/conselho/Conselho Educacional/Alê_Sirega.jpg" },
+    { name: "CARLA BERTONCELO", role: "Estratégia Tributária, Compliance e Governança Fiscal e Contábil", img: "/images/conselho/Conselho Educacional/Carla_Bertoncelo.jpeg" },
+    { name: "DINO PAIVA", role: "Mídia, Marketing e Entretenimento", img: "/images/conselho/Conselho Educacional/Dino_Paiva.jpg" },
+    { name: "GILBERTO MOURA", role: "Consultoria Empresarial: Planejamento Estratégico", img: "/images/conselho/Conselho Educacional/Gilberto_Moura.png" },
+    { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.png" }
   ];
 
   const renderStaggeredText = (text: string, className: string = "") => {
@@ -287,29 +277,20 @@ export default function InstitutePage() {
       <TopNavigation variant="institute" />
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 md:pt-64 md:pb-32 px-6 overflow-hidden min-h-screen flex items-center bg-black">
-        {/* Background graphics */}
-        <div
-          ref={heroBgRef}
-          className="absolute inset-0 z-0 opacity-40 bg-[url('/images/Arvore1.png')] bg-cover bg-top origin-top"
-        />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/60 to-[#0A0A0A]" />
+      <section className="relative pt-40 pb-16 md:pt-48 md:pb-24 px-6 overflow-hidden min-h-screen flex items-center bg-black">
+        {/* Fundo removido para dar lugar à imagem na direita */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent pointer-events-none" />
 
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="max-w-4xl">
-            <h1 className="font-display text-5xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] mb-8 min-h-[2.5em] md:min-h-[2em]">
-              <span className="text-zinc-100 block">
-                {line1}
-                {typingStep === 0 && <span className="inline-block w-[0.1em] h-[0.7em] bg-white animate-pulse ml-2 align-middle" />}
-              </span>
-              <span className="text-brand-teal block italic whitespace-nowrap">
-                {line2}
-                {typingStep === 1 && <span className="inline-block w-[0.1em] h-[0.7em] bg-brand-teal animate-pulse ml-2 align-middle" />}
-              </span>
-            </h1>
+        <div className="container mx-auto max-w-7xl relative z-10 flex flex-col lg:flex-row items-center gap-12">
+          <div className="w-full lg:w-1/2 fade-up">
+            <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech" className="h-40 sm:h-48 md:h-64 lg:h-72 w-auto object-contain mb-6 opacity-100 drop-shadow-xl" />
             <div>
-              <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mb-12 leading-relaxed">
-                O Instituto Vila Tech está redefinindo a interseção do patrimônio cultural e da evolução tecnológica. Construímos as pontes para a próxima era da criatividade humana.
+              <p className="text-lg md:text-2xl text-zinc-300 font-light max-w-2xl mb-4 leading-relaxed">
+                <strong className="text-brand-orange uppercase tracking-wider text-sm block mb-2">Plataforma de Educação</strong>
+                Novas metodologias, novas habilidades, novos futuros.
+              </p>
+              <p className="text-base md:text-lg text-zinc-400 font-light max-w-2xl mb-12 leading-relaxed">
+                Transformação social e profissional por meio da educação, tecnologia e inovação criativa.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
@@ -324,97 +305,119 @@ export default function InstitutePage() {
               </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Visão */}
-      <section id="visao" className="py-24 md:py-32 px-6 border-t border-zinc-800/50">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
-            <div className="md:w-1/3 fade-up">
-              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">O Propósito</p>
-              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">
-                Visão
-              </h2>
-              <div className="w-12 h-1 bg-brand-teal mt-6"></div>
-            </div>
-            <div className="md:w-2/3 border-l border-brand-teal/30 pl-8 md:pl-16 py-4">
-              <p className="text-2xl md:text-3xl text-zinc-300 font-light leading-snug">
-                {renderStaggeredText("O Instituto Cultural e Educacional Vila Tech tem como objetivo promover a transformação social e profissional por meio da educação, tecnologia, arte e cultura, criando pontes entre o conhecimento técnico, a inovação criativa e o desenvolvimento humano e a democratização do acesso às novas tecnologias através de metodologias de aprendizado inovadoras, estimulando o protagonismo e a inclusão digital de jovens e comunidades.")}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Missão */}
-      <section id="missao" className="py-24 md:py-32 px-6 bg-zinc-900/40">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row-reverse gap-12 md:gap-24 items-start text-right">
-            <div className="md:w-1/4 fade-up flex flex-col items-end">
-              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">O Caminho</p>
-              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter text-brand-teal">
-                Missão
-              </h2>
-            </div>
-            <div className="md:w-3/4">
-              <p className="text-2xl md:text-4xl text-white font-bold leading-tight tracking-tight mb-8">
-                {renderStaggeredText("Ser referência nacional em educação tecnológica e criativa, reconhecida por formar profissionais preparados para os desafios do futuro e por inspirar um ecossistema sustentável de inovação, empreendedorismo e impacto social. Tornar-se um dos principais polos de cultura, educação e tecnologia do interior paulista, através do Projeto Vila Tech Hub como plataforma de aprendizado contínuo e colaboração entre pessoas, empresas e instituições.")}
-              </p>
-              <div className="flex justify-end gap-6 text-brand-teal fade-up">
-                <Zap className="w-8 h-8" />
-                <Target className="w-8 h-8" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Valores */}
-      <section id="valores" className="py-24 md:py-32 px-6 bg-zinc-900/40">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
-
-            {/* Left: title block */}
-            <div className="md:w-1/3 fade-up flex flex-col items-start text-left">
-              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">A Essência</p>
-              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">
-                Nossos<br />Valores
-              </h2>
-              <div className="w-12 h-1 bg-brand-teal mt-6"></div>
-            </div>
-
-            {/* Right: prose text */}
-            <div className="md:w-2/3 border-l border-brand-teal/30 pl-8 md:pl-16 py-4">
-              <p className="text-2xl md:text-3xl text-zinc-300 font-light leading-snug">
-                {renderStaggeredText(instituteConfig.valuesText)}
-              </p>
-            </div>
-
+          <div className="w-full lg:w-1/2 fade-up flex justify-center lg:justify-end">
+            <img
+              ref={heroBgRef}
+              src="/images/instituto/menina_sorriso_1.png"
+              alt="Estudante Vila Tech"
+              className="w-full max-w-lg object-cover rounded-3xl shadow-2xl shadow-brand-teal/20"
+            />
           </div>
         </div>
       </section>
 
       {/* Transparência e Natureza Jurídica */}
-      <section className="py-12 px-6 bg-black/40 border-t border-b border-zinc-800/50">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800">
-            <div>
-              <h3 className="text-lg font-bold text-white uppercase tracking-wider mb-2">Instituto Cultural e Educacional Vila Tech</h3>
-              <p className="text-zinc-400 text-sm max-w-2xl leading-relaxed">
-                Fundado sob a forma de associação sem fins lucrativos, o Instituto atua de forma inteiramente não-comercial em Itu/SP. Dedicado à promoção de direitos sociais, inclusão digital, educação tecnológica gratuita e preservação cultural.
-              </p>
+      <section className="py-16 px-6 bg-black border-t border-b border-zinc-800/50 relative overflow-hidden">
+        {/* Fundo abstrato suave */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-teal/5 to-transparent opacity-50 pointer-events-none"></div>
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12 p-8 md:p-12 rounded-[2rem] bg-zinc-900 border border-brand-teal/20 shadow-2xl shadow-brand-teal/5 fade-up">
+            <div className="w-full md:w-5/12">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-zinc-800/50 shadow-2xl">
+                <img
+                  src="/images/instituto/mulher_estudando.jpg"
+                  alt="Transparência e Educação"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+              </div>
             </div>
-            <div className="text-right flex-shrink-0">
-              <p className="text-brand-teal text-xs uppercase tracking-widest font-bold mb-1">CNPJ Ativo</p>
-              <p className="text-xl font-mono font-bold text-white select-all">58.473.428/0001-31</p>
+            <div className="w-full md:w-7/12 md:pl-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
+                <Target className="w-4 h-4" /> Natureza Jurídica
+              </div>
+              <h3 className="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">
+                Instituto Cultural e Educacional <span className="text-brand-teal">Vila Tech</span>
+              </h3>
+              <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed mb-6">
+                Fundado sob a forma de associação sem fins lucrativos, o Instituto atua de forma <strong className="text-white">inteiramente não-comercial</strong> na região de Itu/SP.
+              </p>
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
+                Nosso propósito é exclusivamente dedicado à promoção de direitos sociais, fomento à inclusão digital, educação tecnológica gratuita e à preservação da rica cultura local.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Quem Somos - Compacto */}
+      <section id="quem-somos" className="py-16 px-6 bg-black/60">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Missão */}
+            <div className="bg-zinc-900/80 border-t-4 border-t-brand-teal border-x border-b border-zinc-800 p-8 rounded-2xl fade-up shadow-lg shadow-brand-teal/5">
+              <h3 className="text-2xl font-display font-bold text-brand-teal uppercase mb-4 flex items-center gap-3">
+                <Target className="w-6 h-6" /> Missão
+              </h3>
+              <p className="text-zinc-300 font-light leading-relaxed">
+                Ser referência nacional em educação
+                tecnológica e criativa, reconhecida
+                por formar profissionais preparados
+                para os desafios do futuro e por inspirar
+                um ecossistema sustentável de inovação,
+                empreendedorismo e impacto social.
+                Tornar-se um dos principais polos
+                de cultura, educação e tecnologia do in
+                terior paulista, através do Projeto Vila
+                Tech Hub como plataforma
+                de aprendizado contínuo e colaboração
+                entre pessoas, empresas e instituições
+              </p>
+            </div>
+            {/* Visão */}
+            <div className="bg-zinc-900/80 border-t-4 border-t-brand-orange border-x border-b border-zinc-800 p-8 rounded-2xl fade-up shadow-lg shadow-brand-orange/5" style={{ transitionDelay: '100ms' }}>
+              <h3 className="text-2xl font-display font-bold text-brand-orange uppercase mb-4 flex items-center gap-3">
+                <Zap className="w-6 h-6" /> Visão
+              </h3>
+              <p className="text-zinc-300 font-light leading-relaxed">
+                O Instituto Cultural e Educacional Vila Tech
+                tem como objetivo promover
+                a transformação social e profissional
+                por meio da educação, tecnologia, arte
+                e cultura, criando pontes entre
+                o conhecimento técnico, a inovação
+                criativa e o desenvolvimento humano
+                e a democratização do acesso às novas
+                tecnologias através de metodologias
+                de aprendizado inovadoras, estimulando
+                o protagonismo e a inclusão digital de
+                jovens e comunidades.
+              </p>
+            </div>
+            {/* Valores */}
+            <div className="bg-zinc-900/80 border-t-4 border-t-zinc-300 border-x border-b border-zinc-800 p-8 rounded-2xl fade-up shadow-lg" style={{ transitionDelay: '200ms' }}>
+              <h3 className="text-2xl font-display font-bold text-white uppercase mb-4 flex items-center gap-3">
+                <Check className="w-6 h-6 text-zinc-300" /> Valores
+              </h3>
+              <ul className="text-zinc-300 font-light space-y-3 text-sm">
+                <li><strong className="text-white block mb-1">Inovação com propósito:</strong> aplicar a tecnologia para melhorar vidas e promover impacto positivo.</li>
+                <li><strong className="text-white block mb-1">Educação que transforma:</strong> estimular o pensamento crítico, a criatividade e o aprendizado colaborativo.</li>
+                <li><strong className="text-white block mb-1">Inclusão e sustentabilidade:</strong> garantir acesso igualitário às oportunidades de formação e desenvolvimento.</li>
+                <li><strong className="text-white block mb-1">Cultura e diversidade:</strong> valorizar as expressões artísticas e as múltiplas identidades como motor de evolução.</li>
+                <li><strong className="text-white block mb-1">Ética e transparência:</strong> agir com responsabilidade social, integridade e respeito nas relações institucionais.</li>
+                <li><strong className="text-white block mb-1">Colaboração:</strong> fomentar redes de conhecimento e empreendedorismo entre empresas, startups e indivíduos.</li>
+                <li><strong className="text-white block mb-1">Excelência e protagonismo:</strong> formar agentes de mudança preparados para liderar a inovação no país.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Atuação */}
-      <section id="atuacao" className="py-24 px-6 border-t border-zinc-800/50 bg-black/40">
+      <section id="atuacao" className="py-16 px-6 border-t border-zinc-800/50 bg-black/40">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 fade-up">
             <div>
@@ -427,70 +430,97 @@ export default function InstitutePage() {
 
           <div className="space-y-24">
             {/* Projetos de Arte e Cultura */}
-            <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
-              <div className="md:w-1/2">
-                {/* Embla carousel with navigation arrows */}
-                <div
-                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
-                  onMouseEnter={() => setArteIsHovered(true)}
-                  onMouseLeave={() => setArteIsHovered(false)}
-                >
-                  {/* Embla viewport */}
-                  <div className="embla h-full" ref={arteEmblaRef}>
-                    <div className="embla__container flex h-full">
-                      {[
-                        { src: '/images/arte/Expo3.webp', alt: 'Arte em Movimento' },
-                        { src: '/images/arte/IMG_5108.webp', alt: 'Exposição de Arte' },
-                        { src: '/images/arte/IMG_5126.webp', alt: 'Projeto Cultural' },
-                        { src: '/images/arte/IMG_5144.webp', alt: 'Arte e Comunidade' },
-                        { src: '/images/arte/IMG_5159.webp', alt: 'Instituto Vila Tech Arte' },
-                      ].map((img, idx) => (
-                        <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
-                          <img
-                            src={img.src}
-                            alt={img.alt}
-                            loading={idx === 0 ? "eager" : "lazy"}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          {/* Hover overlay with label */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5 pointer-events-none">
-                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                              {img.alt}
-                            </p>
+            <div className="flex flex-col gap-12 fade-up">
+              <div className="flex flex-col md:flex-row gap-12 items-center">
+                <div className="md:w-1/2">
+                  {/* Embla carousel with navigation arrows */}
+                  <div
+                    className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative shadow-2xl"
+                    onMouseEnter={() => setArteIsHovered(true)}
+                    onMouseLeave={() => setArteIsHovered(false)}
+                  >
+                    {/* Embla viewport */}
+                    <div className="embla h-full" ref={arteEmblaRef}>
+                      <div className="embla__container flex h-full">
+                        {[
+                          { src: '/images/arte/Expo3.png', alt: 'A Casa Galeria - Arte em Movimento' },
+                          { src: '/images/arte/Expo1.png', alt: 'Exposições Itinerantes' },
+                          { src: '/images/arte/IMG_5126.jpg', alt: 'Obras Contemporâneas' },
+                          { src: '/images/arte/IMG_5144.jpg', alt: 'Interação e População' },
+                          { src: '/images/arte/IMG_5145.jpg', alt: 'Grafite Colaborativo' },
+                          { src: '/images/arte/IMG_5159.jpg', alt: 'Grafite Colaborativo' },
+                        ].map((img, idx) => (
+                          <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                            <img
+                              src={img.src}
+                              alt={img.alt}
+                              loading={idx === 0 ? "eager" : "lazy"}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            {/* Hover overlay with label */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5 pointer-events-none">
+                              <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                {img.alt}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Navigation arrows — visible on hover */}
+                    <div
+                      className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${arteIsHovered ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                      <button
+                        onClick={arteScrollPrev}
+                        disabled={!arteCanScrollPrev}
+                        className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                        aria-label="Imagem anterior"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={arteScrollNext}
+                        disabled={!arteCanScrollNext}
+                        className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                        aria-label="Próxima imagem"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
                     </div>
                   </div>
-
-                  {/* Navigation arrows — visible on hover */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${arteIsHovered ? 'opacity-100' : 'opacity-0'}`}
-                  >
-                    <button
-                      onClick={arteScrollPrev}
-                      disabled={!arteCanScrollPrev}
-                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                      aria-label="Imagem anterior"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={arteScrollNext}
-                      disabled={!arteCanScrollNext}
-                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                      aria-label="Próxima imagem"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
+                </div>
+                <div className="md:w-1/2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
+                    <Target className="w-4 h-4" /> Arte em Movimento
                   </div>
+                  <h3 className="text-4xl md:text-5xl font-display font-black text-white uppercase tracking-tighter leading-tight mb-6">
+                    Obras e Histórias nas <span className="text-brand-teal">Comunidades</span>
+                  </h3>
+                  <p className="text-lg text-zinc-300 font-light leading-relaxed mb-6">
+                    Com um acervo de mais de 180 obras da <strong className="text-white">A Casa Galeria</strong>, nosso projeto itinerante democratiza o acesso à arte. Levamos exposições completas para bairros periféricos de Itu, como Pirapitingui e Pedregulho.
+                  </p>
+                  <p className="text-base text-zinc-400 font-light leading-relaxed mb-6">
+                    Apresentamos o contraste entre os clássicos ituanos, como Almeida Junior e Frei Jesuino, e os expoentes contemporâneos. Através de palestras e oficinas, como a conduzida pelo artista Guilherme Kramer que resultou num imenso grafite colaborativo, transformamos espaços comunitários em verdadeiros polos criativos.
+                  </p>
                 </div>
               </div>
-              <div className="md:w-1/2">
-                <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Projetos de Arte e Cultura</h3>
-                <p className="text-xl text-zinc-300 font-light leading-relaxed mb-6">
-                  O Instituto Cultural Vila Tech promove o acesso à arte para populações vulneráveis, levando arte e cultura para as periferias da cidade através do Projeto <strong className="text-white">"Arte em Movimento"</strong>.
-                </p>
+
+              {/* Métricas e Resultados do Projeto */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
+                  <p className="text-3xl font-display font-black text-white mb-2">+120</p>
+                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes Locais</p>
+                </div>
+                <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
+                  <p className="text-3xl font-display font-black text-white mb-2">9.3k</p>
+                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Pessoas Alcançadas</p>
+                </div>
+                <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
+                  <p className="text-3xl font-display font-black text-white mb-2">327</p>
+                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Interações Online</p>
+                </div>
               </div>
             </div>
 
@@ -554,46 +584,130 @@ export default function InstitutePage() {
                 </div>
               </div>
               <div className="md:w-1/2">
-                <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Projetos Educacionais</h3>
-                <h4 className="text-xl font-bold text-white mb-4">Projeto Vila Tech Hub - Cursos de Formação em Tecnologia</h4>
-                <p className="text-lg text-zinc-300 font-light leading-relaxed mb-4">
-                  O Instituto Cultural Vila Tech através de seu projeto Vila Tech Hub oferece uma agenda de cursos de formação em novas tecnologias,
-                  principalmente voltados para o uso de IA na educação e negócios.
+                <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Educação em Tecnologia</h3>
+                <h4 className="text-xl font-bold text-white mb-4">Projeto Vila Tech Hub - Plataforma Educacional</h4>
+                <p className="text-lg text-zinc-300 font-light leading-relaxed mb-6">
+                  Nossa plataforma de educação transforma conhecimento tecnológico em potência humana. Com foco em empregabilidade e aplicação imediata, estruturamos nossa metodologia em três pilares fundamentais:
                 </p>
-                <p className="text-lg text-zinc-300 font-light leading-relaxed">
-                  São cursos de tecnologia e principalmente IA aplicada de forma prática às realidades e necessidades de estudantes
-                  e profissionais, incluindo o ensino de criação e produção de games voltados para estudantes do ensino médio de escolas
-                  públicas e privadas, onde os alunos de escolas públicas têm acesso a formação gratuita subvencionada pelo Instituto.
-                </p>
+                <ul className="space-y-4 mb-6">
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-brand-teal/20 flex items-center justify-center text-brand-teal flex-shrink-0 mt-1">
+                      <Target className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-bold">Corporativo & IA</h5>
+                      <p className="text-sm text-zinc-400">Tecnologia e Inteligência Artificial aplicadas para otimização de processos e escalabilidade empresarial.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-brand-orange/20 flex items-center justify-center text-brand-orange flex-shrink-0 mt-1">
+                      <Zap className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-bold">Inovação Criativa</h5>
+                      <p className="text-sm text-zinc-400">Audiovisual, criatividade e produção potencializadas por ferramentas digitais e IA Generativa.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0 mt-1">
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-bold">Game Development</h5>
+                      <p className="text-sm text-zinc-400">Transformando a paixão pelos jogos em carreira. Formação completa em arte, programação, Unreal Engine e design de interfaces para jovens criativos.</p>
+                    </div>
+                  </li>
+                </ul>
+                <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800">
+                  <h5 className="text-brand-orange text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
+                  <p className="text-sm text-zinc-300 font-light">
+                    Compromisso com a inclusão digital: oferecemos cotas, bolsas e formação gratuita subvencionada pelo Instituto para alunos de escolas públicas e comunidades de baixa renda.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Métricas e Resultados do Projeto (Educação) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
+                <p className="text-3xl font-display font-black text-white mb-2">+150</p>
+                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes dos cursos</p>
+              </div>
+              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
+                <p className="text-3xl font-display font-black text-white mb-2">+500</p>
+                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes de eventos</p>
+              </div>
+              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
+                <p className="text-3xl font-display font-black text-brand-teal mb-2">+600</p>
+                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Pessoas impactadas</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Conselho */}
+      {/* Liderança: Diretoria e Conselhos */}
       <section id="conselho" className="py-24 md:py-32 px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-zinc-800/50 pb-8 fade-up">
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[0.9]">
-              DIRETORES
+              LIDERANÇA
             </h2>
             <p className="text-zinc-400 text-sm max-w-xs text-right mt-6 md:mt-0 font-light">
-              Conheça os líderes que guiam o Vila Tech rumo ao futuro da inovação social.
+              Conheça os líderes e conselheiros que guiam o Vila Tech rumo ao futuro da inovação social.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-12">
-            {councilMembers.map((person, i) => (
-              <div key={i} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
-                <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-6 overflow-hidden relative border border-zinc-800 group-hover:border-brand-teal/50 transition-colors drop-shadow-2xl">
-                  <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+          {/* Diretoria */}
+          <div className="mb-20">
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-teal uppercase mb-10 text-center fade-up">Diretoria</h3>
+            <div className="flex flex-wrap justify-center gap-12">
+              {diretoriaMembers.map((person, i) => (
+                <div key={`dir-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
+                  <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-6 overflow-hidden relative border border-zinc-800 group-hover:border-brand-teal/50 transition-colors drop-shadow-2xl">
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-white group-hover:text-brand-teal transition-colors uppercase tracking-wide">{person.name}</h3>
+                  <p className="text-xs font-bold tracking-widest text-brand-teal uppercase mt-1">{person.role}</p>
                 </div>
-                <h3 className="font-display font-bold text-lg text-white group-hover:text-brand-teal transition-colors uppercase tracking-wide">{person.name}</h3>
-                <p className="text-xs font-bold tracking-widest text-brand-teal uppercase mt-1">{person.role}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Conselho Consultivo */}
+          <div className="mb-20">
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-orange uppercase mb-10 text-center fade-up">Conselho Consultivo</h3>
+            <div className="flex justify-center items-start gap-3 sm:gap-4 md:gap-6 w-full overflow-x-auto md:overflow-visible pb-4">
+              {consultivoMembers.map((person, i) => (
+                <div key={`consul-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 flex-1 min-w-[120px] max-w-[192px]">
+                  <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-4 overflow-hidden relative border border-zinc-800 group-hover:border-brand-orange/50 transition-colors drop-shadow-2xl">
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  </div>
+                  <h3 className="font-display font-bold text-sm md:text-base lg:text-lg text-white group-hover:text-brand-orange transition-colors uppercase tracking-wide break-words leading-tight">{person.name}</h3>
+                  <p className="text-[10px] md:text-xs font-bold tracking-widest text-brand-orange uppercase mt-2 leading-tight">{person.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Conselho Educacional */}
+          <div>
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-zinc-300 uppercase mb-10 text-center fade-up">Conselho Educacional</h3>
+            <div className="flex flex-wrap justify-center gap-12">
+              {educacionalMembers.map((person, i) => (
+                <div key={`edu-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
+                  <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-6 overflow-hidden relative border border-zinc-800 group-hover:border-zinc-300/50 transition-colors drop-shadow-2xl">
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-white group-hover:text-zinc-300 transition-colors uppercase tracking-wide">{person.name}</h3>
+                  <p className="text-xs font-bold tracking-widest text-zinc-300 uppercase mt-1">{person.role}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

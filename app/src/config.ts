@@ -306,7 +306,7 @@ export const footerConfig: FooterConfig = {
   portraitImage: "/images/archetype-einstein-2.png",
   portraitAlt: "Albert Einstein - Arquétipo do Clube Vila Tech Hub",
   heroTitle: "CRIAR • APRENDER • CONECTAR • TRANSFORMAR",
-  heroSubtitle: "Junte-se à comunidade de inovadores",
+  heroSubtitle: "Faça parte desta comunidade e ajude a transformar o mundo através do conhecimento.",
   artistLabel: "Arquétipo",
   artistName: "Albert Einstein",
   artistSubtitle: "Clube Vila Tech Hub",
@@ -656,7 +656,7 @@ export const instituteConfig: InstituteConfig = {
   },
   vision: {
     title: "Visão",
-    text: "Ser referência nacional em educação tecnológica e criativa, reconhecida por formar profissionais preparados para os desafios do futuro e por inspirar um ecossistema sustentável de inovação, empreendedorismo e impacto social. Tornar-se um dos principais polos de cultura, educação e tecnologia do interior paulista, através do Projeto Vila Tech Hub como plataforma de aprendizado contínuo e colaboração entre pessoas, empresas e instituições.",
+    text: "O Instituto Cultural e Educacional Vila Tech  tem como objetivo promover a transformação social e profissional por meio da educação, tecnologia, arte e cultura, criando pontes entre o conhecimento técnico, a inovação criativa e o desenvolvimento humano e a democratização do acesso às novas tecnologias através de metodologias de aprendizado inovadoras, estimulando o protagonismo e a inclusão digital de jovens e comunidades.",
   },
   values: [
     {

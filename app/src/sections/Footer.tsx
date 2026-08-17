@@ -131,13 +131,15 @@ const Footer = () => {
           ref={titleRef}
           className="relative z-10 text-center will-change-transform w-full px-4 overflow-hidden"
         >
-          <h2 className="font-display font-bold text-[13vw] sm:text-[11vw] md:text-[9vw] lg:text-[7vw] xl:text-[6.5vw] text-white leading-none tracking-tighter min-h-[1.2em] flex items-center justify-center whitespace-nowrap">
+          <h2 className="font-display font-bold text-[13vw] sm:text-[11vw] md:text-[9vw] lg:text-[7vw] xl:text-[6.5vw] text-white leading-none tracking-tighter min-h-[1.2em] flex items-center justify-center whitespace-nowrap drop-shadow-[0_0_20px_rgba(20,184,166,0.6)]">
             {text}
             <span className="text-brand-teal ml-1 animate-pulse">|</span>
           </h2>
-          <p className="font-sans text-xs sm:text-sm md:text-lg text-brand-teal/60 uppercase tracking-[0.2em] sm:tracking-[0.5em] mt-4 md:mt-8">
-            {footerConfig.heroSubtitle}
-          </p>
+          <div className="bg-black/40 backdrop-blur-sm inline-block px-6 py-3 rounded-full mt-4 md:mt-8 border border-white/10">
+            <p className="font-sans font-bold text-sm sm:text-base md:text-xl text-brand-orange uppercase tracking-[0.1em] sm:tracking-[0.2em]">
+              {footerConfig.heroSubtitle}
+            </p>
+          </div>
         </div>
 
 
