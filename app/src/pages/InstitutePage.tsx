@@ -97,7 +97,7 @@ const bioImages = [
   { src: '/images/bioeconomia/WhatsApp Image 2023-08-17 at 2.22.54 PM.jpeg', alt: 'Projeto Bioeconomia 4' },
 ];
 
-const onBioSelect = useCallback((api) => {
+const onBioSelect = useCallback((api: any) => {
   setBioCanScrollPrev(api.canScrollPrev());
   setBioCanScrollNext(api.canScrollNext());
 }, []);
