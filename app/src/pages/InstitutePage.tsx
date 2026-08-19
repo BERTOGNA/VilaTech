@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, Palette, BookOpen, Leaf, Building2 } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
@@ -12,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 import TopNavigation from '../components/TopNavigation';
 import SEO from '../components/SEO';
-// import { instituteConfig } from '../config'; // removed unused import
 
 export default function InstitutePage() {
 
@@ -22,6 +21,11 @@ export default function InstitutePage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   // CRM Form State
   const [formData, setFormData] = useState({
@@ -85,36 +89,36 @@ export default function InstitutePage() {
   const eduScrollPrev = useCallback(() => eduEmblaApi && eduEmblaApi.scrollPrev(), [eduEmblaApi]);
   const eduScrollNext = useCallback(() => eduEmblaApi && eduEmblaApi.scrollNext(), [eduEmblaApi]);
 
-// Bioeconomia carousel (Embla)
-const [bioEmblaRef, bioEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
-const [bioCanScrollPrev, setBioCanScrollPrev] = useState(false);
-const [bioCanScrollNext, setBioCanScrollNext] = useState(true);
-const [bioIsHovered, setBioIsHovered] = useState(false);
-const bioImages = [
-  { src: '/images/bioeconomia/1691111481966.jpeg', alt: 'Projeto Bioeconomia 1' },
-  { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.15.31 PM.jpeg', alt: 'Projeto Bioeconomia 2' },
-  { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.20.05 PM.jpeg', alt: 'Projeto Bioeconomia 3' },
-  { src: '/images/bioeconomia/WhatsApp Image 2023-08-17 at 2.22.54 PM.jpeg', alt: 'Projeto Bioeconomia 4' },
-];
+  // Bioeconomia carousel (Embla)
+  const [bioEmblaRef, bioEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
+  const [bioCanScrollPrev, setBioCanScrollPrev] = useState(false);
+  const [bioCanScrollNext, setBioCanScrollNext] = useState(true);
+  const [bioIsHovered, setBioIsHovered] = useState(false);
+  const bioImages = [
+    { src: '/images/bioeconomia/1691111481966.jpeg', alt: 'Projeto Bioeconomia 1' },
+    { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.15.31 PM.jpeg', alt: 'Projeto Bioeconomia 2' },
+    { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.20.05 PM.jpeg', alt: 'Projeto Bioeconomia 3' },
+    { src: '/images/bioeconomia/WhatsApp Image 2023-08-17 at 2.22.54 PM.jpeg', alt: 'Projeto Bioeconomia 4' },
+  ];
 
-const onBioSelect = useCallback((api: any) => {
-  setBioCanScrollPrev(api.canScrollPrev());
-  setBioCanScrollNext(api.canScrollNext());
-}, []);
+  const onBioSelect = useCallback((api: any) => {
+    setBioCanScrollPrev(api.canScrollPrev());
+    setBioCanScrollNext(api.canScrollNext());
+  }, []);
 
-useEffect(() => {
-  if (!bioEmblaApi) return;
-  onBioSelect(bioEmblaApi);
-  bioEmblaApi.on('select', onBioSelect);
-  bioEmblaApi.on('reInit', onBioSelect);
-  return () => {
-    bioEmblaApi.off('select', onBioSelect);
-    bioEmblaApi.off('reInit', onBioSelect);
-  };
-}, [bioEmblaApi, onBioSelect]);
+  useEffect(() => {
+    if (!bioEmblaApi) return;
+    onBioSelect(bioEmblaApi);
+    bioEmblaApi.on('select', onBioSelect);
+    bioEmblaApi.on('reInit', onBioSelect);
+    return () => {
+      bioEmblaApi.off('select', onBioSelect);
+      bioEmblaApi.off('reInit', onBioSelect);
+    };
+  }, [bioEmblaApi, onBioSelect]);
 
-const bioScrollPrev = useCallback(() => bioEmblaApi && bioEmblaApi.scrollPrev(), [bioEmblaApi]);
-const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(), [bioEmblaApi]);
+  const bioScrollPrev = useCallback(() => bioEmblaApi && bioEmblaApi.scrollPrev(), [bioEmblaApi]);
+  const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(), [bioEmblaApi]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -157,8 +161,6 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
       setIsSubmitting(false);
     }
   };
-
-
 
   useEffect(() => {
     const fadeElements = document.querySelectorAll('.fade-up');
@@ -215,7 +217,7 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
     // Hero Parallax
     if (heroBgRef.current) {
       gsap.to(heroBgRef.current, {
-        y: 200,
+        y: 80,
         ease: 'none',
         scrollTrigger: {
           trigger: heroBgRef.current,
@@ -242,8 +244,6 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
     );
   }, []);
 
-  // Values are sourced from instituteConfig.values (defined in config.ts)
-
   const diretoriaMembers = [
     { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/Achilles_2_PB.png" },
     { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/Lucilla_PB.png" },
@@ -268,10 +268,17 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
     { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.png" }
   ];
 
-
+  const navPills = [
+    { label: 'Arte & Cultura', id: 'atuacao', color: 'bg-brand-pink/10 text-brand-pink border-brand-pink/30 hover:bg-brand-pink hover:text-white' },
+    { label: 'Educação', id: 'educacao', color: 'bg-brand-teal/10 text-brand-teal border-brand-teal/30 hover:bg-brand-teal hover:text-white' },
+    { label: 'Bioeconomia', id: 'bioeconomia', color: 'bg-green-500/10 text-green-700 border-green-300 hover:bg-green-600 hover:text-white' },
+    { label: 'Liderança', id: 'conselho', color: 'bg-brand-orange/10 text-brand-orange border-brand-orange/30 hover:bg-brand-orange hover:text-white' },
+    { label: 'Comunidade', id: 'comunidade', color: 'bg-purple-100 text-brand-purple border-purple-300 hover:bg-brand-purple hover:text-white' },
+    { label: 'Contato', id: 'contato', color: 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-800 hover:text-white' },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 font-sans selection:bg-brand-teal selection:text-white overflow-hidden">
+    <div className="min-h-screen bg-white text-[#1d1d1b] font-sans selection:bg-brand-teal selection:text-white overflow-hidden">
       <SEO
         title="Instituto Vila Tech | Inovação, Tecnologia & Educação em Itu, SP"
         description="O Instituto Cultural e Educacional Vila Tech une inovação tecnológica, arte e desenvolvimento social em Itu, SP. Conheça nossos projetos sociais e de profissionalização."
@@ -292,348 +299,249 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
         .hover-3d:hover img {
           transform: scale(1.1) rotateX(8deg) rotateY(-8deg);
         }
+        .embla { overflow: hidden; }
+        .embla__container { display: flex; }
+        .embla__slide { flex: 0 0 100%; min-width: 0; }
       `}</style>
       <TopNavigation variant="institute" />
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-16 md:pt-48 md:pb-24 px-6 overflow-hidden min-h-screen flex items-center bg-black">
-        {/* Fundo removido para dar lugar à imagem na direita */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent pointer-events-none" />
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 px-6 overflow-hidden min-h-screen flex items-center bg-gray-50">
+        <div className="container mx-auto max-w-7xl relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-        <div className="container mx-auto max-w-7xl relative z-10 flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-full lg:w-1/2 fade-up">
-            <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech" className="h-40 sm:h-48 md:h-64 lg:h-72 w-auto object-contain mb-6 opacity-100 drop-shadow-xl" />
-            <div>
-              <p className="text-lg md:text-2xl text-zinc-300 font-light max-w-2xl mb-4 leading-relaxed">
-                <strong className="text-brand-orange uppercase tracking-wider text-sm block mb-2">Plataforma de Educação</strong>
-                Novas metodologias, novas habilidades, novos futuros.
-              </p>
-              <p className="text-base md:text-lg text-zinc-400 font-light max-w-2xl mb-12 leading-relaxed">
-                Transformação social e profissional por meio da educação, tecnologia e inovação criativa.
-              </p>
+          <div className="w-full lg:w-1/2 fade-up flex flex-col justify-center">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse"></span>
+              <span className="text-sm font-semibold tracking-wider uppercase text-gray-500 font-inter">
+                Instituto Cultural e Educacional Vila Tech
+              </span>
             </div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit text-void-black leading-tight mb-8">
+              Novas metodologias.<br />
+              <em className="text-brand-pink not-italic">Novas habilidades.</em><br />
+              Novos futuros.
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-600 font-inter max-w-2xl mb-12 leading-relaxed">
+              Educação, tecnologia, criatividade e cultura para colocar pessoas e territórios em movimento.
+            </p>
+
             <div className="flex flex-wrap items-center gap-4">
-              <a href="#contato" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-teal text-zinc-950 font-bold uppercase tracking-wider text-sm hover:bg-brand-teal/80 transition-colors shadow-lg shadow-brand-teal/20">
-                Ser Parceiro
+              <a href="#frentes" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-void-black text-white font-bold font-inter tracking-wide text-sm hover:bg-gray-800 transition-colors shadow-lg">
+                Conheça nossas frentes
+                <Target className="ml-2 w-4 h-4" />
               </a>
-              <button
-                onClick={() => setIsDonationModalOpen(true)}
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-black transition-colors"
-              >
-                Doar Agora
-              </button>
+              <a href="#proposito" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-void-black font-bold font-inter tracking-wide text-sm hover:bg-gray-100 transition-colors">
+                Entenda o propósito
+              </a>
+            </div>
+
+            <div className="mt-16 flex items-start gap-4">
+              <span className="text-brand-teal font-outfit font-bold text-xl">01</span>
+              <span className="text-sm text-gray-500 font-inter font-medium leading-tight">
+                Um ecossistema<br />feito de encontros.
+              </span>
             </div>
           </div>
 
           <div className="w-full lg:w-1/2 fade-up flex justify-center lg:justify-end">
-            <img
-              ref={heroBgRef}
-              src="/images/instituto/menina_sorriso_1.png"
-              alt="Estudante Vila Tech"
-              className="w-full max-w-lg object-cover rounded-3xl shadow-2xl shadow-brand-teal/20"
-            />
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-pink/20 rounded-[2.5rem] transform rotate-3"></div>
+              <img
+                ref={heroBgRef}
+                src="/images/instituto/menina_sorriso_1.png"
+                alt="Estudante Vila Tech"
+                className="relative w-full max-w-lg object-cover rounded-3xl shadow-2xl"
+              />
+            </div>
           </div>
+
         </div>
       </section>
 
-      {/* Transparência e Natureza Jurídica */}
-      <section className="py-16 px-6 bg-black border-t border-b border-zinc-800/50 relative overflow-hidden">
-        {/* Fundo abstrato suave */}
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-teal/5 to-transparent opacity-50 pointer-events-none"></div>
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-12 p-8 md:p-12 rounded-[2rem] bg-zinc-900 border border-brand-teal/20 shadow-2xl shadow-brand-teal/5 fade-up">
-            <div className="w-full md:w-5/12">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-zinc-800/50 shadow-2xl">
-                <img
-                  src="/images/instituto/mulher_estudando.jpg"
-                  alt="Transparência e Educação"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-              </div>
-            </div>
-            <div className="w-full md:w-7/12 md:pl-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
-                <Target className="w-4 h-4" /> Natureza Jurídica
-              </div>
-              <h3 className="font-display text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">
-                Instituto Cultural e Educacional <span className="text-brand-teal">Vila Tech</span>
-              </h3>
-              <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed mb-6">
-                Fundado sob a forma de associação sem fins lucrativos, o Instituto atua de forma <strong className="text-white">inteiramente não-comercial</strong> na região de Itu/SP.
-              </p>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
-                Nosso propósito é exclusivamente dedicado à promoção de direitos sociais, fomento à inclusão digital, educação tecnológica gratuita e à preservação da rica cultura local.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quem Somos - Compacto */}
-      <section id="quem-somos" className="py-16 px-6 bg-black/60">
+      {/* Quick Nav Pills */}
+      <section className="py-6 px-6 bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Missão */}
-            <div className="bg-zinc-900/80 border-t-4 border-t-brand-teal border-x border-b border-zinc-800 p-8 rounded-2xl fade-up shadow-lg shadow-brand-teal/5">
-              <h3 className="text-2xl font-display font-bold text-brand-teal uppercase mb-4 flex items-center gap-3">
-                <Target className="w-6 h-6" /> Missão
-              </h3>
-              <p className="text-zinc-300 font-light leading-relaxed">
-                Ser referência nacional em educação
-                tecnológica e criativa, reconhecida
-                por formar profissionais preparados
-                para os desafios do futuro e por inspirar
-                um ecossistema sustentável de inovação,
-                empreendedorismo e impacto social.
-                Tornar-se um dos principais polos
-                de cultura, educação e tecnologia do in
-                terior paulista, através do Projeto Vila
-                Tech Hub como plataforma
-                de aprendizado contínuo e colaboração
-                entre pessoas, empresas e instituições
-              </p>
+          <div className="flex flex-wrap items-center gap-2 justify-center">
+            {navPills.map((pill) => (
+              <button
+                key={pill.id}
+                onClick={() => scrollToSection(pill.id)}
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${pill.color}`}
+              >
+                {pill.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* O Que Nos Move */}
+      <section id="proposito" className="py-20 px-6 bg-white border-b border-gray-100 relative overflow-hidden">
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="w-full lg:w-1/2 fade-up">
+              <span className="text-brand-orange font-inter font-bold tracking-widest uppercase text-sm mb-4 block">
+                O que nos move
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold font-outfit text-void-black leading-tight mb-6">
+                Quando conhecimento encontra propósito, <span className="text-brand-teal">o futuro ganha raiz.</span>
+              </h2>
             </div>
-            {/* Visão */}
-            <div className="bg-zinc-900/80 border-t-4 border-t-brand-orange border-x border-b border-zinc-800 p-8 rounded-2xl fade-up shadow-lg shadow-brand-orange/5" style={{ transitionDelay: '100ms' }}>
-              <h3 className="text-2xl font-display font-bold text-brand-orange uppercase mb-4 flex items-center gap-3">
-                <Zap className="w-6 h-6" /> Visão
-              </h3>
-              <p className="text-zinc-300 font-light leading-relaxed">
-                O Instituto Cultural e Educacional Vila Tech
-                tem como objetivo promover
-                a transformação social e profissional
-                por meio da educação, tecnologia, arte
-                e cultura, criando pontes entre
-                o conhecimento técnico, a inovação
-                criativa e o desenvolvimento humano
-                e a democratização do acesso às novas
-                tecnologias através de metodologias
-                de aprendizado inovadoras, estimulando
-                o protagonismo e a inclusão digital de
-                jovens e comunidades.
-              </p>
-            </div>
-            {/* Valores */}
-            <div className="bg-zinc-900/80 border-t-4 border-t-zinc-300 border-x border-b border-zinc-800 p-8 rounded-2xl fade-up shadow-lg" style={{ transitionDelay: '200ms' }}>
-              <h3 className="text-2xl font-display font-bold text-white uppercase mb-4 flex items-center gap-3">
-                <Check className="w-6 h-6 text-zinc-300" /> Valores
-              </h3>
-              <ul className="text-zinc-300 font-light space-y-3 text-sm">
-                <li><strong className="text-white block mb-1">Inovação com propósito:</strong> aplicar a tecnologia para melhorar vidas e promover impacto positivo.</li>
-                <li><strong className="text-white block mb-1">Educação que transforma:</strong> estimular o pensamento crítico, a criatividade e o aprendizado colaborativo.</li>
-                <li><strong className="text-white block mb-1">Inclusão e sustentabilidade:</strong> garantir acesso igualitário às oportunidades de formação e desenvolvimento.</li>
-                <li><strong className="text-white block mb-1">Cultura e diversidade:</strong> valorizar as expressões artísticas e as múltiplas identidades como motor de evolução.</li>
-                <li><strong className="text-white block mb-1">Ética e transparência:</strong> agir com responsabilidade social, integridade e respeito nas relações institucionais.</li>
-                <li><strong className="text-white block mb-1">Colaboração:</strong> fomentar redes de conhecimento e empreendedorismo entre empresas, startups e indivíduos.</li>
-                <li><strong className="text-white block mb-1">Excelência e protagonismo:</strong> formar agentes de mudança preparados para liderar a inovação no país.</li>
-              </ul>
+            <div className="w-full lg:w-1/2 fade-up" style={{ transitionDelay: '100ms' }}>
+              <div className="space-y-6 text-lg text-gray-600 font-inter font-light leading-relaxed">
+                <p>
+                  O Instituto Cultural e Educacional Vila Tech desenvolve e executa projetos que ampliam o acesso à educação, à tecnologia, à arte, à cultura, ao esporte, ao lazer e à sustentabilidade.
+                </p>
+                <p>
+                  Em Itu e região, criamos programas acessíveis para transformar curiosidade em habilidade, habilidade em oportunidade e oportunidade em impacto positivo.
+                </p>
+                <a href="#atuacao" className="inline-flex items-center gap-2 mt-4 text-void-black font-semibold hover:text-brand-teal transition-colors">
+                  Veja como fazemos acontecer <ChevronRight className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Missão, Visão e Valores */}
+      <section className="py-20 px-6 bg-gray-50 border-b border-gray-100">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row items-stretch gap-8">
 
+            <div className="flex-1 bg-white p-10 rounded-[2rem] border-2 border-brand-teal shadow-sm fade-up flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
+              <div>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal group-hover:scale-110 transition-transform">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <span className="text-brand-teal font-outfit font-bold tracking-widest uppercase text-sm">Nossa Missão</span>
+                </div>
+                <p className="text-xl font-medium font-inter text-void-black leading-relaxed">
+                  Promover inclusão digital e inserção no mercado de trabalho por meio de experiências que conectam educação, criatividade, tecnologia, arte e cultura.
+                </p>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <span className="px-4 py-2 rounded-full bg-gray-50 text-gray-600 font-inter text-sm font-medium">aprender</span>
+                <span className="px-4 py-2 rounded-full bg-gray-50 text-gray-600 font-inter text-sm font-medium">criar</span>
+                <span className="px-4 py-2 rounded-full bg-gray-50 text-gray-600 font-inter text-sm font-medium">conectar</span>
+              </div>
+            </div>
 
-      {/* Atuação */}
-      <section id="atuacao" className="py-16 px-6 border-t border-zinc-800/50 bg-black/40">
+            <div className="flex-1 flex flex-col gap-8 fade-up" style={{ transitionDelay: '150ms' }}>
+
+              <div className="bg-white p-8 rounded-[2rem] border-2 border-brand-orange shadow-sm flex-1 group hover:shadow-xl transition-all duration-300">
+                <div className="flex items-center gap-3 mb-4">
+                  <Zap className="w-5 h-5 text-brand-orange group-hover:rotate-12 transition-transform" />
+                  <span className="text-brand-orange font-outfit font-bold tracking-widest uppercase text-sm">Nossa Visão</span>
+                </div>
+                <p className="text-gray-600 font-inter leading-relaxed">
+                  Ser referência nacional em educação tecnológica e criativa, transformando o Instituto em um dos principais polos de inovação e desenvolvimento sustentável do interior paulista.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-[2rem] border-2 border-brand-pink shadow-sm flex-1 group hover:shadow-xl transition-all duration-300">
+                <div className="flex items-center gap-3 mb-4">
+                  <Check className="w-5 h-5 text-brand-pink group-hover:scale-110 transition-transform" />
+                  <span className="text-brand-pink font-outfit font-bold tracking-widest uppercase text-sm">Nossos Valores</span>
+                </div>
+                <p className="text-gray-600 font-inter leading-relaxed">
+                  Inovação com propósito, educação transformadora, sustentabilidade, respeito à diversidade, colaboração em rede e compromisso ético.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* As Frentes (Pilares) */}
+      <section id="frentes" className="py-20 px-6 bg-white border-b border-gray-100">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 fade-up">
             <div>
-              <p className="text-brand-orange text-sm font-bold tracking-widest uppercase mb-2">Nosso Impacto</p>
-              <h2 className="font-display text-5xl md:text-6xl font-black uppercase tracking-tighter text-white">
-                Áreas de Atuação
+              <p className="text-brand-purple font-inter text-sm font-bold tracking-widest uppercase mb-2">02 As frentes</p>
+              <h2 className="text-4xl md:text-5xl font-bold font-outfit text-void-black leading-tight">
+                Nossos Pilares
               </h2>
             </div>
           </div>
 
-          <div className="space-y-24">
-            {/* Projetos de Arte e Cultura */}
-            <div className="flex flex-col gap-12 fade-up">
-              <div className="flex flex-col md:flex-row gap-12 items-center">
-                <div className="md:w-1/2">
-                  {/* Embla carousel with navigation arrows */}
-                  <div
-                    className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative shadow-2xl"
-                    onMouseEnter={() => setArteIsHovered(true)}
-                    onMouseLeave={() => setArteIsHovered(false)}
-                  >
-                    {/* Embla viewport */}
-                    <div className="embla h-full" ref={arteEmblaRef}>
-                      <div className="embla__container flex h-full">
-                        {[
-                          { src: '/images/arte/Expo3.png', alt: 'A Casa Galeria - Arte em Movimento' },
-                          { src: '/images/arte/Expo1.png', alt: 'Exposições Itinerantes' },
-                          { src: '/images/arte/IMG_5126.jpg', alt: 'Obras Contemporâneas' },
-                          { src: '/images/arte/IMG_5144.jpg', alt: 'Interação e População' },
-                          { src: '/images/arte/IMG_5145.jpg', alt: 'Grafite Colaborativo' },
-                          { src: '/images/arte/IMG_5159.jpg', alt: 'Grafite Colaborativo' },
-                        ].map((img, idx) => (
-                          <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
-                            <img
-                              src={img.src}
-                              alt={img.alt}
-                              loading={idx === 0 ? "eager" : "lazy"}
-                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            {/* Hover overlay with label */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5 pointer-events-none">
-                              <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                {img.alt}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                    {/* Navigation arrows — visible on hover */}
-                    <div
-                      className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${arteIsHovered ? 'opacity-100' : 'opacity-0'}`}
-                    >
-                      <button
-                        onClick={arteScrollPrev}
-                        disabled={!arteCanScrollPrev}
-                        className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                        aria-label="Imagem anterior"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={arteScrollNext}
-                        disabled={!arteCanScrollNext}
-                        className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                        aria-label="Próxima imagem"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="md:w-1/2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
-                    <Target className="w-4 h-4" /> Arte em Movimento
-                  </div>
-                  <h3 className="text-4xl md:text-5xl font-display font-black text-white uppercase tracking-tighter leading-tight mb-6">
-                    Obras e Histórias nas <span className="text-brand-teal">Comunidades</span>
-                  </h3>
-                  <p className="text-lg text-zinc-300 font-light leading-relaxed mb-6">
-                    Com um acervo de mais de 180 obras da <strong className="text-white">A Casa Galeria</strong>, nosso projeto itinerante democratiza o acesso à arte. Levamos exposições completas para bairros periféricos de Itu, como Pirapitingui e Pedregulho.
-                  </p>
-                  <p className="text-base text-zinc-400 font-light leading-relaxed mb-6">
-                    Apresentamos o contraste entre os clássicos ituanos, como Almeida Junior e Frei Jesuino, e os expoentes contemporâneos. Através de palestras e oficinas, como a conduzida pelo artista Guilherme Kramer que resultou num imenso grafite colaborativo, transformamos espaços comunitários em verdadeiros polos criativos.
-                  </p>
-                </div>
-              </div>
-
-              {/* Métricas e Resultados do Projeto */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                  <p className="text-3xl font-display font-black text-white mb-2">+120</p>
-                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes</p>
-                </div>
-                <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                  <p className="text-3xl font-display font-black text-white mb-2">9.3k</p>
-                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Pessoas Alcançadas</p>
-                </div>
-                <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                  <p className="text-3xl font-display font-black text-white mb-2">327</p>
-                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Interações Online</p>
-                </div>
-              </div>
+            {/* Comunidade */}
+            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-brand-teal flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up">
+              <span className="text-brand-teal font-outfit font-bold text-xl mb-4">01</span>
+              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Comunidade</h3>
+              <p className="text-gray-600 font-inter mb-6 flex-grow">Um lugar para as ideias encontrarem espaço. O Vila Tech Hub conecta pessoas, projetos e oportunidades em um ambiente de colaboração.</p>
+              <a href="#comunidade" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-teal group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
 
-        {/* Bioeconomia */}
-        <section id="bioeconomia" className="py-24 md:py-32 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
-              <div className="md:w-1/2">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
-                     onMouseEnter={() => setBioIsHovered(true)}
-                     onMouseLeave={() => setBioIsHovered(false)}>
-                  {/* Embla viewport */}
-                  <div className="embla h-full" ref={bioEmblaRef}>
-                    <div className="embla__container flex h-full">
-                      {bioImages.map((img, idx) => (
-                        <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
-                          <img src={img.src} alt={img.alt}
-                               loading={idx === 0 ? "eager" : "lazy"}
-                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
-                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.alt}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${bioIsHovered ? 'opacity-100' : 'opacity-0'}`}>
-                    <button onClick={bioScrollPrev} disabled={!bioCanScrollPrev}
-                            className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                            aria-label="Imagem anterior">
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button onClick={bioScrollNext} disabled={!bioCanScrollNext}
-                            className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                            aria-label="Próxima imagem">
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-1/2">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-xs font-bold uppercase tracking-widest mb-6">
-                  <Target className="w-4 h-4" /> Bioeconomia
-                </div>
-                <h3 className="text-4xl md:text-5xl font-display font-black text-white uppercase tracking-tighter leading-tight mb-6">
-                  Inovação em <span className="text-brand-teal">Bioeconomia</span>
-                </h3>
-                <p className="text-lg text-zinc-300 font-light leading-relaxed mb-6">
-                  O Projeto "Plano Municipal de Bioeconomia" de Vila Tech, desenvolvido em parceria com a prefeitura e institutos de pesquisa, definiu 12 linhas estratégicas para promover a transição verde da região, incluindo a criação de bioprodutos, energia renovável e manejo sustentável de recursos naturais.
-                </p>
-                <p className="text-base text-zinc-400 font-light leading-relaxed mb-6">
-                  Foram implementadas 12 iniciativas piloto, como a produção de biocombustíveis a partir de resíduos agrícolas, um hub de inovação para startups de bioeconomia e capacitação de 500 agricultores em práticas de agricultura regenerativa.
-                </p>
-                <p className="text-base text-zinc-400 font-light leading-relaxed mb-6">
-                  Até o momento, o projeto gerou mais de 15 workshops, resultando em 200 empregos verdes e em um aumento de 10% na circularidade dos resíduos orgânicos da cidade.
-                </p>
-              </div>
+            {/* Sustentabilidade */}
+            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-green-600 flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '100ms' }}>
+              <span className="text-green-600 font-outfit font-bold text-xl mb-4">02</span>
+              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Sustentabilidade</h3>
+              <p className="text-gray-600 font-inter mb-6 flex-grow">Território, natureza e futuro na mesma conversa. Promovemos debates e iniciativas para transformar recursos em desenvolvimento sustentável.</p>
+              <a href="#bioeconomia" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-green-600 group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
-            {/* Métricas e Resultados do Projeto (Bioeconomia) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                <p className="text-3xl font-display font-black text-brand-teal mb-2">+200</p>
-                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Projetos</p>
-              </div>
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                <p className="text-3xl font-display font-black text-white mb-2">+5k</p>
-                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes</p>
-              </div>
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                <p className="text-3xl font-display font-black text-white mb-2">+300</p>
-                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Workshops</p>
-              </div>
+
+            {/* Educação */}
+            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-brand-teal flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '200ms' }}>
+              <span className="text-brand-teal font-outfit font-bold text-xl mb-4">03</span>
+              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Educação</h3>
+              <p className="text-gray-600 font-inter mb-6 flex-grow">Novas linguagens para traduzir o mundo. O Programa Tecnologia em Educação capacita jovens e profissionais para o amanhã.</p>
+              <a href="#educacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-teal group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            </div>
+
+            {/* Cultura */}
+            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-brand-purple flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '300ms' }}>
+              <span className="text-brand-pink font-outfit font-bold text-xl mb-4">04</span>
+              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Cultura</h3>
+              <p className="text-gray-600 font-inter mb-6 flex-grow">A arte que nos dá forma e contorno. Com exposições itinerantes e intervenções urbanas, democratizamos o acesso à arte e à cultura.</p>
+              <a href="#atuacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-pink group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Atuação Detalhada (Intro) */}
+      <section id="atuacao" className="pt-20 pb-10 px-6 bg-white border-t border-gray-100">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end fade-up">
+            <div>
+              <p className="text-brand-orange font-inter text-sm font-bold tracking-widest uppercase mb-2">Nosso Impacto</p>
+              <h2 className="font-outfit text-4xl md:text-5xl font-bold uppercase tracking-tighter text-void-black">
+                Áreas de Atuação
+              </h2>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-
-            {/* Projetos Educacionais */}
-            <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
+      {/* Arte e Cultura */}
+      <section className="py-20 px-6 bg-brand-pink text-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col gap-12 fade-up">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2">
-                {/* Embla carousel with navigation arrows */}
                 <div
-                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 relative"
-                  onMouseEnter={() => setEduIsHovered(true)}
-                  onMouseLeave={() => setEduIsHovered(false)}
+                  className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
+                  onMouseEnter={() => setArteIsHovered(true)}
+                  onMouseLeave={() => setArteIsHovered(false)}
                 >
-                  {/* Embla viewport */}
-                  <div className="embla h-full" ref={eduEmblaRef}>
+                  <div className="embla h-full" ref={arteEmblaRef}>
                     <div className="embla__container flex h-full">
                       {[
-                        { src: '/images/educacao/educacao1.webp', alt: 'Vila Tech Hub - Espaço Educacional' },
-                        { src: '/images/educacao/educacao2.webp', alt: 'Cursos de Formação em Tecnologia' },
-                        { src: '/images/educacao/educacao3.webp', alt: 'Projeto Vila Tech Hub' },
-                        { src: '/images/educacao/educacao4.webp', alt: 'Capacitação e Inovação' },
+                        { src: '/images/arte/Expo3.png', alt: 'A Casa Galeria - Arte em Movimento' },
+                        { src: '/images/arte/Expo1.png', alt: 'Exposições Itinerantes' },
+                        { src: '/images/arte/IMG_5126.jpg', alt: 'Obras Contemporâneas' },
+                        { src: '/images/arte/IMG_5144.jpg', alt: 'Interação e População' },
+                        { src: '/images/arte/IMG_5145.jpg', alt: 'Arte na Comunidade' },
+                        { src: '/images/arte/IMG_5159.jpg', alt: 'Grafite Colaborativo' },
                       ].map((img, idx) => (
                         <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
                           <img
@@ -642,9 +550,8 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                             loading={idx === 0 ? "eager" : "lazy"}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
-                          {/* Hover overlay with label */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
-                            <p className="text-white font-display font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5 pointer-events-none">
+                            <p className="text-white font-outfit font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                               {img.alt}
                             </p>
                           </div>
@@ -652,102 +559,260 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                       ))}
                     </div>
                   </div>
-
-                  {/* Navigation arrows — visible on hover */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${eduIsHovered ? 'opacity-100' : 'opacity-0'}`}
-                  >
-                    <button
-                      onClick={eduScrollPrev}
-                      disabled={!eduCanScrollPrev}
-                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                      aria-label="Imagem anterior"
-                    >
+                  <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${arteIsHovered ? 'opacity-100' : 'opacity-0'}`}>
+                    <button onClick={arteScrollPrev} disabled={!arteCanScrollPrev} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-pink transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Imagem anterior">
                       <ChevronLeft className="w-5 h-5" />
                     </button>
-                    <button
-                      onClick={eduScrollNext}
-                      disabled={!eduCanScrollNext}
-                      className="w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                      aria-label="Próxima imagem"
-                    >
+                    <button onClick={arteScrollNext} disabled={!arteCanScrollNext} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-pink transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Próxima imagem">
                       <ChevronRight className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
               </div>
               <div className="md:w-1/2">
-                <h3 className="text-3xl font-display font-bold text-brand-teal uppercase mb-6">Educação em Tecnologia</h3>
-                <h4 className="text-xl font-bold text-white mb-4">Projeto Vila Tech Hub - Plataforma Educacional</h4>
-                <p className="text-lg text-zinc-300 font-light leading-relaxed mb-6">
-                  Nossa plataforma de educação transforma conhecimento tecnológico em potência humana. Com foco em empregabilidade e aplicação imediata, estruturamos nossa metodologia em três pilares fundamentais:
-                </p>
-                <ul className="space-y-4 mb-6">
-                  <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-brand-teal/20 flex items-center justify-center text-brand-teal flex-shrink-0 mt-1">
-                      <Target className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h5 className="text-white font-bold">Corporativo & IA</h5>
-                      <p className="text-sm text-zinc-400">Tecnologia e Inteligência Artificial aplicadas para otimização de processos e escalabilidade empresarial.</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-brand-orange/20 flex items-center justify-center text-brand-orange flex-shrink-0 mt-1">
-                      <Zap className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h5 className="text-white font-bold">Inovação Criativa</h5>
-                      <p className="text-sm text-zinc-400">Audiovisual, criatividade e produção potencializadas por ferramentas digitais e IA Generativa.</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0 mt-1">
-                      <Check className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h5 className="text-white font-bold">Game Development</h5>
-                      <p className="text-sm text-zinc-400">Transformando a paixão pelos jogos em carreira. Formação completa em arte, programação, Unreal Engine e design de interfaces para jovens criativos.</p>
-                    </div>
-                  </li>
-                </ul>
-                <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800">
-                  <h5 className="text-brand-orange text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
-                  <p className="text-sm text-zinc-300 font-light">
-                    Compromisso com a inclusão digital: oferecemos cotas, bolsas e formação gratuita subvencionada pelo Instituto para alunos de escolas públicas e comunidades de baixa renda.
-                  </p>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
+                  <Palette className="w-4 h-4" /> Arte em Movimento
                 </div>
-
+                <h3 className="text-4xl md:text-5xl font-outfit font-bold text-white uppercase tracking-tighter leading-tight mb-6">
+                  Obras e Histórias nas <span className="text-white/90 underline decoration-4 underline-offset-4">Comunidades</span>
+                </h3>
+                <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
+                  Com um acervo de mais de 180 obras da <strong className="text-white font-medium">A Casa Galeria</strong>, nosso projeto itinerante democratiza o acesso à arte. Levamos exposições completas para bairros periféricos de Itu, como Pirapitingui e Pedregulho.
+                </p>
+                <p className="text-base text-white/80 font-inter font-light leading-relaxed mb-6">
+                  Apresentamos o contraste entre os clássicos ituanos, como Almeida Junior e Frei Jesuino, e os expoentes contemporâneos. Através de palestras e oficinas, como a conduzida pelo artista Guilherme Kramer que resultou num imenso grafite colaborativo, transformamos espaços comunitários em verdadeiros polos criativos.
+                </p>
               </div>
             </div>
-
-            {/* Métricas e Resultados do Projeto (Educação) */}
+            {/* Métricas Arte */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                <p className="text-3xl font-display font-black text-white mb-2">+150</p>
-                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes dos cursos</p>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+                <p className="text-3xl font-outfit font-bold text-white mb-2">+120</p>
+                <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes</p>
               </div>
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                <p className="text-3xl font-display font-black text-white mb-2">+500</p>
-                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Participantes de eventos</p>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+                <p className="text-3xl font-outfit font-bold text-white mb-2">9.3k</p>
+                <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Pessoas Alcançadas</p>
               </div>
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl text-center shadow-lg shadow-black/50">
-                <p className="text-3xl font-display font-black text-brand-teal mb-2">+900</p>
-                <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold">Pessoas impactadas</p>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+                <p className="text-3xl font-outfit font-bold text-white mb-2">327</p>
+                <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Interações Online</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Liderança: Diretoria e Conselhos */}
-      <section id="conselho" className="py-24 md:py-32 px-6">
+      {/* Bioeconomia */}
+      <section id="bioeconomia" className="py-20 px-6 bg-green-600 text-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-zinc-800/50 pb-8 fade-up">
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[0.9]">
+          <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
+            <div className="md:w-1/2">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
+                onMouseEnter={() => setBioIsHovered(true)}
+                onMouseLeave={() => setBioIsHovered(false)}>
+                <div className="embla h-full" ref={bioEmblaRef}>
+                  <div className="embla__container flex h-full">
+                    {bioImages.map((img, idx) => (
+                      <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                        <img src={img.src} alt={img.alt}
+                          loading={idx === 0 ? "eager" : "lazy"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
+                          <p className="text-white font-outfit font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.alt}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${bioIsHovered ? 'opacity-100' : 'opacity-0'}`}>
+                  <button onClick={bioScrollPrev} disabled={!bioCanScrollPrev}
+                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-green-600 transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Imagem anterior">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button onClick={bioScrollNext} disabled={!bioCanScrollNext}
+                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-green-600 transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Próxima imagem">
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
+                <Leaf className="w-4 h-4" /> Bioeconomia
+              </div>
+              <h3 className="text-4xl md:text-5xl font-outfit font-bold text-white uppercase tracking-tighter leading-tight mb-6">
+                Inovação em <span className="text-white/90 underline decoration-4 underline-offset-4">Bioeconomia</span>
+              </h3>
+              <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
+                O Projeto "Plano Municipal de Bioeconomia" de Vila Tech, desenvolvido em parceria com a prefeitura e institutos de pesquisa, definiu 12 linhas estratégicas para promover a transição verde da região.
+              </p>
+              <p className="text-base text-white/80 font-inter font-light leading-relaxed mb-6">
+                Foram implementadas iniciativas piloto como a produção de biocombustíveis a partir de resíduos agrícolas, um hub de inovação para startups de bioeconomia e capacitação de agricultores em práticas de agricultura regenerativa.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 fade-up">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+200</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Projetos</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+5k</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+300</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Workshops</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Educação em Tecnologia */}
+      <section id="educacao" className="py-20 px-6 bg-brand-teal text-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
+            <div className="md:w-1/2">
+              <div
+                className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
+                onMouseEnter={() => setEduIsHovered(true)}
+                onMouseLeave={() => setEduIsHovered(false)}
+              >
+                <div className="embla h-full" ref={eduEmblaRef}>
+                  <div className="embla__container flex h-full">
+                    {[
+                      { src: '/images/educacao/educacao1.webp', alt: 'Vila Tech Hub - Espaço Educacional' },
+                      { src: '/images/educacao/educacao2.webp', alt: 'Cursos de Formação em Tecnologia' },
+                      { src: '/images/educacao/educacao3.webp', alt: 'Projeto Vila Tech Hub' },
+                      { src: '/images/educacao/educacao4.webp', alt: 'Capacitação e Inovação' },
+                    ].map((img, idx) => (
+                      <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          loading={idx === 0 ? "eager" : "lazy"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
+                          <p className="text-white font-outfit font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            {img.alt}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${eduIsHovered ? 'opacity-100' : 'opacity-0'}`}>
+                  <button onClick={eduScrollPrev} disabled={!eduCanScrollPrev} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-teal transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Imagem anterior">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button onClick={eduScrollNext} disabled={!eduCanScrollNext} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-teal transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Próxima imagem">
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
+                <BookOpen className="w-4 h-4" /> Educação em Tecnologia
+              </div>
+              <h3 className="text-4xl md:text-5xl font-outfit font-bold text-white uppercase tracking-tighter leading-tight mb-4">
+                Plataforma <span className="text-white/90 underline decoration-4 underline-offset-4">Educacional</span>
+              </h3>
+              <h4 className="text-xl font-bold font-inter text-white/95 mb-4">Projeto Vila Tech Hub</h4>
+              <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
+                Nossa plataforma transforma conhecimento tecnológico em potência humana. Com foco em empregabilidade e aplicação imediata, estruturamos nossa metodologia em três pilares fundamentais:
+              </p>
+              <ul className="space-y-4 mb-6">
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Target className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Corporativo & IA</h5>
+                    <p className="text-sm text-white/80 font-inter">Tecnologia e Inteligência Artificial aplicadas para otimização de processos e escalabilidade empresarial.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Inovação Criativa</h5>
+                    <p className="text-sm text-white/80 font-inter">Audiovisual, criatividade e produção potencializadas por ferramentas digitais e IA Generativa.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Game Development</h5>
+                    <p className="text-sm text-white/80 font-inter">Transformando a paixão pelos jogos em carreira. Formação completa em arte, programação, Unreal Engine e design de interfaces para jovens criativos.</p>
+                  </div>
+                </li>
+              </ul>
+              <div className="p-4 rounded-xl bg-white/10 border border-white/20">
+                <h5 className="text-white text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
+                <p className="text-sm text-white/90 font-inter font-light">
+                  Compromisso com a inclusão digital: oferecemos cotas, bolsas e formação gratuita subvencionada pelo Instituto para alunos de escolas públicas e comunidades de baixa renda.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Métricas Educação */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 fade-up">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+150</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes dos cursos</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+500</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes de eventos</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+900</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Pessoas impactadas</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="comunidade" className="py-20 px-6 bg-brand-purple text-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
+            {/* Image left */}
+            <div className="md:w-1/2">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl">
+                <img src="/public/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Comunidade" className="w-full h-full object-cover" />
+              </div>
+            </div>
+            {/* Text right */}
+            <div className="md:w-1/2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
+                <Building2 className="w-4 h-4" /> Comunidade
+              </div>
+              <h3 className="text-4xl md:text-5xl font-outfit font-bold text-white uppercase tracking-tighter leading-tight mb-4">
+                Vila Tech Hub
+              </h3>
+              <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
+                Um ecossistema completo de inovação, coworking e aprendizado no coração de Itu. Onde empreendedores, criativos e estudantes se encontram.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Liderança: Diretoria e Conselhos */}
+      <section id="conselho" className="py-24 md:py-32 px-6 bg-gray-50 border-t border-gray-100">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 pb-8 fade-up">
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-[#1d1d1b] leading-[0.9]">
               LIDERANÇA
             </h2>
-            <p className="text-zinc-400 text-sm max-w-xs text-right mt-6 md:mt-0 font-light">
+            <p className="text-gray-500 text-sm max-w-xs text-right mt-6 md:mt-0 font-light">
               Conheça os líderes e conselheiros que guiam o Vila Tech rumo ao futuro da inovação social.
             </p>
           </div>
@@ -758,11 +823,11 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
             <div className="flex flex-wrap justify-center gap-12">
               {diretoriaMembers.map((person, i) => (
                 <div key={`dir-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
-                  <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-6 overflow-hidden relative border border-zinc-800 group-hover:border-brand-teal/50 transition-colors drop-shadow-2xl">
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  <div className="aspect-[3/4] bg-gray-100 rounded-2xl mb-6 overflow-hidden relative border border-gray-200 group-hover:border-brand-teal/50 transition-colors shadow-md group-hover:shadow-xl">
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=e2e8f0&color=5dbeb5&size=512` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
-                  <h3 className="font-display font-bold text-lg text-white group-hover:text-brand-teal transition-colors uppercase tracking-wide">{person.name}</h3>
+                  <h3 className="font-display font-bold text-lg text-[#1d1d1b] group-hover:text-brand-teal transition-colors uppercase tracking-wide">{person.name}</h3>
                   <p className="text-xs font-bold tracking-widest text-brand-teal uppercase mt-1">{person.role}</p>
                 </div>
               ))}
@@ -775,11 +840,11 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
             <div className="flex justify-center items-start gap-3 sm:gap-4 md:gap-6 w-full overflow-x-auto md:overflow-visible pb-4">
               {consultivoMembers.map((person, i) => (
                 <div key={`consul-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 flex-1 min-w-[120px] max-w-[192px]">
-                  <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-4 overflow-hidden relative border border-zinc-800 group-hover:border-brand-orange/50 transition-colors drop-shadow-2xl">
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  <div className="aspect-[3/4] bg-gray-100 rounded-2xl mb-4 overflow-hidden relative border border-gray-200 group-hover:border-brand-orange/50 transition-colors shadow-md group-hover:shadow-xl">
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=e2e8f0&color=ef7d00&size=512` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
-                  <h3 className="font-display font-bold text-sm md:text-base lg:text-lg text-white group-hover:text-brand-orange transition-colors uppercase tracking-wide break-words leading-tight">{person.name}</h3>
+                  <h3 className="font-display font-bold text-sm md:text-base lg:text-lg text-[#1d1d1b] group-hover:text-brand-orange transition-colors uppercase tracking-wide break-words leading-tight">{person.name}</h3>
                   <p className="text-[10px] md:text-xs font-bold tracking-widest text-brand-orange uppercase mt-2 leading-tight">{person.role}</p>
                 </div>
               ))}
@@ -788,16 +853,16 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
 
           {/* Conselho Educacional */}
           <div>
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-zinc-300 uppercase mb-10 text-center fade-up">Conselho Educacional</h3>
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-purple uppercase mb-10 text-center fade-up">Conselho Educacional</h3>
             <div className="flex flex-wrap justify-center gap-12">
               {educacionalMembers.map((person, i) => (
                 <div key={`edu-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
-                  <div className="aspect-[3/4] bg-zinc-900 rounded-2xl mb-6 overflow-hidden relative border border-zinc-800 group-hover:border-zinc-300/50 transition-colors drop-shadow-2xl">
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=18181b&color=14b8a6&size=512` }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  <div className="aspect-[3/4] bg-gray-100 rounded-2xl mb-6 overflow-hidden relative border border-gray-200 group-hover:border-brand-purple/50 transition-colors shadow-md group-hover:shadow-xl">
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=e2e8f0&color=864896&size=512` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
-                  <h3 className="font-display font-bold text-lg text-white group-hover:text-zinc-300 transition-colors uppercase tracking-wide">{person.name}</h3>
-                  <p className="text-xs font-bold tracking-widest text-zinc-300 uppercase mt-1">{person.role}</p>
+                  <h3 className="font-display font-bold text-lg text-[#1d1d1b] group-hover:text-brand-purple transition-colors uppercase tracking-wide">{person.name}</h3>
+                  <p className="text-xs font-bold tracking-widest text-brand-purple uppercase mt-1">{person.role}</p>
                 </div>
               ))}
             </div>
@@ -805,39 +870,41 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
         </div>
       </section>
 
+
+
       {/* Contato & Ajude a Construir */}
-      <section id="contato" className="py-24 px-6 border-t border-zinc-800/50">
+      <section id="contato" className="py-24 px-6 bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 gap-16 md:gap-24">
 
             {/* CRM Form */}
             <div className="fade-up order-2 md:order-1">
-              <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-10">Entre em Contato</h2>
+              <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tighter text-[#1d1d1b] mb-10">Entre em Contato</h2>
 
-              <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-white/5 border border-white/10">
+              <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-white border border-gray-200 shadow-lg">
                 {isSubmitted ? (
                   <div className="text-center py-12">
                     <div className="w-16 h-16 rounded-full bg-brand-teal/20 flex items-center justify-center mx-auto mb-6">
                       <Check className="w-8 h-8 text-brand-teal" />
                     </div>
-                    <h3 className="font-display text-xl text-white mb-2">Mensagem enviada!</h3>
-                    <p className="text-white/60 text-sm">Em breve entraremos em contato com você.</p>
+                    <h3 className="font-display text-xl text-[#1d1d1b] mb-2">Mensagem enviada!</h3>
+                    <p className="text-gray-500 text-sm">Em breve entraremos em contato com você.</p>
                   </div>
                 ) : (
                   <>
                     <div className="space-y-6 mb-6">
                       {/* Name */}
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.nameLabel}</label>
+                        <label className="block text-gray-500 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.nameLabel}</label>
                         <div className="relative">
-                          <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                          <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                           <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleInputChange}
                             required
-                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 focus:border-brand-teal focus:outline-none transition-colors text-sm"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-[#1d1d1b] placeholder-gray-400 focus:border-brand-teal focus:outline-none transition-colors text-sm"
                             placeholder="Seu nome"
                           />
                         </div>
@@ -845,16 +912,16 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
 
                       {/* Email */}
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.emailLabel}</label>
+                        <label className="block text-gray-500 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.emailLabel}</label>
                         <div className="relative">
-                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                           <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
                             required
-                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 focus:border-brand-teal focus:outline-none transition-colors text-sm"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-[#1d1d1b] placeholder-gray-400 focus:border-brand-teal focus:outline-none transition-colors text-sm"
                             placeholder="seu@email.com"
                           />
                         </div>
@@ -862,16 +929,16 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
 
                       {/* Phone */}
                       <div>
-                        <label className="block text-white/60 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.phoneLabel}</label>
+                        <label className="block text-gray-500 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.phoneLabel}</label>
                         <div className="relative">
-                          <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                          <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                           <input
                             type="tel"
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
                             required
-                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 focus:border-brand-teal focus:outline-none transition-colors text-sm"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-[#1d1d1b] placeholder-gray-400 focus:border-brand-teal focus:outline-none transition-colors text-sm"
                             placeholder="(11) 00000-0000"
                           />
                         </div>
@@ -880,7 +947,7 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
 
                     {/* Interests */}
                     <div className="mb-6">
-                      <label className="block text-white/60 text-xs uppercase tracking-widest mb-3 font-bold">{contactFormConfig.interestLabel}</label>
+                      <label className="block text-gray-500 text-xs uppercase tracking-widest mb-3 font-bold">{contactFormConfig.interestLabel}</label>
                       <div className="flex flex-wrap gap-2">
                         {contactFormConfig.interests.map((interest) => (
                           <button
@@ -888,8 +955,8 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                             type="button"
                             onClick={() => handleInterestChange(interest)}
                             className={`px-3 py-1.5 rounded-full text-[10px] uppercase font-bold tracking-wider transition-all duration-300 ${formData.interests.includes(interest)
-                              ? 'bg-brand-teal text-black'
-                              : 'bg-white/5 text-white/40 border border-white/10 hover:border-brand-teal/50'
+                              ? 'bg-brand-teal text-white'
+                              : 'bg-gray-100 text-gray-500 border border-gray-200 hover:border-brand-teal/50'
                               }`}
                           >
                             {interest}
@@ -900,15 +967,15 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
 
                     {/* Message */}
                     <div className="mb-8">
-                      <label className="block text-white/60 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.messageLabel}</label>
+                      <label className="block text-gray-500 text-xs uppercase tracking-widest mb-2 font-bold">{contactFormConfig.messageLabel}</label>
                       <div className="relative">
-                        <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-white/30" />
+                        <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-gray-400" />
                         <textarea
                           name="message"
                           value={formData.message}
                           onChange={handleInputChange}
                           rows={3}
-                          className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/20 focus:border-brand-teal focus:outline-none transition-colors resize-none text-sm"
+                          className="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-[#1d1d1b] placeholder-gray-400 focus:border-brand-teal focus:outline-none transition-colors resize-none text-sm"
                           placeholder="Conte-nos mais..."
                         />
                       </div>
@@ -918,11 +985,11 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand-teal text-black font-display text-xs uppercase tracking-widest rounded-xl hover:bg-white transition-colors duration-300 disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand-teal text-white font-display text-xs uppercase tracking-widest rounded-xl hover:bg-[#1d1d1b] transition-colors duration-300 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                           Enviando...
                         </>
                       ) : (
@@ -964,17 +1031,17 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
       </section>
 
       {/* Localização */}
-      <section className="py-24 px-6 border-t border-b border-zinc-800/50 bg-black/40">
+      <section className="py-24 px-6 bg-white border-t border-gray-100">
         <div className="container mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
             <div className="fade-up">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-white mb-16">Localização</h2>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-[#1d1d1b] mb-16">Localização</h2>
 
               <div className="mb-10">
                 <p className="text-brand-teal text-xs font-bold tracking-widest uppercase mb-3 flex items-center gap-2">
                   <MapPin className="w-4 h-4" /> Endereço
                 </p>
-                <p className="text-zinc-300 text-xl font-light leading-relaxed">
+                <p className="text-gray-700 text-xl font-light leading-relaxed">
                   R. Francisco José Ferreira Sampaio, 90<br />
                   Itu, SP - 13303-536
                 </p>
@@ -982,15 +1049,14 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
 
               <div>
                 <p className="text-brand-teal text-xs font-bold tracking-widest uppercase mb-3">Horário</p>
-                <p className="text-zinc-300 text-xl font-light leading-relaxed">
+                <p className="text-gray-700 text-xl font-light leading-relaxed">
                   Segunda a Sexta<br />
                   09:00 - 18:00
                 </p>
               </div>
             </div>
 
-            <div className="fade-up rounded-3xl overflow-hidden grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-700 border border-zinc-800 shadow-2xl">
-              {/* Map integration */}
+            <div className="fade-up rounded-3xl overflow-hidden border border-gray-200 shadow-xl hover:shadow-2xl transition-shadow duration-700">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.639727409419!2d-47.30058912384918!3d-23.32882205310384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf50a0f3eb3463%3A0xc6cb5a329dbe06af!2sR.%20Francisco%20Jos%C3%A9%20Ferreira%20Sampaio%2C%2090%20-%20Itu%20Novo%20Centro%2C%20Itu%20-%20SP%2C%2013303-536!5e0!3m2!1spt-BR!2sbr!4v1709848247900!5m2!1spt-BR!2sbr"
                 width="100%"
@@ -999,7 +1065,7 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="w-full bg-zinc-900"
+                className="w-full"
                 title="Localização do Instituto Vila Tech"
               />
             </div>
@@ -1007,29 +1073,28 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
         </div>
       </section>
 
-      {/* Footer using existing component, but might need forced dark theme styling if it's currently light. Let's assume standard footer handles dark backgrounds fine or is enclosed in its own bg wrapper. */}
       <Footer />
 
       {/* Donation Modal */}
       {isDonationModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
-          <div className="relative w-full max-w-md p-6 rounded-2xl bg-zinc-900 border border-brand-teal text-white shadow-2xl">
+          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white border border-gray-200 text-[#1d1d1b] shadow-2xl">
             <button
               onClick={() => setIsDonationModalOpen(false)}
-              className="absolute top-4 right-4 text-white/60 hover:text-white"
+              className="absolute top-4 right-4 text-gray-400 hover:text-[#1d1d1b] transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
             <h3 className="font-display text-2xl font-bold uppercase text-brand-teal mb-4">Apoie o Instituto</h3>
-            <p className="text-zinc-300 text-sm mb-6 leading-relaxed">
+            <p className="text-gray-600 text-sm mb-6 leading-relaxed">
               O Instituto Cultural e Educacional Vila Tech é uma associação sem fins lucrativos. Sua doação apoia bolsas de estudos, infraestrutura e inclusão digital de jovens em Itu, SP.
             </p>
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 mb-6">
+            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 mb-6">
               <p className="text-xs uppercase tracking-wider text-brand-orange font-bold mb-2">Chave Pix (CNPJ)</p>
-              <p className="text-lg font-mono font-bold select-all bg-black/40 p-2.5 rounded border border-white/5 text-center">
+              <p className="text-lg font-mono font-bold select-all bg-white p-2.5 rounded border border-gray-200 text-center text-[#1d1d1b]">
                 58.473.428/0001-31
               </p>
-              <p className="text-xs text-white/50 mt-2 text-center">
+              <p className="text-xs text-gray-400 mt-2 text-center">
                 Razão Social: Instituto Cultural e Educacional Vila Tech
               </p>
             </div>
@@ -1039,7 +1104,7 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                   navigator.clipboard.writeText("58.473.428/0001-31");
                   alert("Chave Pix CNPJ copiada com sucesso!");
                 }}
-                className="flex-1 py-3 rounded-xl bg-brand-teal text-black font-bold uppercase tracking-wider text-xs hover:bg-white transition-colors">
+                className="flex-1 py-3 rounded-xl bg-brand-teal text-white font-bold uppercase tracking-wider text-xs hover:bg-[#1d1d1b] transition-colors">
                 Copiar Chave Pix
               </button>
               <a
@@ -1048,7 +1113,7 @@ const bioScrollNext = useCallback(() => bioEmblaApi && bioEmblaApi.scrollNext(),
                   setIsDonationModalOpen(false);
                   setFormData(prev => ({ ...prev, interests: ['Investidor/Parceiro'] }));
                 }}
-                className="flex-grow flex items-center justify-center py-3 rounded-xl border border-zinc-700 text-center text-white font-bold uppercase tracking-wider text-xs hover:bg-zinc-800 transition-colors"
+                className="flex-grow flex items-center justify-center py-3 rounded-xl border border-gray-200 text-center text-[#1d1d1b] font-bold uppercase tracking-wider text-xs hover:bg-gray-50 transition-colors"
               >
                 Outros Apoios
               </a>

@@ -62,8 +62,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['Gotham', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        sans: ['Avenir', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Outfit', 'Gotham', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['Inter', 'Avenir', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        outfit: ['Outfit', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'SF Mono', 'Monaco', 'monospace'],
         geoma: ['GEOMA', 'sans-serif'],
       },
