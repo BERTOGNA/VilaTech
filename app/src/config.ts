@@ -316,7 +316,7 @@ export const footerConfig: FooterConfig = {
   quickLinks: [
     { label: "Home", href: "/" },
     { label: "Coworking", href: "/coworking" },
-    { label: "Vila Tech Hub", href: "/vila-tech-hub" },
+    { label: "Instituto", href: "/instituto" },
     { label: "Cursos", href: "/cursos" },
     { label: "Agenda", href: "/agenda" },
     { label: "Reservas", href: "/reservas" },
@@ -637,7 +637,7 @@ export const globalNavItems: HeroNavItem[] = [
   { label: "Home", path: "/" },
   { label: "Coworking", path: "/coworking" },
   { label: "Reservas", path: "/reservas" },
-  { label: "Vila Tech Hub", path: "/vila-tech-hub" },
+  { label: "Instituto", path: "/instituto" },
   { label: "Cursos", path: "/cursos" },
   { label: "Agenda", path: "/agenda" },
   { label: "Contato", sectionId: "contact" },

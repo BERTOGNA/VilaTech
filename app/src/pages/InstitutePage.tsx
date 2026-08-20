@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, Palette, BookOpen, Leaf, Building2 } from 'lucide-react';
+import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2 } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
@@ -15,7 +15,7 @@ import SEO from '../components/SEO';
 
 export default function InstitutePage() {
 
-  const heroBgRef = useRef<HTMLImageElement>(null);
+  const heroBgRef = useRef<HTMLDivElement>(null);
 
   // Force scroll to top on mount
   useEffect(() => {
@@ -306,76 +306,58 @@ export default function InstitutePage() {
       <TopNavigation variant="institute" />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 px-6 overflow-hidden min-h-screen flex items-center bg-gray-50">
-        <div className="container mx-auto max-w-7xl relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <section
+        id="hero"
+        ref={heroBgRef}
+        className="relative min-h-screen flex items-center overflow-hidden"
+      >
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-[url('/images/instituto/ecossistema.webp')]"
+          aria-hidden="true"
+        ></div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
 
-          <div className="w-full lg:w-1/2 fade-up flex flex-col justify-center">
+        <div className="container mx-auto max-w-7xl relative z-10 px-6 py-32 md:py-40">
+          <div className="max-w-3xl fade-up">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse"></span>
-              <span className="text-sm font-semibold tracking-wider uppercase text-gray-500 font-inter">
+              <span className="text-sm font-semibold tracking-wider uppercase text-white/70 font-inter">
                 Instituto Cultural e Educacional Vila Tech
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit text-void-black leading-tight mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit text-white leading-tight mb-8">
               Novas metodologias.<br />
               <em className="text-brand-pink not-italic">Novas habilidades.</em><br />
               Novos futuros.
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 font-inter max-w-2xl mb-12 leading-relaxed">
+            <p className="text-lg md:text-xl text-white/80 font-inter max-w-2xl mb-12 leading-relaxed">
               Educação, tecnologia, criatividade e cultura para colocar pessoas e territórios em movimento.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <a href="#frentes" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-void-black text-white font-bold font-inter tracking-wide text-sm hover:bg-gray-800 transition-colors shadow-lg">
+              <a href="#frentes" className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-void-black font-bold font-inter tracking-wide text-sm hover:bg-gray-200 transition-colors shadow-lg">
                 Conheça nossas frentes
                 <Target className="ml-2 w-4 h-4" />
               </a>
-              <a href="#proposito" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-gray-300 text-void-black font-bold font-inter tracking-wide text-sm hover:bg-gray-100 transition-colors">
+              <a href="#proposito" className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/40 text-white font-bold font-inter tracking-wide text-sm hover:bg-white/10 transition-colors">
                 Entenda o propósito
               </a>
             </div>
-
-            <div className="mt-16 flex items-start gap-4">
-              <span className="text-brand-teal font-outfit font-bold text-xl">01</span>
-              <span className="text-sm text-gray-500 font-inter font-medium leading-tight">
-                Um ecossistema<br />feito de encontros.
-              </span>
-            </div>
-          </div>
-
-          <div className="w-full lg:w-1/2 fade-up flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-pink/20 rounded-[2.5rem] transform rotate-3"></div>
-              <img
-                ref={heroBgRef}
-                src="/images/instituto/menina_sorriso_1.png"
-                alt="Estudante Vila Tech"
-                className="relative w-full max-w-lg object-cover rounded-3xl shadow-2xl"
-              />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Quick Nav Pills */}
-      <section className="py-6 px-6 bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-wrap items-center gap-2 justify-center">
-            {navPills.map((pill) => (
-              <button
-                key={pill.id}
-                onClick={() => scrollToSection(pill.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${pill.color}`}
-              >
-                {pill.label}
-              </button>
-            ))}
           </div>
         </div>
       </section>
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-24 right-8 bg-brand-teal text-white p-3 rounded-full shadow-lg hover:bg-brand-teal/80 transition-all duration-300 z-[9998]"
+        aria-label="Voltar ao topo"
+      >
+        <ChevronUp className="w-5 h-5" />
+      </button>
 
       {/* O Que Nos Move */}
       <section id="proposito" className="py-20 px-6 bg-white border-b border-gray-100 relative overflow-hidden">
@@ -463,7 +445,7 @@ export default function InstitutePage() {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 fade-up">
             <div>
-              <p className="text-brand-purple font-inter text-sm font-bold tracking-widest uppercase mb-2">02 As frentes</p>
+              <p className="text-brand-purple font-inter text-sm font-bold tracking-widest uppercase mb-2">Pilares</p>
               <h2 className="text-4xl md:text-5xl font-bold font-outfit text-void-black leading-tight">
                 Nossos Pilares
               </h2>
@@ -473,35 +455,35 @@ export default function InstitutePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
             {/* Comunidade */}
-            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-brand-teal flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up">
-              <span className="text-brand-teal font-outfit font-bold text-xl mb-4">01</span>
-              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Comunidade</h3>
-              <p className="text-gray-600 font-inter mb-6 flex-grow">Um lugar para as ideias encontrarem espaço. O Vila Tech Hub conecta pessoas, projetos e oportunidades em um ambiente de colaboração.</p>
-              <a href="#comunidade" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-teal group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            <div className="bg-brand-purple p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up">
+              <span className="text-white/60 font-outfit font-bold text-xl mb-4">01</span>
+              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Comunidade</h3>
+              <p className="text-white/85 font-inter mb-6 flex-grow">Um lugar para as ideias encontrarem espaço. O Vila Tech Hub conecta pessoas, projetos e oportunidades em um ambiente de colaboração.</p>
+              <a href="#comunidade" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
 
             {/* Sustentabilidade */}
-            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-green-600 flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '100ms' }}>
-              <span className="text-green-600 font-outfit font-bold text-xl mb-4">02</span>
-              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Sustentabilidade</h3>
-              <p className="text-gray-600 font-inter mb-6 flex-grow">Território, natureza e futuro na mesma conversa. Promovemos debates e iniciativas para transformar recursos em desenvolvimento sustentável.</p>
-              <a href="#bioeconomia" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-green-600 group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            <div className="bg-green-600 p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '100ms' }}>
+              <span className="text-white/60 font-outfit font-bold text-xl mb-4">02</span>
+              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Sustentabilidade</h3>
+              <p className="text-white/85 font-inter mb-6 flex-grow">Território, natureza e futuro na mesma conversa. Promovemos debates e iniciativas para transformar recursos em desenvolvimento sustentável.</p>
+              <a href="#bioeconomia" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
 
             {/* Educação */}
-            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-brand-teal flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '200ms' }}>
-              <span className="text-brand-teal font-outfit font-bold text-xl mb-4">03</span>
-              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Educação</h3>
-              <p className="text-gray-600 font-inter mb-6 flex-grow">Novas linguagens para traduzir o mundo. O Programa Tecnologia em Educação capacita jovens e profissionais para o amanhã.</p>
-              <a href="#educacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-teal group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            <div className="bg-brand-teal p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '200ms' }}>
+              <span className="text-white/60 font-outfit font-bold text-xl mb-4">03</span>
+              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Educação</h3>
+              <p className="text-white/85 font-inter mb-6 flex-grow">Novas linguagens para traduzir o mundo. O Programa Tecnologia em Educação capacita jovens e profissionais para o amanhã.</p>
+              <a href="#educacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
 
             {/* Cultura */}
-            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-brand-purple flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '300ms' }}>
-              <span className="text-brand-pink font-outfit font-bold text-xl mb-4">04</span>
-              <h3 className="text-2xl font-bold font-outfit text-void-black mb-4">Cultura</h3>
-              <p className="text-gray-600 font-inter mb-6 flex-grow">A arte que nos dá forma e contorno. Com exposições itinerantes e intervenções urbanas, democratizamos o acesso à arte e à cultura.</p>
-              <a href="#atuacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-pink group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            <div className="bg-brand-pink p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ transitionDelay: '300ms' }}>
+              <span className="text-white/60 font-outfit font-bold text-xl mb-4">04</span>
+              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Cultura</h3>
+              <p className="text-white/85 font-inter mb-6 flex-grow">A arte que nos dá forma e contorno. Com exposições itinerantes e intervenções urbanas, democratizamos o acesso à arte e à cultura.</p>
+              <a href="#atuacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
 
           </div>

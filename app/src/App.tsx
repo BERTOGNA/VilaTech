@@ -44,8 +44,8 @@ function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Public Website */}
-            <Route path="/" element={<InstitutePage />} />
-            <Route path="/vila-tech-hub" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/instituto" element={<InstitutePage />} />
             <Route path="/instituto-old" element={<InstituteOldPage />} />
             <Route path="/coworking" element={<CoworkingPage />} />
             <Route path="/agenda" element={<AgendaPage />} />
