@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Instagram, Twitter, Youtube, Music2, Linkedin, Facebook, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
