@@ -22,10 +22,7 @@ export default function InstitutePage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+
 
   // CRM Form State
   const [formData, setFormData] = useState({
@@ -268,14 +265,7 @@ export default function InstitutePage() {
     { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.png" }
   ];
 
-  const navPills = [
-    { label: 'Arte & Cultura', id: 'atuacao', color: 'bg-brand-pink/10 text-brand-pink border-brand-pink/30 hover:bg-brand-pink hover:text-white' },
-    { label: 'Educação', id: 'educacao', color: 'bg-brand-teal/10 text-brand-teal border-brand-teal/30 hover:bg-brand-teal hover:text-white' },
-    { label: 'Bioeconomia', id: 'bioeconomia', color: 'bg-green-500/10 text-green-700 border-green-300 hover:bg-green-600 hover:text-white' },
-    { label: 'Liderança', id: 'conselho', color: 'bg-brand-orange/10 text-brand-orange border-brand-orange/30 hover:bg-brand-orange hover:text-white' },
-    { label: 'Comunidade', id: 'comunidade', color: 'bg-purple-100 text-brand-purple border-purple-300 hover:bg-brand-purple hover:text-white' },
-    { label: 'Contato', id: 'contato', color: 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-800 hover:text-white' },
-  ];
+
 
   return (
     <div className="min-h-screen bg-white text-[#1d1d1b] font-sans selection:bg-brand-teal selection:text-white overflow-hidden">
