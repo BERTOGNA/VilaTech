@@ -92,10 +92,10 @@ export default function InstitutePage() {
   const [bioCanScrollNext, setBioCanScrollNext] = useState(true);
   const [bioIsHovered, setBioIsHovered] = useState(false);
   const bioImages = [
-    { src: '/images/bioeconomia/1691111481966.jpeg', alt: 'Projeto Bioeconomia 1' },
-    { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.15.31 PM.jpeg', alt: 'Projeto Bioeconomia 2' },
-    { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.20.05 PM.jpeg', alt: 'Projeto Bioeconomia 3' },
-    { src: '/images/bioeconomia/WhatsApp Image 2023-08-17 at 2.22.54 PM.jpeg', alt: 'Projeto Bioeconomia 4' },
+    { src: '/images/bioeconomia/WhatsApp Image 2023-08-17 at 2.22.54 PM.jpeg', alt: 'Projeto Bioeconomia 1' },
+    { src: '/images/bioeconomia/1691111481966.jpeg', alt: 'Projeto Bioeconomia 2' },
+    { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.15.31 PM.jpeg', alt: 'Projeto Bioeconomia 3' },
+    { src: '/images/bioeconomia/WhatsApp Image 2023-08-03 at 8.20.05 PM.jpeg', alt: 'Projeto Bioeconomia 4' },
   ];
 
   const onBioSelect = useCallback((api: any) => {
@@ -348,6 +348,11 @@ export default function InstitutePage() {
 
       {/* O Que Nos Move */}
       <section id="proposito" className="py-20 px-6 bg-white border-b border-gray-100 relative overflow-hidden">
+        {/* Grafismos de fundo */}
+        {/* Grafismo da esquerda - próximo ao subtítulo, no topo */}
+        <img src="/images/instituto/grafismos/grafis2.svg" alt="" className="absolute top-8 -left-10 w-72 h-72 pointer-events-none" style={{ opacity: 0.28, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+        {/* Grafismo da direita - na parte inferior */}
+        <img src="/images/instituto/grafismos/grafis1.svg" alt="" className="absolute bottom-0 -right-16 w-80 h-80 pointer-events-none" style={{ opacity: 0.22, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="w-full lg:w-1/2 fade-up">
@@ -388,31 +393,37 @@ export default function InstitutePage() {
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Missão */}
-            <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300" style={{ borderLeft: '12px solid #3fbdd8' }}>
-              <div className="mb-6">
+            <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300 relative overflow-hidden" style={{ borderLeft: '12px solid #3fbdd8' }}>
+              {/* Grafismo decorativo */}
+              <img src="/images/instituto/grafismos/grafis1.svg" alt="" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+              <div className="mb-6 relative z-10">
                 <span className="font-inter font-bold tracking-widest uppercase text-sm" style={{ color: '#3fbdd8' }}>Nossa Missão</span>
               </div>
-              <p className="text-xl font-medium font-inter text-void-black leading-relaxed flex-grow">
+              <p className="text-xl font-medium font-inter text-void-black leading-relaxed flex-grow relative z-10">
                 Promover inclusão digital e inserção no mercado de trabalho por meio de experiências que conectam educação, criatividade, tecnologia, arte e cultura.
               </p>
             </div>
 
             {/* Visão */}
-            <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300" style={{ borderLeft: '12px solid #e83a79', transitionDelay: '150ms' }}>
-              <div className="mb-6">
+            <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300 relative overflow-hidden" style={{ borderLeft: '12px solid #e83a79', transitionDelay: '150ms' }}>
+              {/* Grafismo decorativo */}
+              <img src="/images/instituto/grafismos/grafis3.svg" alt="" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+              <div className="mb-6 relative z-10">
                 <span className="font-inter font-bold tracking-widest uppercase text-sm" style={{ color: '#e83a79' }}>Nossa Visão</span>
               </div>
-              <p className="text-gray-600 text-lg font-inter leading-relaxed flex-grow">
+              <p className="text-gray-600 text-lg font-inter leading-relaxed flex-grow relative z-10">
                 Ser referência nacional em educação tecnológica e criativa, transformando o Instituto em um dos principais polos de inovação e desenvolvimento sustentável do interior paulista.
               </p>
             </div>
 
             {/* Valores */}
-            <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300" style={{ borderLeft: '12px solid #864896', transitionDelay: '300ms' }}>
-              <div className="mb-6">
+            <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300 relative overflow-hidden" style={{ borderLeft: '12px solid #864896', transitionDelay: '300ms' }}>
+              {/* Grafismo decorativo */}
+              <img src="/images/instituto/grafismos/grafis5.svg" alt="" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(30%) sepia(50%) saturate(400%) hue-rotate(250deg)' }} />
+              <div className="mb-6 relative z-10">
                 <span className="font-inter font-bold tracking-widest uppercase text-sm" style={{ color: '#864896' }}>Nossos Valores</span>
               </div>
-              <p className="text-gray-600 text-lg font-inter leading-relaxed flex-grow">
+              <p className="text-gray-600 text-lg font-inter leading-relaxed flex-grow relative z-10">
                 Inovação com propósito, educação transformadora, sustentabilidade, respeito à diversidade, colaboração em rede e compromisso ético.
               </p>
             </div>
@@ -421,8 +432,12 @@ export default function InstitutePage() {
       </section>
 
       {/* As Frentes (Pilares) */}
-      <section id="frentes" className="py-20 px-6 bg-white border-b border-gray-100">
-        <div className="container mx-auto max-w-7xl">
+      <section id="frentes" className="py-20 px-6 bg-white border-b border-gray-100 relative overflow-hidden">
+        {/* Grafismos de fundo */}
+        <img src="/images/instituto/grafismos/grafis3.svg" alt="" className="absolute top-24 right-0 w-[28rem] h-[28rem] pointer-events-none" style={{ opacity: 0.15, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+        <img src="/images/instituto/grafismos/grafis4.svg" alt="" className="absolute bottom-0 -left-10 w-[28rem] h-[28rem] pointer-events-none" style={{ opacity: 0.12, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+
+        <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 fade-up">
             <div>
               <p className="text-brand-orange font-inter text-sm font-bold tracking-widest uppercase mb-2">Pilares</p>
@@ -430,7 +445,7 @@ export default function InstitutePage() {
                 className="text-5xl md:text-6xl lg:text-7xl font-black uppercase text-[#1d1d1b]"
                 style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
               >
-                Nossos Pilares
+                Nossos <span className="text-brand-teal">Pilares</span>
               </h2>
             </div>
           </div>
@@ -474,8 +489,10 @@ export default function InstitutePage() {
       </section>
 
       {/* Projetos Detalhados (Intro) */}
-      <section id="projetos" className="pt-20 pb-6 px-6 bg-white border-t border-gray-100">
-        <div className="container mx-auto max-w-7xl">
+      <section id="projetos" className="pt-20 pb-6 px-6 bg-white border-t border-gray-100 relative overflow-hidden">
+        {/* Grafismo de fundo - z-index elevado para ficar visível */}
+        <img src="/images/instituto/grafismos/grafis5.svg" alt="" className="absolute top-4 right-1/4 w-72 h-72 pointer-events-none z-0" style={{ opacity: 0.22, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+        <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end fade-up">
             <div>
               <p className="text-brand-orange font-inter text-sm font-bold tracking-widest uppercase mb-2">Nosso Impacto</p>
@@ -787,27 +804,25 @@ export default function InstitutePage() {
           </div>
         </div>
       </section>
-      {/* Liderança: Diretoria e Conselhos */}
-      <section id="conselho" className="py-24 md:py-32 px-6 bg-[#1d1d1b] border-t border-gray-900">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-white/10 pb-8 fade-up">
-            <h2
-              className="text-5xl md:text-6xl lg:text-7xl font-black uppercase text-white"
-              style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
-            >
+      {/* Liderança e Conselho */}
+      <section id="conselho" className="py-24 md:py-32 px-6 bg-[#1d1d1b] border-t border-gray-900 relative overflow-hidden">
+        {/* Grafismos de fundo - com cor sobre fundo escuro */}
+        <img src="/images/instituto/grafismos/grafis7.svg" alt="" className="absolute top-1/3 left-1/4 w-[35rem] h-[35rem] pointer-events-none" style={{ opacity: 0.12, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+        <img src="/images/instituto/grafismos/grafis8.svg" alt="" className="absolute bottom-10 right-20 w-96 h-96 pointer-events-none" style={{ opacity: 0.15, filter: 'invert(50%) sepia(60%) saturate(400%) hue-rotate(250deg)' }} />
+
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="flex flex-col mb-16 border-b border-white/10 pb-8 fade-up text-center md:text-left">
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[0.9] mb-4">
               TIME
             </h2>
-            <p className="text-white/60 text-sm max-w-xs text-right mt-6 md:mt-0 font-light">
+            <p className="text-white/60 text-lg md:text-xl max-w-2xl font-light">
               Conheça os líderes e conselheiros que guiam o Vila Tech rumo ao futuro da inovação social.
             </p>
           </div>
 
           {/* Diretoria */}
           <div className="mb-20">
-            <h3
-              className="text-3xl md:text-4xl font-bold text-brand-teal uppercase mb-10 text-center fade-up"
-              style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
-            >
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-teal uppercase mb-10 text-center fade-up">
               Diretoria
             </h3>
             <div className="flex flex-wrap justify-center gap-12">
@@ -826,10 +841,7 @@ export default function InstitutePage() {
 
           {/* Conselho Consultivo */}
           <div className="mb-20">
-            <h3
-              className="text-3xl md:text-4xl font-bold text-brand-orange uppercase mb-10 text-center fade-up"
-              style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
-            >
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-orange uppercase mb-10 text-center fade-up">
               Conselho Consultivo
             </h3>
             <div className="flex justify-center items-start gap-3 sm:gap-4 md:gap-6 w-full overflow-x-auto md:overflow-visible pb-4">
@@ -848,10 +860,7 @@ export default function InstitutePage() {
 
           {/* Conselho Educacional */}
           <div>
-            <h3
-              className="text-3xl md:text-4xl font-bold text-brand-purple uppercase mb-10 text-center fade-up"
-              style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
-            >
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-brand-purple uppercase mb-10 text-center fade-up">
               Conselho Educacional
             </h3>
             <div className="flex flex-wrap justify-center gap-12">
