@@ -301,11 +301,15 @@ export default function InstitutePage() {
         ref={heroBgRef}
         className="relative min-h-screen flex items-center overflow-hidden"
       >
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-[url('/images/instituto/ecossistema.webp')]"
+        {/* Background Image - img tag for better LCP discovery */}
+        <img
+          src="/images/instituto/ecossistema.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
-        ></div>
+        />
         {/* Dark Overlay gradient (darker on left) */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
 
@@ -350,9 +354,9 @@ export default function InstitutePage() {
       <section id="proposito" className="py-20 px-6 bg-white border-b border-gray-100 relative overflow-hidden">
         {/* Grafismos de fundo */}
         {/* Grafismo da esquerda - próximo ao subtítulo, no topo */}
-        <img src="/images/instituto/grafismos/grafis2.svg" alt="" className="absolute top-8 -left-10 w-72 h-72 pointer-events-none" style={{ opacity: 0.28, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+        <img src="/images/instituto/grafismos/grafis2.svg" alt="" loading="lazy" className="absolute top-8 -left-10 w-72 h-72 pointer-events-none" style={{ opacity: 0.28, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
         {/* Grafismo da direita - na parte inferior */}
-        <img src="/images/instituto/grafismos/grafis1.svg" alt="" className="absolute bottom-0 -right-16 w-80 h-80 pointer-events-none" style={{ opacity: 0.22, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+        <img src="/images/instituto/grafismos/grafis1.svg" alt="" loading="lazy" className="absolute bottom-0 -right-16 w-80 h-80 pointer-events-none" style={{ opacity: 0.22, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="w-full lg:w-1/2 fade-up">
@@ -395,7 +399,7 @@ export default function InstitutePage() {
             {/* Missão */}
             <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300 relative overflow-hidden" style={{ borderLeft: '12px solid #3fbdd8' }}>
               {/* Grafismo decorativo */}
-              <img src="/images/instituto/grafismos/grafis1.svg" alt="" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+              <img src="/images/instituto/grafismos/grafis1.svg" alt="" loading="lazy" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
               <div className="mb-6 relative z-10">
                 <span className="font-inter font-bold tracking-widest uppercase text-sm" style={{ color: '#3fbdd8' }}>Nossa Missão</span>
               </div>
@@ -407,7 +411,7 @@ export default function InstitutePage() {
             {/* Visão */}
             <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300 relative overflow-hidden" style={{ borderLeft: '12px solid #e83a79', transitionDelay: '150ms' }}>
               {/* Grafismo decorativo */}
-              <img src="/images/instituto/grafismos/grafis3.svg" alt="" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+              <img src="/images/instituto/grafismos/grafis3.svg" alt="" loading="lazy" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
               <div className="mb-6 relative z-10">
                 <span className="font-inter font-bold tracking-widest uppercase text-sm" style={{ color: '#e83a79' }}>Nossa Visão</span>
               </div>
@@ -419,7 +423,7 @@ export default function InstitutePage() {
             {/* Valores */}
             <div className="bg-white p-10 shadow-sm fade-up flex flex-col group hover:shadow-xl transition-all duration-300 relative overflow-hidden" style={{ borderLeft: '12px solid #864896', transitionDelay: '300ms' }}>
               {/* Grafismo decorativo */}
-              <img src="/images/instituto/grafismos/grafis5.svg" alt="" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(30%) sepia(50%) saturate(400%) hue-rotate(250deg)' }} />
+              <img src="/images/instituto/grafismos/grafis5.svg" alt="" loading="lazy" className="absolute bottom-0 right-0 w-44 h-44 pointer-events-none" style={{ opacity: 0.35, filter: 'invert(30%) sepia(50%) saturate(400%) hue-rotate(250deg)' }} />
               <div className="mb-6 relative z-10">
                 <span className="font-inter font-bold tracking-widest uppercase text-sm" style={{ color: '#864896' }}>Nossos Valores</span>
               </div>
@@ -434,8 +438,8 @@ export default function InstitutePage() {
       {/* As Frentes (Pilares) */}
       <section id="frentes" className="py-20 px-6 bg-white border-b border-gray-100 relative overflow-hidden">
         {/* Grafismos de fundo */}
-        <img src="/images/instituto/grafismos/grafis3.svg" alt="" className="absolute top-24 right-0 w-[28rem] h-[28rem] pointer-events-none" style={{ opacity: 0.15, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
-        <img src="/images/instituto/grafismos/grafis4.svg" alt="" className="absolute bottom-0 -left-10 w-[28rem] h-[28rem] pointer-events-none" style={{ opacity: 0.12, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+        <img src="/images/instituto/grafismos/grafis3.svg" alt="" loading="lazy" className="absolute top-24 right-0 w-[28rem] h-[28rem] pointer-events-none" style={{ opacity: 0.15, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+        <img src="/images/instituto/grafismos/grafis4.svg" alt="" loading="lazy" className="absolute bottom-0 -left-10 w-[28rem] h-[28rem] pointer-events-none" style={{ opacity: 0.12, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
 
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 fade-up">
@@ -491,7 +495,7 @@ export default function InstitutePage() {
       {/* Projetos Detalhados (Intro) */}
       <section id="projetos" className="pt-20 pb-6 px-6 bg-white border-t border-gray-100 relative overflow-hidden">
         {/* Grafismo de fundo - z-index elevado para ficar visível */}
-        <img src="/images/instituto/grafismos/grafis5.svg" alt="" className="absolute top-4 right-1/4 w-72 h-72 pointer-events-none z-0" style={{ opacity: 0.22, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
+        <img src="/images/instituto/grafismos/grafis5.svg" alt="" loading="lazy" className="absolute top-4 right-1/4 w-72 h-72 pointer-events-none z-0" style={{ opacity: 0.22, filter: 'invert(63%) sepia(80%) saturate(400%) hue-rotate(160deg)' }} />
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end fade-up">
             <div>
@@ -514,7 +518,7 @@ export default function InstitutePage() {
             {/* Image left */}
             <div className="md:w-1/2">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl">
-                <img src="/public/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Comunidade" className="w-full h-full object-cover" />
+                <img src="/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Comunidade" loading="lazy" className="w-full h-full object-cover" />
               </div>
             </div>
             {/* Text right */}
@@ -807,8 +811,8 @@ export default function InstitutePage() {
       {/* Liderança e Conselho */}
       <section id="conselho" className="py-24 md:py-32 px-6 bg-[#1d1d1b] border-t border-gray-900 relative overflow-hidden">
         {/* Grafismos de fundo - com cor sobre fundo escuro */}
-        <img src="/images/instituto/grafismos/grafis7.svg" alt="" className="absolute top-1/3 left-1/4 w-[35rem] h-[35rem] pointer-events-none" style={{ opacity: 0.12, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
-        <img src="/images/instituto/grafismos/grafis8.svg" alt="" className="absolute bottom-10 right-20 w-96 h-96 pointer-events-none" style={{ opacity: 0.15, filter: 'invert(50%) sepia(60%) saturate(400%) hue-rotate(250deg)' }} />
+        <img src="/images/instituto/grafismos/grafis7.svg" alt="" loading="lazy" className="absolute top-1/3 left-1/4 w-[35rem] h-[35rem] pointer-events-none" style={{ opacity: 0.12, filter: 'invert(30%) sepia(90%) saturate(500%) hue-rotate(300deg)' }} />
+        <img src="/images/instituto/grafismos/grafis8.svg" alt="" loading="lazy" className="absolute bottom-10 right-20 w-96 h-96 pointer-events-none" style={{ opacity: 0.15, filter: 'invert(50%) sepia(60%) saturate(400%) hue-rotate(250deg)' }} />
 
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col mb-16 border-b border-white/10 pb-8 fade-up text-center md:text-left">
@@ -829,7 +833,7 @@ export default function InstitutePage() {
               {diretoriaMembers.map((person, i) => (
                 <div key={`dir-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
                   <div className="aspect-[3/4] bg-gray-100 rounded-2xl mb-6 overflow-hidden relative border border-gray-200 group-hover:border-brand-teal/50 transition-colors shadow-md group-hover:shadow-xl">
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=e2e8f0&color=5dbeb5&size=512` }} />
+                    <img src={person.img} alt={person.name} loading="lazy" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=e2e8f0&color=5dbeb5&size=512` }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-white group-hover:text-brand-teal transition-colors uppercase tracking-wide">{person.name}</h3>
@@ -848,7 +852,7 @@ export default function InstitutePage() {
               {consultivoMembers.map((person, i) => (
                 <div key={`consul-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 flex-1 min-w-[120px] max-w-[192px]">
                   <div className="aspect-[3/4] bg-white/5 rounded-2xl mb-4 overflow-hidden relative border border-white/10 group-hover:border-brand-orange/50 transition-colors shadow-md group-hover:shadow-xl">
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=1d1d1b&color=ef7d00&size=512` }} />
+                    <img src={person.img} alt={person.name} loading="lazy" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=1d1d1b&color=ef7d00&size=512` }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
                   <h3 className="font-display font-bold text-sm md:text-base lg:text-lg text-white group-hover:text-brand-orange transition-colors uppercase tracking-wide break-words leading-tight">{person.name}</h3>
@@ -867,7 +871,7 @@ export default function InstitutePage() {
               {educacionalMembers.map((person, i) => (
                 <div key={`edu-${i}`} className="conselho-card group cursor-pointer perspective-1000 hover-3d opacity-0 w-40 md:w-48">
                   <div className="aspect-[3/4] bg-white/5 rounded-2xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-brand-purple/50 transition-colors shadow-md group-hover:shadow-xl">
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=1d1d1b&color=864896&size=512` }} />
+                    <img src={person.img} alt={person.name} loading="lazy" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out" onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=1d1d1b&color=864896&size=512` }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
                   <h3 className="font-display font-bold text-sm text-white group-hover:text-brand-purple transition-colors uppercase tracking-wide">{person.name}</h3>
