@@ -8,8 +8,17 @@ import { partnersConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Partners = () => {
-  if (!partnersConfig.sectionTitle) {
+interface PartnersProps {
+  label?: string;
+  title?: string;
+  description?: string;
+  bgClass?: string;
+  ctaText?: string;
+}
+
+const Partners = ({ label, title, description, bgClass, ctaText }: PartnersProps) => {
+  const sectionTitle = title || partnersConfig.sectionTitle;
+  if (!sectionTitle) {
     return null;
   }
 
@@ -78,7 +87,7 @@ const Partners = () => {
     <section
       id="partners"
       ref={sectionRef}
-      className="relative w-full py-8 bg-void-black overflow-hidden"
+      className={`relative w-full py-8 overflow-hidden ${bgClass || 'bg-void-black'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -86,19 +95,19 @@ const Partners = () => {
         {/* Section Header */}
         <div ref={headerRef} className="text-center">
           <span className="font-sans text-xs text-brand-teal uppercase tracking-[0.3em] mb-4 block">
-            {partnersConfig.sectionLabel}
+            {label || partnersConfig.sectionLabel}
           </span>
           <h2 className="font-display font-bold text-3xl md:text-4xl text-white leading-tight mb-4">
-            {partnersConfig.sectionTitle}
+            {sectionTitle}
           </h2>
           <p className="font-medium text-white/60 text-base leading-relaxed max-w-2xl mx-auto mb-8">
-            {partnersConfig.description}
+            {description || partnersConfig.description}
           </p>
           <button
             onClick={scrollToContact}
             className="px-6 py-2 border border-brand-teal/30 text-brand-teal font-display text-xs uppercase tracking-wider rounded-full hover:bg-brand-teal hover:text-void-black transition-colors duration-300"
           >
-            {partnersConfig.ctaText}
+            {ctaText || partnersConfig.ctaText}
           </button>
         </div>
       </div>

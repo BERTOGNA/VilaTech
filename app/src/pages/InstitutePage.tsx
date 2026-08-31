@@ -7,6 +7,7 @@ import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, 
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
+import Partners from '../sections/Partners';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,6 +61,39 @@ export default function InstitutePage() {
 
   const arteScrollPrev = useCallback(() => arteEmblaApi && arteEmblaApi.scrollPrev(), [arteEmblaApi]);
   const arteScrollNext = useCallback(() => arteEmblaApi && arteEmblaApi.scrollNext(), [arteEmblaApi]);
+
+  // Comunidade carousel (Embla)
+  const [comEmblaRef, comEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
+  const [comCanScrollPrev, setComCanScrollPrev] = useState(false);
+  const [comCanScrollNext, setComCanScrollNext] = useState(true);
+  const [comIsHovered, setComIsHovered] = useState(false);
+  const comImages = [
+    { src: '/images/imgs_coworking/Recepção Vila Tech Hub.png', alt: 'Recepção Vila Tech Hub' },
+    { src: '/images/imgs_coworking/Auditório com cadeiras.png', alt: 'Auditório' },
+    { src: '/images/imgs_coworking/Estações de trabalho 1.png', alt: 'Estações de Trabalho' },
+    { src: '/images/imgs_coworking/Estações de trabalho 2.png', alt: 'Coworking' },
+    { src: '/images/educacao/educacao1.webp', alt: 'Aulas e Oficinas' },
+    { src: '/images/educacao/educacao2.webp', alt: 'Formação Tecnológica' },
+  ];
+
+  const onComSelect = useCallback((api: any) => {
+    setComCanScrollPrev(api.canScrollPrev());
+    setComCanScrollNext(api.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!comEmblaApi) return;
+    onComSelect(comEmblaApi);
+    comEmblaApi.on('select', onComSelect);
+    comEmblaApi.on('reInit', onComSelect);
+    return () => {
+      comEmblaApi.off('select', onComSelect);
+      comEmblaApi.off('reInit', onComSelect);
+    };
+  }, [comEmblaApi, onComSelect]);
+
+  const comScrollPrev = useCallback(() => comEmblaApi && comEmblaApi.scrollPrev(), [comEmblaApi]);
+  const comScrollNext = useCallback(() => comEmblaApi && comEmblaApi.scrollNext(), [comEmblaApi]);
 
   // Educação carousel (Embla)
   const [eduEmblaRef, eduEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
@@ -316,7 +350,7 @@ export default function InstitutePage() {
         <div className="container mx-auto max-w-7xl relative z-10 px-6 pt-40 pb-24 md:pt-52 md:pb-28">
           <div className="max-w-3xl fade-up">
             <div className="mb-8">
-              <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech Logo" className="h-28 w-auto" />
+              <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech Logo" className="h-40 w-auto" />
             </div>
 
             <h1
@@ -336,7 +370,7 @@ export default function InstitutePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 font-inter max-w-2xl mb-12 leading-relaxed font-light">
-              Educação, tecnologia, criatividade e cultura para colocar pessoas e territórios em movimento.
+              Educação em tecnologia, criatividade e cultura.<br/>Transformando e impactando vidas através do acesso ao conhecimento.
             </p>
           </div>
         </div>
@@ -361,7 +395,7 @@ export default function InstitutePage() {
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="w-full lg:w-1/2 fade-up">
               <span className="text-brand-purple font-inter font-bold tracking-widest uppercase text-sm mb-4 block">
-                O que nos move
+                Conhecimento encontra propósito
               </span>
               <h2
                 className="text-5xl md:text-6xl lg:text-7xl font-black text-[#1d1d1b] mb-6"
@@ -372,20 +406,17 @@ export default function InstitutePage() {
                   lineHeight: 0.96
                 }}
               >
-                Quando conhecimento encontra propósito, <br /><span className="text-brand-teal">o futuro ganha raiz.</span>
+                Tornando possível um <span className="text-brand-teal">futuro melhor</span>
               </h2>
             </div>
             <div className="w-full lg:w-1/2 fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="space-y-6 text-lg text-gray-600 font-inter font-light leading-relaxed">
                 <p>
-                  O Instituto Cultural e Educacional Vila Tech desenvolve e executa projetos que ampliam o acesso à educação, à tecnologia, à arte, à cultura, ao esporte, ao lazer e à sustentabilidade.
+                  O ICEVT desenvolve e executa projetos que tem o objetivo de ampliar o acesso ao conhecimento inovador, à tecnologia, à arte, à cultura, focando no equilíbrio entre inovação tecnológica e o seu papel na promoção de uma vida melhor para cada individuo e para comunidade.
                 </p>
                 <p>
-                  Em Itu e região, criamos programas acessíveis para transformar curiosidade em habilidade, habilidade em oportunidade e oportunidade em impacto positivo.
+                  São programas e trilhas de aprendizado, ações efetivas e acessíveis para transformar cidadãos em agentes da inovação criativa, promovendo qualificação, empregabilidade com acesso a novos conhecimentos.
                 </p>
-                <a href="#atuacao" className="inline-flex items-center gap-2 mt-4 text-void-black font-semibold hover:text-brand-teal transition-colors">
-                  Veja como fazemos acontecer <ChevronRight className="w-5 h-5" />
-                </a>
               </div>
             </div>
           </div>
@@ -515,10 +546,44 @@ export default function InstitutePage() {
       <section id="comunidade" className="pt-12 pb-20 px-6 text-white" style={{ backgroundColor: '#3fbdd8' }}>
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
-            {/* Image left */}
+            {/* Carousel left */}
             <div className="md:w-1/2">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl">
-                <img src="/images/imgs_coworking/Recepção Vila Tech Hub.png" alt="Comunidade" loading="lazy" className="w-full h-full object-cover" />
+              <div
+                className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
+                onMouseEnter={() => setComIsHovered(true)}
+                onMouseLeave={() => setComIsHovered(false)}
+              >
+                <div className="embla h-full" ref={comEmblaRef}>
+                  <div className="embla__container flex h-full">
+                    {comImages.map((img, idx) => (
+                      <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          loading={idx === 0 ? "eager" : "lazy"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
+                          <p className="text-white font-outfit font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            {img.alt}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${comIsHovered ? 'opacity-100' : 'opacity-0'}`}>
+                  <button onClick={comScrollPrev} disabled={!comCanScrollPrev}
+                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#3fbdd8] transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Imagem anterior">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button onClick={comScrollNext} disabled={!comCanScrollNext}
+                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#3fbdd8] transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Próxima imagem">
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
             </div>
             {/* Text right */}
@@ -533,8 +598,19 @@ export default function InstitutePage() {
                 Vila Tech Hub
               </h3>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                Um ecossistema completo de inovação, coworking e aprendizado no coração de Itu. Onde empreendedores, criativos e estudantes se encontram.
+                O Vila Tech Hub é o espaço físico do ICEVT onde acontecem as ações presenciais do instituto. Um ecossistema completo de inovação, coworking e aprendizado no coração de Itu, conectando empreendedores, criativos e estudantes.
               </p>
+            </div>
+          </div>
+          {/* Big Numbers Comunidade */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 fade-up">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+40</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Posições de trabalho</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+70</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Lugares no auditório</p>
             </div>
           </div>
         </div>
@@ -584,13 +660,13 @@ export default function InstitutePage() {
                 className="text-4xl md:text-5xl font-black uppercase mb-6"
                 style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
               >
-                Projeto em Inovação em Bioeconomia
+                Inovação em Bioeconomia
               </h3>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                O Projeto "Plano Municipal de Bioeconomia" de Vila Tech, desenvolvido em parceria com a prefeitura e institutos de pesquisa, definiu 12 linhas estratégicas para promover a transição verde da região.
+                O Plano Municipal de Bioeconomia, desenvolvido pelo ICEVT em parceria com a prefeitura e institutos de pesquisa, definiu 12 linhas estratégicas para promover a transição verde da região.
               </p>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                Foram implementadas iniciativas piloto como a produção de biocombustíveis a partir de resíduos agrícolas, um hub de inovação para startups de bioeconomia e capacitação de agricultores em práticas de agricultura regenerativa.
+                Foram estruturadas iniciativas como a produção de biocombustíveis a partir de resíduos agrícolas, um hub de inovação para startups de bioeconomia e capacitação de agricultores em práticas de agricultura regenerativa.
               </p>
             </div>
           </div>
@@ -776,17 +852,17 @@ export default function InstitutePage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
                   <Palette className="w-4 h-4" /> Cultura
                 </div>
-                <h3
+              <h3
                   className="text-4xl md:text-5xl font-black uppercase mb-6"
                   style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
                 >
-                  Projeto Arte em Movimento
+                  Arte em Movimento
                 </h3>
                 <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                  Com um acervo de mais de 180 obras da <strong className="text-white font-medium">A Casa Galeria</strong>, nosso projeto itinerante democratiza o acesso à arte. Levamos exposições completas para bairros periféricos de Itu, como Pirapitingui e Pedregulho.
+                  O projeto Arte em Movimento reúne um acervo de mais de 180 obras em parceria com galerias de arte de Itu, levando exposições itinerantes para bairros periféricos e democratizando o acesso à arte e à cultura.
                 </p>
                 <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                  Apresentamos o contraste entre os clássicos ituanos, como Almeida Junior e Frei Jesuino, e os expoentes contemporâneos. Através de palestras e oficinas, como a conduzida pelo artista Guilherme Kramer que resultou num imenso grafite colaborativo, transformamos espaços comunitários em verdadeiros polos criativos.
+                  Apresentamos o contraste entre os clássicos ituanos, como Almeida Junior e Frei Jesuino, e os expoentes contemporâneos. Através de palestras e oficinas, transformamos espaços comunitários em verdadeiros polos criativos.
                 </p>
               </div>
             </div>
@@ -817,7 +893,7 @@ export default function InstitutePage() {
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col mb-16 border-b border-white/10 pb-8 fade-up text-center md:text-left">
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[0.9] mb-4">
-              TIME
+              Equipe
             </h2>
             <p className="text-white/60 text-lg md:text-xl max-w-2xl font-light">
               Conheça os líderes e conselheiros que guiam o Vila Tech rumo ao futuro da inovação social.
@@ -883,7 +959,13 @@ export default function InstitutePage() {
         </div>
       </section>
 
-
+      <Partners
+        bgClass="bg-[#1d1d1b]"
+        title="Investidores e parceiros que acreditam no Instituto"
+        description="Nossos parceiros são essenciais para manter as bolsas, eventos e a infraestrutura que transformam vidas por meio da educação e inovação tecnológica."
+        label="Parceiros do Instituto"
+        ctaText="Quero Apoiar o Instituto"
+      />
 
       {/* Contato & Ajude a Construir */}
       <section id="contato" className="py-24 px-6 bg-gray-50 border-t border-gray-100">
@@ -1087,7 +1169,6 @@ export default function InstitutePage() {
       </section>
 
       <Footer />
-
       {/* Donation Modal */}
       {isDonationModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
