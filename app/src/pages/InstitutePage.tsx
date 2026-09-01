@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2 } from 'lucide-react';
+import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2, Heart } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import api from '../services/api';
 import Footer from '../sections/Footer';
@@ -370,7 +370,7 @@ export default function InstitutePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 font-inter max-w-2xl mb-12 leading-relaxed font-light">
-              Educação em tecnologia, criatividade e cultura.<br/>Transformando e impactando vidas através do acesso ao conhecimento.
+              Educação em tecnologia, criatividade e cultura.<br />Transformando e impactando vidas através do acesso ao conhecimento.
             </p>
           </div>
         </div>
@@ -598,7 +598,8 @@ export default function InstitutePage() {
                 Vila Tech Hub
               </h3>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                O Vila Tech Hub é o espaço físico do ICEVT onde acontecem as ações presenciais do instituto. Um ecossistema completo de inovação, coworking e aprendizado no coração de Itu, conectando empreendedores, criativos e estudantes.
+                Um espaço para fomentar o ecossistema de inovação e aprendizado, no coração de Itu, mas que atende a todas as cidades das regiões administrativas de Sorocaba e Campinas.
+                E o ponto de encontro para as ações presenciais do Instituto, sessões de cinema, aulas presenciais e espaço de coworking, onde empreendedores, criativos e estudantes se encontram.
               </p>
             </div>
           </div>
@@ -663,10 +664,11 @@ export default function InstitutePage() {
                 Inovação em Bioeconomia
               </h3>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                O Plano Municipal de Bioeconomia, desenvolvido pelo ICEVT em parceria com a prefeitura e institutos de pesquisa, definiu 12 linhas estratégicas para promover a transição verde da região.
+                O ICEVT estruturou e desenvolveu na cidade de Itu em parceria com a prefeitura, institutos de pesquisa e empresas da região o do novo projeto Plano Municipal de Bioeconomia, que ao final definiu 12 linhas estratégicas de ação para promover o ecossistema econômico baseado na sustentabilidade na região.
               </p>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                Foram estruturadas iniciativas como a produção de biocombustíveis a partir de resíduos agrícolas, um hub de inovação para startups de bioeconomia e capacitação de agricultores em práticas de agricultura regenerativa.
+                Entre as iniciativas propostas foram estruturadas ações piloto como a produção de biocombustíveis a partir de resíduos agrícolas, a capacitação de agricultores em práticas de agricultura regenerativas, entre outros projetos pioneiros na região.
+
               </p>
             </div>
           </div>
@@ -741,9 +743,15 @@ export default function InstitutePage() {
               >
                 Plataforma Educacional
               </h3>
-
+              <div className="p-4 rounded-xl bg-white/10 border border-white/20 mb-6">
+                <h5 className="text-white text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
+                <p className="text-sm text-white/90 font-inter font-light">
+                  Compromisso com a inclusão digital: oferecemos cotas, bolsas e formação gratuita subvencionada pelo Instituto para alunos de escolas públicas e comunidades de baixa renda.
+                </p>
+              </div>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                Nossa plataforma transforma conhecimento tecnológico em potência humana. Com foco em empregabilidade e aplicação imediata, estruturamos nossa metodologia em três pilares fundamentais:
+                Uma plataforma que transforma conhecimento tecnológico em potência humana.
+                Com foco em empregabilidade e aplicação imediata, nossa metodologia trabalha em pilares fundamentais:
               </p>
               <ul className="space-y-4 mb-6">
                 <li className="flex items-start gap-3">
@@ -773,13 +781,17 @@ export default function InstitutePage() {
                     <p className="text-sm text-white/80 font-inter">Transformando a paixão pelos jogos em carreira. Formação completa em arte, programação, Unreal Engine e design de interfaces para jovens criativos.</p>
                   </div>
                 </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Heart className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Saúde</h5>
+                    <p className="text-sm text-white/80 font-inter">Trilhas de aprendizado prático em saúde voltada para crianças e terceira idade com profissionais renomados.</p>
+                  </div>
+                </li>
               </ul>
-              <div className="p-4 rounded-xl bg-white/10 border border-white/20">
-                <h5 className="text-white text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
-                <p className="text-sm text-white/90 font-inter font-light">
-                  Compromisso com a inclusão digital: oferecemos cotas, bolsas e formação gratuita subvencionada pelo Instituto para alunos de escolas públicas e comunidades de baixa renda.
-                </p>
-              </div>
+
             </div>
           </div>
 
@@ -852,17 +864,24 @@ export default function InstitutePage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
                   <Palette className="w-4 h-4" /> Cultura
                 </div>
-              <h3
+                <h3
                   className="text-4xl md:text-5xl font-black uppercase mb-6"
                   style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
                 >
                   Arte em Movimento
                 </h3>
                 <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                  O projeto Arte em Movimento reúne um acervo de mais de 180 obras em parceria com galerias de arte de Itu, levando exposições itinerantes para bairros periféricos e democratizando o acesso à arte e à cultura.
+
+                  Uma exposição itinerante com um acervo de mais de 180 obras em parcerias com galerias de arte de Itu, o projeto democratiza o acesso à arte, levando as exposições completas para bairros periféricos de Itu, como Pirapitingui e Pedregulho.
                 </p>
                 <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                  Apresentamos o contraste entre os clássicos ituanos, como Almeida Junior e Frei Jesuino, e os expoentes contemporâneos. Através de palestras e oficinas, transformamos espaços comunitários em verdadeiros polos criativos.
+                  Aos visitantes impactados a exposição conta a história da arte em Itu, desde os clássicos como Almeida Júnior e Frei Jesuíno do Monte Carmelo, Miguelzinho Dutra, até expoentes contemporâneos.
+
+                </p>
+                <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
+                  Além das exposições, palestras e oficinas transformam espaços comunitários em pólos artísticos
+
+
                 </p>
               </div>
             </div>
