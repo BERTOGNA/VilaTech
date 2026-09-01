@@ -68,12 +68,11 @@ export default function InstitutePage() {
   const [comCanScrollNext, setComCanScrollNext] = useState(true);
   const [comIsHovered, setComIsHovered] = useState(false);
   const comImages = [
-    { src: '/images/imgs_coworking/Recepção Vila Tech Hub.png', alt: 'Recepção Vila Tech Hub' },
-    { src: '/images/imgs_coworking/Auditório com cadeiras.png', alt: 'Auditório' },
-    { src: '/images/imgs_coworking/Estações de trabalho 1.png', alt: 'Estações de Trabalho' },
     { src: '/images/imgs_coworking/Estações de trabalho 2.png', alt: 'Coworking' },
+    { src: '/images/imgs_coworking/Recepção Vila Tech Hub.png', alt: 'Recepção Vila Tech Hub' },
+    { src: '/images/educacao/Carla_taxway.webp', alt: '' },
     { src: '/images/educacao/educacao1.webp', alt: 'Aulas e Oficinas' },
-    { src: '/images/educacao/educacao2.webp', alt: 'Formação Tecnológica' },
+    { src: '/images/educacao/IMG_6097.webp', alt: 'Mentorias' },
   ];
 
   const onComSelect = useCallback((api: any) => {
@@ -350,7 +349,7 @@ export default function InstitutePage() {
         <div className="container mx-auto max-w-7xl relative z-10 px-6 pt-40 pb-24 md:pt-52 md:pb-28">
           <div className="max-w-3xl fade-up">
             <div className="mb-8">
-              <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech Logo" className="h-40 w-auto" />
+              <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech Logo" className="h-48 w-auto" />
             </div>
 
             <h1
@@ -370,7 +369,7 @@ export default function InstitutePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 font-inter max-w-2xl mb-12 leading-relaxed font-light">
-              Educação em tecnologia, criatividade e cultura.<br />Transformando e impactando vidas através do acesso ao conhecimento.
+              Educação em tecnologia, criatividade e cultura.<br />Transformando vidas através do acesso ao conhecimento.
             </p>
           </div>
         </div>
@@ -487,13 +486,14 @@ export default function InstitutePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {/* Comunidade */}
-            <div className="p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ backgroundColor: '#3fbdd8' }}>
+            {/* Educação */}
+            <div className="p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ backgroundColor: '#e83a79', transitionDelay: '200ms' }}>
               <span className="text-white/60 font-outfit font-bold text-xl mb-4">01</span>
-              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Comunidade</h3>
-              <p className="text-white/85 font-inter mb-6 flex-grow">Um lugar para as ideias encontrarem espaço. O Vila Tech Hub conecta pessoas, projetos e oportunidades em um ambiente de colaboração.</p>
-              <a href="#comunidade" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Educação</h3>
+              <p className="text-white/85 font-inter mb-6 flex-grow">Novas linguagens para traduzir o mundo. O Programa Tecnologia em Educação capacita jovens e profissionais para o amanhã.</p>
+              <a href="#educacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
+
 
             {/* Sustentabilidade */}
             <div className="p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ backgroundColor: '#c8d400', transitionDelay: '100ms' }}>
@@ -503,21 +503,23 @@ export default function InstitutePage() {
               <a href="#sustentabilidade" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
 
-            {/* Educação */}
-            <div className="p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ backgroundColor: '#e83a79', transitionDelay: '200ms' }}>
-              <span className="text-white/60 font-outfit font-bold text-xl mb-4">03</span>
-              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Educação</h3>
-              <p className="text-white/85 font-inter mb-6 flex-grow">Novas linguagens para traduzir o mundo. O Programa Tecnologia em Educação capacita jovens e profissionais para o amanhã.</p>
-              <a href="#educacao" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
-            </div>
-
             {/* Cultura */}
             <div className="p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ backgroundColor: '#864896', transitionDelay: '300ms' }}>
-              <span className="text-white/60 font-outfit font-bold text-xl mb-4">04</span>
+              <span className="text-white/60 font-outfit font-bold text-xl mb-4">03</span>
               <h3 className="text-2xl font-bold font-outfit text-white mb-4">Cultura</h3>
               <p className="text-white/85 font-inter mb-6 flex-grow">A arte que nos dá forma e contorno. Com exposições itinerantes e intervenções urbanas, democratizamos o acesso à arte e à cultura.</p>
               <a href="#cultura" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
             </div>
+
+            {/* Comunidade */}
+            <div className="p-8 rounded-[2rem] flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl fade-up" style={{ backgroundColor: '#3fbdd8' }}>
+              <span className="text-white/60 font-outfit font-bold text-xl mb-4">04</span>
+              <h3 className="text-2xl font-bold font-outfit text-white mb-4">Comunidade</h3>
+              <p className="text-white/85 font-inter mb-6 flex-grow">Um lugar para as ideias encontrarem espaço. O Vila Tech Hub conecta pessoas, projetos e oportunidades em um ambiente de colaboração.</p>
+              <a href="#comunidade" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white group-hover:gap-3 transition-all">Explorar <ChevronRight className="w-4 h-4" /></a>
+            </div>
+
+
 
           </div>
         </div>
@@ -542,20 +544,25 @@ export default function InstitutePage() {
         </div>
       </section>
 
-      {/* Comunidade */}
-      <section id="comunidade" className="pt-12 pb-20 px-6 text-white" style={{ backgroundColor: '#3fbdd8' }}>
+      {/* Educação em Tecnologia */}
+      <section id="educacao" className="py-20 px-6 text-white" style={{ backgroundColor: '#e83a79' }}>
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
-            {/* Carousel left */}
+          <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
             <div className="md:w-1/2">
               <div
                 className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
-                onMouseEnter={() => setComIsHovered(true)}
-                onMouseLeave={() => setComIsHovered(false)}
+                onMouseEnter={() => setEduIsHovered(true)}
+                onMouseLeave={() => setEduIsHovered(false)}
               >
-                <div className="embla h-full" ref={comEmblaRef}>
+                <div className="embla h-full" ref={eduEmblaRef}>
                   <div className="embla__container flex h-full">
-                    {comImages.map((img, idx) => (
+                    {[
+                      { src: '/images/educacao/tabosa1.webp', alt: 'Cursos de Formação em Tecnologia' },
+                      { src: '/images/educacao/educacao2.webp', alt: 'Cursos de Formação em Tecnologia' },
+                      { src: '/images/educacao/IMG_5947.webp', alt: 'Cursos de Formação em Tecnologia' },
+                      { src: '/images/educacao/educacao3.webp', alt: 'Projeto Vila Tech Hub' },
+                      { src: '/images/educacao/educacao4.webp', alt: 'Capacitação e Inovação' },
+                    ].map((img, idx) => (
                       <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
                         <img
                           src={img.src}
@@ -572,46 +579,90 @@ export default function InstitutePage() {
                     ))}
                   </div>
                 </div>
-                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${comIsHovered ? 'opacity-100' : 'opacity-0'}`}>
-                  <button onClick={comScrollPrev} disabled={!comCanScrollPrev}
-                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#3fbdd8] transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                    aria-label="Imagem anterior">
+                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${eduIsHovered ? 'opacity-100' : 'opacity-0'}`}>
+                  <button onClick={eduScrollPrev} disabled={!eduCanScrollPrev} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-pink transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Imagem anterior">
                     <ChevronLeft className="w-5 h-5" />
                   </button>
-                  <button onClick={comScrollNext} disabled={!comCanScrollNext}
-                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#3fbdd8] transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
-                    aria-label="Próxima imagem">
+                  <button onClick={eduScrollNext} disabled={!eduCanScrollNext} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-pink transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Próxima imagem">
                     <ChevronRight className="w-5 h-5" />
                   </button>
                 </div>
               </div>
             </div>
-            {/* Text right */}
             <div className="md:w-1/2">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
-                <Building2 className="w-4 h-4" /> Comunidade
+                <BookOpen className="w-4 h-4" /> Educação
               </div>
               <h3
                 className="text-4xl md:text-5xl font-black uppercase mb-4"
                 style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
               >
-                Vila Tech Hub
+                Plataforma Educacional
               </h3>
+              <div className="p-4 rounded-xl bg-white/10 border border-white/20 mb-6">
+                <h5 className="text-white text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
+                <p className="text-sm text-white/90 font-inter font-light">
+                  Compromisso com a inclusão digital: O ICEVT oferece bolsas de formação gratuitas para alunos de escolas públicas e comunidades de baixa renda.
+                </p>
+              </div>
               <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                Um espaço para fomentar o ecossistema de inovação e aprendizado, no coração de Itu, mas que atende a todas as cidades das regiões administrativas de Sorocaba e Campinas.
-                E o ponto de encontro para as ações presenciais do Instituto, sessões de cinema, aulas presenciais e espaço de coworking, onde empreendedores, criativos e estudantes se encontram.
+                Com foco em empregabilidade e aplicação imediata do conhecimento, nossa metodologia trabalha em quatro pilares fundamentais:
               </p>
+              <ul className="space-y-4 mb-6">
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Target className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Corporativo & IA</h5>
+                    <p className="text-sm text-white/80 font-inter">Tecnologia e Inteligência Artificial aplicadas para otimização de processos e escalabilidade empresarial.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Inovação Criativa</h5>
+                    <p className="text-sm text-white/80 font-inter">Audiovisual, criatividade e produção potencializadas por ferramentas digitais e IA Generativa.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Game Development</h5>
+                    <p className="text-sm text-white/80 font-inter">Transformando a paixão pelos jogos em carreira. Formação completa em arte, programação, Unreal Engine e design de interfaces para jovens criativos.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
+                    <Heart className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h5 className="text-white font-bold font-inter">Saúde</h5>
+                    <p className="text-sm text-white/80 font-inter">Trilhas de aprendizado prático em saúde voltada para crianças e terceira idade com profissionais renomados.</p>
+                  </div>
+                </li>
+              </ul>
+
             </div>
           </div>
-          {/* Big Numbers Comunidade */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 fade-up">
+
+          {/* Métricas Educação */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 fade-up">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-              <p className="text-3xl font-outfit font-bold text-white mb-2">+40</p>
-              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Posições de trabalho</p>
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+26</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Trilhas de formação</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-              <p className="text-3xl font-outfit font-bold text-white mb-2">+70</p>
-              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Lugares no auditório</p>
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+150</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Alunos presenciais por mês</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+900</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Pessoas impactadas</p>
             </div>
           </div>
         </div>
@@ -682,136 +733,14 @@ export default function InstitutePage() {
               <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-              <p className="text-3xl font-outfit font-bold text-white mb-2">+300</p>
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+30</p>
               <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Workshops</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Educação em Tecnologia */}
-      <section id="educacao" className="py-20 px-6 text-white" style={{ backgroundColor: '#e83a79' }}>
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row-reverse gap-12 items-center fade-up">
-            <div className="md:w-1/2">
-              <div
-                className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
-                onMouseEnter={() => setEduIsHovered(true)}
-                onMouseLeave={() => setEduIsHovered(false)}
-              >
-                <div className="embla h-full" ref={eduEmblaRef}>
-                  <div className="embla__container flex h-full">
-                    {[
-                      { src: '/images/educacao/educacao1.webp', alt: 'Vila Tech Hub - Espaço Educacional' },
-                      { src: '/images/educacao/educacao2.webp', alt: 'Cursos de Formação em Tecnologia' },
-                      { src: '/images/educacao/educacao3.webp', alt: 'Projeto Vila Tech Hub' },
-                      { src: '/images/educacao/educacao4.webp', alt: 'Capacitação e Inovação' },
-                    ].map((img, idx) => (
-                      <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          loading={idx === 0 ? "eager" : "lazy"}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
-                          <p className="text-white font-outfit font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            {img.alt}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${eduIsHovered ? 'opacity-100' : 'opacity-0'}`}>
-                  <button onClick={eduScrollPrev} disabled={!eduCanScrollPrev} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-pink transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Imagem anterior">
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button onClick={eduScrollNext} disabled={!eduCanScrollNext} className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-brand-pink transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none" aria-label="Próxima imagem">
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="md:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
-                <BookOpen className="w-4 h-4" /> Educação
-              </div>
-              <h3
-                className="text-4xl md:text-5xl font-black uppercase mb-4"
-                style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
-              >
-                Plataforma Educacional
-              </h3>
-              <div className="p-4 rounded-xl bg-white/10 border border-white/20 mb-6">
-                <h5 className="text-white text-sm font-bold uppercase tracking-widest mb-2">Impacto Social</h5>
-                <p className="text-sm text-white/90 font-inter font-light">
-                  Compromisso com a inclusão digital: oferecemos cotas, bolsas e formação gratuita subvencionada pelo Instituto para alunos de escolas públicas e comunidades de baixa renda.
-                </p>
-              </div>
-              <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                Uma plataforma que transforma conhecimento tecnológico em potência humana.
-                Com foco em empregabilidade e aplicação imediata, nossa metodologia trabalha em pilares fundamentais:
-              </p>
-              <ul className="space-y-4 mb-6">
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
-                    <Target className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="text-white font-bold font-inter">Corporativo & IA</h5>
-                    <p className="text-sm text-white/80 font-inter">Tecnologia e Inteligência Artificial aplicadas para otimização de processos e escalabilidade empresarial.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
-                    <Zap className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="text-white font-bold font-inter">Inovação Criativa</h5>
-                    <p className="text-sm text-white/80 font-inter">Audiovisual, criatividade e produção potencializadas por ferramentas digitais e IA Generativa.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="text-white font-bold font-inter">Game Development</h5>
-                    <p className="text-sm text-white/80 font-inter">Transformando a paixão pelos jogos em carreira. Formação completa em arte, programação, Unreal Engine e design de interfaces para jovens criativos.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white flex-shrink-0 mt-1">
-                    <Heart className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="text-white font-bold font-inter">Saúde</h5>
-                    <p className="text-sm text-white/80 font-inter">Trilhas de aprendizado prático em saúde voltada para crianças e terceira idade com profissionais renomados.</p>
-                  </div>
-                </li>
-              </ul>
 
-            </div>
-          </div>
-
-          {/* Métricas Educação */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 fade-up">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-              <p className="text-3xl font-outfit font-bold text-white mb-2">+150</p>
-              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes dos cursos</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-              <p className="text-3xl font-outfit font-bold text-white mb-2">+500</p>
-              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes de eventos</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-              <p className="text-3xl font-outfit font-bold text-white mb-2">+900</p>
-              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Pessoas impactadas</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Arte e Cultura */}
       <section id="cultura" className="py-20 px-6 text-white" style={{ backgroundColor: '#864896' }}>
@@ -872,37 +801,104 @@ export default function InstitutePage() {
                 </h3>
                 <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
 
-                  Uma exposição itinerante com um acervo de mais de 180 obras em parcerias com galerias de arte de Itu, o projeto democratiza o acesso à arte, levando as exposições completas para bairros periféricos de Itu, como Pirapitingui e Pedregulho.
+                  O Projeto Arte Em Movimento é uma exposição itinerante que levou um acervo de mais de 180 obras de artistas ituanos, clássicos e contemporâneos, para bairros periféricos da cidade de Itu, Junto com a exposição, a ação promoveu palestras e oficinas de arte coordenadas por artistas da cidade, que transformaram os espaços comunitários em pólos de conhecimento da arte e do fazer artístico.
                 </p>
-                <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                  Aos visitantes impactados a exposição conta a história da arte em Itu, desde os clássicos como Almeida Júnior e Frei Jesuíno do Monte Carmelo, Miguelzinho Dutra, até expoentes contemporâneos.
 
-                </p>
-                <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
-                  Além das exposições, palestras e oficinas transformam espaços comunitários em pólos artísticos
-
-
-                </p>
               </div>
             </div>
             {/* Métricas Arte */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-                <p className="text-3xl font-outfit font-bold text-white mb-2">+120</p>
-                <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Participantes</p>
+                <p className="text-3xl font-outfit font-bold text-white mb-2">+450</p>
+                <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Pessoas visitando a exposição</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-                <p className="text-3xl font-outfit font-bold text-white mb-2">9.3k</p>
+                <p className="text-3xl font-outfit font-bold text-white mb-2">+9.3k</p>
                 <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Pessoas Alcançadas</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
-                <p className="text-3xl font-outfit font-bold text-white mb-2">327</p>
+                <p className="text-3xl font-outfit font-bold text-white mb-2">+3.2k</p>
                 <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Interações Online</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Comunidade */}
+      <section id="comunidade" className="pt-12 pb-20 px-6 text-white" style={{ backgroundColor: '#3fbdd8' }}>
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row gap-12 items-center fade-up">
+            {/* Carousel left */}
+            <div className="md:w-1/2">
+              <div
+                className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 relative shadow-2xl"
+                onMouseEnter={() => setComIsHovered(true)}
+                onMouseLeave={() => setComIsHovered(false)}
+              >
+                <div className="embla h-full" ref={comEmblaRef}>
+                  <div className="embla__container flex h-full">
+                    {comImages.map((img, idx) => (
+                      <div key={idx} className="embla__slide flex-[0_0_100%] relative group h-full">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          loading={idx === 0 ? "eager" : "lazy"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 pointer-events-none">
+                          <p className="text-white font-outfit font-semibold text-base uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            {img.alt}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className={`absolute inset-0 flex items-center justify-between px-3 pointer-events-none transition-opacity duration-400 ${comIsHovered ? 'opacity-100' : 'opacity-0'}`}>
+                  <button onClick={comScrollPrev} disabled={!comCanScrollPrev}
+                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#3fbdd8] transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Imagem anterior">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button onClick={comScrollNext} disabled={!comCanScrollNext}
+                    className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#3fbdd8] transition-all duration-300 pointer-events-auto shadow-xl disabled:opacity-0 disabled:pointer-events-none"
+                    aria-label="Próxima imagem">
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* Text right */}
+            <div className="md:w-1/2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-widest mb-6">
+                <Building2 className="w-4 h-4" /> Comunidade
+              </div>
+              <h3
+                className="text-4xl md:text-5xl font-black uppercase mb-4"
+                style={{ letterSpacing: '-.075em', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, lineHeight: 0.96 }}
+              >
+                Vila Tech Hub
+              </h3>
+              <p className="text-lg text-white/90 font-inter font-light leading-relaxed mb-6">
+                Um espaço no coração de Itu para fomentar o ecossistema de inovação e aprendizado, que atende a todas as cidades do entorno, das regiões administrativas de Sorocaba e Campinas. É o ponto de encontro das ações presenciais do Instituto, como sessões de cinema, exposições de arte, espaço de coworking e as aulas presenciais e onde artistas, criativos professores e estudantes se encontram.
+              </p>
+            </div>
+          </div>
+          {/* Big Numbers Comunidade */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 fade-up">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+40</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Posições de trabalho</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
+              <p className="text-3xl font-outfit font-bold text-white mb-2">+70</p>
+              <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Lugares no auditório</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Liderança e Conselho */}
       <section id="conselho" className="py-24 md:py-32 px-6 bg-[#1d1d1b] border-t border-gray-900 relative overflow-hidden">
         {/* Grafismos de fundo - com cor sobre fundo escuro */}
@@ -915,7 +911,7 @@ export default function InstitutePage() {
               Equipe
             </h2>
             <p className="text-white/60 text-lg md:text-xl max-w-2xl font-light">
-              Conheça os líderes e conselheiros que guiam o Vila Tech rumo ao futuro da inovação social.
+              As pessoas que fazem acontecer, os líderes e conselheiros que guiam o Vila Tech rumo ao futuro da inovação na educação social.
             </p>
           </div>
 

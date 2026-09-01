@@ -338,8 +338,8 @@ export const footerConfig: FooterConfig = {
     { label: "Política de Privacidade", href: "/politica-de-privacidade" }
   ],
   socialLinks: [
-    { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/vilatechub/" },
-    { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/vila-tech-hub/" },
+    { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/instituto_cevt?igsi=OG1ocjl0MDBwbWZw" },
+    { icon: "facebook", label: "Facebook", href: "https://www.instagram.com/instituto_cevt?igsi=OG1ocjl0MDBwbWZw" },
     { icon: "youtube", label: "YouTube", href: "https://www.youtube.com/@vilatechitu597" },
   ],
 };
