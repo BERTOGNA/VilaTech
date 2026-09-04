@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2, Heart } from 'lucide-react';
 import { contactFormConfig } from '../config';
+import { Link } from 'react-router-dom';
 import api from '../services/api';
 import Footer from '../sections/Footer';
 import Partners from '../sections/Partners';
@@ -894,6 +895,84 @@ export default function InstitutePage() {
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center shadow-lg">
               <p className="text-3xl font-outfit font-bold text-white mb-2">+70</p>
               <p className="text-xs text-white/80 font-inter uppercase tracking-wider font-bold">Lugares no auditório</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projetos em Captação */}
+      <section id="projetos-captacao" className="py-24 px-6 bg-[#f4f4f4] text-[#1d1d1b]">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col items-center text-center fade-up mb-16">
+            <h2
+              className="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-4 text-[#1d1d1b]"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Projetos em <br className="md:hidden" />
+              <span className="text-brand-orange">Captação</span>
+            </h2>
+            <p className="text-gray-600 text-lg md:text-xl max-w-2xl font-light">
+              Iniciativas de grande impacto social e cultural que estão em fase de captação e estruturação. Junte-se a nós para transformar esses projetos em realidade.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-20">
+            {/* Projeto 1: FESTEC ITU */}
+            <div className="flex flex-col lg:flex-row gap-12 items-center fade-up">
+              <div className="lg:w-1/2 w-full order-2 lg:order-1">
+                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500">
+                  <img src="/images/projeto_captacao/Igreja do bom Jesus 2.webp" alt="FESTEC ITU - Festival de Inovação" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                </div>
+              </div>
+              <div className="lg:w-1/2 w-full order-1 lg:order-2 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest mb-6 w-max">
+                  Festival
+                </div>
+                <h3
+                  className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
+                  style={{ letterSpacing: '-.05em', fontFamily: 'Montserrat, sans-serif', lineHeight: 1 }}
+                >
+                  FESTEC ITU
+                </h3>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
+                  Um festival transdisciplinar de tecnologia, arte e inovação que transforma o centro histórico de Itu em um campus vivo. Inspirado em modelos globais, o FESTEC conecta empreendedorismo, audiovisual, música e gastronomia.
+                </p>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
+                  A cidade não é apenas palco, mas protagonista de uma experiência imersiva de uma semana. O amanhã ocupa a cidade.
+                </p>
+                <Link to="/plano-aberto" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
+                  Saiba mais sobre o festival
+                </Link>
+              </div>
+            </div>
+
+            {/* Projeto 2: Plano Aberto */}
+            <div className="flex flex-col lg:flex-row-reverse gap-12 items-center fade-up">
+              <div className="lg:w-1/2 w-full">
+                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500">
+                  <img src="/images/projeto_captacao/cinema.webp" alt="Plano Aberto - Academia de Cinema Comunitário" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                </div>
+              </div>
+              <div className="lg:w-1/2 w-full flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-xs font-bold uppercase tracking-widest mb-6 w-max">
+                  Formação Audiovisual
+                </div>
+                <h3
+                  className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
+                  style={{ letterSpacing: '-.05em', fontFamily: 'Montserrat, sans-serif', lineHeight: 1 }}
+                >
+                  Plano Aberto
+                </h3>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
+                  Laboratório Jovem de Audiovisual, Criatividade e Trabalho. Democratiza o acesso a equipamentos profissionais e formação técnica para jovens de periferias de Itu (Pedregulho, Cidade Nova e Potiguara).
+                </p>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
+                  Um percurso prático de 120 horas onde a juventude se torna autora de suas próprias narrativas em vídeo, criando curtas e construindo seus portfólios profissionais.
+                </p>
+                <Link to="/plano-aberto" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-purple transition-colors">
+                  Conheça a academia
+                </Link>
+              </div>
             </div>
           </div>
         </div>
