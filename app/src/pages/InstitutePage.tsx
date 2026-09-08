@@ -36,7 +36,6 @@ export default function InstitutePage() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   // Arte carousel (Embla)
   const [arteEmblaRef, arteEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
@@ -940,7 +939,7 @@ export default function InstitutePage() {
                 <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
                   A cidade não é apenas palco, mas protagonista de uma experiência imersiva de uma semana. O amanhã ocupa a cidade.
                 </p>
-                <Link to="/plano-aberto" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
+                <Link to="/fiti" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
                   Saiba mais sobre o festival
                 </Link>
               </div>
@@ -1206,12 +1205,12 @@ export default function InstitutePage() {
                 <p className="text-[#023B33]/90 font-medium mb-10 max-w-sm text-lg leading-snug">
                   Sua doação impulsiona bolsas de estudo, equipamentos e infraestrutura para talentos em vulnerabilidade social.
                 </p>
-                <button
-                  onClick={() => setIsDonationModalOpen(true)}
+                <Link
+                  to="/doar"
                   className="inline-flex items-center justify-center px-10 py-4 bg-[#023B33] text-white font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors rounded-sm"
                 >
                   Fazer Doação
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -1263,52 +1262,6 @@ export default function InstitutePage() {
       </section>
 
       <Footer />
-      {/* Donation Modal */}
-      {isDonationModalOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
-          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white border border-gray-200 text-[#1d1d1b] shadow-2xl">
-            <button
-              onClick={() => setIsDonationModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-[#1d1d1b] transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <h3 className="font-display text-2xl font-bold uppercase text-brand-teal mb-4">Apoie o Instituto</h3>
-            <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-              O Instituto Cultural e Educacional Vila Tech é uma associação sem fins lucrativos. Sua doação apoia bolsas de estudos, infraestrutura e inclusão digital de jovens em Itu, SP.
-            </p>
-            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 mb-6">
-              <p className="text-xs uppercase tracking-wider text-brand-orange font-bold mb-2">Chave Pix (CNPJ)</p>
-              <p className="text-lg font-mono font-bold select-all bg-white p-2.5 rounded border border-gray-200 text-center text-[#1d1d1b]">
-                58.473.428/0001-31
-              </p>
-              <p className="text-xs text-gray-400 mt-2 text-center">
-                Razão Social: Instituto Cultural e Educacional Vila Tech
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText("58.473.428/0001-31");
-                  alert("Chave Pix CNPJ copiada com sucesso!");
-                }}
-                className="flex-1 py-3 rounded-xl bg-brand-teal text-white font-bold uppercase tracking-wider text-xs hover:bg-[#1d1d1b] transition-colors">
-                Copiar Chave Pix
-              </button>
-              <a
-                href="#contato"
-                onClick={() => {
-                  setIsDonationModalOpen(false);
-                  setFormData(prev => ({ ...prev, interests: ['Investidor/Parceiro'] }));
-                }}
-                className="flex-grow flex items-center justify-center py-3 rounded-xl border border-gray-200 text-center text-[#1d1d1b] font-bold uppercase tracking-wider text-xs hover:bg-gray-50 transition-colors"
-              >
-                Outros Apoios
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

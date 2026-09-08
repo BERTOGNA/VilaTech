@@ -11,6 +11,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 // Lazy loaded pages
 const InstitutePage = React.lazy(() => import('./pages/InstitutePage'));
 const PlanoAbertoPage = React.lazy(() => import('./pages/PlanoAbertoPage'));
+const FitiPage = React.lazy(() => import('./pages/FitiPage'));
+const DonationPage = React.lazy(() => import('./pages/DonationPage'));
 const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsOfUsePage = React.lazy(() => import('./pages/TermsOfUsePage'));
 const AdminLayout = React.lazy(() => import('./layouts/AdminLayout'));
@@ -39,6 +41,8 @@ function App() {
             {/* Public Website - Instituto como página principal */}
             <Route path="/" element={<InstitutePage />} />
             <Route path="/plano-aberto" element={<PlanoAbertoPage />} />
+            <Route path="/fiti" element={<FitiPage />} />
+            <Route path="/doar" element={<DonationPage />} />
             <Route path="/instituto" element={<InstitutePage />} />
             <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
             <Route path="/termos-de-uso" element={<TermsOfUsePage />} />

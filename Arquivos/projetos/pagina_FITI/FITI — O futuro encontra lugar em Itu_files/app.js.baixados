@@ -1,0 +1,59 @@
+const header = document.querySelector('[data-header]');
+const menu = document.querySelector('#menu');
+const menuButton = document.querySelector('.menu-button');
+const progress = document.querySelector('.progress span');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const setChrome = () => {
+  const top = window.scrollY || document.documentElement.scrollTop;
+  header?.classList.toggle('is-scrolled', top > 24);
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  if (progress) progress.style.width = `${max > 0 ? (top / max) * 100 : 0}%`;
+};
+
+let frame = null;
+window.addEventListener('scroll', () => {
+  if (frame) return;
+  frame = requestAnimationFrame(() => { setChrome(); frame = null; });
+}, { passive: true });
+setChrome();
+
+menuButton?.addEventListener('click', () => {
+  const open = menu?.classList.toggle('is-open');
+  menuButton.setAttribute('aria-expanded', String(Boolean(open)));
+});
+
+menu?.addEventListener('click', event => {
+  if (event.target.closest('a')) {
+    menu.classList.remove('is-open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+  }
+});
+
+const logo = document.querySelector('[data-fiti-logo]');
+logo?.addEventListener('error', () => {
+  logo.hidden = true;
+  logo.nextElementSibling.hidden = false;
+});
+
+document.querySelectorAll('[data-tab]').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const key = tab.dataset.tab;
+    document.querySelectorAll('[data-tab]').forEach(item => item.setAttribute('aria-selected', String(item === tab)));
+    document.querySelectorAll('[data-panel]').forEach(panel => { panel.hidden = panel.dataset.panel !== key; });
+  });
+});
+
+if (!reducedMotion && 'IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        if (entry.target.classList.contains('reveal')) observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .14, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal, .city-story').forEach(element => observer.observe(element));
+} else {
+  document.querySelectorAll('.reveal, .city-story').forEach(element => element.classList.add('is-visible'));
+}
