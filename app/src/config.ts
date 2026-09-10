@@ -633,10 +633,13 @@ export interface InstituteConfig {
 }
 
 export const globalNavItems: HeroNavItem[] = [
-  { label: "Propósito", sectionId: "proposito" },
-  { label: "Quem Faz", sectionId: "conselho" },
-  { label: "Projeto", sectionId: "projetos" },
-  { label: "Projetos em Captação", sectionId: "projetos-captacao" },
+  { label: "Home", path: "/" },
+  { label: "Coworking", path: "/coworking" },
+  { label: "Reservas", path: "/reservas" },
+  { label: "Vila Tech Hub", path: "/vila-tech-hub" },
+  { label: "Cursos", path: "/cursos" },
+  { label: "Agenda", path: "/agenda" },
+  { label: "Contato", sectionId: "contact" },
 ];
 
 export const instituteConfig: InstituteConfig = {

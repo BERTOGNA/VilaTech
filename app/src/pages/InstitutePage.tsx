@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2, Heart } from 'lucide-react';
+import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2, Heart } from 'lucide-react';
 import { contactFormConfig } from '../config';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
@@ -275,27 +275,27 @@ export default function InstitutePage() {
   }, []);
 
   const diretoriaMembers = [
-    { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/Achilles_2_PB.png" },
-    { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/Lucilla_PB.png" },
-    { name: "PAULO SESSO", role: "TESOUREIRO", img: "/images/diretoria/Paulo1_PB.jpg" },
-    { name: "PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/Pina_trat.jpg" }
+    { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/conselho_1.webp" },
+    { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/conselho_4.webp" },
+    { name: "PAULO SESSO", role: "TESOUREIRO", img: "/images/diretoria/conselho_2.webp" },
+    { name: "PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/conselho_3.webp" }
   ];
 
   const consultivoMembers = [
-    { name: "BRUNO BERTOGNA", role: "Diretor de Animação e Tecnologia Criativa | Cofundador da Maranha Filmes", img: "/images/conselho/Conselho Consultivo/Bruno_Bertogna.jpeg" },
-    { name: "GABRIEL SANTANA", role: "Gerente de Operações e Contas | Conselheiro", img: "/images/conselho/Conselho Consultivo/Gabriel_Santana.jpeg" },
-    { name: "GUILHERME OLLER", role: "Head de Produção Produtor Executivo Criativo", img: "/images/conselho/Conselho Consultivo/Gui Oller.jpeg" },
-    { name: "MARCELO ZAMPINI", role: "Chief Creative Officer @ MADCC.CO Cannes Lions Winner", img: "/images/conselho/Conselho Consultivo/Marcelo_zampini.jpeg" },
-    { name: "WALMIR SCARAVELLI", role: "Empreendedor | Fala de Inovação | Tecnologia | Statup | EduTech", img: "/images/conselho/Conselho Consultivo/Walmir_scaravelli.jpeg" },
-    { name: "CARLOS TABOSA", role: "Inteligência Artificial |Transformação Digital | Blockchain | Opah IT", img: "/images/conselho/Conselho Consultivo/carlos_tabosa.jpeg" }
+    { name: "BRUNO BERTOGNA", role: "Diretor de Animação e Tecnologia Criativa | Cofundador da Maranha Filmes", img: "/images/conselho/Conselho Consultivo/Bruno_Bertogna.webp" },
+    { name: "GABRIEL SANTANA", role: "Gerente de Operações e Contas | Conselheiro", img: "/images/conselho/Conselho Consultivo/Gabriel_Santana.webp" },
+    { name: "GUILHERME OLLER", role: "Head de Produção Produtor Executivo Criativo", img: "/images/conselho/Conselho Consultivo/Gui Oller.webp" },
+    { name: "MARCELO ZAMPINI", role: "Chief Creative Officer @ MADCC.CO Cannes Lions Winner", img: "/images/conselho/Conselho Consultivo/Marcelo_zampini.webp" },
+    { name: "WALMIR SCARAVELLI", role: "Empreendedor | Fala de Inovação | Tecnologia | Statup | EduTech", img: "/images/conselho/Conselho Consultivo/Walmir_scaravelli.webp" },
+    { name: "CARLOS TABOSA", role: "Inteligência Artificial |Transformação Digital | Blockchain | Opah IT", img: "/images/conselho/Conselho Consultivo/carlos_tabosa.webp" }
   ];
 
   const educacionalMembers = [
-    { name: "ALÊ SIREGA", role: "Especialista em Drones DJI desde 2011 | Diretor da Bee Drones ", img: "/images/conselho/Conselho Educacional/Alê_Sirega.jpg" },
-    { name: "CARLA BERTONCELO", role: "Estratégia Tributária, Compliance e Governança Fiscal e Contábil", img: "/images/conselho/Conselho Educacional/Carla_Bertoncelo.jpeg" },
-    { name: "DINO PAIVA", role: "Mídia, Marketing e Entretenimento", img: "/images/conselho/Conselho Educacional/Dino_Paiva.jpg" },
-    { name: "GILBERTO MOURA", role: "Consultoria Empresarial: Planejamento Estratégico", img: "/images/conselho/Conselho Educacional/Gilberto_Moura.png" },
-    { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.png" }
+    { name: "ALÊ SIREGA", role: "Especialista em Drones DJI desde 2011 | Diretor da Bee Drones ", img: "/images/conselho/Conselho Educacional/Alê_Sirega.webp" },
+    { name: "CARLA BERTONCELO", role: "Estratégia Tributária, Compliance e Governança Fiscal e Contábil", img: "/images/conselho/Conselho Educacional/Carla_Bertoncelo.webp" },
+    { name: "DINO PAIVA", role: "Mídia, Marketing e Entretenimento", img: "/images/conselho/Conselho Educacional/Dino_Paiva.webp" },
+    { name: "GILBERTO MOURA", role: "Consultoria Empresarial: Planejamento Estratégico", img: "/images/conselho/Conselho Educacional/Gilberto_Moura.webp" },
+    { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.webp" }
   ];
 
 
