@@ -18,6 +18,9 @@ const CoursesLandingPage = React.lazy(() => import('./pages/CoursesLandingPage')
 const CourseDetailPage = React.lazy(() => import('./pages/CourseDetailPage'));
 const BookingsPage = React.lazy(() => import('./pages/BookingsPage'));
 const MyBookingsPage = React.lazy(() => import('./pages/MyBookingsPage'));
+const PlanoAbertoPage = React.lazy(() => import('./pages/PlanoAbertoPage'));
+const FitiPage = React.lazy(() => import('./pages/FitiPage'));
+const DonationPage = React.lazy(() => import('./pages/DonationPage'));
 const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsOfUsePage = React.lazy(() => import('./pages/TermsOfUsePage'));
 const AdminLayout = React.lazy(() => import('./layouts/AdminLayout'));
@@ -44,7 +47,8 @@ function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Public Website */}
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<InstitutePage />} />
+            <Route path="/vila-tech-hub" element={<LandingPage />} />
             <Route path="/instituto" element={<InstitutePage />} />
             <Route path="/instituto-old" element={<InstituteOldPage />} />
             <Route path="/coworking" element={<CoworkingPage />} />
@@ -53,6 +57,9 @@ function App() {
             <Route path="/cursos/:id" element={<CourseDetailPage />} />
             <Route path="/reservas" element={<BookingsPage />} />
             <Route path="/reservas/minhas" element={<MyBookingsPage />} />
+            <Route path="/plano-aberto" element={<PlanoAbertoPage />} />
+            <Route path="/fiti" element={<FitiPage />} />
+            <Route path="/doar" element={<DonationPage />} />
             <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
             <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
 

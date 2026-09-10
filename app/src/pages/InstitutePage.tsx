@@ -3,8 +3,9 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, X, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2, Heart } from 'lucide-react';
+import { MapPin, Target, Zap, Send, Check, User, Mail, Phone, MessageSquare, ChevronLeft, ChevronRight, ChevronUp, Palette, BookOpen, Leaf, Building2, Heart } from 'lucide-react';
 import { contactFormConfig } from '../config';
+import { Link } from 'react-router-dom';
 import api from '../services/api';
 import Footer from '../sections/Footer';
 import Partners from '../sections/Partners';
@@ -35,7 +36,6 @@ export default function InstitutePage() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   // Arte carousel (Embla)
   const [arteEmblaRef, arteEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
@@ -275,27 +275,27 @@ export default function InstitutePage() {
   }, []);
 
   const diretoriaMembers = [
-    { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/Achilles_2_PB.png" },
-    { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/Lucilla_PB.png" },
-    { name: "PAULO SESSO", role: "TESOUREIRO", img: "/images/diretoria/Paulo1_PB.jpg" },
-    { name: "PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/Pina_trat.jpg" }
+    { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/conselho_1.webp" },
+    { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/conselho_4.webp" },
+    { name: "PAULO SESSO", role: "TESOUREIRO", img: "/images/diretoria/conselho_2.webp" },
+    { name: "PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/conselho_3.webp" }
   ];
 
   const consultivoMembers = [
-    { name: "BRUNO BERTOGNA", role: "Diretor de Animação e Tecnologia Criativa | Cofundador da Maranha Filmes", img: "/images/conselho/Conselho Consultivo/Bruno_Bertogna.jpeg" },
-    { name: "GABRIEL SANTANA", role: "Gerente de Operações e Contas | Conselheiro", img: "/images/conselho/Conselho Consultivo/Gabriel_Santana.jpeg" },
-    { name: "GUILHERME OLLER", role: "Head de Produção Produtor Executivo Criativo", img: "/images/conselho/Conselho Consultivo/Gui Oller.jpeg" },
-    { name: "MARCELO ZAMPINI", role: "Chief Creative Officer @ MADCC.CO Cannes Lions Winner", img: "/images/conselho/Conselho Consultivo/Marcelo_zampini.jpeg" },
-    { name: "WALMIR SCARAVELLI", role: "Empreendedor | Fala de Inovação | Tecnologia | Statup | EduTech", img: "/images/conselho/Conselho Consultivo/Walmir_scaravelli.jpeg" },
-    { name: "CARLOS TABOSA", role: "Inteligência Artificial |Transformação Digital | Blockchain | Opah IT", img: "/images/conselho/Conselho Consultivo/carlos_tabosa.jpeg" }
+    { name: "BRUNO BERTOGNA", role: "Diretor de Animação e Tecnologia Criativa | Cofundador da Maranha Filmes", img: "/images/conselho/Conselho Consultivo/Bruno_Bertogna.webp" },
+    { name: "GABRIEL SANTANA", role: "Gerente de Operações e Contas | Conselheiro", img: "/images/conselho/Conselho Consultivo/Gabriel_Santana.webp" },
+    { name: "GUILHERME OLLER", role: "Head de Produção Produtor Executivo Criativo", img: "/images/conselho/Conselho Consultivo/Gui Oller.webp" },
+    { name: "MARCELO ZAMPINI", role: "Chief Creative Officer @ MADCC.CO Cannes Lions Winner", img: "/images/conselho/Conselho Consultivo/Marcelo_zampini.webp" },
+    { name: "WALMIR SCARAVELLI", role: "Empreendedor | Fala de Inovação | Tecnologia | Statup | EduTech", img: "/images/conselho/Conselho Consultivo/Walmir_scaravelli.webp" },
+    { name: "CARLOS TABOSA", role: "Inteligência Artificial |Transformação Digital | Blockchain | Opah IT", img: "/images/conselho/Conselho Consultivo/carlos_tabosa.webp" }
   ];
 
   const educacionalMembers = [
-    { name: "ALÊ SIREGA", role: "Especialista em Drones DJI desde 2011 | Diretor da Bee Drones ", img: "/images/conselho/Conselho Educacional/Alê_Sirega.jpg" },
-    { name: "CARLA BERTONCELO", role: "Estratégia Tributária, Compliance e Governança Fiscal e Contábil", img: "/images/conselho/Conselho Educacional/Carla_Bertoncelo.jpeg" },
-    { name: "DINO PAIVA", role: "Mídia, Marketing e Entretenimento", img: "/images/conselho/Conselho Educacional/Dino_Paiva.jpg" },
-    { name: "GILBERTO MOURA", role: "Consultoria Empresarial: Planejamento Estratégico", img: "/images/conselho/Conselho Educacional/Gilberto_Moura.png" },
-    { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.png" }
+    { name: "ALÊ SIREGA", role: "Especialista em Drones DJI desde 2011 | Diretor da Bee Drones ", img: "/images/conselho/Conselho Educacional/Alê_Sirega.webp" },
+    { name: "CARLA BERTONCELO", role: "Estratégia Tributária, Compliance e Governança Fiscal e Contábil", img: "/images/conselho/Conselho Educacional/Carla_Bertoncelo.webp" },
+    { name: "DINO PAIVA", role: "Mídia, Marketing e Entretenimento", img: "/images/conselho/Conselho Educacional/Dino_Paiva.webp" },
+    { name: "GILBERTO MOURA", role: "Consultoria Empresarial: Planejamento Estratégico", img: "/images/conselho/Conselho Educacional/Gilberto_Moura.webp" },
+    { name: "FELIPE SCALET", role: "Advogado | Direito Bancário, Compliance e Inteligência Artificial", img: "/images/conselho/Conselho Educacional/felipe_Scalet.webp" }
   ];
 
 
@@ -899,6 +899,84 @@ export default function InstitutePage() {
         </div>
       </section>
 
+      {/* Projetos em Captação */}
+      <section id="projetos-captacao" className="py-24 px-6 bg-[#f4f4f4] text-[#1d1d1b]">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col items-center text-center fade-up mb-16">
+            <h2
+              className="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-4 text-[#1d1d1b]"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Projetos em <br className="md:hidden" />
+              <span className="text-brand-orange">Captação</span>
+            </h2>
+            <p className="text-gray-600 text-lg md:text-xl max-w-2xl font-light">
+              Iniciativas de grande impacto social e cultural que estão em fase de captação e estruturação. Junte-se a nós para transformar esses projetos em realidade.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-20">
+            {/* Projeto 1: FESTEC ITU */}
+            <div className="flex flex-col lg:flex-row gap-12 items-center fade-up">
+              <div className="lg:w-1/2 w-full order-2 lg:order-1">
+                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500">
+                  <img src="/images/projeto_captacao/Igreja do bom Jesus 2.webp" alt="FESTEC ITU - Festival de Inovação" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                </div>
+              </div>
+              <div className="lg:w-1/2 w-full order-1 lg:order-2 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest mb-6 w-max">
+                  Festival
+                </div>
+                <h3
+                  className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
+                  style={{ letterSpacing: '-.05em', fontFamily: 'Montserrat, sans-serif', lineHeight: 1 }}
+                >
+                  FESTEC ITU
+                </h3>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
+                  Um festival transdisciplinar de tecnologia, arte e inovação que transforma o centro histórico de Itu em um campus vivo. Inspirado em modelos globais, o FESTEC conecta empreendedorismo, audiovisual, música e gastronomia.
+                </p>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
+                  A cidade não é apenas palco, mas protagonista de uma experiência imersiva de uma semana. O amanhã ocupa a cidade.
+                </p>
+                <Link to="/fiti" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
+                  Saiba mais sobre o festival
+                </Link>
+              </div>
+            </div>
+
+            {/* Projeto 2: Plano Aberto */}
+            <div className="flex flex-col lg:flex-row-reverse gap-12 items-center fade-up">
+              <div className="lg:w-1/2 w-full">
+                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500">
+                  <img src="/images/projeto_captacao/cinema.webp" alt="Plano Aberto - Academia de Cinema Comunitário" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                </div>
+              </div>
+              <div className="lg:w-1/2 w-full flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-xs font-bold uppercase tracking-widest mb-6 w-max">
+                  Formação Audiovisual
+                </div>
+                <h3
+                  className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
+                  style={{ letterSpacing: '-.05em', fontFamily: 'Montserrat, sans-serif', lineHeight: 1 }}
+                >
+                  Plano Aberto
+                </h3>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
+                  Laboratório Jovem de Audiovisual, Criatividade e Trabalho. Democratiza o acesso a equipamentos profissionais e formação técnica para jovens de periferias de Itu (Pedregulho, Cidade Nova e Potiguara).
+                </p>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
+                  Um percurso prático de 120 horas onde a juventude se torna autora de suas próprias narrativas em vídeo, criando curtas e construindo seus portfólios profissionais.
+                </p>
+                <Link to="/plano-aberto" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-purple transition-colors">
+                  Conheça a academia
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Liderança e Conselho */}
       <section id="conselho" className="py-24 md:py-32 px-6 bg-[#1d1d1b] border-t border-gray-900 relative overflow-hidden">
         {/* Grafismos de fundo - com cor sobre fundo escuro */}
@@ -1127,12 +1205,12 @@ export default function InstitutePage() {
                 <p className="text-[#023B33]/90 font-medium mb-10 max-w-sm text-lg leading-snug">
                   Sua doação impulsiona bolsas de estudo, equipamentos e infraestrutura para talentos em vulnerabilidade social.
                 </p>
-                <button
-                  onClick={() => setIsDonationModalOpen(true)}
+                <Link
+                  to="/doar"
                   className="inline-flex items-center justify-center px-10 py-4 bg-[#023B33] text-white font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors rounded-sm"
                 >
                   Fazer Doação
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -1184,52 +1262,6 @@ export default function InstitutePage() {
       </section>
 
       <Footer />
-      {/* Donation Modal */}
-      {isDonationModalOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
-          <div className="relative w-full max-w-md p-6 rounded-2xl bg-white border border-gray-200 text-[#1d1d1b] shadow-2xl">
-            <button
-              onClick={() => setIsDonationModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-[#1d1d1b] transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <h3 className="font-display text-2xl font-bold uppercase text-brand-teal mb-4">Apoie o Instituto</h3>
-            <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-              O Instituto Cultural e Educacional Vila Tech é uma associação sem fins lucrativos. Sua doação apoia bolsas de estudos, infraestrutura e inclusão digital de jovens em Itu, SP.
-            </p>
-            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 mb-6">
-              <p className="text-xs uppercase tracking-wider text-brand-orange font-bold mb-2">Chave Pix (CNPJ)</p>
-              <p className="text-lg font-mono font-bold select-all bg-white p-2.5 rounded border border-gray-200 text-center text-[#1d1d1b]">
-                58.473.428/0001-31
-              </p>
-              <p className="text-xs text-gray-400 mt-2 text-center">
-                Razão Social: Instituto Cultural e Educacional Vila Tech
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText("58.473.428/0001-31");
-                  alert("Chave Pix CNPJ copiada com sucesso!");
-                }}
-                className="flex-1 py-3 rounded-xl bg-brand-teal text-white font-bold uppercase tracking-wider text-xs hover:bg-[#1d1d1b] transition-colors">
-                Copiar Chave Pix
-              </button>
-              <a
-                href="#contato"
-                onClick={() => {
-                  setIsDonationModalOpen(false);
-                  setFormData(prev => ({ ...prev, interests: ['Investidor/Parceiro'] }));
-                }}
-                className="flex-grow flex items-center justify-center py-3 rounded-xl border border-gray-200 text-center text-[#1d1d1b] font-bold uppercase tracking-wider text-xs hover:bg-gray-50 transition-colors"
-              >
-                Outros Apoios
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
