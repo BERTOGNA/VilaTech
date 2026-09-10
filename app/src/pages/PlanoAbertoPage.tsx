@@ -714,7 +714,7 @@ export default function PlanoAbertoPage() {
             {/* Guilherme */}
             <div>
               <div className="relative mb-6 group overflow-hidden bg-[#F39200] h-[250px]">
-                <img src="/images/conselho/Conselho Consultivo/Gui Oller.jpeg" alt="Guilherme Oller" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale" />
+                <img src="/images/conselho/Conselho Consultivo/Gui Oller.webp" alt="Guilherme Oller" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale" />
                 <div className="absolute inset-4 border border-[#E83A79]/50 pointer-events-none" />
                 <span className="absolute bottom-6 left-6 text-white font-black text-[10px] uppercase tracking-widest z-10">CREW / 02</span>
                 <span className="absolute top-6 right-6 text-[#E83A79] font-mono text-[9px] uppercase tracking-widest z-10">CREDIT 02</span>
@@ -729,7 +729,7 @@ export default function PlanoAbertoPage() {
             {/* Bruno */}
             <div>
               <div className="relative mb-6 group overflow-hidden bg-[#823B88] h-[250px]">
-                <img src="/images/conselho/Conselho Consultivo/Bruno_Bertogna.jpeg" alt="Bruno Bertogna" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale" />
+                <img src="/images/conselho/Conselho Consultivo/Bruno_Bertogna.webp" alt="Bruno Bertogna" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale" />
                 <div className="absolute inset-4 border border-[#E83A79]/50 pointer-events-none" />
                 <span className="absolute bottom-6 left-6 text-white font-black text-[10px] uppercase tracking-widest z-10">CREW / 03</span>
                 <span className="absolute top-6 right-6 text-[#E83A79] font-mono text-[9px] uppercase tracking-widest z-10">CREDIT 03</span>
