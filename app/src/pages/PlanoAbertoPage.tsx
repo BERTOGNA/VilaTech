@@ -92,12 +92,8 @@ export default function PlanoAbertoPage() {
 
       {/* --- CUSTOM NAVBAR --- */}
       <header className="absolute top-0 left-0 right-0 z-50 px-6 py-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group mix-blend-difference z-50">
-          <Clapperboard className="w-8 h-8 text-[#E83A79] group-hover:scale-110 transition-transform" />
-          <div className="flex flex-col leading-none">
-            <span className="text-white font-black uppercase text-sm tracking-tighter" style={{ fontFamily: 'Montserrat, sans-serif' }}>PLANO</span>
-            <span className="text-white font-black uppercase text-sm tracking-tighter" style={{ fontFamily: 'Montserrat, sans-serif' }}>SEQUÊNCIA</span>
-          </div>
+        <Link to="/" className="flex items-center group mix-blend-difference z-50">
+          <img src="/images/logo-vila-tech.svg" alt="Vila Tech" className="h-8 md:h-10 w-auto object-contain transition-transform" />
         </Link>
 
         {/* Desktop Nav */}
@@ -135,11 +131,11 @@ export default function PlanoAbertoPage() {
         {/* Full background image */}
         <div className="absolute inset-0">
           <img
-            src="/images/projeto_captacao/plano-sequencia-hero.webp"
+            src="./images/projeto_captacao/cinema.webp"
             alt="Jovens com câmera"
             className="w-full h-full object-cover object-[center_30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1D1D1B] via-[#1D1D1B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1D1D1B] via-[#1D1D1B]/10 to-transparent" />
           <div className="absolute inset-0 bg-[#1D1D1B]/40" />
         </div>
 
@@ -147,19 +143,17 @@ export default function PlanoAbertoPage() {
         <div className="container mx-auto max-w-[1400px] px-6 lg:px-16 pt-32 pb-20 relative z-10 flex h-full">
 
           <div className="lg:w-2/3 flex flex-col justify-center h-full pt-10">
-            <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech" className="h-[80px] md:h-[120px] mb-12 object-contain self-start" />
+            <div>
+              <img src="/images/instituto/Logos_IVT_branco.png" alt="Instituto Vila Tech" className="h-[80px] md:h-[120px] mb-12 object-contain self-start transition-opacity" />
+            </div>
             <div className="flex flex-col gap-1 mb-12">
-              <h1 className="text-4xl lg:text-[50px] font-black tracking-tighter editorial-title text-white">
-                Plano<br />sequência
-              </h1>
-              <p className="text-[#F39200] text-[10px] font-bold uppercase tracking-[0.2em] mt-3">
-                / ACADEMIA DE CINEMA POPULAR COMUNITÁRIO
-              </p>
+              <img src="/images/projeto_captacao/Marca_Plano_Cor.png" alt="Plano Sequência" className="h-[180px] md:h-[150px] object-contain self-start mb-4" />
+
             </div>
 
             <div className="mb-12">
-              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black editorial-title text-white mb-2 leading-[0.9]">Quando o</h2>
-              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black editorial-title text-[#E83A79] mb-2 leading-[0.9]">território</h2>
+              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black editorial-title text-white mb-2 leading-[0.9]">Quando</h2>
+              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black editorial-title text-[#E83A79] mb-2 leading-[0.9]">o território</h2>
               <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-black editorial-title text-white mb-2 leading-[0.9]">entra em cena.</h2>
             </div>
 
@@ -265,10 +259,10 @@ export default function PlanoAbertoPage() {
             <div className="flex items-center gap-6">
               <div className="w-12 h-px bg-[#E83A79]" />
               <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50">
-                02 / POR QUE AGORA
+                02 / O MOMENTO CERTO
               </span>
             </div>
-            <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-white/30 hidden md:block">SHOT 02 / MARKET CUT</span>
+            <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-white/30 hidden md:block">SHOT 02 / TIMING</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
@@ -337,7 +331,7 @@ export default function PlanoAbertoPage() {
             <div className="fade-up">
               <h2 className="text-4xl md:text-5xl lg:text-[60px] font-black editorial-title mb-8 text-[#1A1A1A] leading-[0.9]">
                 Acesso a<br />
-                equipamento<br />
+                tecnologia<br />
                 não pode ser<br />
                 <span className="text-[#E83A79]">obstáculo.</span>
               </h2>
@@ -354,18 +348,18 @@ export default function PlanoAbertoPage() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-8 lg:gap-12 lg:border-l border-gray-200 lg:pl-12 fade-up pt-12 lg:pt-0 flex-wrap">
-              <div className="flex flex-col justify-end">
-                <p className="text-[70px] lg:text-[90px] font-black editorial-title text-[#F39200] leading-[0.75] mb-4">60</p>
-                <p className="font-black text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A] leading-tight">JOVENS<br />NO PILOTO</p>
+            <div className="grid grid-cols-3 gap-8 lg:border-l border-gray-200 lg:pl-12 fade-up pt-12 lg:pt-0">
+              <div className="flex flex-col items-center text-center">
+                <p className="text-[clamp(40px,6vw,80px)] whitespace-nowrap font-black editorial-title text-[#F39200] leading-none mb-3">60</p>
+                <p className="font-black text-[9px] uppercase tracking-[0.15em] text-[#1A1A1A] leading-tight">JOVENS<br />NO PILOTO</p>
               </div>
-              <div className="flex flex-col justify-end">
-                <p className="text-[60px] lg:text-[70px] font-black editorial-title text-[#823B88] leading-[0.75] mb-4">15-24</p>
-                <p className="font-black text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A] leading-tight">ANOS</p>
+              <div className="flex flex-col items-center text-center">
+                <p className="text-[clamp(40px,6vw,80px)] whitespace-nowrap font-black editorial-title text-[#823B88] leading-none mb-3">15-24</p>
+                <p className="font-black text-[9px] uppercase tracking-[0.15em] text-[#1A1A1A] leading-tight">ANOS</p>
               </div>
-              <div className="flex flex-col justify-end">
-                <p className="text-[70px] lg:text-[90px] font-black editorial-title text-[#5dbeb5] leading-[0.75] mb-4">3</p>
-                <p className="font-black text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A] leading-tight">TERRITÓRIOS<br />PRIORITÁRIOS</p>
+              <div className="flex flex-col items-center text-center">
+                <p className="text-[clamp(40px,6vw,80px)] whitespace-nowrap font-black editorial-title text-[#5dbeb5] leading-none mb-3">3</p>
+                <p className="font-black text-[9px] uppercase tracking-[0.15em] text-[#1A1A1A] leading-tight">TERRITÓRIOS<br />PRIORITÁRIOS</p>
               </div>
             </div>
           </div>
@@ -616,9 +610,9 @@ export default function PlanoAbertoPage() {
       {/* ==================== 08 / DOZE MESES ==================== */}
       <section className="bg-[#1A1A1A] text-white py-32 px-6 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
         {/* Background Image */}
-        <div className="absolute inset-10 opacity-115">
+        <div className="absolute inset-0">
           <img src="/images/projeto_captacao/cinema3.webp" alt="Pessoal filmando" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#1A1A1A]/80" />
+          <div className="absolute inset-0 bg-[#1A1A1A]/60" />
         </div>
         {/* Fio condutor */}
         <div className="absolute left-6 lg:left-12 top-0 bottom-0 w-px bg-[#E83A79]/30 hidden md:block">
@@ -701,8 +695,6 @@ export default function PlanoAbertoPage() {
               <div className="relative mb-6 group overflow-hidden bg-[#5dbeb5] h-[250px]">
                 <img src="/images/diretoria/Achilles.webp" alt="Achilles Milan Neto" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-4 border border-[#E83A79]/50 pointer-events-none" />
-                <span className="absolute bottom-6 left-6 text-white font-black text-[10px] uppercase tracking-widest z-10">CREW / 01</span>
-                <span className="absolute top-6 right-6 text-[#E83A79] font-mono text-[9px] uppercase tracking-widest z-10">CREDIT 01</span>
               </div>
               <h3 className="font-black text-xl text-[#1A1A1A] mb-2 tracking-tight">Achilles Milan Neto</h3>
               <p className="text-gray-500 font-inter font-light text-xs mb-4">
@@ -716,8 +708,6 @@ export default function PlanoAbertoPage() {
               <div className="relative mb-6 group overflow-hidden bg-[#F39200] h-[250px]">
                 <img src="/images/conselho/Conselho Consultivo/Gui Oller.webp" alt="Guilherme Oller" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale" />
                 <div className="absolute inset-4 border border-[#E83A79]/50 pointer-events-none" />
-                <span className="absolute bottom-6 left-6 text-white font-black text-[10px] uppercase tracking-widest z-10">CREW / 02</span>
-                <span className="absolute top-6 right-6 text-[#E83A79] font-mono text-[9px] uppercase tracking-widest z-10">CREDIT 02</span>
               </div>
               <h3 className="font-black text-xl text-[#1A1A1A] mb-2 tracking-tight">Guilherme Oller</h3>
               <p className="text-gray-500 font-inter font-light text-xs mb-4">
@@ -731,8 +721,6 @@ export default function PlanoAbertoPage() {
               <div className="relative mb-6 group overflow-hidden bg-[#823B88] h-[250px]">
                 <img src="/images/conselho/Conselho Consultivo/Bruno_Bertogna.webp" alt="Bruno Bertogna" className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale" />
                 <div className="absolute inset-4 border border-[#E83A79]/50 pointer-events-none" />
-                <span className="absolute bottom-6 left-6 text-white font-black text-[10px] uppercase tracking-widest z-10">CREW / 03</span>
-                <span className="absolute top-6 right-6 text-[#E83A79] font-mono text-[9px] uppercase tracking-widest z-10">CREDIT 03</span>
               </div>
               <h3 className="font-black text-xl text-[#1A1A1A] mb-2 tracking-tight">Bruno Bertogna</h3>
               <p className="text-gray-500 font-inter font-light text-xs mb-4">

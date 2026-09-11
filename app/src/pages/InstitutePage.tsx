@@ -37,15 +37,25 @@ export default function InstitutePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Arte carousel (Embla)
   const [arteEmblaRef, arteEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
   const [arteCanScrollPrev, setArteCanScrollPrev] = useState(false);
   const [arteCanScrollNext, setArteCanScrollNext] = useState(true);
   const [arteIsHovered, setArteIsHovered] = useState(false);
 
+  // FITI carousel
+  const [fitiEmblaRef, fitiEmblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
+  const [fitiCanScrollPrev, setFitiCanScrollPrev] = useState(true);
+  const [fitiCanScrollNext, setFitiCanScrollNext] = useState(true);
+  const [fitiIsHovered, setFitiIsHovered] = useState(false);
+
   const onArteSelect = useCallback((api: any) => {
     setArteCanScrollPrev(api.canScrollPrev());
     setArteCanScrollNext(api.canScrollNext());
+  }, []);
+
+  const onFitiSelect = useCallback((api: any) => {
+    setFitiCanScrollPrev(api.canScrollPrev());
+    setFitiCanScrollNext(api.canScrollNext());
   }, []);
 
   useEffect(() => {
@@ -59,8 +69,22 @@ export default function InstitutePage() {
     };
   }, [arteEmblaApi, onArteSelect]);
 
+  useEffect(() => {
+    if (!fitiEmblaApi) return;
+    onFitiSelect(fitiEmblaApi);
+    fitiEmblaApi.on('select', onFitiSelect);
+    fitiEmblaApi.on('reInit', onFitiSelect);
+    return () => {
+      fitiEmblaApi.off('select', onFitiSelect);
+      fitiEmblaApi.off('reInit', onFitiSelect);
+    };
+  }, [fitiEmblaApi, onFitiSelect]);
+
   const arteScrollPrev = useCallback(() => arteEmblaApi && arteEmblaApi.scrollPrev(), [arteEmblaApi]);
   const arteScrollNext = useCallback(() => arteEmblaApi && arteEmblaApi.scrollNext(), [arteEmblaApi]);
+
+  const fitiScrollPrev = useCallback(() => fitiEmblaApi && fitiEmblaApi.scrollPrev(), [fitiEmblaApi]);
+  const fitiScrollNext = useCallback(() => fitiEmblaApi && fitiEmblaApi.scrollNext(), [fitiEmblaApi]);
 
   // Comunidade carousel (Embla)
   const [comEmblaRef, comEmblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
@@ -919,28 +943,70 @@ export default function InstitutePage() {
             {/* Projeto 1: FESTEC ITU */}
             <div className="flex flex-col lg:flex-row gap-12 items-center fade-up">
               <div className="lg:w-1/2 w-full order-2 lg:order-1">
-                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500">
-                  <img src="/images/projeto_captacao/Igreja do bom Jesus 2.webp" alt="FESTEC ITU - Festival de Inovação" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                <div 
+                  className="relative aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500"
+                  onMouseEnter={() => setFitiIsHovered(true)}
+                  onMouseLeave={() => setFitiIsHovered(false)}
+                >
+                  <div className="overflow-hidden h-full" ref={fitiEmblaRef}>
+                    <div className="flex h-full">
+                      {[
+                        '/images/fiti/praca-carmo.webp',
+                        '/images/fiti/varvito-orquestra.webp',
+                        '/images/fiti/bom-jesus-mapping.webp',
+                        '/images/fiti/fama-imersiva.webp',
+                        '/images/fiti/fabrica-design.webp'
+                      ].map((src, i) => (
+                        <div key={i} className="flex-[0_0_100%] min-w-0 relative h-full">
+                          <img src={src} alt={`FITI Imagem ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation Arrows */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-between p-4 pointer-events-none transition-opacity duration-300 ${
+                      fitiIsHovered ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <button
+                      onClick={fitiScrollPrev}
+                      disabled={!fitiCanScrollPrev}
+                      className="pointer-events-auto bg-white/20 backdrop-blur-md border border-white/40 text-white rounded-full p-2.5 shadow-lg hover:bg-white/40 disabled:opacity-30 transition-all z-10"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={fitiScrollNext}
+                      disabled={!fitiCanScrollNext}
+                      className="pointer-events-auto bg-white/20 backdrop-blur-md border border-white/40 text-white rounded-full p-2.5 shadow-lg hover:bg-white/40 disabled:opacity-30 transition-all z-10"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="lg:w-1/2 w-full order-1 lg:order-2 flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest mb-6 w-max">
-                  Festival
+                  Festival de Inovação, Criatividade e Arte de Itu
                 </div>
                 <h3
                   className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
                   style={{ letterSpacing: '-.05em', fontFamily: 'Montserrat, sans-serif', lineHeight: 1 }}
                 >
-                  FESTEC ITU
+                  FITI
                 </h3>
                 <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
-                  Um festival transdisciplinar de tecnologia, arte e inovação que transforma o centro histórico de Itu em um campus vivo. Inspirado em modelos globais, o FESTEC conecta empreendedorismo, audiovisual, música e gastronomia.
+                  Um evento que transforma a cidade em palco e cenário para idéias e realizações de impacto em tecnologia, arte e cultura.
+
                 </p>
                 <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
-                  A cidade não é apenas palco, mas protagonista de uma experiência imersiva de uma semana. O amanhã ocupa a cidade.
+                  Inteligência Artificial, Inovação aberta e Negócios se unem ao que há de mais inovador nas artes: Cinema, Teatro, Música, Gastronomia, Artes plásticas, transformando a cidade por 4 dias no melhor ponto de encontro para pessoas criativas e inovadoras, que promovem as mudanças positivas que o mundo precisa.
+
                 </p>
                 <Link to="/fiti" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
-                  Saiba mais sobre o festival
+                  Saiba mais sobre o FITI
                 </Link>
               </div>
             </div>
@@ -954,7 +1020,7 @@ export default function InstitutePage() {
               </div>
               <div className="lg:w-1/2 w-full flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-xs font-bold uppercase tracking-widest mb-6 w-max">
-                  Formação Audiovisual
+                  Formação em Audiovisual
                 </div>
                 <h3
                   className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
@@ -963,11 +1029,19 @@ export default function InstitutePage() {
                   Plano Aberto
                 </h3>
                 <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
-                  Laboratório Jovem de Audiovisual, Criatividade e Trabalho. Democratiza o acesso a equipamentos profissionais e formação técnica para jovens de periferias de Itu (Pedregulho, Cidade Nova e Potiguara).
+                  Academia de cinema comunitário popular.
+                  Um projeto de educação ágil para formação e capacitação em audiovisual e cinema.
                 </p>
                 <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
-                  Um percurso prático de 120 horas onde a juventude se torna autora de suas próprias narrativas em vídeo, criando curtas e construindo seus portfólios profissionais.
+
+                  Laboratório experimental de audiovisual que tem como objetivo a democratização do acesso às metodologias de execução, a tecnologia e a equipamentos profissionais, promovendo formação técnica profissional para jovens e adultos em situação de vulnerabilidade econômica.
                 </p>
+                <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-8">
+
+                  Uma trilha de conhecimento prática de 120 horas onde o aluno se torna autor e protagonista de suas próprias narrativas em vídeo, criando obras desde a pesquisa, roteiro, produção, edição até a exibição pública dos seus trabalhos.
+                </p>
+
+
                 <Link to="/plano-aberto" className="self-start px-8 py-4 bg-[#1d1d1b] text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-brand-purple transition-colors">
                   Conheça a academia
                 </Link>
