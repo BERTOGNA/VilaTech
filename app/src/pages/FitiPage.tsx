@@ -28,15 +28,15 @@ export default function FitiPage() {
 
   return (
     <div className="bg-[#11110f] text-[#f3f0e8] font-sans min-h-screen scroll-smooth">
-      <SEO 
-        title="FITI — O futuro encontra lugar em Itu" 
-        description="FITI — Festival de Inovação, Criatividade e Tecnologia de Itu. Uma cidade-campus para ideias, negócios e cultura." 
+      <SEO
+        title="FITI — O futuro encontra lugar em Itu"
+        description="FITI — Festival de Inovação, Criatividade e Tecnologia de Itu. Uma cidade-campus para ideias, negócios e cultura."
       />
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 h-[66px] lg:h-[82px] px-6 lg:px-[4vw] flex items-center justify-between bg-[#11110f]/90 backdrop-blur-md border-b border-white/10 transition-all">
-        <a href="#inicio" className="flex items-center text-white no-underline w-[175px] lg:w-auto">
-          <img src="/images/fiti/marca_FITI.png" alt="FITI" className="max-h-[34px] lg:max-h-[42px] object-contain object-left" />
+        <a href="/" className="flex items-center text-white no-underline w-[175px] lg:w-auto">
+          <img src="/images/logo-vila-tech.svg" alt="Instituto Vila Tech" className="max-h-[40px] lg:max-h-[42px] object-contain object-left" />
         </a>
         <button className="lg:hidden text-white uppercase text-[0.78rem] tracking-[0.12em] font-extrabold" onClick={() => setIsMenuOpen(!isMenuOpen)}>Menu</button>
         <nav className={`lg:flex items-center gap-6 ${isMenuOpen ? 'flex flex-col absolute top-[66px] left-0 right-0 bg-[#11110f] p-6 pb-8 border-b border-white/10' : 'hidden'}`}>
@@ -55,17 +55,18 @@ export default function FitiPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#11110f]/95 via-[#11110f]/70 to-[#11110f]/10"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#11110f]/90 to-transparent h-1/2 bottom-0 top-auto"></div>
           <div className="absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#3fbdd8] via-[#c8d400] via-40% to-[#e83a79] via-60% to-[#f59d22]"></div>
-          
-          <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-[4vw] pb-[118px]">
-            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6 fade-up">Itu · São Paulo · proposta para abril de 2027</p>
-            <h1 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3.6rem,17vw,9.6rem)] max-w-[10ch] mb-0 fade-up">
-              O futuro<br/>encontra <em className="text-[#c8d400] not-italic">lugar</em><br/>em Itu.
-            </h1>
-            <p className="max-w-[670px] text-[clamp(1.05rem,2vw,1.45rem)] leading-snug mt-8 fade-up">Quatro dias para criatividade, tecnologia e negócios ocuparem a cidade — e transformarem patrimônio em plataforma.</p>
-            <div className="flex flex-wrap gap-3 mt-8 fade-up">
-              <a href="#visao" className="inline-flex min-h-[52px] items-center justify-center px-5 py-3 uppercase tracking-[0.1em] text-[0.75rem] font-black border border-transparent transition-all hover:-translate-y-0.5 bg-[#c8d400] text-[#11110f] hover:bg-white">Conheça a tese</a>
-              <a href="#parcerias" className="inline-flex min-h-[52px] items-center justify-center px-5 py-3 uppercase tracking-[0.1em] text-[0.75rem] font-black border border-white/50 transition-all hover:-translate-y-0.5 text-[#f3f0e8] hover:bg-white hover:text-[#11110f] hover:border-white">Ver proposta para marcas</a>
+
+          <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-[4vw] pb-[118px] flex flex-col items-center text-center">
+            <img src="/images/fiti/marca_FITI.png" alt="FITI" className="w-[800px] max-w-full fade-up object-contain" />
+            <div className="w-full max-w-[800px] flex justify-between uppercase text-[0.6rem] sm:text-[0.8rem] md:text-[1.2rem] lg:text-[1.4rem] font-bold mt-4 mb-8 fade-up text-[#f3f0e8]">
+              <span>O</span>
+              <span>F</span><span>U</span><span>T</span><span>U</span><span>R</span><span>O</span>
+              <span>E</span><span>N</span><span>C</span><span>O</span><span>N</span><span>T</span><span>R</span><span>A</span>
+              <span>L</span><span>U</span><span>G</span><span>A</span><span>R</span>
+              <span>E</span><span>M</span>
+              <span>I</span><span>T</span><span>U</span>
             </div>
+            <p className="max-w-[670px] text-[clamp(1.05rem,2vw,1.45rem)] leading-snug fade-up">Quatro dias para criatividade, tecnologia e negócios ocuparem a cidade — e transformarem patrimônio em plataforma.</p>
           </div>
           <div className="absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-4 lg:gap-10 text-[0.68rem] uppercase tracking-[0.16em] font-bold w-[calc(100%-2rem)]">
             <span>MVP · 3–4 dias</span>
@@ -74,12 +75,12 @@ export default function FitiPage() {
           </div>
         </section>
 
-        {/* 02 / Manifesto */}
+        {/* 02 / Formato */}
         <section id="visao" className="bg-[#f3f0e8] text-[#11110f] py-[clamp(6rem,11vw,11rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw] grid lg:grid-cols-[1fr_4fr] gap-8 lg:gap-[4vw]">
-            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold m-0">02 / A tese</p>
+            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold m-0">02 / Formato</p>
             <div>
-              <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,8rem)] fade-up">Itu não será cenário.<br/><span className="text-[#e83a79]">Será interface.</span></h2>
+              <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,8rem)] fade-up">Itu não será cenário.<br /><span className="text-[#e83a79]">Será interface.</span></h2>
               <p className="max-w-[900px] text-[clamp(1.35rem,2.7vw,2.3rem)] leading-tight mt-12 fade-up">O FITI nasce para aproximar quem decide, quem cria e quem transforma. Um festival distribuído por fábricas históricas, museus, hubs, praças, parques e mesas da cidade — com uma agenda única e uma experiência que começa na rua.</p>
               <div className="mt-16 py-5 border-y-2 border-[#11110f] flex gap-4 flex-wrap items-baseline uppercase font-bold text-[clamp(0.85rem,1.5vw,1.15rem)] fade-up">
                 <span>Memória</span><b className="text-[#e83a79]">×</b><span>Imaginação</span><b className="text-[#e83a79]">×</b><span>Capital</span><b className="text-[#e83a79]">=</b><strong className="text-[#6b4494] font-bold">futuro praticável</strong>
@@ -88,78 +89,43 @@ export default function FitiPage() {
           </div>
         </section>
 
-        {/* 03 / Benchmark */}
-        <section className="bg-[#11110f] text-[#f3f0e8] py-[clamp(6rem,10vw,10rem)]">
-          <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
-            <div className="grid lg:grid-cols-[1.65fr_0.7fr] gap-8 lg:gap-[8vw] items-end mb-[clamp(3rem,7vw,6rem)]">
-              <div>
-                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">03 / Benchmark traduzido</p>
-                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Quatro referências.<br/>Um modelo próprio.</h2>
-              </div>
-              <p className="text-[1.1rem] max-w-[34rem] leading-relaxed">Não é uma réplica em escala menor. É uma síntese desenhada para Itu: curadoria central, produção distribuída e múltiplas portas de entrada.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-y border-white/35">
-              {[
-                { num: '01', title: 'SXSW', desc: 'A cidade como mídia e a convergência como linguagem.' },
-                { num: '02', title: 'Rio2C', desc: 'Conteúdo, mercado e festival com jornadas e credenciais distintas.' },
-                { num: '03', title: 'Web Summit', desc: 'Startups, investidores e líderes conectados por intenção de negócio.' },
-                { num: '04', title: 'SP Tech Week', desc: 'Uma semana descentralizada, produzida com o ecossistema local.' }
-              ].map((item, i) => (
-                <article key={i} className={`min-h-[270px] lg:min-h-[330px] p-7 flex flex-col ${i % 2 === 0 ? 'border-b md:border-b-0 md:border-r border-white/25' : 'border-b lg:border-b-0 lg:border-r border-white/25'} ${i === 3 ? '!border-r-0' : ''}`}>
-                  <span className="text-[#c8d400] font-extrabold text-[0.7rem] tracking-[0.15em]">{item.num}</span>
-                  <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.9] text-[clamp(2rem,3vw,3.8rem)]">{item.title}</h3>
-                  <p className="min-h-[5em]">{item.desc}</p>
-                </article>
-              ))}
-            </div>
-            
-            <div className="mt-20 bg-[#f3f0e8] text-[#11110f] p-8 grid lg:grid-cols-[1fr_4fr] gap-4 lg:gap-8 items-center fade-up">
-              <small className="uppercase tracking-[0.18em] font-extrabold text-[0.8rem]">A síntese FITI</small>
-              <p className="text-[clamp(1.25rem,2.7vw,2.7rem)] leading-tight m-0">
-                <strong className="text-[#e83a79] font-normal">cidade-campus</strong> + curadoria de alto nível + mercado ativo + experiências populares
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 04 / Arquitetura */}
+        {/* 03 / Arquitetura */}
         <section id="formato" className="bg-[#e83a79] text-[#11110f] py-[clamp(6rem,10vw,10rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
-            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">04 / Arquitetura de experiência</p>
-            <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,8rem)] max-w-[12ch]">Três circuitos.<br/>Um festival inteiro.</h2>
-            
+            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">03 / Arquitetura da experiência</p>
+            <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,8rem)] max-w-[12ch]">Três circuitos.<br />Um festival inteiro.</h2>
+
             <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 border-2 border-[#11110f]">
               <article className="min-h-[360px] lg:min-h-[520px] p-8 flex flex-col border-b-2 lg:border-b-0 lg:border-r-2 border-[#11110f] fade-up">
                 <p className="uppercase tracking-[0.16em] text-[0.7rem] font-extrabold">01 / Conteúdo</p>
-                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3rem,5vw,5.4rem)]">FITI<br/>Conversa</h3>
+                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3rem,5vw,5.4rem)]">FITI<br />Conversa</h3>
                 <span className="max-w-[28rem]">Keynotes, painéis, masterclasses e encontros editoriais para líderes e criadores.</span>
               </article>
               <article className="min-h-[360px] lg:min-h-[520px] p-8 flex flex-col border-b-2 lg:border-b-0 lg:border-r-2 border-[#11110f] bg-[#11110f] text-[#f3f0e8] fade-up">
                 <p className="uppercase tracking-[0.16em] text-[0.7rem] font-extrabold">02 / Mercado</p>
-                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3rem,5vw,5.4rem)]">FITI<br/>Negócios</h3>
+                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3rem,5vw,5.4rem)]">FITI<br />Negócios</h3>
                 <span className="max-w-[28rem]">Rodadas, pitch sessions, mentorias e conexões entre empresas, startups e capital.</span>
               </article>
               <article className="min-h-[360px] lg:min-h-[520px] p-8 flex flex-col bg-[#f59d22] fade-up">
                 <p className="uppercase tracking-[0.16em] text-[0.7rem] font-extrabold">03 / Cidade</p>
-                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3rem,5vw,5.4rem)]">FITI<br/>Viva</h3>
+                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3rem,5vw,5.4rem)]">FITI<br />Viva</h3>
                 <span className="max-w-[28rem]">Arte, música, cinema, gastronomia e experiências gratuitas ou acessíveis.</span>
               </article>
             </div>
           </div>
         </section>
 
-        {/* 05 / Pilares Editoriais */}
+        {/* 04 / Pilares Editoriais */}
         <section className="bg-[#f3f0e8] text-[#11110f] py-[clamp(6rem,10vw,10rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
             <div className="grid lg:grid-cols-[1.65fr_0.7fr] gap-8 lg:gap-[8vw] items-end mb-[clamp(3rem,7vw,6rem)]">
               <div>
-                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">05 / Pilares editoriais</p>
-                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Assuntos que<br/>não vivem isolados.</h2>
+                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">04 / Pilares editoriais</p>
+                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Conexão de<br />mentes inovadoras.</h2>
               </div>
               <p className="text-[1.1rem] max-w-[34rem] leading-relaxed">O diferencial está nas intersecções: saúde encontra dados; arquitetura encontra clima; cinema encontra IA; gastronomia encontra bioeconomia.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 border-t-2 border-[#11110f]">
               <button onClick={() => setActiveTab('human')} className={`text-left p-6 lg:p-6 border-b-2 lg:border-b-2 border-[#11110f] font-extrabold text-[clamp(1rem,1.5vw,1.35rem)] transition-colors ${activeTab === 'human' ? 'bg-[#11110f] text-[#f3f0e8]' : 'bg-transparent text-[#11110f] md:border-r border-[#11110f]/20 hover:bg-[#11110f]/5'}`}>
                 <span className="block mb-4 text-[0.7rem] tracking-[0.18em] font-normal">01</span> Ser Humano
@@ -171,7 +137,7 @@ export default function FitiPage() {
                 <span className="block mb-4 text-[0.7rem] tracking-[0.18em] font-normal">03</span> Techs & IA
               </button>
             </div>
-            
+
             <div className="mt-8 fade-up min-h-[420px]">
               {activeTab === 'human' && (
                 <article className="grid lg:grid-cols-[1.5fr_1fr] gap-8 lg:gap-[8vw] py-12 lg:py-16">
@@ -216,16 +182,16 @@ export default function FitiPage() {
           </div>
         </section>
 
-        {/* 06 / Cidade */}
+        {/* 05 / Cidade */}
         <section id="cidade" className="bg-[#11110f] text-[#f3f0e8] pt-[clamp(6rem,10vw,10rem)] pb-12">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw] grid lg:grid-cols-[1.65fr_0.7fr] gap-8 lg:gap-[8vw] items-end mb-[clamp(3rem,7vw,6rem)]">
             <div>
-              <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">06 / Itu como cidade-campus</p>
-              <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">A programação<br/>muda de endereço.<br/>A ideia continua.</h2>
+              <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">05 / Itu como cidade-campus</p>
+              <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,5.5rem)] max-w-[16ch]">Uma cidade em movimento: Vários endereços, uma programação integrada</h2>
             </div>
             <p className="text-[1.1rem] max-w-[34rem] leading-relaxed">Cada espaço assume uma vocação. O público cruza a cidade seguindo interesses, encontros e descobertas.</p>
           </div>
-          
+
           <div className="w-full lg:max-w-[1600px] mx-auto">
             {[
               { img: 'bom-jesus-mapping.webp', label: 'Centro histórico · abertura', title: 'Itu em Luz', desc: 'Video mapping autoral transforma a memória arquitetônica em narrativa de futuro.' },
@@ -248,10 +214,10 @@ export default function FitiPage() {
           <p className="max-w-[1440px] mx-auto px-6 lg:px-[4vw] mt-8 text-white/60 text-[0.72rem]">Imagens conceituais produzidas a partir de registros reais dos espaços de Itu. Programação e autorias em desenvolvimento.</p>
         </section>
 
-        {/* 07 / MVP */}
+        {/* 06 / MVP */}
         <section className="bg-[#c8d400] text-[#11110f] py-[clamp(5rem,8vw,8rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
-            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">07 / Ritmo do MVP</p>
+            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">06 / Ritmo do MVP</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t-2 border-[#11110f]">
               {[
                 { day: 'QUI', title: 'Horizontes', desc: 'Abertura, líderes, futuro humano e a cidade como plataforma.' },
@@ -269,37 +235,37 @@ export default function FitiPage() {
           </div>
         </section>
 
-        {/* 08 / Curadoria */}
+        {/* 07 / Curadoria */}
         <section id="curadoria" className="bg-[#f3f0e8] text-[#11110f] py-[clamp(6rem,10vw,10rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
             <div className="grid lg:grid-cols-[1.65fr_0.7fr] gap-8 lg:gap-[8vw] items-end mb-[clamp(3rem,7vw,6rem)]">
               <div>
-                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">08 / Mapa curatorial</p>
-                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Vozes que movem<br/>mercados e imaginários.</h2>
+                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">07 / Mapa curatorial</p>
+                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Vozes que impactam<br />mentes e mercados.</h2>
               </div>
               <p className="text-[1.1rem] max-w-[34rem] leading-relaxed">Uma curadoria que combina alcance, consistência, presença contemporânea e capacidade de criar conversa depois do palco.</p>
             </div>
-            
+
             <p className="inline-block bg-[#11110f] text-[#f3f0e8] px-4 py-2 mb-6 uppercase tracking-[0.12em] text-[0.68rem] font-extrabold">Nomes em prospecção · sujeitos a convite, agenda e confirmação</p>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-3 border-2 border-[#11110f] border-b-0 lg:border-b-2">
               <article className="min-h-[360px] lg:min-h-[430px] p-8 flex flex-col border-b-2 lg:border-b-0 lg:border-r-2 border-[#11110f] bg-[#c8d400] fade-up">
                 <p className="uppercase tracking-[0.13em] text-[0.7rem] font-extrabold">Estrela · Ser Humano</p>
-                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3.1rem,5vw,5.2rem)]">Ailton<br/>Krenak</h3>
+                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3.1rem,5vw,5.2rem)]">Ailton<br />Krenak</h3>
                 <span>Pensamento, território e futuros possíveis.</span>
               </article>
               <article className="min-h-[360px] lg:min-h-[430px] p-8 flex flex-col border-b-2 lg:border-b-0 lg:border-r-2 border-[#11110f] bg-[#f59d22] fade-up">
                 <p className="uppercase tracking-[0.13em] text-[0.7rem] font-extrabold">Estrela · Economia Criativa</p>
-                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3.1rem,5vw,5.2rem)]">Fernando<br/>Meirelles</h3>
+                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3.1rem,5vw,5.2rem)]">Fernando<br />Meirelles</h3>
                 <span>Cinema brasileiro com circulação global.</span>
               </article>
               <article className="min-h-[360px] lg:min-h-[430px] p-8 flex flex-col bg-[#3fbdd8] fade-up">
                 <p className="uppercase tracking-[0.13em] text-[0.7rem] font-extrabold">Estrela · Techs & IA · China</p>
-                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3.1rem,5vw,5.2rem)]">Kai-Fu<br/>Lee</h3>
+                <h3 className="my-auto font-black uppercase tracking-tighter leading-[0.82] text-[clamp(3.1rem,5vw,5.2rem)]">Kai-Fu<br />Lee</h3>
                 <span>IA, empreendedorismo e a ponte China–mundo.</span>
               </article>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 border-x-2 border-b-2 border-[#11110f]">
               {[
                 { label: 'Brasil · negócios & tecnologia', name: 'Fabrício Bloisi', desc: 'Prosus · ecossistemas digitais' },
@@ -315,23 +281,27 @@ export default function FitiPage() {
             </div>
 
             <div className="mt-16 pt-6 border-t-2 border-[#11110f] fade-up">
-              <p className="uppercase tracking-[0.12em] text-[0.65rem] font-extrabold mb-4">Rede inicial e acessos facilitados informados pelo Instituto</p>
-              <ul className="flex flex-wrap gap-2 text-[0.85rem]">
-                {['Kobra', 'Guilherme Kramer', 'Marco Amaro', 'Gustavo Borges', 'Henry Zilbertein', 'João Olivério', 'Ricardo Bellino', 'Ricardo Amorim', 'Rodrigo Helcer', 'João Tabosa'].map((name, i) => (
-                  <li key={i} className="border border-[#11110f] px-3 py-2 font-bold">{name}</li>
-                ))}
+              <p className="uppercase tracking-[0.12em] text-[0.65rem] font-extrabold mb-4">Nomes de impacto regional e nacional</p>
+              <ul className="flex flex-wrap gap-3 text-[1rem]">
+                {['Kobra', 'Guilherme Kramer', 'Marco Amaro', 'Gustavo Borges', 'Henry Zilbertein', 'João Olivério', 'Ricardo Bellino', 'Ricardo Amorim', 'Rodrigo Helcer', 'João Tabosa'].map((name, i) => {
+                  const colors = ['bg-[#c8d400]', 'bg-[#f59d22]', 'bg-[#3fbdd8]', 'bg-[#e83a79]', 'bg-[#6b4494]'];
+                  const bgColor = colors[i % colors.length];
+                  return (
+                    <li key={i} className={`border border-[#11110f] px-4 py-3 font-bold ${bgColor} text-white`}>{name}</li>
+                  );
+                })}
               </ul>
             </div>
           </div>
         </section>
 
-        {/* 09 / Marcas & Parcerias */}
+        {/* 08 / Marcas & Parcerias */}
         <section id="parcerias" className="bg-[#11110f] text-[#f3f0e8] py-[clamp(6rem,10vw,10rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
             <div className="grid lg:grid-cols-[1.65fr_0.7fr] gap-8 lg:gap-[8vw] items-end mb-[clamp(3rem,7vw,6rem)]">
               <div>
-                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">09 / Proposta para marcas</p>
-                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Patrocínio que<br/>não termina no logo.</h2>
+                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">08 / Proposta para marcas</p>
+                <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,6.8rem)]">Muito além de exposição de marca:<br />Engajamento real.</h2>
               </div>
               <p className="text-[1.1rem] max-w-[34rem] leading-relaxed">O FITI abre territórios para reputação, relacionamento, conteúdo, dados de impacto e experiências que as pessoas escolhem viver.</p>
             </div>
@@ -351,39 +321,12 @@ export default function FitiPage() {
               ))}
             </div>
 
-            <div className="mt-28 grid grid-cols-1 md:grid-cols-3 border border-white/35 fade-up">
-              <div className="bg-[#f3f0e8] text-[#11110f] p-8 border-b md:border-b-0 md:border-r border-white/25">
-                <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">Arquitetura de recursos</p>
-                <h3 className="font-black uppercase tracking-tighter leading-[0.88] text-[clamp(2.5rem,4vw,4.4rem)] mb-8">Dois perímetros.<br/>Uma governança.</h3>
-                <p className="opacity-80">Separar escopo, orçamento, entrega e prestação de contas preserva a segurança do projeto e a clareza das contrapartidas.</p>
-              </div>
-              <article className="p-8 border-b md:border-b-0 md:border-r border-white/25">
-                <p className="text-[#c8d400] uppercase tracking-[0.15em] text-[0.68rem] font-extrabold mb-8">Perímetro cultural</p>
-                <h4 className="text-[1.5rem] font-bold mb-6">Incentivo + acesso</h4>
-                <ul className="list-disc pl-5 opacity-80 space-y-3">
-                  <li>Lei Federal de Incentivo à Cultura</li>
-                  <li>ProAC ICMS e editais aderentes</li>
-                  <li>Programação artística, formativa e gratuita</li>
-                  <li>Acessibilidade e democratização de acesso</li>
-                </ul>
-              </article>
-              <article className="p-8">
-                <p className="text-[#c8d400] uppercase tracking-[0.15em] text-[0.68rem] font-extrabold mb-8">Perímetro de mercado</p>
-                <h4 className="text-[1.5rem] font-bold mb-6">Receita + relacionamento</h4>
-                <ul className="list-disc pl-5 opacity-80 space-y-3">
-                  <li>Patrocínio direto e propriedades de marca</li>
-                  <li>Credenciais profissionais e hospitalidade</li>
-                  <li>Exposição, experiências e conteúdo</li>
-                  <li>Rodadas, startup market e licenciamento</li>
-                </ul>
-              </article>
-            </div>
-            <p className="text-[0.72rem] text-white/60 mt-8 max-w-[1000px] fade-up">Estrutura conceitual sujeita a enquadramento técnico, jurídico, fiscal e orçamentário. Aprovação em mecanismo de incentivo não garante captação. Referências vigentes consultadas em 03/09/2026: IN MinC 29/2026 e ProAC ICMS.</p>
+
 
             <div className="mt-28 grid lg:grid-cols-[0.9fr_1.6fr] gap-[6vw] pt-8 border-t-2 border-[#c8d400] fade-up">
               <div>
                 <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">Motor econômico</p>
-                <h3 className="font-black uppercase tracking-tighter leading-[0.86] text-[clamp(2.7rem,5vw,5.4rem)]">Valor circula<br/>antes, durante<br/>e depois.</h3>
+                <h3 className="font-black uppercase tracking-tighter leading-[0.86] text-[clamp(2.7rem,5vw,5.4rem)]">Valor circula<br />antes, durante<br />e depois.</h3>
               </div>
               <ul className="m-0 p-0">
                 {[
@@ -404,42 +347,20 @@ export default function FitiPage() {
           </div>
         </section>
 
-        {/* 10 / Níveis de Patrocínio */}
-        <section className="bg-[#6b4494] text-white py-[clamp(6rem,10vw,10rem)]">
-          <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw]">
-            <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">10 / Portfólio de parceria</p>
-            <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3rem,14vw,8rem)]">Uma entrada para<br/>cada ambição.</h2>
-            
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-white/50 fade-up">
-              {[
-                { num: '01', title: 'Founding Partner', desc: 'Associação estruturante à primeira edição e à plataforma FITI.' },
-                { num: '02', title: 'Partner de Pilar', desc: 'Protagonismo editorial em Ser Humano, Economia Criativa ou Techs & IA.' },
-                { num: '03', title: 'Partner de Experiência', desc: 'Propriedade de um grande momento, espaço, circuito ou serviço.' },
-                { num: '04', title: 'Enabler', desc: 'Tecnologia, mobilidade, conectividade, hospitalidade e infraestrutura.' }
-              ].map((tier, i) => (
-                <article key={i} className={`min-h-[300px] py-6 lg:p-6 border-b lg:border-b-0 md:border-r border-white/30 flex flex-col ${i === 3 ? 'md:border-r-0 lg:border-r-0' : ''} ${i === 1 ? 'lg:border-r border-white/30' : ''} ${i % 2 !== 0 && i !== 3 ? 'md:border-r-0 lg:border-r' : ''}`}>
-                  <span className="text-[#c8d400] text-[0.7rem]">{tier.num}</span>
-                  <h3 className="my-auto font-black uppercase leading-[0.9] text-[clamp(1.7rem,3vw,3rem)]">{tier.title}</h3>
-                  <p className="opacity-90">{tier.desc}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* 11 / Parceiros */}
+
+        {/* 09 / Parceiros */}
         <section className="bg-[#f3f0e8] text-[#11110f] py-[clamp(6rem,10vw,10rem)]">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-[4vw] grid lg:grid-cols-[0.75fr_1.6fr] gap-[7vw]">
             <div className="bg-[#11110f] text-[#f3f0e8] p-8 min-h-[360px] flex flex-col items-center justify-center text-center fade-up">
-              <p className="uppercase tracking-[0.14em] text-[0.7rem] font-extrabold self-start mb-auto">Realização proponente</p>
+              <p className="uppercase tracking-[0.14em] text-[0.7rem] font-extrabold self-start mb-auto">Realização</p>
               <img src="/images/fiti/instituto-vila-tech-branco.png" alt="Instituto Vila Tech" className="max-w-[280px] w-full my-auto" />
-              <span className="text-[0.8rem] text-white/65 mt-auto">Instituto Cultural Vila Tech</span>
             </div>
             <div className="fade-up pt-8 lg:pt-0">
-              <p className="uppercase tracking-[0.14em] text-[0.7rem] font-extrabold mb-10">Ecossistema local em articulação</p>
+              <p className="uppercase tracking-[0.14em] text-[0.7rem] font-extrabold mb-10">Ecossistema de Parcerias - Instituições, Bares e restaurantes</p>
               <div className="flex flex-wrap gap-3">
-                {['Vila Tech Hub', 'Fábrica São Luiz', 'FAMA Museu', 'Chou Noodle Bar', 'A Taverna Pub', 'Garagem Pub', 'Empório Santa Ritha', 'Terraço Terras II', 'Do Quintal Pizza', 'A Churrascada Itu', 'Atelier dos Pães', 'Clube do Vinil Café'].map((brand, i) => (
-                  <span key={i} className="px-3 py-2 border border-[#11110f] font-extrabold text-[0.85rem]">{brand}</span>
+                {['Vila Tech Hub', 'Fábrica São Luiz', 'FAMA Museu', 'Chou Noodle Bar', 'A Taverna Pub', 'Garagem Pub', 'Empório Santa Ritha', 'Terraço Terras II', 'Do Quintal Pizza', 'A Churrascada Itu', 'Atelier dos Pães', 'Clube do Vinil Café', 'Cozinha São Pedro', 'Por ai Afora', 'Plaza Shopping Itu', 'Cine Araújo', 'Casa de Cultura de Itu', 'Cila'].map((brand, i) => (
+                  <span key={i} className="px-4 py-3 border border-[#11110f] font-extrabold text-[1rem]">{brand}</span>
                 ))}
               </div>
               <small className="block mt-8 max-w-[760px] opacity-70 leading-relaxed">Aplicação pública de marcas condicionada à autorização e ao recebimento dos arquivos oficiais de cada organização.</small>
@@ -447,18 +368,23 @@ export default function FitiPage() {
           </div>
         </section>
 
-        {/* 12 / Fechamento */}
+        {/* 10 / Fechamento */}
         <section className="relative min-h-[92svh] grid items-center overflow-hidden bg-[#11110f] text-[#f3f0e8]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#11110f]/98 to-[#11110f]/50">
             <img src="/images/fiti/praca-carmo.webp" alt="Praça do Carmo" className="w-full h-full object-cover mix-blend-screen opacity-50" />
           </div>
           <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-[4vw] py-32 fade-up">
             <p className="uppercase tracking-[0.18em] text-[0.73rem] font-extrabold mb-6">FITI · Itu · abril de 2027</p>
-            <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3.8rem,8vw,8.8rem)] max-w-[15ch]">O futuro não chega.<br/><em className="text-[#c8d400] not-italic">Ele encontra a gente.</em></h2>
-            <p className="max-w-[690px] text-[1.25rem] my-8">Marcas fundadoras, parceiros de conteúdo, investidores e realizadores: a primeira edição começa na mesa de construção.</p>
-            <a href="https://www.vilatechub.com.br/" target="_blank" rel="noreferrer" className="inline-flex min-h-[52px] items-center justify-center px-6 py-3 uppercase tracking-[0.1em] text-[0.75rem] font-black border border-transparent transition-all hover:-translate-y-0.5 bg-[#c8d400] text-[#11110f] hover:bg-white mt-4">
-              Abrir conversa com o Instituto ↗
-            </a>
+            <h2 className="font-black uppercase tracking-tighter leading-[0.84] text-[clamp(3.8rem,8vw,8.8rem)] max-w-[15ch]">O futuro não chega.<br /><em className="text-[#c8d400] not-italic">Ele encontra a gente.</em></h2>
+            <p className="max-w-[690px] text-[1.25rem] my-8">Venha fazer parte das marcas e empresas que fazem parte do ecossistema da inovação. Entre em contato com a gente</p>
+            <div className="flex flex-wrap gap-4 mt-4">
+              <a href="/#contact" className="inline-flex min-h-[52px] items-center justify-center px-6 py-3 uppercase tracking-[0.1em] text-[0.75rem] font-black border border-transparent transition-all hover:-translate-y-0.5 bg-[#c8d400] text-[#11110f] hover:bg-white">
+                Fale com a gente ↗
+              </a>
+              <a href="/doar" className="inline-flex min-h-[52px] items-center justify-center px-6 py-3 uppercase tracking-[0.1em] text-[0.75rem] font-black border border-transparent transition-all hover:-translate-y-0.5 bg-[#e83a79] text-white hover:bg-white hover:text-[#e83a79]">
+                Faça sua contribuição para o projeto ↗
+              </a>
+            </div>
           </div>
         </section>
       </main>
