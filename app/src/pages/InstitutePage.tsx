@@ -302,7 +302,7 @@ export default function InstitutePage() {
     { name: "ACHILLES MILAN", role: "DIRETOR EXECUTIVO", img: "/images/diretoria/conselho_1.webp" },
     { name: "LUCILLA ALMEIDA", role: "DIRETORA DE EVENTOS", img: "/images/diretoria/conselho_4.webp" },
     { name: "PAULO SESSO", role: "TESOUREIRO", img: "/images/diretoria/conselho_2.webp" },
-    { name: "PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/conselho_3.webp" }
+    { name: "ROBERTO PINA", role: "DIRETOR FINANCEIRO", img: "/images/diretoria/conselho_3.webp" }
   ];
 
   const consultivoMembers = [
@@ -943,7 +943,7 @@ export default function InstitutePage() {
             {/* Projeto 1: FESTEC ITU */}
             <div className="flex flex-col lg:flex-row gap-12 items-center fade-up">
               <div className="lg:w-1/2 w-full order-2 lg:order-1">
-                <div 
+                <div
                   className="relative aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500"
                   onMouseEnter={() => setFitiIsHovered(true)}
                   onMouseLeave={() => setFitiIsHovered(false)}
@@ -966,9 +966,8 @@ export default function InstitutePage() {
 
                   {/* Navigation Arrows */}
                   <div
-                    className={`absolute inset-0 flex items-center justify-between p-4 pointer-events-none transition-opacity duration-300 ${
-                      fitiIsHovered ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`absolute inset-0 flex items-center justify-between p-4 pointer-events-none transition-opacity duration-300 ${fitiIsHovered ? 'opacity-100' : 'opacity-0'
+                      }`}
                   >
                     <button
                       onClick={fitiScrollPrev}
@@ -1011,7 +1010,7 @@ export default function InstitutePage() {
               </div>
             </div>
 
-            {/* Projeto 2: Plano Aberto */}
+            {/* Projeto 2: Plano Sequência */}
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center fade-up">
               <div className="lg:w-1/2 w-full">
                 <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl hover-3d transition-transform duration-500">
@@ -1026,7 +1025,7 @@ export default function InstitutePage() {
                   className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1d1d1b]"
                   style={{ letterSpacing: '-.05em', fontFamily: 'Montserrat, sans-serif', lineHeight: 1 }}
                 >
-                  Plano Aberto
+                  Plano Sequência
                 </h3>
                 <p className="text-lg text-gray-600 font-inter font-light leading-relaxed mb-6">
                   Academia de cinema comunitário popular.

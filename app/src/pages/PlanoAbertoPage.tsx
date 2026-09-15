@@ -158,11 +158,7 @@ export default function PlanoAbertoPage() {
             </div>
 
             <div className="mt-8">
-              <div className="flex items-center gap-4 pt-6 max-w-md">
-                <span className="text-white/40 font-mono text-[10px] uppercase tracking-widest whitespace-nowrap">PLANO 01 / 12</span>
-                <div className="flex-1 h-px bg-[#E83A79]" />
-                <span className="text-white/40 font-mono text-[10px] uppercase tracking-widest whitespace-nowrap">ITU, SP — BRASIL</span>
-              </div>
+
               <p className="text-white/60 font-inter text-sm md:text-base font-light mt-4 max-w-md leading-relaxed">
                 Formação audiovisual para jovens:<br />
                 Um projeto de educação ágil para formação e capacitação em audiovisual e cinema.

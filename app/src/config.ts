@@ -491,7 +491,7 @@ export interface PartnersConfig {
 
 export const partnersConfig: PartnersConfig = {
   sectionLabel: "PARCEIROS",
-  sectionTitle: "Investidores e parceiros que acreditam no Vila Tech Hub",
+  sectionTitle: "Parceiros que acreditam no Vila Tech Hub",
   description: "O hub conta com empresas de tecnologia, consultorias, audiovisual, design, suporte e instituições de ensino e desenvolvimento regional.",
   ctaText: "Quero ser parceiro do Vila Tech Hub",
   institutionalLogos: [
