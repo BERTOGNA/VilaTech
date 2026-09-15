@@ -57,7 +57,7 @@ export default function FitiPage() {
           <div className="absolute bottom-0 left-0 right-0 h-[10px] bg-gradient-to-r from-[#3fbdd8] via-[#c8d400] via-40% to-[#e83a79] via-60% to-[#f59d22]"></div>
 
           <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-[4vw] pb-[118px] flex flex-col items-center text-center">
-            <img src="/images/fiti/marca_FITI.png" alt="FITI" className="w-[800px] max-w-full fade-up object-contain" />
+            <img src="/images/fiti/Marca Fiti_1.png" alt="FITI" className="w-[800px] max-w-full fade-up object-contain" />
             <div className="w-full max-w-[800px] flex justify-between uppercase text-[0.6rem] sm:text-[0.8rem] md:text-[1.2rem] lg:text-[1.4rem] font-bold mt-4 mb-8 fade-up text-[#f3f0e8]">
               <span>O</span>
               <span>F</span><span>U</span><span>T</span><span>U</span><span>R</span><span>O</span>
@@ -68,11 +68,7 @@ export default function FitiPage() {
             </div>
             <p className="max-w-[670px] text-[clamp(1.05rem,2vw,1.45rem)] leading-snug fade-up">Quatro dias para criatividade, tecnologia e negócios ocuparem a cidade — e transformarem patrimônio em plataforma.</p>
           </div>
-          <div className="absolute z-10 bottom-[28px] left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-4 lg:gap-10 text-[0.68rem] uppercase tracking-[0.16em] font-bold w-[calc(100%-2rem)]">
-            <span>MVP · 3–4 dias</span>
-            <span>Quinta → domingo</span>
-            <span>Cidade-campus</span>
-          </div>
+
         </section>
 
         {/* 02 / Formato */}
